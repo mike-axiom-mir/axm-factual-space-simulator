@@ -1,0 +1,43 @@
+{
+  "schema": "axm.bridge-experience-contract.v1",
+  "contract_id": "axm.bridge.experience-core",
+  "version": 1,
+  "status": "CANON",
+  "purpose": "Protect the lived-in vessel experience without hardcoding one ship, crew, era, or timeline.",
+  "required_in_every_playable_vessel": {
+    "spatial_room_identity": true,
+    "dominant_world_view": true,
+    "visible_command_presence": true,
+    "visible_crew_presence": true,
+    "diegetic_controls": true,
+    "orientation_axes": [
+      "front",
+      "left",
+      "right",
+      "rear",
+      "deck"
+    ],
+    "room_context_survives_station_focus": true,
+    "low_fidelity_survival": true,
+    "historical_reconstruction_safe": true
+  },
+  "forbidden_regressions": [
+    "generic_website_dashboard_as_primary_experience",
+    "disembodied_floating_hud_without_room_context",
+    "crew_reduced_to_hidden_text_only",
+    "main_world_view_reduced_to_minor_widget",
+    "command_presence_removed",
+    "ship_systems_presented_only_as_unrelated_cards",
+    "renderer_rewrites_historical_events",
+    "visual_upgrade_changes_room_semantics_without_new_archetype_version"
+  ],
+  "extensibility_rule": {
+    "new_ship": "register a new vessel archetype id and version",
+    "new_room": "register a new bridge grammar id and version",
+    "new_timeline": "register a new timeline start id and version",
+    "new_crew": "register a new crew manifest id and version",
+    "existing_save": "pins the exact ids and versions used at creation",
+    "visual_upgrade": "may change renderer and skin, not pinned semantic anchors",
+    "breaking_room_change": "requires a new archetype version; never silently migrates old saves"
+  }
+}

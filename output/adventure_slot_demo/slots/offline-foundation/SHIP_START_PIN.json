@@ -1,0 +1,29 @@
+{
+  "schema": "axm.ship-start-pin.v1",
+  "bridge_archetype_id": "axm.bridge.frontier-survey.v1",
+  "bridge_archetype_version": 1,
+  "timeline_start_id": "axm.timeline.near-future-factual.v1",
+  "timeline_start_version": 1,
+  "crew_start_id": "axm.crew.first-expedition.v1",
+  "crew_start_version": 1,
+  "interior_archetype_id": "axm.interior.frontier-survey.v1",
+  "interior_archetype_version": 1,
+  "ship_blueprint_id": "axm.ship.frontier-survey-stack.v1",
+  "ship_blueprint_version": 1,
+  "ship_blueprint_commitment": "94e91fd0c78f17c3694be12e7eb8c1691e77be5d045f40c86a5f6b549f4811a1",
+  "initial_render_profile_id": "axm.render.paint-foundation.v1",
+  "initial_render_profile_version": 1,
+  "semantic_anchor_ids": [
+    "forward_world_screen",
+    "command_duet",
+    "human_or_primary_explorer",
+    "ai_or_secondary_collaborator",
+    "navigation",
+    "science",
+    "engineering",
+    "communications"
+  ],
+  "start_package_receipt": "32e2f0d0b6ed22a6925e5d2a1021d6becd0d4bd1ce706e4932a49837e4f1a4a7",
+  "migration_policy": "immutable_semantics_new_versions_only",
+  "pin_receipt": "b3e8513c0b55235f9bcb23da5fd250dc8b9544c75fdf2dff9dfb5305a3be2c57"
+}

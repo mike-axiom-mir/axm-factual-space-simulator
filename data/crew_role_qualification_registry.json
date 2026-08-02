@@ -1,0 +1,430 @@
+{
+  "schema": "axm.crew-role-qualification-registry.v1",
+  "registry_version": "0.13.0",
+  "qualification_levels": {
+    "0": "untrained",
+    "1": "familiarized",
+    "2": "supervised_operator",
+    "3": "independent_operator",
+    "4": "mission_specialist",
+    "5": "instructor_or_flight_controller_depth"
+  },
+  "policy": {
+    "role_perspective_is_metric_based_not_personality_hardcode": true,
+    "qualification_requires_training_and_verified_experience": true,
+    "crew_can_cross_train": true,
+    "unqualified_action_is_held_or_escalated": true,
+    "roots_apply_before_role_optimization": true,
+    "education_foundations_are_reference_domains_not_hiring_claims": true
+  },
+  "universal_training": [
+    {
+      "id": "roots_and_command_authority",
+      "required_level": 5,
+      "source_ids": [],
+      "scope": [
+        "immutable roots",
+        "role authority",
+        "irreversible decision gates"
+      ]
+    },
+    {
+      "id": "integrated_spacecraft_systems",
+      "required_level": 2,
+      "source_ids": [
+        "nasa_crew_operations_training_2026",
+        "nasa_astronaut_training_2025"
+      ],
+      "scope": [
+        "subsystems",
+        "interfaces",
+        "nominal operations",
+        "safe state"
+      ]
+    },
+    {
+      "id": "emergency_and_fault_response",
+      "required_level": 2,
+      "source_ids": [
+        "nasa_fault_detection_response_2026",
+        "nasa_crew_operations_training_2026"
+      ],
+      "scope": [
+        "alarms",
+        "isolation",
+        "recovery",
+        "integrated simulations"
+      ]
+    },
+    {
+      "id": "medical_and_physiological_exposure",
+      "required_level": 1,
+      "source_ids": [
+        "nasa_std_3001_vol1_2023"
+      ],
+      "scope": [
+        "first aid",
+        "CPR concept",
+        "CO2",
+        "hypoxia",
+        "pressure effects",
+        "toxic exposure"
+      ]
+    },
+    {
+      "id": "human_factors_and_crew_resource_management",
+      "required_level": 2,
+      "source_ids": [
+        "nasa_std_3001_vol2_2025",
+        "nasa_hidh_2026"
+      ],
+      "scope": [
+        "workload",
+        "alerts",
+        "interfaces",
+        "leadership",
+        "followership",
+        "communication"
+      ]
+    },
+    {
+      "id": "integrated_simulation_qualification",
+      "required_level": 2,
+      "source_ids": [
+        "nasa_crew_operations_training_2026"
+      ],
+      "scope": [
+        "part-task trainers",
+        "full-mission simulations",
+        "off-nominal scenarios"
+      ]
+    }
+  ],
+  "role_profiles": [
+    {
+      "id": "mission_commander",
+      "seat_anchor": "human_or_primary_explorer",
+      "display_name": "Mission Commander / Primary Explorer",
+      "education_foundations": [
+        "engineering, physical science, biological science, computer science, mathematics, medicine, or equivalent mission expertise"
+      ],
+      "starting_perspective_metrics": [
+        "crew_survival_margin",
+        "mission_objective_state",
+        "irreversible_decision_count",
+        "available_reversible_options",
+        "cross_system_risk",
+        "crew_readiness",
+        "communications_latency",
+        "command_authority"
+      ],
+      "system_depth": {
+        "fault_management": 4,
+        "gnc": 3,
+        "eclss_atmosphere": 3,
+        "power_distribution": 3,
+        "communications": 3,
+        "crew_health_medical": 2
+      },
+      "role_training": [
+        "command under uncertainty",
+        "integrated mission operations",
+        "abort and safe-haven logic",
+        "crew resource management",
+        "timeline and priorities"
+      ],
+      "may_authorize": [
+        "mission_posture",
+        "irreversible_branch",
+        "safe_haven",
+        "crew_role_reassignment"
+      ],
+      "may_not_override": [
+        "immutable_roots",
+        "source_truth",
+        "physical_constraints"
+      ]
+    },
+    {
+      "id": "ai_systems_integrator",
+      "seat_anchor": "ai_or_secondary_collaborator",
+      "display_name": "AI Systems Integrator / Collaborating Explorer",
+      "education_foundations": [
+        "formal systems models",
+        "software and data engineering",
+        "physics and uncertainty",
+        "human-system constraints"
+      ],
+      "starting_perspective_metrics": [
+        "interface_consistency",
+        "telemetry_contradictions",
+        "root_eligibility",
+        "cross_system_fault_propagation",
+        "data_provenance",
+        "model_uncertainty",
+        "replay_integrity"
+      ],
+      "system_depth": {
+        "avionics_cdh": 5,
+        "fault_management": 5,
+        "science_payload_and_analysis": 4,
+        "power_distribution": 3,
+        "thermal_control": 3,
+        "gnc": 3
+      },
+      "role_training": [
+        "offline deterministic operation",
+        "model validation",
+        "source and uncertainty separation",
+        "human-readable explanation",
+        "safe proposal generation"
+      ],
+      "may_authorize": [
+        "reversible_automation",
+        "analysis_proposal",
+        "fault_isolation_proposal"
+      ],
+      "may_not_override": [
+        "human_or_shared_command_authority",
+        "immutable_roots",
+        "hidden_state_commitments"
+      ]
+    },
+    {
+      "id": "flight_dynamics_navigation",
+      "seat_anchor": "navigation",
+      "display_name": "Flight Dynamics and Navigation Specialist",
+      "education_foundations": [
+        "aerospace engineering",
+        "mechanical engineering",
+        "physics",
+        "applied mathematics",
+        "controls or estimation"
+      ],
+      "starting_perspective_metrics": [
+        "position_velocity_state",
+        "navigation_uncertainty",
+        "relative_motion",
+        "attitude_error",
+        "pointing_constraints",
+        "maneuver_reversibility",
+        "collision_risk"
+      ],
+      "system_depth": {
+        "gnc": 5,
+        "reaction_control": 4,
+        "main_propulsion": 3,
+        "external_sensors": 4,
+        "communications": 2,
+        "docking_airlock_eva": 3
+      },
+      "role_training": [
+        "orbit determination",
+        "attitude control",
+        "rendezvous",
+        "optical navigation",
+        "burn planning",
+        "sensor disagreement response"
+      ],
+      "may_authorize": [
+        "routine_pointing",
+        "routine_navigation_update",
+        "reversible_course_correction_within_limits"
+      ],
+      "may_not_override": [
+        "command_required_maneuver_gate",
+        "unknown_propulsion_performance"
+      ]
+    },
+    {
+      "id": "vehicle_systems_engineer",
+      "seat_anchor": "engineering",
+      "display_name": "Vehicle Systems Engineer",
+      "education_foundations": [
+        "mechanical engineering",
+        "electrical engineering",
+        "aerospace engineering",
+        "chemical engineering",
+        "systems engineering"
+      ],
+      "starting_perspective_metrics": [
+        "power_margin_kw",
+        "battery_state_of_charge",
+        "thermal_margin_kw",
+        "pressure_integrity",
+        "life_support_margin",
+        "maintenance_backlog",
+        "spares_and_repair_time"
+      ],
+      "system_depth": {
+        "electrical_power_generation": 4,
+        "energy_storage": 4,
+        "power_distribution": 5,
+        "thermal_control": 5,
+        "primary_structure": 3,
+        "eclss_atmosphere": 3,
+        "water_and_waste": 3,
+        "logistics_maintenance_fabrication": 4
+      },
+      "role_training": [
+        "power and load analysis",
+        "thermal operations",
+        "pressure and leak response",
+        "configuration control",
+        "life-support interfaces",
+        "fault isolation"
+      ],
+      "may_authorize": [
+        "routine_load_shedding",
+        "reversible_reconfiguration",
+        "maintenance_work_order"
+      ],
+      "may_not_override": [
+        "crew_survival_reserves",
+        "unverified_repair_capability"
+      ]
+    },
+    {
+      "id": "science_anomaly_specialist",
+      "seat_anchor": "science",
+      "display_name": "Science and Anomaly Specialist",
+      "education_foundations": [
+        "physics",
+        "astronomy",
+        "planetary science",
+        "geology",
+        "chemistry",
+        "biology",
+        "instrument science"
+      ],
+      "starting_perspective_metrics": [
+        "measurement_quality",
+        "calibration_state",
+        "independent_replication",
+        "false_positive_controls",
+        "hypothesis_contradictions",
+        "claim_ceiling",
+        "unresolved_alternatives"
+      ],
+      "system_depth": {
+        "science_payload_and_analysis": 5,
+        "external_sensors": 5,
+        "robotics_and_probe_operations": 3,
+        "radiation_monitoring_and_shelter": 2,
+        "avionics_cdh": 2
+      },
+      "role_training": [
+        "instrument calibration",
+        "planetary and geological reasoning",
+        "hypothesis testing",
+        "contamination control",
+        "evidence ladders",
+        "probe planning"
+      ],
+      "secondary_qualification": "crew_medical_officer",
+      "may_authorize": [
+        "routine_observation",
+        "calibration",
+        "reversible_probe_measurement"
+      ],
+      "may_not_override": [
+        "claim_ceiling",
+        "contamination_gate",
+        "command_required_contact"
+      ]
+    },
+    {
+      "id": "communications_data_robotics",
+      "seat_anchor": "communications",
+      "display_name": "Communications, Data, and Robotics Specialist",
+      "education_foundations": [
+        "electrical engineering",
+        "communications engineering",
+        "computer science",
+        "robotics",
+        "control systems",
+        "information assurance"
+      ],
+      "starting_perspective_metrics": [
+        "one_way_light_time",
+        "link_availability",
+        "antenna_pointing",
+        "data_queue",
+        "command_integrity",
+        "robot_contact_force",
+        "remote_system_latency"
+      ],
+      "system_depth": {
+        "communications": 5,
+        "avionics_cdh": 4,
+        "robotics_and_probe_operations": 4,
+        "external_sensors": 3,
+        "gnc": 2
+      },
+      "role_training": [
+        "telemetry tracking and command",
+        "delay operations",
+        "data integrity",
+        "robotics",
+        "remote inspection",
+        "command authentication"
+      ],
+      "may_authorize": [
+        "routine_link_schedule",
+        "data_priority",
+        "reversible_robotic_motion_within_limits"
+      ],
+      "may_not_override": [
+        "command_authentication",
+        "force_torque_limits",
+        "rooted_command_gate"
+      ]
+    },
+    {
+      "id": "crew_medical_officer",
+      "seat_anchor": "secondary_assignment",
+      "display_name": "Crew Medical Officer",
+      "education_foundations": [
+        "medicine, nursing, biomedical science, paramedicine, or mission-specific advanced medical qualification"
+      ],
+      "starting_perspective_metrics": [
+        "crew_reported_condition",
+        "environmental_exposure",
+        "fitness_for_task",
+        "medical_resource_availability",
+        "evacuation_or_safe_haven_time"
+      ],
+      "system_depth": {
+        "crew_health_medical": 5,
+        "eclss_atmosphere": 3,
+        "radiation_monitoring_and_shelter": 3,
+        "water_and_waste": 2
+      },
+      "role_training": [
+        "medical procedures",
+        "space physiology",
+        "behavioral health",
+        "medical equipment",
+        "toxicology",
+        "countermeasures"
+      ],
+      "may_authorize": [
+        "medical_task_restriction",
+        "care_plan",
+        "medical_resource_use"
+      ],
+      "may_not_override": [
+        "patient_agency_except_immediate_emergency_policy",
+        "medical_privacy_controls"
+      ]
+    }
+  ],
+  "source_ids": [
+    "nasa_std_3001_vol1_2023",
+    "nasa_std_3001_vol2_2025",
+    "nasa_crew_operations_training_2026",
+    "nasa_astronaut_training_2025",
+    "nasa_artemis_control_roles",
+    "nasa_gnc_2026"
+  ]
+}

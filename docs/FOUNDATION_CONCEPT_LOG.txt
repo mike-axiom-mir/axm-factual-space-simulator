@@ -1,0 +1,424 @@
+AXM DEEP-SPACE ADVENTURE SIMULATOR
+FOUNDATIONAL ARCHITECTURE — v0.1
+Logged: 2026-08-02
+Status: WORKING CONCEPT / FOUNDATION LOG
+
+============================================================
+CORE VISION
+============================================================
+
+The player sits inside the command cockpit of a large exploration vessel.
+
+There is one dominant forward screen, surrounded by navigation, science,
+engineering, communications, crew, sensor, and mission interfaces.
+
+The presentation can remain graphically simple—stars, vector diagrams,
+signals, maps, text, sound, and lighting—because the true depth lives
+beneath the screen.
+
+The adventure is not selected from prewritten missions.
+
+It is generated from:
+
+SEED + FACTUAL RULES + CURRENT WORLD STATE + PLAYER DECISIONS
++ CONTROLLED UNCERTAINTY
+
+The seed does not merely generate a star system. It generates an entire
+ADVENTURE GENOME.
+
+============================================================
+1. THE REALITY KERNEL
+============================================================
+
+This is the system that protects factual integrity.
+
+It contains machine-readable rules for:
+
+- stars and stellar evolution
+- planets, moons, rings, and orbital systems
+- gravity and orbital motion
+- radiation and magnetospheres
+- atmospheres and climate
+- geology and tectonics
+- chemistry and material behaviour
+- biological possibility
+- spacecraft systems
+- communication delay
+- energy, heat, fuel, and life support
+- sensor limitations
+- uncertainty and measurement error
+
+Every generated object receives one of three truth labels:
+
+OBSERVED FACT
+Directly supported by the simulator's measurements.
+
+SCIENTIFIC INFERENCE
+The most likely explanation based on available evidence.
+
+SPECULATION
+A possibility that has not yet been confirmed.
+
+The AI may propose interpretations, but it cannot silently convert
+speculation into fact.
+
+============================================================
+2. THE ADVENTURE GENOME
+============================================================
+
+Every campaign receives a master seed.
+
+That seed generates several linked sub-seeds:
+
+- universe region
+- stellar environment
+- planetary system
+- spacecraft configuration
+- crew composition
+- mission purpose
+- available knowledge
+- hidden physical state
+- unresolved anomalies
+- political or social context
+- resource conditions
+- danger profile
+- discovery profile
+- emotional and party tone
+
+Simplified seed structure:
+
+MASTER SEED
+|
++-- COSMOS
++-- SYSTEM
++-- SHIP
++-- CREW
++-- MISSION
++-- UNKNOWN
++-- CONSEQUENCE
++-- PRESENTATION
+
+This means the same physical system could create very different adventures
+depending on the ship, crew, mission, and initial information.
+
+A scientific survey vessel, damaged rescue craft, and independent trading
+ship might enter the same star system and experience completely different
+stories.
+
+============================================================
+3. THE POSSIBILITY COMPOSER
+============================================================
+
+This is where unusual adventures are created.
+
+Pure randomness would produce nonsense.
+Pure scientific generation would often produce worlds that are realistic
+but uneventful.
+
+The Possibility Composer searches for intersections between valid systems.
+
+Example:
+
+- an unusual orbit changes a moon's tidal heating
+- tidal heating changes its geology
+- geology releases chemicals beneath an ice layer
+- those chemicals affect a possible ecosystem
+- the ecosystem interferes with a sensor frequency
+- the interference resembles an artificial signal
+- the crew must decide whether it is biology, geology, equipment failure,
+  or intelligence
+
+No single part needs to be fictional.
+The adventure emerges from their interaction.
+
+Generation goal:
+
+HIGH PLAUSIBILITY
+x DEEP SYSTEM INTERACTION
+x MEANINGFUL UNCERTAINTY
+x PLAYER AGENCY
+x LOW REPETITION
+
+Honesty limit:
+
+We cannot honestly guarantee that no human or AI has ever imagined a
+particular outcome before.
+
+We can generate combinations whose exact causal history, measurements,
+ship state, decisions, and consequences are extremely unlikely to have
+occurred previously—and preserve the complete generation record to prove
+how that outcome emerged.
+
+============================================================
+4. THE PARTY DIRECTOR
+============================================================
+
+The Party Director provides the controlled RNG direction.
+
+It does not write predetermined events.
+It adjusts the probability of opportunities appearing.
+
+Possible direction values include:
+
+- discovery
+- danger
+- mystery
+- survival
+- wonder
+- isolation
+- contact
+- humour
+- conflict
+- rescue
+- investigation
+- engineering crisis
+- peaceful exploration
+
+The party can select a preference, use a rotating mixture, or leave it
+completely open.
+
+Example weighting:
+
+Wonder:       30%
+Mystery:      25%
+Engineering:  20%
+Danger:       10%
+Contact:      10%
+Humour:        5%
+
+These values influence what the simulator searches for, but they do not
+guarantee a particular result.
+
+The factual world remains authoritative.
+
+============================================================
+5. THE CAUSAL WORLD SIMULATOR
+============================================================
+
+The world must continue existing even when nobody is looking at it.
+
+Every important object maintains state:
+
+- position
+- velocity
+- temperature
+- energy
+- structural condition
+- chemical composition
+- biological activity
+- ownership or allegiance
+- knowledge of other entities
+- current goals
+- available resources
+- previous interactions
+
+Choices do not select story branches.
+They alter the state of the simulation.
+
+Example:
+
+Player increases engine output
+-> fuel consumption rises
+-> reactor heat rises
+-> sensor noise increases
+-> a weak signal becomes harder to detect
+-> arrival occurs earlier
+-> another vessel has not yet reached the location
+-> the first-contact situation changes
+
+The resulting event was not selected from a dialogue tree.
+It emerged from connected consequences.
+
+============================================================
+6. THE GENERATED BRIDGE
+============================================================
+
+The cockpit itself should be procedurally assembled from the ship seed.
+
+The main screen can show:
+
+- forward visual observation
+- tactical geometry
+- orbital paths
+- navigation corridor
+- magnified sensor target
+- communications
+- scientific reconstruction
+- external drone camera
+- damage visualisation
+
+Secondary interfaces are generated around it according to the ship's
+systems.
+
+A research vessel may have large spectral and biological panels.
+A mining vessel may emphasise material scans and structural maps.
+An old ship may have fragmented displays and manual controls.
+An alien or experimental vessel may organise information in completely
+different ways.
+
+The interfaces are not decorative skins.
+Each control should connect to a genuine simulated system.
+
+Damage can also affect the bridge:
+
+- missing sensor channels
+- delayed updates
+- inaccurate measurements
+- flickering power distribution
+- disabled automatic calculations
+- contradictory readings
+- physical blind spots
+
+Low graphics become an advantage here.
+
+Possible presentation tools:
+
+- clean vector shapes
+- moving orbital lines
+- changing waveforms
+- procedural star fields
+- depth through parallax
+- instrument lights
+- screen reflections
+- warning tones
+- spatial audio
+- generated system diagrams
+- readable scientific logs
+
+The player's imagination supplies the expensive cinematic layer.
+
+============================================================
+7. AI REASONING WITHOUT AI AUTHORITY
+============================================================
+
+AI should participate before, during, and after generation.
+
+BEFORE GENERATION
+
+The AI proposes interesting combinations:
+
+- scientific relationships
+- possible mission tensions
+- rare system configurations
+- incomplete-information scenarios
+- unexpected consequences
+
+The Reality Kernel then validates or rejects those proposals.
+
+DURING PLAY
+
+AI crew members can:
+
+- interpret sensor readings
+- propose hypotheses
+- disagree with one another
+- calculate options
+- explain risks
+- remember previous decisions
+- perform assigned ship roles
+
+They must be allowed to be uncertain or wrong when the evidence is
+incomplete.
+
+AFTER AN EVENT
+
+The system records:
+
+- what was generated
+- which rules produced it
+- what was known at the time
+- what each participant believed
+- which decision was made
+- what consequence followed
+- whether the result was factual, inferred, or speculative
+
+This prevents the AI from rewriting the past to make the adventure appear
+more coherent.
+
+============================================================
+8. HUMAN AND MACHINE PARTICIPATION
+============================================================
+
+The same simulator can support several forms of play.
+
+HUMAN ALONE
+AI crew members operate the remaining stations.
+
+HUMAN AND AI TOGETHER
+Both make decisions, analyse evidence, and control different systems.
+
+MULTIPLE HUMANS
+Each player controls a bridge station or shared command role.
+
+MACHINE ALONE
+AI agents explore the simulation while humans observe, inspect, or replay
+their reasoning.
+
+Nobody has to be the permanent captain.
+Command can be shared, rotated, or decided through explicit ship
+governance.
+
+============================================================
+9. FIRST PLAYABLE PROOF
+============================================================
+
+The first version should not attempt an entire galaxy.
+
+It should contain:
+
+- one generated cockpit
+- one generated star system
+- one ship
+- navigation
+- power
+- sensors
+- communications
+- science analysis
+- ship damage
+- a small crew
+- one hidden physical situation
+- multiple emergent outcomes
+- a complete causality log
+
+First adventure loop:
+
+GENERATE SEED
+-> ENTER UNKNOWN SYSTEM
+-> OBSERVE INCOMPLETE EVIDENCE
+-> ASSIGN POWER AND CREW
+-> COLLECT MEASUREMENTS
+-> FORM HYPOTHESES
+-> CHOOSE AN ACTION
+-> SIMULATE CONSEQUENCES
+-> REVEAL NEW EVIDENCE
+-> CONTINUE, WITHDRAW, OR FAIL
+
+Once this loop feels alive, more stars, planets, ships, cultures, missions,
+and scientific domains can be attached as modules.
+
+============================================================
+FOUNDATIONAL RULE
+============================================================
+
+THE STORY MAY BE SURPRISING, BUT THE SIMULATOR MUST ALWAYS KNOW WHY IT
+HAPPENED.
+
+That is what can make this feel like a real expedition rather than a
+random mission generator.
+
+============================================================
+RECOMMENDED ACTIVE DIRECTION
+============================================================
+
+Begin with a single low-graphics bridge expedition containing:
+
+- one scientifically generated system
+- one genuinely simulated ship
+- one hidden causal situation
+- incomplete sensor evidence
+- human and/or AI crew reasoning
+- meaningful system consequences
+- a visible and inspectable causality log
+
+This is the smallest playable proof that still contains the full soul of
+the eventual universe.

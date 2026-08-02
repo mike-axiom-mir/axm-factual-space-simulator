@@ -1,0 +1,200 @@
+{
+  "schema": "axm.browser-script-check.v1",
+  "version": "0.6.0",
+  "html_files_checked": 17,
+  "javascript_blocks_checked": 16,
+  "embedded_json_blocks_checked": 5,
+  "valid": true,
+  "failures": [],
+  "files": [
+    {
+      "file": "output/contact_horizon_demo/campaign/adventure_console.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/contact_horizon_demo/campaign/command_console.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/contact_horizon_demo/campaign/system.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "application/json",
+          "valid": true
+        },
+        {
+          "index": 2,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/contact_horizon_demo/contact_horizon_console.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/adventure_console.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/command_console.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/system.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "application/json",
+          "valid": true
+        },
+        {
+          "index": 2,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/technology_core_demo/gateway_ppe_halo/adventure_console.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/technology_core_demo/gateway_ppe_halo/command_console.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/technology_core_demo/gateway_ppe_halo/system.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "application/json",
+          "valid": true
+        },
+        {
+          "index": 2,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/technology_core_demo/orion_esm_crew_transport/adventure_console.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/technology_core_demo/orion_esm_crew_transport/command_console.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/technology_core_demo/orion_esm_crew_transport/system.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "application/json",
+          "valid": true
+        },
+        {
+          "index": 2,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/adventure_console.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/command_console.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/system.html",
+      "scripts": [
+        {
+          "index": 1,
+          "type": "application/json",
+          "valid": true
+        },
+        {
+          "index": 2,
+          "type": "text/javascript",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/technology_core_demo/technology_core_catalog.html",
+      "scripts": []
+    }
+  ]
+}

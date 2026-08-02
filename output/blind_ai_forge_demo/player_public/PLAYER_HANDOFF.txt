@@ -1,0 +1,8 @@
+AXM BLIND EXPEDITION — PLAYER HANDOFF
+
+You are the explorer. You do not know the sealed starting phenomenon.
+Read mission_bundle.json, system_public.json, player_state.json, and player_console.html.
+Choose exactly one action_id from mission_bundle.json and return it to the host.
+The host resolves the action and returns refreshed public files.
+Do not request forge_private files until the agreed reveal point.
+An observation may remain null, ambiguous, explained by controls, or unresolved.

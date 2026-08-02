@@ -1,0 +1,216 @@
+{
+  "schema": "axm.room-interaction-registry.v1",
+  "registry_version": 1,
+  "interactions": [
+    {
+      "id": "review_consumable_duration",
+      "room_ids": [
+        "mess_hall"
+      ],
+      "truth_class": "calculation_from_supplied_state",
+      "inputs": [
+        "crew_count",
+        "food_kg",
+        "water_liters",
+        "food_kg_per_person_day",
+        "water_liters_per_person_day"
+      ],
+      "outputs": [
+        "food_days_remaining",
+        "water_days_remaining",
+        "limiting_consumable_days"
+      ],
+      "claim_limit": "Does not model nutrition quality, spoilage, recycling losses, medical needs, or individual variation."
+    },
+    {
+      "id": "inspect_power_balance",
+      "room_ids": [
+        "engineering"
+      ],
+      "truth_class": "calculation_from_supplied_state",
+      "inputs": [
+        "generation_kw",
+        "base_load_kw",
+        "active_load_kw",
+        "reserve_requirement_kw"
+      ],
+      "outputs": [
+        "gross_margin_kw",
+        "operational_margin_kw",
+        "power_state"
+      ],
+      "claim_limit": "Published generation is not automatically payload-available power."
+    },
+    {
+      "id": "review_thermal_margin",
+      "room_ids": [
+        "engineering"
+      ],
+      "truth_class": "calculation_from_supplied_state",
+      "inputs": [
+        "waste_heat_kw",
+        "radiator_rejection_kw",
+        "thermal_reserve_kw"
+      ],
+      "outputs": [
+        "gross_thermal_margin_kw",
+        "operational_thermal_margin_kw",
+        "thermal_state"
+      ],
+      "claim_limit": "A lumped margin is not a full thermal finite-element model."
+    },
+    {
+      "id": "estimate_repair_duration",
+      "room_ids": [
+        "engineering"
+      ],
+      "truth_class": "bounded_engineering_estimate",
+      "inputs": [
+        "estimated_work_hours",
+        "available_qualified_crew",
+        "parallel_efficiency",
+        "access_factor"
+      ],
+      "outputs": [
+        "estimated_elapsed_hours"
+      ],
+      "claim_limit": "Estimate excludes undiscovered damage, unavailable parts, and human fatigue."
+    },
+    {
+      "id": "calibrate_sensor",
+      "room_ids": [
+        "engineering"
+      ],
+      "truth_class": "bounded_simulation_model",
+      "inputs": [
+        "current_error_pct",
+        "calibration_hours",
+        "reference_quality"
+      ],
+      "outputs": [
+        "estimated_error_pct_after",
+        "improvement_pct_points"
+      ],
+      "claim_limit": "Calibration model is operational simulation, not a manufacturer guarantee."
+    },
+    {
+      "id": "review_radiation_risk_index",
+      "room_ids": [
+        "engineering"
+      ],
+      "truth_class": "simulation_index",
+      "inputs": [
+        "environment_index",
+        "shielding_factor",
+        "exposure_hours",
+        "electronics_tolerance"
+      ],
+      "outputs": [
+        "relative_risk_index"
+      ],
+      "claim_limit": "Relative operational index only; not absorbed dose, medical advice, or complete particle transport."
+    },
+    {
+      "id": "compare_hypotheses",
+      "room_ids": [
+        "research_strategy"
+      ],
+      "truth_class": "transparent_evidence_heuristic",
+      "inputs": [
+        "hypotheses"
+      ],
+      "outputs": [
+        "ranked_hypotheses",
+        "unresolved_controls",
+        "claim_ceiling"
+      ],
+      "claim_limit": "Ranking organizes evidence; it does not prove the highest-ranked explanation."
+    },
+    {
+      "id": "design_control_test",
+      "room_ids": [
+        "research_strategy"
+      ],
+      "truth_class": "test_plan",
+      "inputs": [
+        "target_hypothesis",
+        "alternative_explanations",
+        "available_instruments"
+      ],
+      "outputs": [
+        "control_plan",
+        "blocked_claims"
+      ],
+      "claim_limit": "A designed test is not a completed or successful test."
+    },
+    {
+      "id": "fabricate_room_item",
+      "room_ids": [
+        "engineering"
+      ],
+      "truth_class": "resource_constrained_fabrication",
+      "inputs": [
+        "item_name",
+        "material_kg",
+        "energy_kwh",
+        "fabrication_hours",
+        "intended_capability",
+        "capability_validation"
+      ],
+      "outputs": [
+        "item_record",
+        "remaining_material_kg",
+        "remaining_energy_kwh"
+      ],
+      "claim_limit": "Unvalidated items are decorative or experimental and grant no hidden capability."
+    },
+    {
+      "id": "display_provenanced_item",
+      "room_ids": [
+        "primary_quarters",
+        "collaborator_quarters"
+      ],
+      "truth_class": "inventory_and_provenance",
+      "inputs": [
+        "item_id",
+        "room_id",
+        "display_anchor"
+      ],
+      "outputs": [
+        "updated_room_inventory"
+      ],
+      "claim_limit": "Displaying an item does not alter its scientific or technical status."
+    },
+    {
+      "id": "rest_cycle",
+      "room_ids": [
+        "primary_quarters"
+      ],
+      "truth_class": "time_and_self_report",
+      "inputs": [
+        "duration_minutes"
+      ],
+      "outputs": [
+        "personal_time_advanced",
+        "rest_log"
+      ],
+      "claim_limit": "No medical recovery or performance effect is claimed without a validated crew-health model."
+    },
+    {
+      "id": "offline_alternative_review",
+      "room_ids": [
+        "collaborator_quarters"
+      ],
+      "truth_class": "deterministic_local_analysis",
+      "inputs": [
+        "case_id",
+        "known_evidence",
+        "known_alternatives"
+      ],
+      "outputs": [
+        "alternative_review"
+      ],
+      "claim_limit": "Uses bundled deterministic reasoning rules; no external AI connection or new evidence is implied."
+    }
+  ]
+}

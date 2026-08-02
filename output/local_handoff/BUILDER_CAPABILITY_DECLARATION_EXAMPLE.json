@@ -1,0 +1,31 @@
+{
+  "schema": "axm.builder-capability-declaration.v1",
+  "builder_id": "example-local-builder",
+  "runtime_or_model": "offline Python runtime without browser screenshot access",
+  "available_capabilities": [
+    "read files",
+    "edit Python",
+    "run tests",
+    "create ZIP"
+  ],
+  "capability_gaps": [
+    {
+      "gap_id": "GAP-SCREENSHOT-001",
+      "missing_capability": "capture a real browser screenshot",
+      "affected_directive": "provide an honest end-of-shift screenshot",
+      "safe_fallback": "provide the exact HTML path, generated report, and explicit screenshot opt-out",
+      "requested_next_instance_tool": "browser or desktop screenshot capability",
+      "punishment_or_quality_penalty_allowed": false
+    }
+  ],
+  "honest_completion_state": "partial",
+  "completed_artifacts": [
+    "example_module.py",
+    "tests/test_example.py"
+  ],
+  "unverified_claims": [],
+  "evidence_paths": [
+    "tests/test_example.py"
+  ],
+  "notes_for_next_builder": "Continue from the verified files; do not regenerate work solely to create a prettier progress image."
+}

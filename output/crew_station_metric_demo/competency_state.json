@@ -1,0 +1,134 @@
+{
+  "schema": "axm.crew-competency-state.v1",
+  "levels": {
+    "commander.cross_system_command": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "commander.reversibility_risk": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "commander.crew_resource_management": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "ai.interface_reasoning": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "ai.provenance_uncertainty": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "ai.human_explanation": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "nav.state_estimation": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "nav.attitude_pointing": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "nav.proximity_hazard": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "eng.power_energy": {
+      "level": 0,
+      "evidence_ids": [
+        "ea2f446f3ba0cc4f8230bf5a"
+      ],
+      "last_assessment": null
+    },
+    "eng.thermal": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "eng.life_support": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "eng.fault_maintenance": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "science.instrument_quality": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "science.evidence_controls": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "science.probe_planning": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "comms.link_delay": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "comms.data_integrity": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "comms.robotics": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "medical.environmental_exposure": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "medical.emergency_care": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    },
+    "medical.workload_readiness": {
+      "level": 0,
+      "evidence_ids": [],
+      "last_assessment": null
+    }
+  },
+  "evidence_ledger": [
+    {
+      "sequence": 1,
+      "role_id": "vehicle_systems_engineer",
+      "skill_id": "eng.power_energy",
+      "evidence_type": "knowledge_check",
+      "outcome": "passed",
+      "ship_state_hash": "8cb61b2670897c753596262238edb7560dacc7d0e4b531731f5dac9a235e1c1f",
+      "verifier_id": null,
+      "notes": "",
+      "previous_evidence_hash": null,
+      "evidence_id": "ea2f446f3ba0cc4f8230bf5a",
+      "evidence_hash": "37f0fef9d4e7aedc56da6dab11cf26aee2b8c98501b998a6810e66aea2d73a44"
+    }
+  ],
+  "promotion_ledger": [],
+  "state_hash": "85a70791041d21f514028e793d090b72c4d805f73ad64bc00bf1ff573a32bbe9"
+}

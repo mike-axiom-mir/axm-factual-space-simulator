@@ -1,0 +1,85 @@
+{
+  "schema": "axm.entropy-source-registry.v1",
+  "registry_version": "2026-08-02-v0.4",
+  "policy": {
+    "master_seed_does_not_have_to_fix_future_events": true,
+    "entropy_is_sampled_only_at_declared_resolution_points": true,
+    "resolved_entropy_is_preserved_for_replay": true,
+    "unresolved_outcomes_are_not_written_to_the_ledger": true,
+    "multiplayer_authority_must_be_explicit": true,
+    "external_beacon_must_be_cryptographically_verified": true
+  },
+  "modes": {
+    "deterministic": {
+      "predetermined_by_master_seed": true,
+      "best_for": [
+        "tests",
+        "debugging",
+        "exact comparison",
+        "replays"
+      ],
+      "warning": "Anyone with the seed, context and algorithm can calculate the event result."
+    },
+    "local_live": {
+      "predetermined_by_master_seed": false,
+      "best_for": [
+        "solo play",
+        "offline play",
+        "machine-human shared exploration"
+      ],
+      "implementation": "Python secrets.token_hex using operating-system entropy",
+      "warning": "The local authority can discard and reroll unless the append-only ledger is enforced."
+    },
+    "mixed_live": {
+      "predetermined_by_master_seed": false,
+      "best_for": [
+        "campaign identity plus open future",
+        "default local adventures"
+      ],
+      "implementation": "SHA-256 mix of event context, deterministic campaign component and fresh OS entropy",
+      "warning": "This is replayable after resolution because the live token is logged."
+    },
+    "external_beacon": {
+      "predetermined_by_master_seed": false,
+      "best_for": [
+        "publicly auditable events",
+        "multiplayer",
+        "tournaments"
+      ],
+      "implementation": "Pinned drand quicknet packet identity, SHA-256(signature) check, and fail-closed BLS12-381 G1 signature verification before event mixing",
+      "warning": "Packets are rejected when the BLS verifier is missing, errors, or returns false. For fairness, commit to a future round before publication.",
+      "accepted_provider": "drand-quicknet"
+    },
+    "party_commit": {
+      "predetermined_by_master_seed": false,
+      "best_for": [
+        "human and AI parties jointly contributing uncertainty",
+        "no single-seat control"
+      ],
+      "implementation": "SHA-256 commitments followed by verified reveals and combined contributions",
+      "warning": "The starter detects changed reveals but does not prevent a participant from refusing to reveal."
+    }
+  },
+  "references": {
+    "python_secrets": {
+      "authority": "Python Software Foundation",
+      "url": "https://docs.python.org/3/library/secrets.html",
+      "relevance": "Operating-system-backed cryptographically strong random values."
+    },
+    "nist_randomness_beacon": {
+      "authority": "National Institute of Standards and Technology",
+      "url": "https://csrc.nist.gov/pubs/ir/8213/ipd",
+      "relevance": "Timed public randomness pulses with metadata, signatures and hash chaining."
+    },
+    "drand": {
+      "authority": "drand / League of Entropy",
+      "url": "https://docs.drand.love/docs/cryptography/",
+      "relevance": "Distributed publicly verifiable randomness based on threshold BLS signatures."
+    },
+    "coin_flipping_commitments": {
+      "authority": "Manuel Blum / IBM Research publication record",
+      "url": "https://research.ibm.com/publications/coin-flipping-by-telephone",
+      "relevance": "Foundational commit-before-reveal approach for remote joint randomness."
+    }
+  }
+}

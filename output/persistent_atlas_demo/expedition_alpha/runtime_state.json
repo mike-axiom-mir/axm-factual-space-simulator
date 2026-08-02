@@ -1,0 +1,474 @@
+{
+  "schema": "axm.adventure-runtime.v4",
+  "system_id": "56467e7b2de9e83a",
+  "turn": 4,
+  "mission_time_hours": 3.0,
+  "resources": {
+    "reactor_reserve_percent": 91.658,
+    "sensor_health_percent": 94.0,
+    "hull_integrity_percent": 98.0,
+    "probe_count": 2,
+    "fuel_percent": 100.0,
+    "heat_percent": 1.326,
+    "knowledge_points": 32.0
+  },
+  "navigation": {
+    "ship_orbit_au": 0.54025,
+    "reference_frame": "star-centred two-body planning frame"
+  },
+  "active_probes": [],
+  "threads": {
+    "system-history-reconstruction": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "system-history-reconstruction",
+      "title": "A system that may have moved its worlds",
+      "kind": "initial-opportunity",
+      "status": "active",
+      "source_event_id": null,
+      "parent_thread_id": null,
+      "target_planet_id": "planet-3",
+      "depth": 0,
+      "visits": 1,
+      "evidence": [
+        {
+          "truth_type": "observation-plan",
+          "statement": "The system contains both a large outer world and compact rocky bodies.",
+          "source": "generated-opportunity"
+        },
+        {
+          "truth_type": "observation-plan",
+          "statement": "Current orbits alone do not reveal the system's formation history.",
+          "source": "generated-opportunity"
+        },
+        {
+          "event_id": "56467e7b2de9e83a:turn:1",
+          "truth_type": "observation",
+          "statement": "No feature in the polarization channel rises securely above the current detection threshold: realized SNR 330.62 at orbital phase 289.95° with sensor health and background noise recorded in the physics snapshot.",
+          "outcome_id": "quiet-constraint"
+        }
+      ],
+      "created_turn": 0,
+      "updated_turn": 1
+    },
+    "detection-limit-review": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "detection-limit-review",
+      "title": "Detection Limit Review",
+      "kind": "detection-limit-review",
+      "status": "active",
+      "source_event_id": "56467e7b2de9e83a:turn:1",
+      "parent_thread_id": "system-history-reconstruction",
+      "target_planet_id": "planet-3",
+      "depth": 1,
+      "visits": 0,
+      "evidence": [
+        {
+          "event_id": "56467e7b2de9e83a:turn:1",
+          "truth_type": "hypothesis",
+          "statement": "Opened by the resolved event and remains investigable."
+        }
+      ],
+      "created_turn": 1,
+      "updated_turn": 1
+    },
+    "communication-latency": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "communication-latency",
+      "title": "Command and telemetry light-time",
+      "kind": "communication-latency",
+      "status": "active",
+      "source_event_id": "56467e7b2de9e83a:turn:1",
+      "parent_thread_id": "system-history-reconstruction",
+      "target_planet_id": "planet-3",
+      "depth": 1,
+      "visits": 0,
+      "evidence": [
+        {
+          "event_id": "56467e7b2de9e83a:turn:1",
+          "truth_type": "hypothesis",
+          "statement": "The communication loop is long enough to change command timing and autonomy requirements."
+        }
+      ],
+      "created_turn": 1,
+      "updated_turn": 4
+    },
+    "radiation-watch": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "radiation-watch",
+      "title": "Elevated radiation environment",
+      "kind": "radiation-watch",
+      "status": "active",
+      "source_event_id": "56467e7b2de9e83a:turn:1",
+      "parent_thread_id": "system-history-reconstruction",
+      "target_planet_id": "planet-3",
+      "depth": 1,
+      "visits": 2,
+      "evidence": [
+        {
+          "event_id": "56467e7b2de9e83a:turn:1",
+          "truth_type": "hypothesis",
+          "statement": "The relative radiation risk index is high enough to affect electronics and operations."
+        },
+        {
+          "event_id": "56467e7b2de9e83a:turn:2",
+          "truth_type": "observation",
+          "statement": "At orbital phase 290.06° and 0.4151 AU from the star, the thermal response measurement of E repeats with realized SNR 327.52 (expected 285.71).",
+          "outcome_id": "clear-evidence"
+        },
+        {
+          "event_id": "56467e7b2de9e83a:turn:4",
+          "truth_type": "observation",
+          "statement": "The polarization channel signal remains measurable at SNR 301.21, while photon/background/read-noise terms and the current orbital phase still permit at least two explanations for 'A system that may have moved its worlds'.",
+          "outcome_id": "ambiguous-evidence"
+        }
+      ],
+      "created_turn": 1,
+      "updated_turn": 4
+    },
+    "precision-follow-up": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "precision-follow-up",
+      "title": "Precision Follow Up",
+      "kind": "precision-follow-up",
+      "status": "active",
+      "source_event_id": "56467e7b2de9e83a:turn:2",
+      "parent_thread_id": "radiation-watch",
+      "target_planet_id": "planet-3",
+      "depth": 2,
+      "visits": 1,
+      "evidence": [
+        {
+          "event_id": "56467e7b2de9e83a:turn:2",
+          "truth_type": "hypothesis",
+          "statement": "Opened by the resolved event and remains investigable."
+        },
+        {
+          "event_id": "56467e7b2de9e83a:turn:3",
+          "truth_type": "observation",
+          "statement": "The instrument cross-calibration changes alongside orbital phase 290.12°, thermal-load ratio 0.515, or radiation-risk index 4.209; the correlation was not the original mission target.",
+          "outcome_id": "unexpected-coupling"
+        }
+      ],
+      "created_turn": 2,
+      "updated_turn": 3
+    },
+    "cross-system-coupling": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "cross-system-coupling",
+      "title": "Cross System Coupling",
+      "kind": "cross-system-coupling",
+      "status": "active",
+      "source_event_id": "56467e7b2de9e83a:turn:3",
+      "parent_thread_id": "precision-follow-up",
+      "target_planet_id": "planet-3",
+      "depth": 3,
+      "visits": 0,
+      "evidence": [
+        {
+          "event_id": "56467e7b2de9e83a:turn:3",
+          "truth_type": "hypothesis",
+          "statement": "Opened by the resolved event and remains investigable."
+        }
+      ],
+      "created_turn": 3,
+      "updated_turn": 3
+    },
+    "competing-hypotheses": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "competing-hypotheses",
+      "title": "Competing Hypotheses",
+      "kind": "competing-hypotheses",
+      "status": "active",
+      "source_event_id": "56467e7b2de9e83a:turn:4",
+      "parent_thread_id": "radiation-watch",
+      "target_planet_id": "planet-3",
+      "depth": 2,
+      "visits": 0,
+      "evidence": [
+        {
+          "event_id": "56467e7b2de9e83a:turn:4",
+          "truth_type": "hypothesis",
+          "statement": "Opened by the resolved event and remains investigable."
+        }
+      ],
+      "created_turn": 4,
+      "updated_turn": 4
+    }
+  },
+  "open_threads": [
+    "system-history-reconstruction",
+    "detection-limit-review",
+    "communication-latency",
+    "radiation-watch",
+    "precision-follow-up",
+    "cross-system-coupling",
+    "competing-hypotheses"
+  ],
+  "action_menu": {
+    "schema": "axm.dynamic-action-menu.v1",
+    "menu_version": 5,
+    "generated_from_turn": 4,
+    "active_thread_ids": [
+      "system-history-reconstruction",
+      "detection-limit-review",
+      "communication-latency",
+      "radiation-watch",
+      "precision-follow-up",
+      "cross-system-coupling",
+      "competing-hypotheses"
+    ],
+    "actions": [
+      {
+        "action_id": "cross-system-coupling:synchronize-all-relevant-sensor-channels-for-a-coupled-observation",
+        "label": "Synchronize all relevant sensor channels for a coupled observation",
+        "category": "instrument",
+        "source_thread": "cross-system-coupling",
+        "target_planet_id": "planet-3",
+        "intent": "Measure whether the second variable tracks the first in time.",
+        "priority": 0.98,
+        "parameters": {
+          "simultaneous_channels": 3
+        },
+        "index": 1
+      },
+      {
+        "action_id": "communication-latency:hold-course-until-the-delayed-telemetry-response-arrives",
+        "label": "Hold course until the delayed telemetry response arrives",
+        "category": "patient_observation",
+        "source_thread": "communication-latency",
+        "target_planet_id": "planet-3",
+        "intent": "Respect one-way light time instead of inventing immediate feedback.",
+        "priority": 0.98,
+        "parameters": {
+          "wait_for_comm": true
+        },
+        "index": 2
+      },
+      {
+        "action_id": "competing-hypotheses:isolate-the-strongest-wavelength-band-and-rescan",
+        "label": "Isolate the strongest wavelength band and rescan",
+        "category": "instrument",
+        "source_thread": "competing-hypotheses",
+        "target_planet_id": "planet-3",
+        "intent": "Discriminate between competing spectral explanations.",
+        "priority": 0.97,
+        "parameters": {
+          "band_isolation": true
+        },
+        "index": 3
+      },
+      {
+        "action_id": "detection-limit-review:extend-integration-time-to-lower-the-detection-threshold",
+        "label": "Extend integration time to lower the detection threshold",
+        "category": "patient_observation",
+        "source_thread": "detection-limit-review",
+        "target_planet_id": "planet-3",
+        "intent": "Improve signal-to-noise without claiming a guaranteed detection.",
+        "priority": 0.96,
+        "parameters": {
+          "integration_scale": 4.0
+        },
+        "index": 4
+      },
+      {
+        "action_id": "cross-system-coupling:run-an-instrument-thermal-interference-calibration",
+        "label": "Run an instrument thermal-interference calibration",
+        "category": "instrument",
+        "source_thread": "cross-system-coupling",
+        "target_planet_id": "planet-3",
+        "intent": "Test whether ship heat is creating the correlation.",
+        "priority": 0.95,
+        "parameters": {
+          "thermal_calibration": true
+        },
+        "index": 5
+      },
+      {
+        "action_id": "radiation-watch:reduce-exposed-operations-and-shelter-sensitive-systems",
+        "label": "Reduce exposed operations and shelter sensitive systems",
+        "category": "general",
+        "source_thread": "radiation-watch",
+        "target_planet_id": "planet-3",
+        "intent": "Lower radiation risk while preserving the mission.",
+        "priority": 0.94,
+        "parameters": {
+          "shield_mode": true
+        },
+        "index": 6
+      },
+      {
+        "action_id": "communication-latency:send-a-store-and-forward-command-sequence",
+        "label": "Send a store-and-forward command sequence",
+        "category": "general",
+        "source_thread": "communication-latency",
+        "target_planet_id": "planet-3",
+        "intent": "Let the probe act locally during the communication gap.",
+        "priority": 0.94,
+        "parameters": {
+          "autonomous_probe_sequence": true
+        },
+        "index": 7
+      },
+      {
+        "action_id": "competing-hypotheses:change-viewing-geometry-before-repeating-the-observation",
+        "label": "Change viewing geometry before repeating the observation",
+        "category": "instrument",
+        "source_thread": "competing-hypotheses",
+        "target_planet_id": "planet-3",
+        "intent": "Use phase and line-of-sight changes as a causal test.",
+        "priority": 0.93,
+        "parameters": {
+          "phase_shift_deg": 35.0
+        },
+        "index": 8
+      },
+      {
+        "action_id": "detection-limit-review:observe-from-a-more-favourable-orbital-phase",
+        "label": "Observe from a more favourable orbital phase",
+        "category": "patient_observation",
+        "source_thread": "detection-limit-review",
+        "target_planet_id": "planet-3",
+        "intent": "Increase target contrast using geometry.",
+        "priority": 0.93,
+        "parameters": {
+          "phase_shift_deg": 80.0
+        },
+        "index": 9
+      }
+    ],
+    "honesty": "Actions are generated from current causal threads, ship state, and—only after its gates—the long-horizon evidence layer. They are not a fixed dialogue tree and impossible inventory actions are removed."
+  },
+  "timeline": [
+    {
+      "event_id": "56467e7b2de9e83a:turn:1",
+      "action": "Map dust and small bodies before approaching the planets.",
+      "action_id": "system-history-reconstruction:map-dust-and-small-bodies-before-approaching-the-planets",
+      "outcome_id": "quiet-constraint",
+      "outcome_title": "Nothing rises above the current threshold",
+      "entropy_mode": "deterministic",
+      "command_mode": "autonomous_deterministic",
+      "command_authority": "direct_runtime",
+      "command_hash": "0acce30f8060e26d496b3af8a7ca7109ddd98493079c559e31a7a64a03d7cc43",
+      "target_planet_id": "planet-3",
+      "realized_snr": 330.618323,
+      "thermal_load_ratio": 0.514756,
+      "radiation_risk_index": 4.207367,
+      "one_way_light_time_s": 62.401458,
+      "contact_evidence_stage": 0,
+      "contact_phase": "dormant"
+    },
+    {
+      "event_id": "56467e7b2de9e83a:turn:2",
+      "action": "Measure the radiation field before resuming science",
+      "action_id": "radiation-watch:measure-the-radiation-field-before-resuming-science",
+      "outcome_id": "clear-evidence",
+      "outcome_title": "A repeatable result",
+      "entropy_mode": "deterministic",
+      "command_mode": "autonomous_deterministic",
+      "command_authority": "direct_runtime",
+      "command_hash": "87939bd220e6a0e011fc9be1ddf131cf3123f58adeb4b6302db024949505701b",
+      "target_planet_id": "planet-3",
+      "realized_snr": 327.520449,
+      "thermal_load_ratio": 0.397006,
+      "radiation_risk_index": 4.208782,
+      "one_way_light_time_s": 62.436281,
+      "contact_evidence_stage": 0,
+      "contact_phase": "dormant"
+    },
+    {
+      "event_id": "56467e7b2de9e83a:turn:3",
+      "action": "Cross-calibrate the signal against an independent sensor channel",
+      "action_id": "precision-follow-up:cross-calibrate-the-signal-against-an-independent-sensor-channel",
+      "outcome_id": "unexpected-coupling",
+      "outcome_title": "A second physical variable moves with the first",
+      "entropy_mode": "deterministic",
+      "command_mode": "autonomous_deterministic",
+      "command_authority": "direct_runtime",
+      "command_hash": "c3c8489cba8b830a0a8bf41a348d31f6505e91ca66ddf31d4a906b30238fd461",
+      "target_planet_id": "planet-3",
+      "realized_snr": 335.26742,
+      "thermal_load_ratio": 0.514885,
+      "radiation_risk_index": 4.209489,
+      "one_way_light_time_s": 62.453683,
+      "contact_evidence_stage": 0,
+      "contact_phase": "dormant"
+    },
+    {
+      "event_id": "56467e7b2de9e83a:turn:4",
+      "action": "Measure the radiation field before resuming science",
+      "action_id": "radiation-watch:measure-the-radiation-field-before-resuming-science",
+      "outcome_id": "ambiguous-evidence",
+      "outcome_title": "The uncertainty narrows, but survives",
+      "entropy_mode": "deterministic",
+      "command_mode": "autonomous_deterministic",
+      "command_authority": "direct_runtime",
+      "command_hash": "87939bd220e6a0e011fc9be1ddf131cf3123f58adeb4b6302db024949505701b",
+      "target_planet_id": "planet-3",
+      "realized_snr": 301.209747,
+      "thermal_load_ratio": 0.397134,
+      "radiation_risk_index": 4.210903,
+      "one_way_light_time_s": 62.488468,
+      "contact_evidence_stage": 0,
+      "contact_phase": "dormant"
+    }
+  ],
+  "last_event_hash": "b033f9fe60c9458c746f27e21cb5dedd1f74a9d4c5112c575c2d7d7f8c20f0ec",
+  "command": {
+    "active_mode": "autonomous_deterministic",
+    "last_command_hash": "87939bd220e6a0e011fc9be1ddf131cf3123f58adeb4b6302db024949505701b",
+    "pending_session_id": null,
+    "authority_contract": "Command authority is explicit per mode and is recorded in every resolved event."
+  },
+  "contact_horizon": {
+    "schema": "axm.long-horizon-contact-state.v1",
+    "registry_version": "2026-08-02-v0.6",
+    "unlock_step": 100000,
+    "phase": "dormant",
+    "evidence_stage": 0,
+    "evidence_stage_id": "dormant",
+    "candidate_id": null,
+    "candidate_classes": [],
+    "confirmed_external_life": false,
+    "confirmed_external_technology": false,
+    "confirmed_external_agency": false,
+    "interaction_active": false,
+    "active_transmission_authorized": false,
+    "scientific_work": {
+      "total_science_actions": 4,
+      "independent_observation_context_ids": [
+        "planet-3:phase-09"
+      ],
+      "cross_validations": 1,
+      "false_positive_eliminations": 2,
+      "passive_search_hours": 2.0,
+      "dedicated_contact_searches": 0,
+      "replicated_contact_anomalies": 0,
+      "independent_contact_channels": [],
+      "natural_alternatives_constrained": 0,
+      "information_structure_tests": 0,
+      "response_consistency_tests": 0
+    },
+    "evidence_chain": [],
+    "epistemic_contract": {
+      "seed_scope": "No hidden alien species, intent, encounter, or contact date is selected by the master seed.",
+      "unlock_scope": "Step 100000 opens a scientific search layer; it does not create an encounter.",
+      "claim_scope": "Evidence stages cap what the simulator may say even when a dramatic interpretation is available.",
+      "silence_scope": "A quiet search constrains only the searched signal class, sensitivity, direction, and time window."
+    },
+    "current_step": 4
+  },
+  "future_contract": {
+    "seed_scope": "The master seed fixes the initial universe and stable generated facts, not every later event; it does not preselect extraterrestrial existence, intent, or a contact date.",
+    "deferred_resolution": true,
+    "physics_before_entropy": true,
+    "dynamic_action_menus": true,
+    "allowed_entropy_modes": [
+      "deterministic",
+      "local_live",
+      "mixed_live",
+      "external_beacon",
+      "party_commit"
+    ],
+    "no_retcon": "Resolved events are hash-chained and replayable from their recorded entropy packet."
+  }
+}

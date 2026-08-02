@@ -1,0 +1,77 @@
+{
+  "schema": "axm.exploration-function-map.v1",
+  "version": "2026-08-02-v0.6",
+  "policy": {
+    "fiction_reference_is_inspiration_not_evidence": true,
+    "fictional_names_do_not_authorize_physics": true,
+    "real_analog_may_cover_only_part_of_the_function": true,
+    "unavailable_functions_remain_unavailable": true,
+    "public_runtime_uses_source_neutral_names": true
+  },
+  "source_ids": [],
+  "functions": {
+    "centralized_energy_architecture": {
+      "reference_function": "A central energy source and distribution system supporting propulsion and ship systems.",
+      "real_translation": "Power generation, conditioning, storage, distribution, fault isolation, and load shedding.",
+      "real_capability_ids": ["solar_electric_power", "high_power_solar_generation"],
+      "unavailable_claims": ["matter-antimatter reactor", "faster-than-light propulsion", "spacetime distortion drive"]
+    },
+    "sublight_maneuvering": {
+      "reference_function": "Controllable ship translation and maneuvering.",
+      "real_translation": "Chemical propulsion, reaction-control thrusters, or low-thrust electric propulsion with explicit thrust, mass, and propellant limits.",
+      "real_capability_ids": ["chemical_orbital_maneuvering", "solar_electric_propulsion", "cryogenic_propulsion"],
+      "unavailable_claims": ["relativistic crewed acceleration without propellant and energy accounting"]
+    },
+    "acceleration_load_management": {
+      "reference_function": "Protect occupants and structure from acceleration changes.",
+      "real_translation": "Acceleration limits, thrust shaping, seats and restraints, structural-load envelopes, isolation mounts, and mission profiles.",
+      "real_capability_ids": [],
+      "unavailable_claims": ["cancelling inertia", "gravity control"],
+      "status": "no direct real technology"
+    },
+    "debris_and_radiation_protection": {
+      "reference_function": "Protect the ship from debris, radiation, and hostile environmental energy.",
+      "real_translation": "Whipple-style shielding lineage, pressure-vessel protection, radiation monitoring and shielding, debris tracking, avoidance, and fault-tolerant placement.",
+      "real_capability_ids": ["radiation_and_micrometeoroid_protection", "radiation_monitoring"],
+      "unavailable_claims": ["force fields", "energy shields", "automatic high-velocity particle deflection"]
+    },
+    "integrated_command_computer": {
+      "reference_function": "Ship-wide command, diagnosis, navigation, and autonomous support.",
+      "real_translation": "Deterministic command software, autonomous remote operations, fault-tolerant avionics, onboard navigation, and explicit human/AI governance.",
+      "real_capability_ids": ["crew_command_and_control", "autonomous_remote_operations", "autonomous_guidance_navigation_control"],
+      "unavailable_claims": ["unbounded general-intelligence authority"]
+    },
+    "multi_domain_sensing": {
+      "reference_function": "Rapid multi-domain sensing and interpretation.",
+      "real_translation": "Instrument-specific sensor suites with noise, calibration, field of view, bandwidth, latency, and uncertainty.",
+      "real_capability_ids": ["radiation_monitoring", "high_rate_communications"],
+      "unavailable_claims": ["instant complete scans", "perfect identification at arbitrary distance"]
+    },
+    "docking_and_logistics": {
+      "reference_function": "Transfer people, cargo, samples, and equipment between locations.",
+      "real_translation": "Rendezvous, docking, robotics, cargo transfer, teleoperation, and logistics planning.",
+      "real_capability_ids": ["rendezvous_and_docking", "modular_docking_and_robotics"],
+      "unavailable_claims": ["matter teleportation", "person reconstruction"]
+    },
+    "onboard_fabrication": {
+      "reference_function": "Create or repair required items during a mission.",
+      "real_translation": "Additive manufacturing, recycling, inventory management, repair tooling, and closed-loop resource recovery.",
+      "real_capability_ids": ["closed_loop_life_support"],
+      "unavailable_claims": ["matter-energy conversion", "arbitrary atom-perfect fabrication"]
+    },
+    "immersive_simulation": {
+      "reference_function": "Shared immersive simulation, training, recreation, and visual reasoning.",
+      "real_translation": "Procedural cockpit visualization, VR/AR, simulation rooms, digital twins, and interactive mission rehearsal.",
+      "real_capability_ids": [],
+      "unavailable_claims": ["solid free-space simulated matter", "perfect sensory simulation"],
+      "status": "visualization layer; never physics authority"
+    },
+    "artificial_gravity_by_rotation": {
+      "reference_function": "Provide sustained body loading during long missions.",
+      "real_translation": "Microgravity operations or future rotating-habitat acceleration when geometry, radius, spin rate, Coriolis effects, and structural loads are explicitly modeled.",
+      "real_capability_ids": [],
+      "unavailable_claims": ["static gravity generation without rotation or acceleration"],
+      "status": "not present in pinned 2027 cores"
+    }
+  }
+}

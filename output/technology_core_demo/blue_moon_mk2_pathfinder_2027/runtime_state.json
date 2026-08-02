@@ -1,0 +1,356 @@
+{
+  "schema": "axm.adventure-runtime.v4",
+  "system_id": "bcf8b49b34fe0990",
+  "turn": 1,
+  "mission_time_hours": 2.0,
+  "resources": {
+    "reactor_reserve_percent": 80.511,
+    "sensor_health_percent": 94.0,
+    "hull_integrity_percent": 86.0,
+    "probe_count": 4,
+    "fuel_percent": 100.0,
+    "heat_percent": 34.0,
+    "knowledge_points": 12.0
+  },
+  "navigation": {
+    "ship_orbit_au": 0.09275,
+    "reference_frame": "star-centred two-body planning frame"
+  },
+  "active_probes": [],
+  "threads": {
+    "stripped-world": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "stripped-world",
+      "title": "The exposed world B",
+      "kind": "initial-opportunity",
+      "status": "active",
+      "source_event_id": null,
+      "parent_thread_id": null,
+      "target_planet_id": "planet-0",
+      "depth": 0,
+      "visits": 1,
+      "evidence": [
+        {
+          "truth_type": "observation-plan",
+          "statement": "The planet receives intense stellar flux.",
+          "source": "generated-opportunity"
+        },
+        {
+          "truth_type": "observation-plan",
+          "statement": "Its bulk properties are compatible with a dense rocky body.",
+          "source": "generated-opportunity"
+        },
+        {
+          "event_id": "bcf8b49b34fe0990:turn:1",
+          "truth_type": "observation",
+          "statement": "At orbital phase 325.09° and 0.0707 AU from the star, the probe range-rate measurement of B repeats with realized SNR 262.02 (expected 285.71).",
+          "outcome_id": "clear-evidence"
+        }
+      ],
+      "created_turn": 0,
+      "updated_turn": 1
+    },
+    "precision-follow-up": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "precision-follow-up",
+      "title": "Precision Follow Up",
+      "kind": "precision-follow-up",
+      "status": "active",
+      "source_event_id": "bcf8b49b34fe0990:turn:1",
+      "parent_thread_id": "stripped-world",
+      "target_planet_id": "planet-0",
+      "depth": 1,
+      "visits": 0,
+      "evidence": [
+        {
+          "event_id": "bcf8b49b34fe0990:turn:1",
+          "truth_type": "hypothesis",
+          "statement": "Opened by the resolved event and remains investigable."
+        }
+      ],
+      "created_turn": 1,
+      "updated_turn": 1
+    },
+    "communication-latency": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "communication-latency",
+      "title": "Command and telemetry light-time",
+      "kind": "communication-latency",
+      "status": "active",
+      "source_event_id": "bcf8b49b34fe0990:turn:1",
+      "parent_thread_id": "stripped-world",
+      "target_planet_id": "planet-0",
+      "depth": 1,
+      "visits": 0,
+      "evidence": [
+        {
+          "event_id": "bcf8b49b34fe0990:turn:1",
+          "truth_type": "hypothesis",
+          "statement": "The communication loop is long enough to change command timing and autonomy requirements."
+        }
+      ],
+      "created_turn": 1,
+      "updated_turn": 1
+    },
+    "thermal-recovery": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "thermal-recovery",
+      "title": "Thermal load exceeds current radiator balance",
+      "kind": "thermal-recovery",
+      "status": "active",
+      "source_event_id": "bcf8b49b34fe0990:turn:1",
+      "parent_thread_id": "stripped-world",
+      "target_planet_id": "planet-0",
+      "depth": 1,
+      "visits": 0,
+      "evidence": [
+        {
+          "event_id": "bcf8b49b34fe0990:turn:1",
+          "truth_type": "hypothesis",
+          "statement": "Absorbed and internally generated heat exceed the simplified radiator capacity."
+        }
+      ],
+      "created_turn": 1,
+      "updated_turn": 1
+    },
+    "radiation-watch": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "radiation-watch",
+      "title": "Elevated radiation environment",
+      "kind": "radiation-watch",
+      "status": "active",
+      "source_event_id": "bcf8b49b34fe0990:turn:1",
+      "parent_thread_id": "stripped-world",
+      "target_planet_id": "planet-0",
+      "depth": 1,
+      "visits": 0,
+      "evidence": [
+        {
+          "event_id": "bcf8b49b34fe0990:turn:1",
+          "truth_type": "hypothesis",
+          "statement": "The relative radiation risk index is high enough to affect electronics and operations."
+        }
+      ],
+      "created_turn": 1,
+      "updated_turn": 1
+    }
+  },
+  "open_threads": [
+    "stripped-world",
+    "precision-follow-up",
+    "communication-latency",
+    "thermal-recovery",
+    "radiation-watch"
+  ],
+  "action_menu": {
+    "schema": "axm.dynamic-action-menu.v1",
+    "menu_version": 2,
+    "generated_from_turn": 1,
+    "active_thread_ids": [
+      "stripped-world",
+      "precision-follow-up",
+      "communication-latency",
+      "thermal-recovery",
+      "radiation-watch"
+    ],
+    "actions": [
+      {
+        "action_id": "radiation-watch:reduce-exposed-operations-and-shelter-sensitive-systems",
+        "label": "Reduce exposed operations and shelter sensitive systems",
+        "category": "general",
+        "source_thread": "radiation-watch",
+        "target_planet_id": "planet-0",
+        "intent": "Lower radiation risk while preserving the mission.",
+        "priority": 1.01,
+        "parameters": {
+          "shield_mode": true
+        },
+        "index": 1
+      },
+      {
+        "action_id": "thermal-recovery:rotate-the-ship-to-reduce-absorbed-stellar-heating",
+        "label": "Rotate the ship to reduce absorbed stellar heating",
+        "category": "general",
+        "source_thread": "thermal-recovery",
+        "target_planet_id": "planet-0",
+        "intent": "Change incidence geometry to improve thermal balance.",
+        "priority": 1.0,
+        "parameters": {
+          "thermal_attitude": "edge-on"
+        },
+        "index": 2
+      },
+      {
+        "action_id": "communication-latency:hold-course-until-the-delayed-telemetry-response-arrives",
+        "label": "Hold course until the delayed telemetry response arrives",
+        "category": "patient_observation",
+        "source_thread": "communication-latency",
+        "target_planet_id": "planet-0",
+        "intent": "Respect one-way light time instead of inventing immediate feedback.",
+        "priority": 0.98,
+        "parameters": {
+          "wait_for_comm": true
+        },
+        "index": 3
+      },
+      {
+        "action_id": "thermal-recovery:enter-a-radiator-cooldown-period",
+        "label": "Enter a radiator cooldown period",
+        "category": "engineering",
+        "source_thread": "thermal-recovery",
+        "target_planet_id": "planet-0",
+        "intent": "Delay the mission to recover thermal margin.",
+        "priority": 0.98,
+        "parameters": {
+          "cooldown_hours": 8.0
+        },
+        "index": 4
+      },
+      {
+        "action_id": "radiation-watch:measure-the-radiation-field-before-resuming-science",
+        "label": "Measure the radiation field before resuming science",
+        "category": "general",
+        "source_thread": "radiation-watch",
+        "target_planet_id": "planet-0",
+        "intent": "Convert an environmental risk into evidence.",
+        "priority": 0.97,
+        "parameters": {
+          "radiation_survey": true
+        },
+        "index": 5
+      },
+      {
+        "action_id": "precision-follow-up:repeat-the-measurement-with-a-longer-integration-window",
+        "label": "Repeat the measurement with a longer integration window",
+        "category": "patient_observation",
+        "source_thread": "precision-follow-up",
+        "target_planet_id": "planet-0",
+        "intent": "Test repeatability and improve photon statistics.",
+        "priority": 0.96,
+        "parameters": {
+          "integration_scale": 2.5
+        },
+        "index": 6
+      },
+      {
+        "action_id": "communication-latency:send-a-store-and-forward-command-sequence",
+        "label": "Send a store-and-forward command sequence",
+        "category": "general",
+        "source_thread": "communication-latency",
+        "target_planet_id": "planet-0",
+        "intent": "Let the probe act locally during the communication gap.",
+        "priority": 0.94,
+        "parameters": {
+          "autonomous_probe_sequence": true
+        },
+        "index": 7
+      },
+      {
+        "action_id": "precision-follow-up:cross-calibrate-the-signal-against-an-independent-sensor-channel",
+        "label": "Cross-calibrate the signal against an independent sensor channel",
+        "category": "instrument",
+        "source_thread": "precision-follow-up",
+        "target_planet_id": "planet-0",
+        "intent": "Separate target physics from instrument behaviour.",
+        "priority": 0.94,
+        "parameters": {
+          "cross_calibration": true
+        },
+        "index": 8
+      },
+      {
+        "action_id": "thermal-recovery:continue-at-reduced-instrument-power",
+        "label": "Continue at reduced instrument power",
+        "category": "move_on",
+        "source_thread": "thermal-recovery",
+        "target_planet_id": "planet-0",
+        "intent": "Preserve the observation with lower heat and lower SNR.",
+        "priority": 0.9,
+        "parameters": {
+          "power_fraction": 0.5
+        },
+        "index": 9
+      }
+    ],
+    "honesty": "Actions are generated from current causal threads, ship state, and—only after its gates—the long-horizon evidence layer. They are not a fixed dialogue tree and impossible inventory actions are removed."
+  },
+  "timeline": [
+    {
+      "event_id": "bcf8b49b34fe0990:turn:1",
+      "action": "Observe from distance using occultation geometry.",
+      "action_id": "stripped-world:observe-from-distance-using-occultation-geometry",
+      "outcome_id": "clear-evidence",
+      "outcome_title": "A repeatable result",
+      "entropy_mode": "deterministic",
+      "command_mode": "autonomous_deterministic",
+      "command_authority": "direct_runtime",
+      "command_hash": "282bdea7c18a2ade3fa151c12c7848d7c8f3e54d9a13f0596cc3ec033f31d9e7",
+      "target_planet_id": "planet-0",
+      "realized_snr": 262.023438,
+      "thermal_load_ratio": 143.415865,
+      "radiation_risk_index": 87.129098,
+      "one_way_light_time_s": 11.02797,
+      "contact_evidence_stage": 0,
+      "contact_phase": "dormant"
+    }
+  ],
+  "last_event_hash": "fff4e340704b2eabc4a6b91dfed8b6ccc05d6fef4e02d1f91da08cb707abed79",
+  "command": {
+    "active_mode": "autonomous_deterministic",
+    "last_command_hash": "282bdea7c18a2ade3fa151c12c7848d7c8f3e54d9a13f0596cc3ec033f31d9e7",
+    "pending_session_id": null,
+    "authority_contract": "Command authority is explicit per mode and is recorded in every resolved event."
+  },
+  "contact_horizon": {
+    "schema": "axm.long-horizon-contact-state.v1",
+    "registry_version": "2026-08-02-v0.6",
+    "unlock_step": 100000,
+    "phase": "dormant",
+    "evidence_stage": 0,
+    "evidence_stage_id": "dormant",
+    "candidate_id": null,
+    "candidate_classes": [],
+    "confirmed_external_life": false,
+    "confirmed_external_technology": false,
+    "confirmed_external_agency": false,
+    "interaction_active": false,
+    "active_transmission_authorized": false,
+    "scientific_work": {
+      "total_science_actions": 1,
+      "independent_observation_context_ids": [
+        "planet-0:phase-10"
+      ],
+      "cross_validations": 0,
+      "false_positive_eliminations": 0,
+      "passive_search_hours": 2.0,
+      "dedicated_contact_searches": 0,
+      "replicated_contact_anomalies": 0,
+      "independent_contact_channels": [],
+      "natural_alternatives_constrained": 0,
+      "information_structure_tests": 0,
+      "response_consistency_tests": 0
+    },
+    "evidence_chain": [],
+    "epistemic_contract": {
+      "seed_scope": "No hidden alien species, intent, encounter, or contact date is selected by the master seed.",
+      "unlock_scope": "Step 100000 opens a scientific search layer; it does not create an encounter.",
+      "claim_scope": "Evidence stages cap what the simulator may say even when a dramatic interpretation is available.",
+      "silence_scope": "A quiet search constrains only the searched signal class, sensitivity, direction, and time window."
+    },
+    "current_step": 1
+  },
+  "future_contract": {
+    "seed_scope": "The master seed fixes the initial universe and stable generated facts, not every later event; it does not preselect extraterrestrial existence, intent, or a contact date.",
+    "deferred_resolution": true,
+    "physics_before_entropy": true,
+    "dynamic_action_menus": true,
+    "allowed_entropy_modes": [
+      "deterministic",
+      "local_live",
+      "mixed_live",
+      "external_beacon",
+      "party_commit"
+    ],
+    "no_retcon": "Resolved events are hash-chained and replayable from their recorded entropy packet."
+  }
+}

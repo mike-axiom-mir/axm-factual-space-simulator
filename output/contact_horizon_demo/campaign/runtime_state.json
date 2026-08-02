@@ -1,0 +1,354 @@
+{
+  "schema": "axm.adventure-runtime.v4",
+  "system_id": "e5a45eec65753bc1",
+  "turn": 100001,
+  "mission_time_hours": 4.0,
+  "resources": {
+    "reactor_reserve_percent": 84.462,
+    "sensor_health_percent": 75.0,
+    "hull_integrity_percent": 76.0,
+    "probe_count": 5,
+    "fuel_percent": 100.0,
+    "heat_percent": 8.547,
+    "knowledge_points": 12.0
+  },
+  "navigation": {
+    "ship_orbit_au": 0.336125,
+    "reference_frame": "star-centred two-body planning frame"
+  },
+  "active_probes": [],
+  "threads": {
+    "stripped-world": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "stripped-world",
+      "title": "The exposed world D",
+      "kind": "initial-opportunity",
+      "status": "active",
+      "source_event_id": null,
+      "parent_thread_id": null,
+      "target_planet_id": "planet-2",
+      "depth": 0,
+      "visits": 0,
+      "evidence": [
+        {
+          "truth_type": "observation-plan",
+          "statement": "The planet receives intense stellar flux.",
+          "source": "generated-opportunity"
+        },
+        {
+          "truth_type": "observation-plan",
+          "statement": "Its bulk properties are compatible with a dense rocky body.",
+          "source": "generated-opportunity"
+        }
+      ],
+      "created_turn": 0,
+      "updated_turn": 0
+    },
+    "precision-follow-up": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "precision-follow-up",
+      "title": "Precision Follow Up",
+      "kind": "precision-follow-up",
+      "status": "active",
+      "source_event_id": "e5a45eec65753bc1:turn:100001",
+      "parent_thread_id": "contact-horizon",
+      "target_planet_id": "planet-5",
+      "depth": 1,
+      "visits": 0,
+      "evidence": [
+        {
+          "event_id": "e5a45eec65753bc1:turn:100001",
+          "truth_type": "hypothesis",
+          "statement": "Opened by the resolved event and remains investigable."
+        }
+      ],
+      "created_turn": 100001,
+      "updated_turn": 100001
+    },
+    "communication-latency": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "communication-latency",
+      "title": "Command and telemetry light-time",
+      "kind": "communication-latency",
+      "status": "active",
+      "source_event_id": "e5a45eec65753bc1:turn:100001",
+      "parent_thread_id": "contact-horizon",
+      "target_planet_id": "planet-5",
+      "depth": 1,
+      "visits": 0,
+      "evidence": [
+        {
+          "event_id": "e5a45eec65753bc1:turn:100001",
+          "truth_type": "hypothesis",
+          "statement": "The communication loop is long enough to change command timing and autonomy requirements."
+        }
+      ],
+      "created_turn": 100001,
+      "updated_turn": 100001
+    }
+  },
+  "open_threads": [
+    "stripped-world",
+    "precision-follow-up",
+    "communication-latency"
+  ],
+  "action_menu": {
+    "schema": "axm.dynamic-action-menu.v1",
+    "menu_version": 100002,
+    "generated_from_turn": 100001,
+    "active_thread_ids": [
+      "stripped-world",
+      "precision-follow-up",
+      "communication-latency"
+    ],
+    "actions": [
+      {
+        "action_id": "contact-horizon:repeat-the-candidate-anomaly-through-an-independent-sensor-chain",
+        "label": "Repeat the candidate anomaly through an independent sensor chain",
+        "category": "instrument",
+        "source_thread": "contact-horizon",
+        "target_planet_id": "planet-6",
+        "intent": "Test replication without sharing the original processing path.",
+        "priority": 1.12,
+        "parameters": {
+          "contact_horizon_focus": "independent-replication",
+          "cross_calibration": true,
+          "simultaneous_channels": 2
+        },
+        "index": 1
+      },
+      {
+        "action_id": "contact-horizon:change-geometry-and-search-for-a-natural-phase-dependent-explanation",
+        "label": "Change geometry and search for a natural phase-dependent explanation",
+        "category": "instrument",
+        "source_thread": "contact-horizon",
+        "target_planet_id": "planet-6",
+        "intent": "Use orbital geometry to try to falsify the technological interpretation.",
+        "priority": 1.1,
+        "parameters": {
+          "contact_horizon_focus": "natural-alternative-test",
+          "phase_shift_deg": 71.0
+        },
+        "index": 2
+      },
+      {
+        "action_id": "contact-horizon:run-a-blind-reanalysis-with-the-candidate-label-hidden",
+        "label": "Run a blind reanalysis with the candidate label hidden",
+        "category": "instrument",
+        "source_thread": "contact-horizon",
+        "target_planet_id": "planet-6",
+        "intent": "Reduce confirmation bias and pipeline overfitting.",
+        "priority": 1.04,
+        "parameters": {
+          "contact_horizon_focus": "blind-reanalysis",
+          "band_isolation": true
+        },
+        "index": 3
+      },
+      {
+        "action_id": "communication-latency:hold-course-until-the-delayed-telemetry-response-arrives",
+        "label": "Hold course until the delayed telemetry response arrives",
+        "category": "patient_observation",
+        "source_thread": "communication-latency",
+        "target_planet_id": "planet-5",
+        "intent": "Respect one-way light time instead of inventing immediate feedback.",
+        "priority": 0.98,
+        "parameters": {
+          "wait_for_comm": true
+        },
+        "index": 4
+      },
+      {
+        "action_id": "precision-follow-up:repeat-the-measurement-with-a-longer-integration-window",
+        "label": "Repeat the measurement with a longer integration window",
+        "category": "patient_observation",
+        "source_thread": "precision-follow-up",
+        "target_planet_id": "planet-5",
+        "intent": "Test repeatability and improve photon statistics.",
+        "priority": 0.96,
+        "parameters": {
+          "integration_scale": 2.5
+        },
+        "index": 5
+      },
+      {
+        "action_id": "precision-follow-up:cross-calibrate-the-signal-against-an-independent-sensor-channel",
+        "label": "Cross-calibrate the signal against an independent sensor channel",
+        "category": "instrument",
+        "source_thread": "precision-follow-up",
+        "target_planet_id": "planet-5",
+        "intent": "Separate target physics from instrument behaviour.",
+        "priority": 0.94,
+        "parameters": {
+          "cross_calibration": true
+        },
+        "index": 6
+      },
+      {
+        "action_id": "communication-latency:send-a-store-and-forward-command-sequence",
+        "label": "Send a store-and-forward command sequence",
+        "category": "general",
+        "source_thread": "communication-latency",
+        "target_planet_id": "planet-5",
+        "intent": "Let the probe act locally during the communication gap.",
+        "priority": 0.94,
+        "parameters": {
+          "autonomous_probe_sequence": true
+        },
+        "index": 7
+      },
+      {
+        "action_id": "stripped-world:perform-a-focused-follow-up-on-the-exposed-world-d",
+        "label": "Perform a focused follow-up on The exposed world D",
+        "category": "general",
+        "source_thread": "stripped-world",
+        "target_planet_id": "planet-2",
+        "intent": "Gather targeted evidence for the open causal thread.",
+        "priority": 0.91,
+        "parameters": {
+          "focused_followup": true
+        },
+        "index": 8
+      },
+      {
+        "action_id": "precision-follow-up:revisit-the-target-at-a-different-orbital-phase",
+        "label": "Revisit the target at a different orbital phase",
+        "category": "general",
+        "source_thread": "precision-follow-up",
+        "target_planet_id": "planet-5",
+        "intent": "Test whether geometry controls the signal.",
+        "priority": 0.9,
+        "parameters": {
+          "phase_shift_deg": 55.0
+        },
+        "index": 9
+      }
+    ],
+    "honesty": "Actions are generated from current causal threads, ship state, and—only after its gates—the long-horizon evidence layer. They are not a fixed dialogue tree and impossible inventory actions are removed."
+  },
+  "timeline": [
+    {
+      "event_id": "e5a45eec65753bc1:turn:100001",
+      "action": "Run a blind multi-band technosignature survey",
+      "action_id": "contact-horizon:run-a-blind-multi-band-technosignature-survey",
+      "outcome_id": "clear-evidence",
+      "outcome_title": "A repeatable result",
+      "entropy_mode": "deterministic",
+      "command_mode": "collaborative_command",
+      "command_authority": "direct_runtime",
+      "command_hash": "cec7fb42c25f47a6eeda4a2c83090ab2f257060bb016dbff40fe1b9b0fd22033",
+      "target_planet_id": "planet-5",
+      "realized_snr": 316.543156,
+      "thermal_load_ratio": 0.432227,
+      "radiation_risk_index": 0.09506,
+      "one_way_light_time_s": 908.223823,
+      "contact_evidence_stage": 2,
+      "contact_phase": "search-eligible"
+    }
+  ],
+  "last_event_hash": "3931000d490776d8adc83c00df130dbe2184765547dcbf76d95506bf1858eaf0",
+  "command": {
+    "active_mode": "collaborative_command",
+    "last_command_hash": "cec7fb42c25f47a6eeda4a2c83090ab2f257060bb016dbff40fe1b9b0fd22033",
+    "pending_session_id": null,
+    "authority_contract": "Command authority is explicit per mode and is recorded in every resolved event."
+  },
+  "contact_horizon": {
+    "schema": "axm.long-horizon-contact-state.v1",
+    "registry_version": "2026-08-02-v0.6",
+    "unlock_step": 100000,
+    "phase": "search-eligible",
+    "evidence_stage": 2,
+    "evidence_stage_id": "candidate_anomaly",
+    "candidate_id": "candidate-41bff62eb31c",
+    "candidate_classes": [
+      {
+        "id": "instrument_or_pipeline_artifact",
+        "status": "open"
+      },
+      {
+        "id": "abiotic_false_positive",
+        "status": "open"
+      },
+      {
+        "id": "passive_technosignature",
+        "status": "open"
+      },
+      {
+        "id": "unclassified_external_process",
+        "status": "open"
+      }
+    ],
+    "confirmed_external_life": false,
+    "confirmed_external_technology": false,
+    "confirmed_external_agency": false,
+    "interaction_active": false,
+    "active_transmission_authorized": false,
+    "scientific_work": {
+      "total_science_actions": 1001,
+      "independent_observation_context_ids": [
+        "context-00",
+        "context-01",
+        "context-02",
+        "context-03",
+        "context-04",
+        "context-05",
+        "context-06",
+        "context-07",
+        "context-08",
+        "context-09",
+        "context-10",
+        "context-11",
+        "planet-5:phase-05"
+      ],
+      "cross_validations": 80,
+      "false_positive_eliminations": 50,
+      "passive_search_hours": 10004.0,
+      "dedicated_contact_searches": 1,
+      "replicated_contact_anomalies": 1,
+      "independent_contact_channels": [
+        "blind-technosignature-survey:contact-horizon:run-a-blind-multi-band-technosignature-survey"
+      ],
+      "natural_alternatives_constrained": 0,
+      "information_structure_tests": 0,
+      "response_consistency_tests": 0
+    },
+    "evidence_chain": [
+      {
+        "event_id": "e5a45eec65753bc1:turn:100001",
+        "truth_type": "simulation_state",
+        "kind": "horizon-unlock",
+        "statement": "The long-horizon search became eligible after step and scientific-work gates were satisfied. No contact was generated."
+      },
+      {
+        "event_id": "e5a45eec65753bc1:turn:100001",
+        "truth_type": "observation",
+        "kind": "blind-technosignature-survey",
+        "outcome_id": "clear-evidence",
+        "statement": "At orbital phase 156.89° and 2.1562 AU from the star, the orbital-phase correlation measurement of G repeats with realized SNR 316.54 (expected 285.71).",
+        "claim_boundary": "This record may advance an evidence stage but cannot by itself confirm life, technology, intent, or agency."
+      }
+    ],
+    "epistemic_contract": {
+      "seed_scope": "No hidden alien species, intent, encounter, or contact date is selected by the master seed.",
+      "unlock_scope": "Step 100000 opens a scientific search layer; it does not create an encounter.",
+      "claim_scope": "Evidence stages cap what the simulator may say even when a dramatic interpretation is available.",
+      "silence_scope": "A quiet search constrains only the searched signal class, sensitivity, direction, and time window."
+    },
+    "current_step": 100001
+  },
+  "future_contract": {
+    "seed_scope": "The master seed fixes the initial universe and stable generated facts, not every later event; it does not preselect extraterrestrial existence, intent, or a contact date.",
+    "deferred_resolution": true,
+    "physics_before_entropy": true,
+    "dynamic_action_menus": true,
+    "allowed_entropy_modes": [
+      "deterministic",
+      "local_live",
+      "mixed_live",
+      "external_beacon",
+      "party_commit"
+    ],
+    "no_retcon": "Resolved events are hash-chained and replayable from their recorded entropy packet."
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "schema": "axm.simulation-priors.v1",
+  "warning": "These broad ranges are simulation inputs, not catalog facts. Replace or calibrate them with versioned catalog snapshots as the project grows.",
+  "star_profiles": [
+    {
+      "id": "cool-dwarf",
+      "weight": 32,
+      "mass_solar": [
+        0.25,
+        0.65
+      ],
+      "radius_solar": [
+        0.28,
+        0.68
+      ],
+      "temperature_k": [
+        2900,
+        4400
+      ],
+      "age_gyr": [
+        0.8,
+        11.5
+      ]
+    },
+    {
+      "id": "orange-dwarf",
+      "weight": 31,
+      "mass_solar": [
+        0.65,
+        0.9
+      ],
+      "radius_solar": [
+        0.65,
+        0.92
+      ],
+      "temperature_k": [
+        4300,
+        5300
+      ],
+      "age_gyr": [
+        0.5,
+        11.0
+      ]
+    },
+    {
+      "id": "sun-like",
+      "weight": 27,
+      "mass_solar": [
+        0.9,
+        1.12
+      ],
+      "radius_solar": [
+        0.88,
+        1.22
+      ],
+      "temperature_k": [
+        5300,
+        6250
+      ],
+      "age_gyr": [
+        0.3,
+        9.5
+      ]
+    },
+    {
+      "id": "hot-main-sequence",
+      "weight": 10,
+      "mass_solar": [
+        1.12,
+        1.55
+      ],
+      "radius_solar": [
+        1.15,
+        1.75
+      ],
+      "temperature_k": [
+        6250,
+        8200
+      ],
+      "age_gyr": [
+        0.1,
+        4.0
+      ]
+    }
+  ],
+  "planet_count": [
+    3,
+    8
+  ],
+  "planet_profiles": [
+    {
+      "id": "terrestrial",
+      "weight": 34,
+      "radius_earth": [
+        0.45,
+        1.45
+      ],
+      "density_g_cm3": [
+        3.2,
+        6.8
+      ],
+      "surface_hint": "rock-metal"
+    },
+    {
+      "id": "super-earth",
+      "weight": 28,
+      "radius_earth": [
+        1.45,
+        2.6
+      ],
+      "density_g_cm3": [
+        2.2,
+        6.2
+      ],
+      "surface_hint": "rock-gas-mixed"
+    },
+    {
+      "id": "neptune-like",
+      "weight": 24,
+      "radius_earth": [
+        2.6,
+        6.5
+      ],
+      "density_g_cm3": [
+        0.7,
+        2.5
+      ],
+      "surface_hint": "volatile-rich"
+    },
+    {
+      "id": "gas-giant",
+      "weight": 14,
+      "radius_earth": [
+        7.0,
+        14.0
+      ],
+      "density_g_cm3": [
+        0.25,
+        1.8
+      ],
+      "surface_hint": "deep-atmosphere"
+    }
+  ]
+}

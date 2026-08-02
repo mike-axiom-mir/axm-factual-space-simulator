@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "axm-factual-star-adventure-simulator"
+version = "0.15.0"
+description = "Local-first factual star adventure simulator with deterministic worlds, blind possibility forging, persistent expeditions, immutable rooted crew, lived-in ship interiors, a source-pinned spacecraft blueprint, role telemetry, evidence-gated skills, strict migration and local handoff verification."
+requires-python = ">=3.10"
+authors = [{name = "Mike - Axiom/Mir"}]
+dependencies = []
+
+[project.scripts]
+axm-star-sim = "axm_star_sim.cli:main"
+axm-adventure-slots = "axm_star_sim.adventure_slots_cli:main"
+axm-ship-interior = "axm_star_sim.ship_interior_cli:main"
+axm-rooted-crew = "axm_star_sim.rooted_crew_cli:main"
+axm-ship-blueprint = "axm_star_sim.ship_blueprint_cli:main"
+axm-crew-stations = "axm_star_sim.crew_station_metrics_cli:main"
+axm-migration = "axm_star_sim.migration_cli:main"
+axm-handoff = "axm_star_sim.handoff_cli:main"
+axm-package-seal = "axm_star_sim.package_seal:main"
+
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

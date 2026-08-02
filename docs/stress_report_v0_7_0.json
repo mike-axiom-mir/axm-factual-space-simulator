@@ -1,0 +1,23 @@
+{
+  "schema": "axm.v0.7-atlas-stress-report.v1",
+  "status": "PASS",
+  "systems": 240,
+  "turns_per_system": 10,
+  "events_replay_verified": 2400,
+  "visit_chains_verified": 240,
+  "real_landmark_hashes_stable_across_seeds": true,
+  "frontier_coordinates_promoted_to_catalog_fact": false,
+  "frontier_distance_range_ly": {
+    "minimum": 65.804722,
+    "maximum": 1796.847693
+  },
+  "knowledge_classes_observed": {
+    "catalog_anchor": 960,
+    "procedural_frontier": 240
+  },
+  "multi_system_merge_pairs": 60,
+  "merged_routes": 60,
+  "revisit_packets_verified": 120,
+  "render_revisions_mutated_visit_history": false,
+  "route_lines_promoted_to_ship_capability": false
+}

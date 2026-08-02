@@ -1,0 +1,39 @@
+AXM FACTUAL STAR ADVENTURE SIMULATOR v0.15.0 — LOCAL HANDOFF
+
+FIRST FIVE MINUTES
+------------------
+1. Open OPEN_LOCAL_HANDOFF.html.
+2. Run one acceptance command:
+   Windows:      run_local_acceptance.bat
+   Linux/macOS:  ./run_local_acceptance.sh
+3. Open: output/crew_station_metric_demo/crew_station_console.html
+4. Read: docs/LOCAL_HANDOFF_MASTER_v0_15_0.md
+5. Maintainers: read docs/PORTABILITY_AND_PACKAGE_MAINTENANCE.md before resealing or promoting a copy.
+6. GitHub improvements: read docs/GITHUB_PR_LANE.md and never push changes directly to main.
+
+TESTS ONLY
+----------
+Windows:      run_tests.bat
+Linux/macOS:  ./run_tests.sh
+
+REBUILD DEMOS
+-------------
+Windows:      run_demo.bat
+Linux/macOS:  ./run_demo.sh
+
+OPTIONAL EDITABLE INSTALL
+-------------------------
+python -m pip install -e . --no-deps
+
+The package has no required Python runtime dependencies beyond Python 3.10+.
+The optional drand BLS verifier has separate pinned Node dependencies under tools/drand_verifier/.
+Normal local play, demos, deterministic verification and reconstruction do not require internet or external AI.
+
+IMPORTANT
+---------
+- Preserve immutable roots and pinned historical identities.
+- Unknown is never zero and never quietly becomes fact.
+- A renderer may improve appearance but cannot rewrite room or event semantics.
+- Crew metric exposure does not grant skill; promotion requires evidence.
+- An unavailable builder tool must be declared, never faked.
+- Existing saves receive adapters or explicit forks, never silent canon rewrites.

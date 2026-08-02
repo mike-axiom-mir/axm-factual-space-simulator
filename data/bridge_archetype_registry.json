@@ -1,0 +1,138 @@
+{
+  "schema": "axm.bridge-archetype-registry.v1",
+  "registry_version": 1,
+  "default_archetype_id": "axm.bridge.frontier-survey.v1",
+  "archetypes": [
+    {
+      "id": "axm.bridge.frontier-survey.v1",
+      "version": 1,
+      "status": "CANON_FIRST_START",
+      "display_name": "Frontier Survey Bridge",
+      "scope": "First of many possible vessels and bridge starts.",
+      "room_grammar": {
+        "room_shape": "wide_forward_command_deck",
+        "default_camera_anchor": "rear_center_wide",
+        "alternate_camera_anchors": [
+          "human_command_seat",
+          "ai_collaborator_seat",
+          "science_station",
+          "engineering_station",
+          "navigation_station",
+          "communications_station"
+        ],
+        "dominant_world_view": {
+          "anchor_id": "forward_world_screen",
+          "wall": "front",
+          "minimum_viewport_share": 0.42,
+          "modes": [
+            "forward_observation",
+            "orbital_map",
+            "sensor_composite",
+            "probe_feed",
+            "communications",
+            "causal_reconstruction"
+          ]
+        },
+        "command_zone": {
+          "anchor_id": "command_duet",
+          "position": "center",
+          "seats": [
+            {
+              "id": "human_or_primary_explorer",
+              "role": "primary_explorer",
+              "visibility_required": true
+            },
+            {
+              "id": "ai_or_secondary_collaborator",
+              "role": "collaborating_explorer",
+              "visibility_required": true
+            }
+          ],
+          "empty_seat_policy": "Seat remains spatially present and may show remote, absent, autonomous, or unoccupied state."
+        },
+        "crew_stations": [
+          {
+            "id": "navigation",
+            "side": "front_left",
+            "visible": true
+          },
+          {
+            "id": "science",
+            "side": "left",
+            "visible": true
+          },
+          {
+            "id": "engineering",
+            "side": "right",
+            "visible": true
+          },
+          {
+            "id": "communications",
+            "side": "front_right",
+            "visible": true
+          }
+        ],
+        "rear_zone": {
+          "visible_depth_required": true,
+          "allowed_uses": [
+            "access_path",
+            "auxiliary_systems",
+            "mission_archive",
+            "crew_entry"
+          ]
+        },
+        "diegetic_ui": {
+          "primary_surfaces": [
+            "forward_world_screen",
+            "seat_consoles",
+            "crew_station_consoles",
+            "overhead_status_strip",
+            "room_alert_lighting"
+          ],
+          "web_chrome_allowed": false,
+          "debug_overlay_allowed": true,
+          "debug_overlay_default": "hidden"
+        }
+      },
+      "low_fidelity_profile": {
+        "minimum_shapes": [
+          "room_outline",
+          "deck_plane",
+          "forward_screen_rectangle",
+          "two_command_chairs",
+          "four_crew_station_markers",
+          "crew_silhouettes_or_icons",
+          "screen_glow",
+          "station_highlight_states"
+        ],
+        "minimum_motion": [
+          "subtle_panel_blink",
+          "screen_update",
+          "active_station_highlight"
+        ],
+        "textures_required": false,
+        "3d_required": false,
+        "character_animation_required": false
+      },
+      "semantic_anchors": [
+        "forward_world_screen",
+        "command_duet",
+        "human_or_primary_explorer",
+        "ai_or_secondary_collaborator",
+        "navigation",
+        "science",
+        "engineering",
+        "communications"
+      ],
+      "renderer_freedom": [
+        "paint",
+        "pixel",
+        "vector",
+        "2.5d",
+        "3d",
+        "cinematic",
+        "holodeck_reconstruction"
+      ]
+    }
+  ]
+}

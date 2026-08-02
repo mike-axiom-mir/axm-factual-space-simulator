@@ -1,0 +1,24 @@
+{
+  "schema": "axm.blind-player-state.v1",
+  "commitment_sha256": "4b2027514d19ea4cfd080f8fc765c372bfea274e28721a2ae9cee03ba8db2938",
+  "turn": 1,
+  "evidence_stage": 1,
+  "claim_ceiling": "An unusual physical or chemical pattern is present.",
+  "tested_channels": [
+    "false_positive_control"
+  ],
+  "independent_confirmations": 1,
+  "false_positive_controls_completed": 1,
+  "mission_time_hours": 22.0,
+  "knowledge_points": 8.105581,
+  "status": "active",
+  "last_observation": {
+    "channel": "false_positive_control",
+    "outcome_class": "known_controls_fail_to_reproduce",
+    "expected_sensitivity": 0.82,
+    "realized_pattern_strength": 0.615083,
+    "detection_threshold": 0.46,
+    "interpretation": "The tested controls did not reproduce the pattern; untested alternatives remain."
+  },
+  "last_event_hash": "a8f10c64bc17704eb1c35eb39e4ad68d4adfe358ae90d18c14241dd8e6065c33"
+}

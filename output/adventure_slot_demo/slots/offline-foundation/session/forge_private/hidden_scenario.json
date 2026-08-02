@@ -1,0 +1,518 @@
+{
+  "schema": "axm.blind-forge-private-scenario.v1",
+  "forge_version": "0.13.0",
+  "forge_author": "AXM seven-pass offline possibility forge",
+  "system_id": "b82d201dd2bb3a5c",
+  "environment": {
+    "system_id": "b82d201dd2bb3a5c",
+    "system_name": "Tethys Trace 2652",
+    "target_planet_id": "planet-4",
+    "target_planet_name": "F",
+    "planet_kind": "super-earth",
+    "equilibrium_temperature_k": 274.9,
+    "insolation_earth": 0.9523,
+    "surface_gravity_earth": 0.887,
+    "orbital_period_days": 211.775,
+    "stellar_temperature_k": 5252.3,
+    "stellar_luminosity_solar": 0.3493,
+    "truth_note": "These values come from the generated system's explicit truth layers. Equilibrium temperature is not surface temperature, and no solvent, atmosphere, organism, or anomaly is implied."
+  },
+  "reasoned_candidate_matrix": {
+    "schema": "axm.reasoned-candidate-matrix.v1",
+    "forge_method": "constraint scorecard plus seeded selection inside a high-quality shortlist",
+    "environment": {
+      "system_id": "b82d201dd2bb3a5c",
+      "system_name": "Tethys Trace 2652",
+      "target_planet_id": "planet-4",
+      "target_planet_name": "F",
+      "planet_kind": "super-earth",
+      "equilibrium_temperature_k": 274.9,
+      "insolation_earth": 0.9523,
+      "surface_gravity_earth": 0.887,
+      "orbital_period_days": 211.775,
+      "stellar_temperature_k": 5252.3,
+      "stellar_luminosity_solar": 0.3493,
+      "truth_note": "These values come from the generated system's explicit truth layers. Equilibrium temperature is not surface temperature, and no solvent, atmosphere, organism, or anomaly is implied."
+    },
+    "candidate_count": 72,
+    "shortlist": [
+      {
+        "candidate_id": "dusty_plasma_self_organization::dusty_plasma_lifelike_control",
+        "anomaly_family_id": "dusty_plasma_self_organization",
+        "life_architecture_id": "dusty_plasma_lifelike_control",
+        "score": 0.97597103,
+        "scorecard": {
+          "environment_fit": 1.0,
+          "observability": 1.0,
+          "false_positive_depth": 1.0,
+          "causal_depth": 1.0,
+          "epistemic_restraint": 0.9,
+          "novelty_tiebreak": 0.019421,
+          "cross_domain_bonus": 0.04
+        },
+        "claim_ceiling": "Life-like shape or recurrence alone is insufficient; classify as complex plasma unless stronger evidence appears.",
+        "source_ids": [
+          "aps_complex_plasma_review_2009",
+          "nasa_dusty_plasma_1999"
+        ]
+      },
+      {
+        "candidate_id": "dusty_plasma_self_organization::carbon_water_cellular",
+        "anomaly_family_id": "dusty_plasma_self_organization",
+        "life_architecture_id": "carbon_water_cellular",
+        "score": 0.97151598,
+        "scorecard": {
+          "environment_fit": 1.0,
+          "observability": 0.9,
+          "false_positive_depth": 1.0,
+          "causal_depth": 1.0,
+          "epistemic_restraint": 1.0,
+          "novelty_tiebreak": 0.79032,
+          "cross_domain_bonus": 0.0
+        },
+        "claim_ceiling": "Earth-analog biology is possible, not present by default.",
+        "source_ids": [
+          "aps_complex_plasma_review_2009",
+          "nasa_astrobiology_program_overview_2026",
+          "nasa_dusty_plasma_1999",
+          "nasa_life_detection_ladder_2026"
+        ]
+      },
+      {
+        "candidate_id": "atmospheric_disequilibrium::anaerobic_chemotrophic",
+        "anomaly_family_id": "atmospheric_disequilibrium",
+        "life_architecture_id": "anaerobic_chemotrophic",
+        "score": 0.95071769,
+        "scorecard": {
+          "environment_fit": 1.0,
+          "observability": 0.6,
+          "false_positive_depth": 1.0,
+          "causal_depth": 1.0,
+          "epistemic_restraint": 1.0,
+          "novelty_tiebreak": 0.654354,
+          "cross_domain_bonus": 0.04
+        },
+        "claim_ceiling": "Oxygen absence does not rule out life.",
+        "source_ids": [
+          "nasa_agnostic_biosignatures_2019",
+          "nasa_ask_astrobiologist_2026",
+          "national_academies_biosignature_evidence_2022"
+        ]
+      },
+      {
+        "candidate_id": "non_gravitational_orbital_behavior::dusty_plasma_lifelike_control",
+        "anomaly_family_id": "non_gravitational_orbital_behavior",
+        "life_architecture_id": "dusty_plasma_lifelike_control",
+        "score": 0.94546042,
+        "scorecard": {
+          "environment_fit": 1.0,
+          "observability": 0.8,
+          "false_positive_depth": 1.0,
+          "causal_depth": 1.0,
+          "epistemic_restraint": 0.9,
+          "novelty_tiebreak": 0.929208,
+          "cross_domain_bonus": 0.0
+        },
+        "claim_ceiling": "Life-like shape or recurrence alone is insufficient; classify as complex plasma unless stronger evidence appears.",
+        "source_ids": [
+          "aps_complex_plasma_review_2009",
+          "jpl_horizons",
+          "jpl_sbdb",
+          "nasa_dusty_plasma_1999"
+        ]
+      },
+      {
+        "candidate_id": "rare_morphology::dusty_plasma_lifelike_control",
+        "anomaly_family_id": "rare_morphology",
+        "life_architecture_id": "dusty_plasma_lifelike_control",
+        "score": 0.94362601,
+        "scorecard": {
+          "environment_fit": 1.0,
+          "observability": 0.9,
+          "false_positive_depth": 1.0,
+          "causal_depth": 1.0,
+          "epistemic_restraint": 0.9,
+          "novelty_tiebreak": 0.53252,
+          "cross_domain_bonus": 0.0
+        },
+        "claim_ceiling": "Life-like shape or recurrence alone is insufficient; classify as complex plasma unless stronger evidence appears.",
+        "source_ids": [
+          "aps_complex_plasma_review_2009",
+          "nasa_dusty_plasma_1999",
+          "nasa_hubble_ai_anomalies_2026"
+        ]
+      },
+      {
+        "candidate_id": "gravitational_mass_mismatch::dusty_plasma_lifelike_control",
+        "anomaly_family_id": "gravitational_mass_mismatch",
+        "life_architecture_id": "dusty_plasma_lifelike_control",
+        "score": 0.93857455,
+        "scorecard": {
+          "environment_fit": 1.0,
+          "observability": 0.8,
+          "false_positive_depth": 1.0,
+          "causal_depth": 1.0,
+          "epistemic_restraint": 0.9,
+          "novelty_tiebreak": 0.791491,
+          "cross_domain_bonus": 0.0
+        },
+        "claim_ceiling": "Life-like shape or recurrence alone is insufficient; classify as complex plasma unless stronger evidence appears.",
+        "source_ids": [
+          "aps_complex_plasma_review_2009",
+          "nasa_dark_universe_2024",
+          "nasa_dusty_plasma_1999"
+        ]
+      },
+      {
+        "candidate_id": "rare_morphology::anaerobic_chemotrophic",
+        "anomaly_family_id": "rare_morphology",
+        "life_architecture_id": "anaerobic_chemotrophic",
+        "score": 0.93850844,
+        "scorecard": {
+          "environment_fit": 1.0,
+          "observability": 0.7,
+          "false_positive_depth": 1.0,
+          "causal_depth": 1.0,
+          "epistemic_restraint": 1.0,
+          "novelty_tiebreak": 0.850169,
+          "cross_domain_bonus": 0.0
+        },
+        "claim_ceiling": "Oxygen absence does not rule out life.",
+        "source_ids": [
+          "nasa_ask_astrobiologist_2026",
+          "nasa_hubble_ai_anomalies_2026"
+        ]
+      },
+      {
+        "candidate_id": "dusty_plasma_self_organization::sulfuric_acid_biochemistry",
+        "anomaly_family_id": "dusty_plasma_self_organization",
+        "life_architecture_id": "sulfuric_acid_biochemistry",
+        "score": 0.93834273,
+        "scorecard": {
+          "environment_fit": 1.0,
+          "observability": 0.9,
+          "false_positive_depth": 1.0,
+          "causal_depth": 1.0,
+          "epistemic_restraint": 0.72,
+          "novelty_tiebreak": 0.966855,
+          "cross_domain_bonus": 0.0
+        },
+        "claim_ceiling": "A sulfuric-acid solvent is not ruled out chemically, but origin and biology remain unproven.",
+        "source_ids": [
+          "aps_complex_plasma_review_2009",
+          "nasa_dusty_plasma_1999",
+          "sulfuric_acid_solvent_review_2021"
+        ]
+      },
+      {
+        "candidate_id": "dusty_plasma_self_organization::autocatalytic_protocell_network",
+        "anomaly_family_id": "dusty_plasma_self_organization",
+        "life_architecture_id": "autocatalytic_protocell_network",
+        "score": 0.93344627,
+        "scorecard": {
+          "environment_fit": 1.0,
+          "observability": 0.9,
+          "false_positive_depth": 1.0,
+          "causal_depth": 1.0,
+          "epistemic_restraint": 0.82,
+          "novelty_tiebreak": 0.568925,
+          "cross_domain_bonus": 0.0
+        },
+        "claim_ceiling": "Prebiotic or life-like chemistry may exist below the threshold of biology.",
+        "source_ids": [
+          "aps_complex_plasma_review_2009",
+          "nasa_chemical_complexity_2021",
+          "nasa_dusty_plasma_1999",
+          "nasa_life_in_lab_2023",
+          "nature_molecular_diversity_2026",
+          "nature_protobiosignatures_2026"
+        ]
+      },
+      {
+        "candidate_id": "non_gravitational_orbital_behavior::carbon_water_cellular",
+        "anomaly_family_id": "non_gravitational_orbital_behavior",
+        "life_architecture_id": "carbon_water_cellular",
+        "score": 0.92878938,
+        "scorecard": {
+          "environment_fit": 1.0,
+          "observability": 0.7,
+          "false_positive_depth": 1.0,
+          "causal_depth": 1.0,
+          "epistemic_restraint": 1.0,
+          "novelty_tiebreak": 0.655788,
+          "cross_domain_bonus": 0.0
+        },
+        "claim_ceiling": "Earth-analog biology is possible, not present by default.",
+        "source_ids": [
+          "jpl_horizons",
+          "jpl_sbdb",
+          "nasa_astrobiology_program_overview_2026",
+          "nasa_life_detection_ladder_2026"
+        ]
+      },
+      {
+        "candidate_id": "dusty_plasma_self_organization::agnostic_unknown_biochemistry",
+        "anomaly_family_id": "dusty_plasma_self_organization",
+        "life_architecture_id": "agnostic_unknown_biochemistry",
+        "score": 0.92587631,
+        "scorecard": {
+          "environment_fit": 1.0,
+          "observability": 0.9,
+          "false_positive_depth": 1.0,
+          "causal_depth": 1.0,
+          "epistemic_restraint": 0.9,
+          "novelty_tiebreak": 0.177526,
+          "cross_domain_bonus": 0.0
+        },
+        "claim_ceiling": "Life-like organization can be tested without assuming DNA, proteins, or water.",
+        "source_ids": [
+          "aps_complex_plasma_review_2009",
+          "nasa_agnostic_biosignatures_2019",
+          "nasa_dusty_plasma_1999",
+          "nasa_life_as_we_dont_know_it_2025"
+        ]
+      },
+      {
+        "candidate_id": "dusty_plasma_self_organization::anaerobic_chemotrophic",
+        "anomaly_family_id": "dusty_plasma_self_organization",
+        "life_architecture_id": "anaerobic_chemotrophic",
+        "score": 0.92548875,
+        "scorecard": {
+          "environment_fit": 1.0,
+          "observability": 0.8,
+          "false_positive_depth": 1.0,
+          "causal_depth": 1.0,
+          "epistemic_restraint": 1.0,
+          "novelty_tiebreak": 0.229775,
+          "cross_domain_bonus": 0.0
+        },
+        "claim_ceiling": "Oxygen absence does not rule out life.",
+        "source_ids": [
+          "aps_complex_plasma_review_2009",
+          "nasa_ask_astrobiologist_2026",
+          "nasa_dusty_plasma_1999"
+        ]
+      }
+    ],
+    "selected_candidate_id": "dusty_plasma_self_organization::dusty_plasma_lifelike_control",
+    "selection_receipt": "5a49e9ca1ed453b48e6a2e1ec3edd56f66f627891d3d74860f46044d8dd4656e",
+    "reasoning_summary": [
+      "Environment fit controls eligibility but never proves existence.",
+      "Candidates with multiple observable channels and strong false-positive controls rank higher.",
+      "Speculative architectures remain eligible at reduced authority rather than being silently removed.",
+      "The selected theory pair is a private simulation lens, not a claim about the real universe."
+    ]
+  },
+  "selected_anomaly_family": {
+    "id": "dusty_plasma_self_organization",
+    "name": "Dusty-plasma self-organization",
+    "epistemic_class": "known complex-plasma phenomenon and life-like false-positive class",
+    "observables": [
+      "plasma crystals",
+      "chains",
+      "vortices",
+      "helical structures",
+      "phase transitions"
+    ],
+    "controls": [
+      "electric fields",
+      "ion flow",
+      "confinement",
+      "periodic forcing"
+    ],
+    "claim_ceiling": "Self-organized plasma structure; life remains unsupported without independent metabolism, information, and evolution evidence.",
+    "source_ids": [
+      "nasa_dusty_plasma_1999",
+      "aps_complex_plasma_review_2009"
+    ]
+  },
+  "selected_life_architecture": {
+    "id": "dusty_plasma_lifelike_control",
+    "name": "Dusty-plasma life-like control",
+    "epistemic_class": "known self-organizing physics used as a false-positive control",
+    "environment": {
+      "temperature_k": [
+        1,
+        1000000
+      ],
+      "medium": "charged dust in plasma"
+    },
+    "required_questions": [
+      "independent metabolism",
+      "heritable information",
+      "open-ended evolution",
+      "autonomy"
+    ],
+    "observables": [
+      "crystals",
+      "helices",
+      "vortices",
+      "bifurcations",
+      "hysteresis"
+    ],
+    "claim_ceiling": "Life-like shape or recurrence alone is insufficient; classify as complex plasma unless stronger evidence appears.",
+    "source_ids": [
+      "nasa_dusty_plasma_1999",
+      "aps_complex_plasma_review_2009"
+    ]
+  },
+  "private_simulation_truth": {
+    "truth_type": "private_simulation_state",
+    "origin_class": "candidate_living_system",
+    "stage_ceiling": 7,
+    "traits": {
+      "persistence": 1.0,
+      "energy_organization": 0.941795,
+      "compartmentalization": 0.931901,
+      "adaptive_memory": 0.807812,
+      "chemical_complexity": 0.928849,
+      "replication_like_recurrence": 0.738811
+    },
+    "dominant_false_positive": "ion flow",
+    "secondary_false_positive": "ion flow",
+    "resolution_secret": "c5999f889d879a034dff18af1fa521385c677ad9f86329aea6184ae5c43252ca",
+    "future_is_open": true,
+    "future_rule": "The private packet fixes a hidden starting phenomenon. Player actions, measurement limits, ship state, and runtime entropy still determine which evidence becomes available and what consequences follow.",
+    "real_world_claim": "None. This is factual-within-simulation hidden state constrained by published possibility science."
+  },
+  "test_plan": {
+    "required_controls": [
+      "electric fields",
+      "ion flow",
+      "confinement",
+      "periodic forcing"
+    ],
+    "required_questions": [
+      "independent metabolism",
+      "heritable information",
+      "open-ended evolution",
+      "autonomy"
+    ],
+    "eligible_observables": [
+      "bifurcations",
+      "chains",
+      "crystals",
+      "helical structures",
+      "helices",
+      "hysteresis",
+      "phase transitions",
+      "plasma crystals",
+      "vortices"
+    ],
+    "claim_ceiling": "Life-like shape or recurrence alone is insufficient; classify as complex plasma unless stronger evidence appears."
+  },
+  "source_ids": [
+    "aps_complex_plasma_review_2009",
+    "nasa_dusty_plasma_1999"
+  ],
+  "design_prior_receipt": {
+    "origin_priors": [
+      [
+        "instrumental_or_processing",
+        0.15
+      ],
+      [
+        "known_abiotic_physics",
+        0.28
+      ],
+      [
+        "unmodeled_abiotic_complexity",
+        0.18
+      ],
+      [
+        "prebiotic_organized_chemistry",
+        0.16
+      ],
+      [
+        "life_like_but_unresolved",
+        0.11
+      ],
+      [
+        "candidate_living_system",
+        0.07
+      ],
+      [
+        "novel_physics_unresolved",
+        0.05
+      ]
+    ],
+    "warning": "These are entertainment simulation priors, not empirical frequencies for extraterrestrial life or anomalies."
+  },
+  "forge_input_receipt": {
+    "mode": "offline_base",
+    "offline_reasoning_passes": 7,
+    "external_model_used": false,
+    "candidate_votes": [
+      {
+        "lens": 0,
+        "selected_candidate_id": "dusty_plasma_self_organization::dusty_plasma_lifelike_control",
+        "constraint_score": 0.97597103,
+        "pass_receipt": "fd00832b114af41674cfa5a5a2d34278bc48a01bc97f5eaabb10ebc68f67b6c3"
+      },
+      {
+        "lens": 1,
+        "selected_candidate_id": "dusty_plasma_self_organization::anaerobic_chemotrophic",
+        "constraint_score": 0.92412611,
+        "pass_receipt": "82a1780ec342ec44ffed250b6ae6ae878988927a01958d2182ecd5114c3799a9"
+      },
+      {
+        "lens": 2,
+        "selected_candidate_id": "dusty_plasma_self_organization::sulfuric_acid_biochemistry",
+        "constraint_score": 0.92970217,
+        "pass_receipt": "8bee772a5656461997efc4e55cc897b11b63619358dfa0e8d13509c82035b02a"
+      },
+      {
+        "lens": 3,
+        "selected_candidate_id": "dusty_plasma_self_organization::dusty_plasma_lifelike_control",
+        "constraint_score": 0.97611002,
+        "pass_receipt": "7428bd33f02958d3d7e1dd79a1d127e9dfccb3b5ce06cc512795c4594861e543"
+      },
+      {
+        "lens": 4,
+        "selected_candidate_id": "rare_morphology::dusty_plasma_lifelike_control",
+        "constraint_score": 0.96583987,
+        "pass_receipt": "428090f772c5d6c8cd79d3a6f9e6f58345826600fffe24e9a275ef88e750d805"
+      },
+      {
+        "lens": 5,
+        "selected_candidate_id": "dusty_plasma_self_organization::dusty_plasma_lifelike_control",
+        "constraint_score": 0.97891018,
+        "pass_receipt": "cb6d1462bcde0c2ed87bda63d7d25812b5d728002edb354a4b90159cf6c7957f"
+      },
+      {
+        "lens": 6,
+        "selected_candidate_id": "dusty_plasma_self_organization::anaerobic_chemotrophic",
+        "constraint_score": 0.94870186,
+        "pass_receipt": "a3b7b5a8b768c0a1c5e864857df18a7a4af14c3916fe9836828c58278543e273"
+      }
+    ],
+    "ranking": [
+      {
+        "candidate_id": "dusty_plasma_self_organization::dusty_plasma_lifelike_control",
+        "votes": 3,
+        "mean_constraint_score": 0.9769970766666667,
+        "tie_break": "e6b703c0764bc14e85fe4c76c36f5618e73906cd9c56b1b5533f65a65f105b02"
+      },
+      {
+        "candidate_id": "dusty_plasma_self_organization::anaerobic_chemotrophic",
+        "votes": 2,
+        "mean_constraint_score": 0.936413985,
+        "tie_break": "063755beec3d9d26546aa18ee3799251de55a75d60508ac37872fcf6a6a264e9"
+      },
+      {
+        "candidate_id": "rare_morphology::dusty_plasma_lifelike_control",
+        "votes": 1,
+        "mean_constraint_score": 0.96583987,
+        "tie_break": "410f4c8f5281108821ac95b2ee3c1b951570310ca7e7209b02cda11be2e0b1d9"
+      },
+      {
+        "candidate_id": "dusty_plasma_self_organization::sulfuric_acid_biochemistry",
+        "votes": 1,
+        "mean_constraint_score": 0.92970217,
+        "tie_break": "47856f6481a8bfe90b8634b5c5993bb7434b7578298f4459e5cd437da10c0916"
+      }
+    ],
+    "selected_candidate_id": "dusty_plasma_self_organization::dusty_plasma_lifelike_control",
+    "policy": "Multiple deterministic constraint lenses nominate scientifically bounded candidates. The local forge seals one winner before play; no external model is required."
+  }
+}

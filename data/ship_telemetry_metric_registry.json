@@ -1,0 +1,2672 @@
+{
+  "schema": "axm.ship-telemetry-metric-registry.v1",
+  "registry_version": "0.14.0",
+  "as_of_date": "2026-08-02",
+  "metric_count": 78,
+  "truth_policy": {
+    "numeric_display_does_not_imply_catalog_fact": true,
+    "truth_type_is_visible": true,
+    "unknown_values_remain_unavailable": true,
+    "derived_values_include_meaning_and_dependencies": true,
+    "data_quality_and_freshness_are_not_hidden": true
+  },
+  "status_order": [
+    "normal",
+    "advisory",
+    "caution",
+    "warning",
+    "emergency",
+    "unavailable"
+  ],
+  "metrics": [
+    {
+      "id": "ship.mode",
+      "display_name": "Vehicle mode",
+      "system_id": "fault_management",
+      "unit": "mode",
+      "extractor": "ship_mode",
+      "truth_type": "state",
+      "meaning": "Current vehicle operating mode.",
+      "plain_language": "Current vehicle operating mode.",
+      "role_ids": [
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "fault_management"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "ship.survival_supported",
+      "display_name": "Crew-survival state",
+      "system_id": "fault_management",
+      "unit": "boolean",
+      "extractor": "crew_survival_supported",
+      "truth_type": "derived",
+      "meaning": "Combined current support for crew survival in the simplified model.",
+      "plain_language": "Combined current support for crew survival in the simplified model.",
+      "role_ids": [
+        "mission_commander",
+        "ai_systems_integrator",
+        "vehicle_systems_engineer",
+        "crew_medical_officer"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "fault_management"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "ship.critical_health_min",
+      "display_name": "Lowest critical-system health",
+      "system_id": "fault_management",
+      "unit": "fraction",
+      "extractor": "minimum_critical_health",
+      "truth_type": "derived",
+      "meaning": "Weakest crew-survival or mission-critical system health.",
+      "plain_language": "Weakest crew-survival or mission-critical system health.",
+      "role_ids": [
+        "mission_commander",
+        "ai_systems_integrator",
+        "vehicle_systems_engineer"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 0.75
+        },
+        "warning": {
+          "op": "lt",
+          "value": 0.45
+        },
+        "emergency": {
+          "op": "lt",
+          "value": 0.2
+        }
+      },
+      "quality_source_system_ids": [
+        "fault_management"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "ship.active_faults",
+      "display_name": "Active fault count",
+      "system_id": "fault_management",
+      "unit": "count",
+      "extractor": "active_fault_count",
+      "truth_type": "derived",
+      "meaning": "Known active faults across the ship.",
+      "plain_language": "Known active faults across the ship.",
+      "role_ids": [
+        "mission_commander",
+        "ai_systems_integrator",
+        "vehicle_systems_engineer"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 0
+        },
+        "warning": {
+          "op": "gt",
+          "value": 2
+        },
+        "emergency": {
+          "op": "gt",
+          "value": 5
+        }
+      },
+      "quality_source_system_ids": [
+        "fault_management"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "ship.pending_recall",
+      "display_name": "Command recall",
+      "system_id": "fault_management",
+      "unit": "boolean",
+      "extractor": "pending_command_recall",
+      "truth_type": "derived",
+      "meaning": "Whether an irreversible decision is held for command.",
+      "plain_language": "Whether an irreversible decision is held for command.",
+      "role_ids": [
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "eq",
+          "value": true
+        },
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "fault_management"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "ship.held_actions",
+      "display_name": "Held irreversible actions",
+      "system_id": "fault_management",
+      "unit": "count",
+      "extractor": "held_irreversible_action_count",
+      "truth_type": "derived",
+      "meaning": "Blocked irreversible actions awaiting authority or evidence.",
+      "plain_language": "Blocked irreversible actions awaiting authority or evidence.",
+      "role_ids": [
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 0
+        },
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "fault_management"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "ship.elapsed_time",
+      "display_name": "Mission elapsed time",
+      "system_id": "avionics_cdh",
+      "unit": "min",
+      "extractor": "mission_elapsed_minutes",
+      "truth_type": "state",
+      "meaning": "Elapsed simulation mission time.",
+      "plain_language": "Elapsed simulation mission time.",
+      "role_ids": [
+        "mission_commander",
+        "ai_systems_integrator",
+        "flight_dynamics_navigation",
+        "vehicle_systems_engineer",
+        "science_anomaly_specialist",
+        "communications_data_robotics",
+        "crew_medical_officer"
+      ],
+      "commander_visible": true,
+      "display_priority": "context",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "avionics_cdh"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "ship.state_integrity",
+      "display_name": "State integrity",
+      "system_id": "avionics_cdh",
+      "unit": "boolean",
+      "extractor": "state_integrity",
+      "truth_type": "derived",
+      "meaning": "Whether serialized state matches its integrity hash.",
+      "plain_language": "Whether serialized state matches its integrity hash.",
+      "role_ids": [
+        "mission_commander",
+        "ai_systems_integrator",
+        "communications_data_robotics"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "eq",
+          "value": false
+        },
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "avionics_cdh"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "power.generated",
+      "display_name": "Net generated power",
+      "system_id": "electrical_power_generation",
+      "unit": "kW",
+      "extractor": "generated_power_kw",
+      "truth_type": "derived",
+      "meaning": "Electrical power available after modeled availability and conversion.",
+      "plain_language": "Electrical power available after modeled availability and conversion.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 35
+        },
+        "warning": {
+          "op": "lt",
+          "value": 25
+        },
+        "emergency": {
+          "op": "lt",
+          "value": 18
+        }
+      },
+      "quality_source_system_ids": [
+        "electrical_power_generation"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "power.load",
+      "display_name": "Served electrical load",
+      "system_id": "power_distribution",
+      "unit": "kW",
+      "extractor": "served_load_kw",
+      "truth_type": "derived",
+      "meaning": "Sum of currently served electrical loads.",
+      "plain_language": "Sum of currently served electrical loads.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "power_distribution"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "load_shedding",
+        "sensor_selection",
+        "robotic_operation",
+        "science_observation_plan"
+      ]
+    },
+    {
+      "id": "power.margin",
+      "display_name": "Power margin",
+      "system_id": "power_distribution",
+      "unit": "kW",
+      "extractor": "power_margin_kw",
+      "truth_type": "derived",
+      "meaning": "Generated power minus served load.",
+      "plain_language": "Generated power minus served load.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 4
+        },
+        "warning": {
+          "op": "lt",
+          "value": 0
+        },
+        "emergency": {
+          "op": "lt",
+          "value": -12
+        }
+      },
+      "quality_source_system_ids": [
+        "power_distribution"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "load_shedding"
+      ]
+    },
+    {
+      "id": "power.battery_energy",
+      "display_name": "Battery energy",
+      "system_id": "energy_storage",
+      "unit": "kWh",
+      "extractor": "battery_energy_kwh",
+      "truth_type": "derived",
+      "meaning": "Usable stored electrical energy.",
+      "plain_language": "Usable stored electrical energy.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 90
+        },
+        "warning": {
+          "op": "lt",
+          "value": 55
+        },
+        "emergency": {
+          "op": "lt",
+          "value": 25
+        }
+      },
+      "quality_source_system_ids": [
+        "energy_storage"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "power.battery_soc",
+      "display_name": "Battery state of charge",
+      "system_id": "energy_storage",
+      "unit": "%",
+      "extractor": "battery_soc_pct",
+      "truth_type": "derived",
+      "meaning": "Stored energy divided by modeled usable capacity.",
+      "plain_language": "Stored energy divided by modeled usable capacity.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 40
+        },
+        "warning": {
+          "op": "lt",
+          "value": 25
+        },
+        "emergency": {
+          "op": "lt",
+          "value": 12
+        }
+      },
+      "quality_source_system_ids": [
+        "energy_storage"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "power.reserve_soc",
+      "display_name": "Protected reserve",
+      "system_id": "energy_storage",
+      "unit": "%",
+      "extractor": "battery_reserve_pct",
+      "truth_type": "simulation_design_assumption",
+      "meaning": "Operating-policy battery reserve.",
+      "plain_language": "Operating-policy battery reserve.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "energy_storage"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "power.time_to_reserve",
+      "display_name": "Time to reserve",
+      "system_id": "energy_storage",
+      "unit": "h",
+      "extractor": "time_to_battery_reserve_h",
+      "truth_type": "derived",
+      "meaning": "Time until protected reserve at current deficit.",
+      "plain_language": "Time until protected reserve at current deficit.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 4
+        },
+        "warning": {
+          "op": "lt",
+          "value": 2
+        },
+        "emergency": {
+          "op": "lt",
+          "value": 0.5
+        }
+      },
+      "quality_source_system_ids": [
+        "energy_storage"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "power.source_availability",
+      "display_name": "Power-source availability",
+      "system_id": "electrical_power_generation",
+      "unit": "%",
+      "extractor": "generation_availability_pct",
+      "truth_type": "derived",
+      "meaning": "Current source and system availability.",
+      "plain_language": "Current source and system availability.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 75
+        },
+        "warning": {
+          "op": "lt",
+          "value": 50
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "electrical_power_generation"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "power.solar_flux",
+      "display_name": "Solar-flux ratio",
+      "system_id": "electrical_power_generation",
+      "unit": "ratio",
+      "extractor": "solar_flux_ratio",
+      "truth_type": "derived",
+      "meaning": "Solar flux relative to simulation reference.",
+      "plain_language": "Solar flux relative to simulation reference.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "flight_dynamics_navigation"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 0.6
+        },
+        "warning": {
+          "op": "lt",
+          "value": 0.2
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "electrical_power_generation"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "vehicle_attitude"
+      ]
+    },
+    {
+      "id": "power.shed_load_count",
+      "display_name": "Shed-load count",
+      "system_id": "power_distribution",
+      "unit": "count",
+      "extractor": "shed_load_count",
+      "truth_type": "derived",
+      "meaning": "Number of deliberately unserved load groups.",
+      "plain_language": "Number of deliberately unserved load groups.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 0
+        },
+        "warning": {
+          "op": "gt",
+          "value": 3
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "power_distribution"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "load_shedding"
+      ]
+    },
+    {
+      "id": "thermal.waste_heat",
+      "display_name": "Waste heat",
+      "system_id": "thermal_control",
+      "unit": "kW",
+      "extractor": "waste_heat_kw",
+      "truth_type": "derived",
+      "meaning": "Internal electrical heat plus external thermal load.",
+      "plain_language": "Internal electrical heat plus external thermal load.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "thermal_control"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "load_shedding",
+        "sensor_selection",
+        "robotic_operation",
+        "science_observation_plan"
+      ]
+    },
+    {
+      "id": "thermal.rejection",
+      "display_name": "Heat-rejection capacity",
+      "system_id": "thermal_control",
+      "unit": "kW",
+      "extractor": "thermal_rejection_kw",
+      "truth_type": "derived",
+      "meaning": "Current modeled heat-rejection capacity.",
+      "plain_language": "Current modeled heat-rejection capacity.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 35
+        },
+        "warning": {
+          "op": "lt",
+          "value": 25
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "thermal_control"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "vehicle_attitude"
+      ]
+    },
+    {
+      "id": "thermal.margin",
+      "display_name": "Thermal margin",
+      "system_id": "thermal_control",
+      "unit": "kW",
+      "extractor": "thermal_margin_kw",
+      "truth_type": "derived",
+      "meaning": "Heat rejection minus heat load.",
+      "plain_language": "Heat rejection minus heat load.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 5
+        },
+        "warning": {
+          "op": "lt",
+          "value": 0
+        },
+        "emergency": {
+          "op": "lt",
+          "value": -15
+        }
+      },
+      "quality_source_system_ids": [
+        "thermal_control"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "load_shedding"
+      ]
+    },
+    {
+      "id": "thermal.storage",
+      "display_name": "Stored excess heat",
+      "system_id": "thermal_control",
+      "unit": "kWh",
+      "extractor": "thermal_storage_kwh",
+      "truth_type": "derived",
+      "meaning": "Integrated heat that could not be rejected.",
+      "plain_language": "Integrated heat that could not be rejected.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 6
+        },
+        "warning": {
+          "op": "gt",
+          "value": 12
+        },
+        "emergency": {
+          "op": "gt",
+          "value": 17
+        }
+      },
+      "quality_source_system_ids": [
+        "thermal_control"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "thermal.storage_pct",
+      "display_name": "Thermal-storage use",
+      "system_id": "thermal_control",
+      "unit": "%",
+      "extractor": "thermal_storage_pct",
+      "truth_type": "derived",
+      "meaning": "Stored excess heat relative to model limit.",
+      "plain_language": "Stored excess heat relative to model limit.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 35
+        },
+        "warning": {
+          "op": "gt",
+          "value": 70
+        },
+        "emergency": {
+          "op": "gt",
+          "value": 95
+        }
+      },
+      "quality_source_system_ids": [
+        "thermal_control"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "thermal.time_to_limit",
+      "display_name": "Time to thermal limit",
+      "system_id": "thermal_control",
+      "unit": "h",
+      "extractor": "time_to_thermal_limit_h",
+      "truth_type": "derived",
+      "meaning": "Time to thermal storage limit at current deficit.",
+      "plain_language": "Time to thermal storage limit at current deficit.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 3
+        },
+        "warning": {
+          "op": "lt",
+          "value": 1
+        },
+        "emergency": {
+          "op": "lt",
+          "value": 0.25
+        }
+      },
+      "quality_source_system_ids": [
+        "thermal_control"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "life.cabin_pressure",
+      "display_name": "Cabin pressure",
+      "system_id": "eclss_atmosphere",
+      "unit": "kPa",
+      "extractor": "cabin_pressure_kpa",
+      "truth_type": "derived",
+      "meaning": "Current modeled total cabin pressure.",
+      "plain_language": "Current modeled total cabin pressure.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer",
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 85
+        },
+        "warning": {
+          "op": "lt",
+          "value": 70
+        },
+        "emergency": {
+          "op": "lt",
+          "value": 55
+        }
+      },
+      "quality_source_system_ids": [
+        "eclss_atmosphere"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "life.pressure_loss_rate",
+      "display_name": "Pressure-loss rate",
+      "system_id": "primary_structure",
+      "unit": "kPa/h",
+      "extractor": "pressure_loss_rate",
+      "truth_type": "derived",
+      "meaning": "Current cabin pressure loss rate.",
+      "plain_language": "Current cabin pressure loss rate.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer",
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 0.2
+        },
+        "warning": {
+          "op": "gt",
+          "value": 1
+        },
+        "emergency": {
+          "op": "gt",
+          "value": 4
+        }
+      },
+      "quality_source_system_ids": [
+        "primary_structure"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "compartment_isolation"
+      ]
+    },
+    {
+      "id": "life.time_to_min_pressure",
+      "display_name": "Time to minimum pressure",
+      "system_id": "primary_structure",
+      "unit": "h",
+      "extractor": "time_to_min_pressure_h",
+      "truth_type": "derived",
+      "meaning": "Time to modeled minimum pressure at current leak rate.",
+      "plain_language": "Time to modeled minimum pressure at current leak rate.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer",
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 6
+        },
+        "warning": {
+          "op": "lt",
+          "value": 2
+        },
+        "emergency": {
+          "op": "lt",
+          "value": 0.5
+        }
+      },
+      "quality_source_system_ids": [
+        "primary_structure"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "life.co2_margin",
+      "display_name": "CO₂-removal margin",
+      "system_id": "eclss_atmosphere",
+      "unit": "person-equivalent",
+      "extractor": "co2_margin",
+      "truth_type": "derived",
+      "meaning": "Removal capacity minus current human load.",
+      "plain_language": "Removal capacity minus current human load.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer",
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 1
+        },
+        "warning": {
+          "op": "lt",
+          "value": 0
+        },
+        "emergency": {
+          "op": "lt",
+          "value": -1
+        }
+      },
+      "quality_source_system_ids": [
+        "eclss_atmosphere"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "life.water_recovery",
+      "display_name": "Effective water recovery",
+      "system_id": "water_and_waste",
+      "unit": "%",
+      "extractor": "water_recovery_pct",
+      "truth_type": "derived",
+      "meaning": "Recovered fraction after health and faults.",
+      "plain_language": "Recovered fraction after health and faults.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 85
+        },
+        "warning": {
+          "op": "lt",
+          "value": 65
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "water_and_waste"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "life.water_days",
+      "display_name": "Estimated water duration",
+      "system_id": "water_and_waste",
+      "unit": "days",
+      "extractor": "water_days",
+      "truth_type": "derived",
+      "meaning": "Stored water divided by modeled net loss.",
+      "plain_language": "Stored water divided by modeled net loss.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer",
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 45
+        },
+        "warning": {
+          "op": "lt",
+          "value": 20
+        },
+        "emergency": {
+          "op": "lt",
+          "value": 7
+        }
+      },
+      "quality_source_system_ids": [
+        "water_and_waste"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "life.oxygen_days",
+      "display_name": "Stored oxygen duration",
+      "system_id": "eclss_atmosphere",
+      "unit": "days",
+      "extractor": "oxygen_days",
+      "truth_type": "derived",
+      "meaning": "Stored oxygen person-days at current crew.",
+      "plain_language": "Stored oxygen person-days at current crew.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer",
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 14
+        },
+        "warning": {
+          "op": "lt",
+          "value": 5
+        },
+        "emergency": {
+          "op": "lt",
+          "value": 2
+        }
+      },
+      "quality_source_system_ids": [
+        "eclss_atmosphere"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "life.active_humans",
+      "display_name": "Active human crew",
+      "system_id": "crew_health_medical",
+      "unit": "persons",
+      "extractor": "active_humans",
+      "truth_type": "state",
+      "meaning": "Human crew counted in metabolic calculations.",
+      "plain_language": "Human crew counted in metabolic calculations.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "crew_health_medical"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "life.air_quality",
+      "display_name": "Air-quality state",
+      "system_id": "eclss_atmosphere",
+      "unit": "state",
+      "extractor": "air_quality_state",
+      "truth_type": "derived",
+      "meaning": "Categorical modeled air-quality state.",
+      "plain_language": "Categorical modeled air-quality state.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer",
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "neq",
+          "value": "nominal"
+        },
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "eclss_atmosphere"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "life.water_quality",
+      "display_name": "Water-quality state",
+      "system_id": "water_and_waste",
+      "unit": "state",
+      "extractor": "water_quality_state",
+      "truth_type": "derived",
+      "meaning": "Categorical potable-water quality state.",
+      "plain_language": "Categorical potable-water quality state.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer",
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "neq",
+          "value": "nominal"
+        },
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "water_and_waste"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "life.stored_water",
+      "display_name": "Stored potable water",
+      "system_id": "water_and_waste",
+      "unit": "kg",
+      "extractor": "stored_water_kg",
+      "truth_type": "derived",
+      "meaning": "Current modeled potable-water inventory.",
+      "plain_language": "Current modeled potable-water inventory.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "water_and_waste"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "life.net_water_loss",
+      "display_name": "Net water loss",
+      "system_id": "water_and_waste",
+      "unit": "kg/day",
+      "extractor": "net_water_loss_kg_day",
+      "truth_type": "derived",
+      "meaning": "Unrecovered crew water plus other losses.",
+      "plain_language": "Unrecovered crew water plus other losses.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "water_and_waste"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "life.available_crew",
+      "display_name": "Available human crew",
+      "system_id": "crew_health_medical",
+      "unit": "persons",
+      "extractor": "available_human_crew",
+      "truth_type": "derived",
+      "meaning": "Crew presently available for tasks.",
+      "plain_language": "Crew presently available for tasks.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer",
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 5
+        },
+        "warning": {
+          "op": "lt",
+          "value": 4
+        },
+        "emergency": {
+          "op": "lt",
+          "value": 2
+        }
+      },
+      "quality_source_system_ids": [
+        "crew_health_medical"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "compartment_isolation",
+        "crew_task_assignment"
+      ]
+    },
+    {
+      "id": "nav.position_x",
+      "display_name": "Position X",
+      "system_id": "gnc",
+      "unit": "km",
+      "extractor": "position_x_km",
+      "truth_type": "state",
+      "meaning": "X component of modeled position.",
+      "plain_language": "X component of modeled position.",
+      "role_ids": [
+        "flight_dynamics_navigation",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "gnc"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "nav.position_y",
+      "display_name": "Position Y",
+      "system_id": "gnc",
+      "unit": "km",
+      "extractor": "position_y_km",
+      "truth_type": "state",
+      "meaning": "Y component of modeled position.",
+      "plain_language": "Y component of modeled position.",
+      "role_ids": [
+        "flight_dynamics_navigation",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "gnc"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "nav.position_z",
+      "display_name": "Position Z",
+      "system_id": "gnc",
+      "unit": "km",
+      "extractor": "position_z_km",
+      "truth_type": "state",
+      "meaning": "Z component of modeled position.",
+      "plain_language": "Z component of modeled position.",
+      "role_ids": [
+        "flight_dynamics_navigation",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "gnc"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "nav.speed",
+      "display_name": "Speed magnitude",
+      "system_id": "gnc",
+      "unit": "km/s",
+      "extractor": "speed_km_s",
+      "truth_type": "derived",
+      "meaning": "Magnitude of modeled velocity.",
+      "plain_language": "Magnitude of modeled velocity.",
+      "role_ids": [
+        "flight_dynamics_navigation",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "gnc"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "nav.uncertainty",
+      "display_name": "Navigation uncertainty",
+      "system_id": "gnc",
+      "unit": "km",
+      "extractor": "navigation_uncertainty_km",
+      "truth_type": "derived",
+      "meaning": "Simplified scalar state-estimation uncertainty.",
+      "plain_language": "Simplified scalar state-estimation uncertainty.",
+      "role_ids": [
+        "flight_dynamics_navigation",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 2
+        },
+        "warning": {
+          "op": "gt",
+          "value": 8
+        },
+        "emergency": {
+          "op": "gt",
+          "value": 25
+        }
+      },
+      "quality_source_system_ids": [
+        "gnc"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "sensor_selection"
+      ]
+    },
+    {
+      "id": "nav.attitude_error",
+      "display_name": "Attitude error",
+      "system_id": "gnc",
+      "unit": "deg",
+      "extractor": "attitude_error_deg",
+      "truth_type": "derived",
+      "meaning": "Current modeled pointing error.",
+      "plain_language": "Current modeled pointing error.",
+      "role_ids": [
+        "flight_dynamics_navigation",
+        "ai_systems_integrator",
+        "communications_data_robotics"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 0.5
+        },
+        "warning": {
+          "op": "gt",
+          "value": 2
+        },
+        "emergency": {
+          "op": "gt",
+          "value": 10
+        }
+      },
+      "quality_source_system_ids": [
+        "gnc"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "vehicle_attitude"
+      ]
+    },
+    {
+      "id": "nav.pointing_performance",
+      "display_name": "Pointing performance",
+      "system_id": "reaction_control",
+      "unit": "%",
+      "extractor": "pointing_performance_pct",
+      "truth_type": "derived",
+      "meaning": "Relative pointing-control performance.",
+      "plain_language": "Relative pointing-control performance.",
+      "role_ids": [
+        "flight_dynamics_navigation",
+        "ai_systems_integrator",
+        "communications_data_robotics",
+        "science_anomaly_specialist"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 80
+        },
+        "warning": {
+          "op": "lt",
+          "value": 55
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "reaction_control"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "vehicle_attitude",
+        "science_observation_plan"
+      ]
+    },
+    {
+      "id": "nav.propulsion_available",
+      "display_name": "Main propulsion availability",
+      "system_id": "main_propulsion",
+      "unit": "boolean",
+      "extractor": "propulsion_available",
+      "truth_type": "derived",
+      "meaning": "Whether main propulsion is currently available.",
+      "plain_language": "Whether main propulsion is currently available.",
+      "role_ids": [
+        "flight_dynamics_navigation",
+        "ai_systems_integrator",
+        "vehicle_systems_engineer",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "eq",
+          "value": false
+        },
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "main_propulsion"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "nav.maneuver_performance_known",
+      "display_name": "Verified maneuver performance",
+      "system_id": "main_propulsion",
+      "unit": "state",
+      "extractor": "maneuver_performance_known",
+      "truth_type": "unknown",
+      "meaning": "Whether mass and propulsion data support a verified maneuver claim.",
+      "plain_language": "Whether mass and propulsion data support a verified maneuver claim.",
+      "role_ids": [
+        "flight_dynamics_navigation",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "eq",
+          "value": false
+        },
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "main_propulsion"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "nav.collision_geometry_ready",
+      "display_name": "Collision geometry quality",
+      "system_id": "gnc",
+      "unit": "state",
+      "extractor": "collision_geometry_quality",
+      "truth_type": "derived",
+      "meaning": "Whether observations and uncertainty support collision calculation.",
+      "plain_language": "Whether observations and uncertainty support collision calculation.",
+      "role_ids": [
+        "flight_dynamics_navigation",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "neq",
+          "value": "sufficient"
+        },
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "gnc"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "comms.distance",
+      "display_name": "Communication range",
+      "system_id": "communications",
+      "unit": "m",
+      "extractor": "communications_distance_m",
+      "truth_type": "state",
+      "meaning": "Modeled propagation distance.",
+      "plain_language": "Modeled propagation distance.",
+      "role_ids": [
+        "communications_data_robotics",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "communications"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "comms.one_way_light_time",
+      "display_name": "One-way light time",
+      "system_id": "communications",
+      "unit": "s",
+      "extractor": "one_way_light_time_s",
+      "truth_type": "derived",
+      "meaning": "Distance divided by exact vacuum light speed.",
+      "plain_language": "Distance divided by exact vacuum light speed.",
+      "role_ids": [
+        "communications_data_robotics",
+        "ai_systems_integrator",
+        "flight_dynamics_navigation",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "communications"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "comms.round_trip_light_time",
+      "display_name": "Round-trip light time",
+      "system_id": "communications",
+      "unit": "s",
+      "extractor": "round_trip_light_time_s",
+      "truth_type": "derived",
+      "meaning": "Twice one-way light time.",
+      "plain_language": "Twice one-way light time.",
+      "role_ids": [
+        "communications_data_robotics",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "communications"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "comms.availability",
+      "display_name": "Link availability",
+      "system_id": "communications",
+      "unit": "%",
+      "extractor": "communications_availability_pct",
+      "truth_type": "derived",
+      "meaning": "Current modeled communications availability.",
+      "plain_language": "Current modeled communications availability.",
+      "role_ids": [
+        "communications_data_robotics",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 80
+        },
+        "warning": {
+          "op": "lt",
+          "value": 30
+        },
+        "emergency": {
+          "op": "lt",
+          "value": 0
+        }
+      },
+      "quality_source_system_ids": [
+        "communications"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "vehicle_attitude"
+      ]
+    },
+    {
+      "id": "comms.queue",
+      "display_name": "Data queue",
+      "system_id": "communications",
+      "unit": "GB",
+      "extractor": "data_queue_gb",
+      "truth_type": "derived",
+      "meaning": "Data waiting for transmission.",
+      "plain_language": "Data waiting for transmission.",
+      "role_ids": [
+        "communications_data_robotics",
+        "ai_systems_integrator",
+        "science_anomaly_specialist",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "communications"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "sensor_selection",
+        "data_priority",
+        "science_observation_plan"
+      ]
+    },
+    {
+      "id": "comms.queue_pct",
+      "display_name": "Data-store use",
+      "system_id": "communications",
+      "unit": "%",
+      "extractor": "data_queue_pct",
+      "truth_type": "derived",
+      "meaning": "Queued data as capacity percentage.",
+      "plain_language": "Queued data as capacity percentage.",
+      "role_ids": [
+        "communications_data_robotics",
+        "ai_systems_integrator",
+        "science_anomaly_specialist",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 65
+        },
+        "warning": {
+          "op": "gt",
+          "value": 85
+        },
+        "emergency": {
+          "op": "gt",
+          "value": 97
+        }
+      },
+      "quality_source_system_ids": [
+        "communications"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "load_shedding",
+        "data_priority"
+      ]
+    },
+    {
+      "id": "comms.telemetry_visibility",
+      "display_name": "Telemetry visibility",
+      "system_id": "avionics_cdh",
+      "unit": "%",
+      "extractor": "telemetry_visibility_pct",
+      "truth_type": "derived",
+      "meaning": "Fraction of ship state visible through telemetry.",
+      "plain_language": "Fraction of ship state visible through telemetry.",
+      "role_ids": [
+        "communications_data_robotics",
+        "ai_systems_integrator",
+        "vehicle_systems_engineer"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 85
+        },
+        "warning": {
+          "op": "lt",
+          "value": 60
+        },
+        "emergency": {
+          "op": "lt",
+          "value": 30
+        }
+      },
+      "quality_source_system_ids": [
+        "avionics_cdh"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "comms.command_integrity",
+      "display_name": "Command-path integrity",
+      "system_id": "avionics_cdh",
+      "unit": "state",
+      "extractor": "command_integrity_state",
+      "truth_type": "derived",
+      "meaning": "Whether state and data quality permit trusted command execution.",
+      "plain_language": "Whether state and data quality permit trusted command execution.",
+      "role_ids": [
+        "communications_data_robotics",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "neq",
+          "value": "trusted"
+        },
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "avionics_cdh"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "structure.health",
+      "display_name": "Pressure-hull health",
+      "system_id": "primary_structure",
+      "unit": "%",
+      "extractor": "structure_health_pct",
+      "truth_type": "derived",
+      "meaning": "Relative modeled primary-structure health.",
+      "plain_language": "Relative modeled primary-structure health.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "crew_medical_officer",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 85
+        },
+        "warning": {
+          "op": "lt",
+          "value": 60
+        },
+        "emergency": {
+          "op": "lt",
+          "value": 30
+        }
+      },
+      "quality_source_system_ids": [
+        "primary_structure"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "structure.boundary",
+      "display_name": "Pressure-boundary state",
+      "system_id": "primary_structure",
+      "unit": "state",
+      "extractor": "pressure_boundary_state",
+      "truth_type": "derived",
+      "meaning": "Current pressure-boundary condition.",
+      "plain_language": "Current pressure-boundary condition.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "crew_medical_officer",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "neq",
+          "value": "nominal"
+        },
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "primary_structure"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "compartment_isolation"
+      ]
+    },
+    {
+      "id": "structure.isolated_rooms",
+      "display_name": "Isolated compartments",
+      "system_id": "primary_structure",
+      "unit": "count",
+      "extractor": "isolated_room_count",
+      "truth_type": "derived",
+      "meaning": "Rooms isolated for pressure, fire or contamination.",
+      "plain_language": "Rooms isolated for pressure, fire or contamination.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "crew_medical_officer",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 0
+        },
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "primary_structure"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "compartment_isolation"
+      ]
+    },
+    {
+      "id": "hazard.radiation_environment",
+      "display_name": "Radiation environment index",
+      "system_id": "radiation_monitoring_and_shelter",
+      "unit": "relative index",
+      "extractor": "radiation_environment_index",
+      "truth_type": "derived",
+      "meaning": "Operational relative radiation index, not medical dose.",
+      "plain_language": "Operational relative radiation index, not medical dose.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer",
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 2
+        },
+        "warning": {
+          "op": "gt",
+          "value": 4
+        },
+        "emergency": {
+          "op": "gt",
+          "value": 8
+        }
+      },
+      "quality_source_system_ids": [
+        "radiation_monitoring_and_shelter"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "hazard.cumulative_exposure",
+      "display_name": "Cumulative relative exposure",
+      "system_id": "radiation_monitoring_and_shelter",
+      "unit": "relative index·h",
+      "extractor": "cumulative_radiation_exposure",
+      "truth_type": "derived",
+      "meaning": "Integrated operational radiation index.",
+      "plain_language": "Integrated operational radiation index.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "radiation_monitoring_and_shelter"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "hazard.shelter_active",
+      "display_name": "Storm shelter active",
+      "system_id": "radiation_monitoring_and_shelter",
+      "unit": "boolean",
+      "extractor": "shelter_active",
+      "truth_type": "derived",
+      "meaning": "Whether radiation-shelter posture is active.",
+      "plain_language": "Whether radiation-shelter posture is active.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "crew_medical_officer",
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "radiation_monitoring_and_shelter"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "hazard.external_heat",
+      "display_name": "External heat load",
+      "system_id": "thermal_control",
+      "unit": "kW",
+      "extractor": "external_heat_kw",
+      "truth_type": "derived",
+      "meaning": "Additional encounter or environmental heat.",
+      "plain_language": "Additional encounter or environmental heat.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "science_anomaly_specialist"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 5
+        },
+        "warning": {
+          "op": "gt",
+          "value": 15
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "thermal_control"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "vehicle_attitude"
+      ]
+    },
+    {
+      "id": "hazard.mmod_health",
+      "display_name": "MMOD protection health",
+      "system_id": "mmod_and_external_protection",
+      "unit": "%",
+      "extractor": "mmod_health_pct",
+      "truth_type": "derived",
+      "meaning": "Relative external impact-protection condition.",
+      "plain_language": "Relative external impact-protection condition.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 85
+        },
+        "warning": {
+          "op": "lt",
+          "value": 60
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "mmod_and_external_protection"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "science.sensor_health",
+      "display_name": "Sensor-system health",
+      "system_id": "external_sensors",
+      "unit": "%",
+      "extractor": "sensor_health_pct",
+      "truth_type": "derived",
+      "meaning": "Relative external sensor health.",
+      "plain_language": "Relative external sensor health.",
+      "role_ids": [
+        "science_anomaly_specialist",
+        "ai_systems_integrator",
+        "communications_data_robotics",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 85
+        },
+        "warning": {
+          "op": "lt",
+          "value": 60
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "external_sensors"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "science.sensor_availability",
+      "display_name": "Sensor availability",
+      "system_id": "external_sensors",
+      "unit": "%",
+      "extractor": "sensor_availability_pct",
+      "truth_type": "derived",
+      "meaning": "Availability after interference and faults.",
+      "plain_language": "Availability after interference and faults.",
+      "role_ids": [
+        "science_anomaly_specialist",
+        "ai_systems_integrator",
+        "communications_data_robotics",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 80
+        },
+        "warning": {
+          "op": "lt",
+          "value": 50
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "external_sensors"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "load_shedding",
+        "vehicle_attitude",
+        "sensor_selection",
+        "robotic_operation",
+        "science_observation_plan"
+      ]
+    },
+    {
+      "id": "science.calibration_state",
+      "display_name": "Calibration state",
+      "system_id": "external_sensors",
+      "unit": "state",
+      "extractor": "sensor_mode",
+      "truth_type": "derived",
+      "meaning": "Current sensor mode or fault state.",
+      "plain_language": "Current sensor mode or fault state.",
+      "role_ids": [
+        "science_anomaly_specialist",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "neq",
+          "value": "nominal"
+        },
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "external_sensors"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "science.encounter_count",
+      "display_name": "Recorded encounters",
+      "system_id": "science_payload_and_analysis",
+      "unit": "count",
+      "extractor": "encounter_count",
+      "truth_type": "state",
+      "meaning": "Hash-chained encounter records.",
+      "plain_language": "Hash-chained encounter records.",
+      "role_ids": [
+        "science_anomaly_specialist",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "science_payload_and_analysis"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "science.last_intent_assessment",
+      "display_name": "Latest intent assessment",
+      "system_id": "science_payload_and_analysis",
+      "unit": "state",
+      "extractor": "latest_intent_assessment",
+      "truth_type": "derived",
+      "meaning": "Evidence-bounded latest intent assessment.",
+      "plain_language": "Evidence-bounded latest intent assessment.",
+      "role_ids": [
+        "science_anomaly_specialist",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "science_payload_and_analysis"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "science.raw_data_preserved",
+      "display_name": "Raw-data preservation",
+      "system_id": "science_payload_and_analysis",
+      "unit": "boolean",
+      "extractor": "raw_data_preserved",
+      "truth_type": "derived",
+      "meaning": "Whether original data remains preserved.",
+      "plain_language": "Whether original data remains preserved.",
+      "role_ids": [
+        "science_anomaly_specialist",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "eq",
+          "value": false
+        },
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "science_payload_and_analysis"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "data_priority"
+      ]
+    },
+    {
+      "id": "robotics.health",
+      "display_name": "Robotics health",
+      "system_id": "robotics_and_probe_operations",
+      "unit": "%",
+      "extractor": "robotics_health_pct",
+      "truth_type": "derived",
+      "meaning": "Relative robotics and probe-support health.",
+      "plain_language": "Relative robotics and probe-support health.",
+      "role_ids": [
+        "communications_data_robotics",
+        "science_anomaly_specialist",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 80
+        },
+        "warning": {
+          "op": "lt",
+          "value": 50
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "robotics_and_probe_operations"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "robotic_operation"
+      ]
+    },
+    {
+      "id": "robotics.availability",
+      "display_name": "Robotics availability",
+      "system_id": "robotics_and_probe_operations",
+      "unit": "%",
+      "extractor": "robotics_availability_pct",
+      "truth_type": "derived",
+      "meaning": "Current robotics and probe availability.",
+      "plain_language": "Current robotics and probe availability.",
+      "role_ids": [
+        "communications_data_robotics",
+        "science_anomaly_specialist"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 80
+        },
+        "warning": {
+          "op": "lt",
+          "value": 50
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "robotics_and_probe_operations"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "load_shedding",
+        "robotic_operation"
+      ]
+    },
+    {
+      "id": "maintenance.work_orders",
+      "display_name": "Open work orders",
+      "system_id": "logistics_maintenance_fabrication",
+      "unit": "count",
+      "extractor": "open_work_order_count",
+      "truth_type": "derived",
+      "meaning": "Unresolved maintenance work orders.",
+      "plain_language": "Unresolved maintenance work orders.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 3
+        },
+        "warning": {
+          "op": "gt",
+          "value": 8
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "logistics_maintenance_fabrication"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "compartment_isolation"
+      ]
+    },
+    {
+      "id": "maintenance.spares",
+      "display_name": "Spares index",
+      "system_id": "logistics_maintenance_fabrication",
+      "unit": "fraction",
+      "extractor": "spares_index",
+      "truth_type": "simulation_design_assumption",
+      "meaning": "Simplified relative spare-parts availability.",
+      "plain_language": "Simplified relative spare-parts availability.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "lt",
+          "value": 0.65
+        },
+        "warning": {
+          "op": "lt",
+          "value": 0.3
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "logistics_maintenance_fabrication"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": []
+    },
+    {
+      "id": "maintenance.repair_capacity",
+      "display_name": "Repair capacity",
+      "system_id": "logistics_maintenance_fabrication",
+      "unit": "person-h/day",
+      "extractor": "repair_capacity",
+      "truth_type": "derived",
+      "meaning": "Qualified maintenance labor per day.",
+      "plain_language": "Qualified maintenance labor per day.",
+      "role_ids": [
+        "vehicle_systems_engineer",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": null,
+        "warning": null,
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "logistics_maintenance_fabrication"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "crew_task_assignment"
+      ]
+    },
+    {
+      "id": "crew.commander_workload",
+      "display_name": "Commander workload",
+      "system_id": "crew_health_medical",
+      "unit": "fraction",
+      "extractor": "workload_commander",
+      "truth_type": "derived",
+      "meaning": "Modeled commander workload index.",
+      "plain_language": "Modeled commander workload index.",
+      "role_ids": [
+        "crew_medical_officer",
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "commander_visible": true,
+      "display_priority": "primary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 0.7
+        },
+        "warning": {
+          "op": "gt",
+          "value": 0.9
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "crew_health_medical"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "crew_task_assignment"
+      ]
+    },
+    {
+      "id": "crew.engineering_workload",
+      "display_name": "Engineering workload",
+      "system_id": "crew_health_medical",
+      "unit": "fraction",
+      "extractor": "workload_engineering",
+      "truth_type": "derived",
+      "meaning": "Modeled engineering workload index.",
+      "plain_language": "Modeled engineering workload index.",
+      "role_ids": [
+        "crew_medical_officer",
+        "vehicle_systems_engineer",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 0.7
+        },
+        "warning": {
+          "op": "gt",
+          "value": 0.9
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "crew_health_medical"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "crew_task_assignment"
+      ]
+    },
+    {
+      "id": "crew.science_workload",
+      "display_name": "Science workload",
+      "system_id": "crew_health_medical",
+      "unit": "fraction",
+      "extractor": "workload_science",
+      "truth_type": "derived",
+      "meaning": "Modeled science workload index.",
+      "plain_language": "Modeled science workload index.",
+      "role_ids": [
+        "crew_medical_officer",
+        "science_anomaly_specialist",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 0.7
+        },
+        "warning": {
+          "op": "gt",
+          "value": 0.9
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "crew_health_medical"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "crew_task_assignment"
+      ]
+    },
+    {
+      "id": "crew.navigation_workload",
+      "display_name": "Navigation workload",
+      "system_id": "crew_health_medical",
+      "unit": "fraction",
+      "extractor": "workload_navigation",
+      "truth_type": "derived",
+      "meaning": "Modeled navigation workload index.",
+      "plain_language": "Modeled navigation workload index.",
+      "role_ids": [
+        "crew_medical_officer",
+        "flight_dynamics_navigation",
+        "mission_commander"
+      ],
+      "commander_visible": false,
+      "display_priority": "secondary",
+      "normal_direction": "bounded",
+      "limits": {
+        "caution": {
+          "op": "gt",
+          "value": 0.7
+        },
+        "warning": {
+          "op": "gt",
+          "value": 0.9
+        },
+        "emergency": null
+      },
+      "quality_source_system_ids": [
+        "crew_health_medical"
+      ],
+      "expected_update_period_s": 1.0,
+      "control_influence_ids": [
+        "crew_task_assignment"
+      ]
+    }
+  ],
+  "source_ids": [
+    "nasa_crew_interfaces_2026",
+    "nasa_display_standard_2026",
+    "nasa_spacecraft_subsystems_2026",
+    "nasa_gnc_2026",
+    "nasa_eclss_2025",
+    "nasa_thermal_management_2026",
+    "nasa_radiation_2026"
+  ]
+}

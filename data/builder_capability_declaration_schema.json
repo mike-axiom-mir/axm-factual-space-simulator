@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "axm.builder-capability-declaration.v1",
+  "title": "AXM Builder Capability Declaration",
+  "type": "object",
+  "required": [
+    "schema",
+    "builder_id",
+    "available_capabilities",
+    "capability_gaps",
+    "honest_completion_state"
+  ],
+  "properties": {
+    "schema": {
+      "const": "axm.builder-capability-declaration.v1"
+    },
+    "builder_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runtime_or_model": {
+      "type": "string"
+    },
+    "available_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "capability_gaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "gap_id",
+          "missing_capability",
+          "affected_directive",
+          "safe_fallback"
+        ],
+        "properties": {
+          "gap_id": {
+            "type": "string"
+          },
+          "missing_capability": {
+            "type": "string"
+          },
+          "affected_directive": {
+            "type": "string"
+          },
+          "safe_fallback": {
+            "type": "string"
+          },
+          "requested_next_instance_tool": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "punishment_or_quality_penalty_allowed": {
+            "const": false
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "honest_completion_state": {
+      "enum": [
+        "complete",
+        "partial",
+        "blocked",
+        "not_started"
+      ]
+    },
+    "completed_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unverified_claims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes_for_next_builder": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "policy": {
+    "capability_gap_is_not_failure_or_disobedience": true,
+    "builder_must_not_fake_missing_tools": true,
+    "partial_work_must_be_preserved": true,
+    "next_builder_should_receive_requested_capability_when_possible": true
+  }
+}

@@ -1,0 +1,540 @@
+{
+  "schema": "axm.ship-state.v1",
+  "blueprint_id": "axm.ship.frontier-survey-stack.v1",
+  "blueprint_version": 1,
+  "blueprint_commitment": "94e91fd0c78f17c3694be12e7eb8c1691e77be5d045f40c86a5f6b549f4811a1",
+  "seed_receipt": "8eff7ad4e4a6e89db963def1b9a50d253892bd29fa3a10144c1014025b429b48",
+  "mission_elapsed_minutes": 55.0,
+  "mode": "nominal",
+  "system_health": {
+    "primary_structure": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "mmod_and_external_protection": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "electrical_power_generation": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "energy_storage": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "power_distribution": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "thermal_control": {
+      "health": 1.0,
+      "availability": 0.55,
+      "mode": "faulted",
+      "active_fault_ids": [
+        "radiator_capacity_loss"
+      ],
+      "last_observation": "baseline"
+    },
+    "main_propulsion": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "reaction_control": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "gnc": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "faulted",
+      "active_fault_ids": [
+        "navigation_sensor_disagreement"
+      ],
+      "last_observation": "baseline"
+    },
+    "avionics_cdh": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "communications": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "eclss_atmosphere": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "water_and_waste": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "fire_and_emergency_response": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "radiation_monitoring_and_shelter": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "docking_airlock_eva": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "robotics_and_probe_operations": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "external_sensors": {
+      "health": 1.0,
+      "availability": 0.8075,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "science_payload_and_analysis": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "crew_health_medical": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "logistics_maintenance_fabrication": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    },
+    "fault_management": {
+      "health": 1.0,
+      "availability": 1.0,
+      "mode": "nominal",
+      "active_fault_ids": [],
+      "last_observation": "baseline"
+    }
+  },
+  "power": {
+    "nameplate_generation_kw": 60.0,
+    "solar_flux_ratio": 0.72,
+    "source_availability_fraction": 0.86,
+    "distribution_efficiency": 0.94,
+    "loads_kw": {
+      "eclss_atmosphere": 8.0,
+      "water_and_waste": 2.5,
+      "thermal_control": 7.0,
+      "avionics_cdh": 4.0,
+      "gnc": 2.0,
+      "communications": 3.5,
+      "external_sensors": 4.5,
+      "crew_health_medical": 1.0,
+      "habitability_and_lighting": 4.0,
+      "robotics_and_probe_operations": 0.0,
+      "science_payload_and_analysis": 2.5,
+      "ai_systems_integrator": 1.2
+    },
+    "shed_loads": [],
+    "battery_capacity_kwh": 240.0,
+    "battery_energy_kwh": 178.21264,
+    "battery_minimum_reserve_fraction": 0.2
+  },
+  "thermal": {
+    "rejection_capacity_kw": 49.0,
+    "extra_external_heat_kw": 8.0,
+    "thermal_storage_kwh": 5.683333333333334,
+    "maximum_thermal_storage_kwh": 18.0
+  },
+  "atmosphere": {
+    "cabin_pressure_kpa": 101.3,
+    "pressure_leak_kpa_per_hour": 0.0,
+    "active_humans": 5,
+    "oxygen_generation_multiplier": 1.0,
+    "co2_removal_multiplier": 1.0,
+    "co2_removal_nominal_capacity_person_equivalent": 6.75,
+    "oxygen_store_person_days": 90.0,
+    "co2_load_person_equivalent": 5.0,
+    "humidity_state": "nominal",
+    "air_quality_state": "nominal"
+  },
+  "water": {
+    "stored_potable_water_kg": 649.9121527777778,
+    "recovery_fraction": 0.95,
+    "recovery_multiplier": 1.0,
+    "consumption_kg_per_person_day_assumption": 3.2,
+    "other_loss_kg_per_day_assumption": 1.5,
+    "quality_state": "nominal"
+  },
+  "navigation": {
+    "position_km": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "velocity_km_s": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "attitude_error_deg": 0.05,
+    "navigation_uncertainty_km": 14.36,
+    "pointing_performance_multiplier": 1.0,
+    "propulsion_available": true
+  },
+  "communications": {
+    "distance_m": 384400000.0,
+    "availability": 0.65,
+    "data_queue_gb": 28.0,
+    "store_capacity_gb": 120.0,
+    "telemetry_visibility_fraction": 0.928
+  },
+  "radiation": {
+    "environment_index": 1.0,
+    "cumulative_relative_exposure": 0.9166666666666666,
+    "shelter_active": false
+  },
+  "structure": {
+    "health": 1.0,
+    "isolated_rooms": [],
+    "pressure_boundary_state": "nominal"
+  },
+  "crew": {
+    "available_human_crew": 5,
+    "role_training": {
+      "mission_commander": {
+        "roots_and_command_authority": 5,
+        "integrated_spacecraft_systems": 2,
+        "emergency_and_fault_response": 2,
+        "medical_and_physiological_exposure": 1,
+        "human_factors_and_crew_resource_management": 2,
+        "integrated_simulation_qualification": 2,
+        "system:fault_management": 4,
+        "system:gnc": 3,
+        "system:eclss_atmosphere": 3,
+        "system:power_distribution": 3,
+        "system:communications": 3,
+        "system:crew_health_medical": 2
+      },
+      "ai_systems_integrator": {
+        "roots_and_command_authority": 5,
+        "integrated_spacecraft_systems": 2,
+        "emergency_and_fault_response": 2,
+        "medical_and_physiological_exposure": 1,
+        "human_factors_and_crew_resource_management": 2,
+        "integrated_simulation_qualification": 2,
+        "system:avionics_cdh": 5,
+        "system:fault_management": 5,
+        "system:science_payload_and_analysis": 4,
+        "system:power_distribution": 3,
+        "system:thermal_control": 3,
+        "system:gnc": 3
+      },
+      "flight_dynamics_navigation": {
+        "roots_and_command_authority": 5,
+        "integrated_spacecraft_systems": 2,
+        "emergency_and_fault_response": 2,
+        "medical_and_physiological_exposure": 1,
+        "human_factors_and_crew_resource_management": 2,
+        "integrated_simulation_qualification": 2,
+        "system:gnc": 5,
+        "system:reaction_control": 4,
+        "system:main_propulsion": 3,
+        "system:external_sensors": 4,
+        "system:communications": 2,
+        "system:docking_airlock_eva": 3
+      },
+      "vehicle_systems_engineer": {
+        "roots_and_command_authority": 5,
+        "integrated_spacecraft_systems": 2,
+        "emergency_and_fault_response": 2,
+        "medical_and_physiological_exposure": 1,
+        "human_factors_and_crew_resource_management": 2,
+        "integrated_simulation_qualification": 2,
+        "system:electrical_power_generation": 4,
+        "system:energy_storage": 4,
+        "system:power_distribution": 5,
+        "system:thermal_control": 5,
+        "system:primary_structure": 3,
+        "system:eclss_atmosphere": 3,
+        "system:water_and_waste": 3,
+        "system:logistics_maintenance_fabrication": 4
+      },
+      "science_anomaly_specialist": {
+        "roots_and_command_authority": 5,
+        "integrated_spacecraft_systems": 2,
+        "emergency_and_fault_response": 2,
+        "medical_and_physiological_exposure": 1,
+        "human_factors_and_crew_resource_management": 2,
+        "integrated_simulation_qualification": 2,
+        "system:science_payload_and_analysis": 5,
+        "system:external_sensors": 5,
+        "system:robotics_and_probe_operations": 3,
+        "system:radiation_monitoring_and_shelter": 2,
+        "system:avionics_cdh": 2
+      },
+      "communications_data_robotics": {
+        "roots_and_command_authority": 5,
+        "integrated_spacecraft_systems": 2,
+        "emergency_and_fault_response": 2,
+        "medical_and_physiological_exposure": 1,
+        "human_factors_and_crew_resource_management": 2,
+        "integrated_simulation_qualification": 2,
+        "system:communications": 5,
+        "system:avionics_cdh": 4,
+        "system:robotics_and_probe_operations": 4,
+        "system:external_sensors": 3,
+        "system:gnc": 2
+      },
+      "crew_medical_officer": {
+        "roots_and_command_authority": 5,
+        "integrated_spacecraft_systems": 2,
+        "emergency_and_fault_response": 2,
+        "medical_and_physiological_exposure": 1,
+        "human_factors_and_crew_resource_management": 2,
+        "integrated_simulation_qualification": 2,
+        "system:crew_health_medical": 5,
+        "system:eclss_atmosphere": 3,
+        "system:radiation_monitoring_and_shelter": 3,
+        "system:water_and_waste": 2
+      }
+    },
+    "current_workload_by_role": {
+      "mission_commander": 0.82,
+      "ai_systems_integrator": 0.25,
+      "flight_dynamics_navigation": 0.86,
+      "vehicle_systems_engineer": 0.91,
+      "science_anomaly_specialist": 0.25,
+      "communications_data_robotics": 0.25,
+      "crew_medical_officer": 0.25
+    }
+  },
+  "maintenance": {
+    "open_work_orders": [],
+    "spares_index": 1.0,
+    "repair_capacity_person_hours_per_day": 18.0
+  },
+  "command": {
+    "pending_recall": {
+      "reason": "radiator_capacity_loss",
+      "summary": "thermal_control fault requires command review.",
+      "held_irreversible_action": true
+    },
+    "held_irreversible_actions": [
+      {
+        "reason": "data_integrity_risk",
+        "fraction": 0.12,
+        "rule": "Irreversible commands held until state and command provenance are revalidated."
+      }
+    ]
+  },
+  "fault_ledger": [
+    {
+      "failure_mode_id": "navigation_sensor_disagreement",
+      "system_id": "gnc",
+      "criticality": "high",
+      "automatic_response": [
+        "reject_outlier",
+        "increase_uncertainty",
+        "hold_high_consequence_maneuvers"
+      ],
+      "command_level": "command_required",
+      "effects": {
+        "navigation_uncertainty_km_delta": 8.0
+      },
+      "sequence": 1,
+      "mission_elapsed_minutes": 55.0,
+      "previous_fault_hash": null,
+      "fault_hash": "cc9c84bb8f5e7cf5579f168e6dc094d4bd0c08d7d1ccd30d15c2172f32db3504"
+    },
+    {
+      "failure_mode_id": "radiator_capacity_loss",
+      "system_id": "thermal_control",
+      "criticality": "high",
+      "automatic_response": [
+        "reduce_heat_generating_loads",
+        "change_attitude_if_safe",
+        "activate_backup_loop"
+      ],
+      "command_level": "command_required",
+      "effects": {
+        "thermal_capacity_multiplier": 0.55
+      },
+      "sequence": 2,
+      "mission_elapsed_minutes": 55.0,
+      "previous_fault_hash": "cc9c84bb8f5e7cf5579f168e6dc094d4bd0c08d7d1ccd30d15c2172f32db3504",
+      "fault_hash": "81c03af3f8bab8f2b32e8b97cb283aeed3af30f0b4ee366d0a385d4ff7aa0f48"
+    }
+  ],
+  "encounter_ledger": [
+    {
+      "encounter_id": "AMBIGUOUS-THERMAL-RADIO-001",
+      "summary": "Unresolved close object with heat, interference and uncertain geometry.",
+      "observations": [
+        "two optical tracks disagree slightly",
+        "radio noise rises",
+        "no verified intent-bearing pattern"
+      ],
+      "effects": {
+        "external_thermal_load_kw": 8,
+        "electromagnetic_interference_fraction": 0.35,
+        "navigation_uncertainty_km_delta": 6,
+        "data_integrity_risk_fraction": 0.12
+      },
+      "declared_intent": "unknown",
+      "intent_assessment": "unknown",
+      "hostility_inferred_from_damage": false,
+      "command_recall_required": true,
+      "sequence": 1,
+      "mission_elapsed_minutes": 55.0,
+      "previous_encounter_hash": null,
+      "encounter_hash": "a9f184e238a593c16c9c808cdbb38d5445fb2ea5facab70c2b4b6a90cf741add"
+    }
+  ],
+  "state_history": [
+    {
+      "sequence": 1,
+      "mission_elapsed_minutes": 0.0,
+      "reason": "initial_state",
+      "state_summary": {
+        "mode": "nominal",
+        "battery_energy_kwh": 196.8,
+        "cabin_pressure_kpa": 101.3,
+        "stored_potable_water_kg": 650.0,
+        "navigation_uncertainty_km": 0.25,
+        "communications_availability": 1.0,
+        "structure_health": 1.0,
+        "active_fault_count": 0
+      },
+      "previous_history_hash": null,
+      "history_hash": "84595f8d5a20618361360f70d4f8b685f84af95554b28c6229c0518afbf7a559"
+    },
+    {
+      "sequence": 2,
+      "mission_elapsed_minutes": 55.0,
+      "reason": "advance_ship_state",
+      "state_summary": {
+        "mode": "nominal",
+        "battery_energy_kwh": 178.21264,
+        "cabin_pressure_kpa": 101.3,
+        "stored_potable_water_kg": 649.912153,
+        "navigation_uncertainty_km": 0.36,
+        "communications_availability": 1.0,
+        "structure_health": 1.0,
+        "active_fault_count": 0
+      },
+      "previous_history_hash": "84595f8d5a20618361360f70d4f8b685f84af95554b28c6229c0518afbf7a559",
+      "history_hash": "68c4e9a219d340e17fa65a8e04e7f1d578a4eea6dbf46c0d87b9248fbe681c68"
+    },
+    {
+      "sequence": 3,
+      "mission_elapsed_minutes": 55.0,
+      "reason": "apply_encounter:AMBIGUOUS-THERMAL-RADIO-001",
+      "state_summary": {
+        "mode": "nominal",
+        "battery_energy_kwh": 178.21264,
+        "cabin_pressure_kpa": 101.3,
+        "stored_potable_water_kg": 649.912153,
+        "navigation_uncertainty_km": 6.36,
+        "communications_availability": 0.65,
+        "structure_health": 1.0,
+        "active_fault_count": 0
+      },
+      "previous_history_hash": "68c4e9a219d340e17fa65a8e04e7f1d578a4eea6dbf46c0d87b9248fbe681c68",
+      "history_hash": "c3ef6f664aa1c2e4974da7a9888e7d30a372a73896c008042c15cb6b3e601536"
+    },
+    {
+      "sequence": 4,
+      "mission_elapsed_minutes": 55.0,
+      "reason": "apply_failure_mode:navigation_sensor_disagreement",
+      "state_summary": {
+        "mode": "nominal",
+        "battery_energy_kwh": 178.21264,
+        "cabin_pressure_kpa": 101.3,
+        "stored_potable_water_kg": 649.912153,
+        "navigation_uncertainty_km": 14.36,
+        "communications_availability": 0.65,
+        "structure_health": 1.0,
+        "active_fault_count": 1
+      },
+      "previous_history_hash": "c3ef6f664aa1c2e4974da7a9888e7d30a372a73896c008042c15cb6b3e601536",
+      "history_hash": "2c66324cb36d1187a8f07b970fabc2dc07d6b04c44544fbe4e95628a2f787c38"
+    },
+    {
+      "sequence": 5,
+      "mission_elapsed_minutes": 55.0,
+      "reason": "apply_failure_mode:radiator_capacity_loss",
+      "state_summary": {
+        "mode": "nominal",
+        "battery_energy_kwh": 178.21264,
+        "cabin_pressure_kpa": 101.3,
+        "stored_potable_water_kg": 649.912153,
+        "navigation_uncertainty_km": 14.36,
+        "communications_availability": 0.65,
+        "structure_health": 1.0,
+        "active_fault_count": 2
+      },
+      "previous_history_hash": "2c66324cb36d1187a8f07b970fabc2dc07d6b04c44544fbe4e95628a2f787c38",
+      "history_hash": "720d43a5e0c19874d32c81d6a3623894cdd0b98cdba8630aba2e21ec6ff2608a"
+    }
+  ],
+  "assumption_disclosure": {
+    "loads_kw": "simulation_design_assumptions",
+    "water_consumption": "simulation_design_assumption",
+    "oxygen_store": "simulation_design_assumption",
+    "thermal_storage": "simulation_design_assumption",
+    "complete_vehicle_mass": "unknown",
+    "verified_delta_v": "unknown"
+  },
+  "state_hash": "8cb61b2670897c753596262238edb7560dacc7d0e4b531731f5dac9a235e1c1f"
+}

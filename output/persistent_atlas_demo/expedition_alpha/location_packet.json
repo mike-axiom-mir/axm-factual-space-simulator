@@ -1,0 +1,103 @@
+{
+  "schema": "axm.location-export-packet.v1",
+  "map_id": "atlas-9fc4d22bcc70ed0e",
+  "active_location_id": "frontier:56467e7b2de9e83a",
+  "location": {
+    "schema": "axm.atlas-location.v1",
+    "location_id": "frontier:56467e7b2de9e83a",
+    "name": "Mir Arc 7203",
+    "object_class": "generated_stellar_system",
+    "knowledge_class": "procedural_frontier",
+    "coordinates": {
+      "frame": "ICRS-like simulation frame",
+      "epoch": "campaign_origin",
+      "ra_deg": 67.766553914,
+      "dec_deg": 29.68243142,
+      "distance_ly": 1749.869097,
+      "truth_type": "simulation_prior",
+      "source_ids": [
+        "axm_simulation_priors_v1"
+      ],
+      "warning": "This coordinate is a deterministic simulation anchor. It is not a claim that a catalogued system exists here."
+    },
+    "cartesian_ly": {
+      "x_ly": 575.236740895,
+      "y_ly": 1407.225886645,
+      "z_ly": 866.521697679
+    },
+    "distance_ly": {
+      "value": 1749.869097,
+      "truth_type": "simulation_prior",
+      "source_ids": [
+        "axm_simulation_priors_v1"
+      ]
+    },
+    "known_worlds": [
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H"
+    ],
+    "source_ids": [
+      "axm_simulation_priors_v1"
+    ],
+    "system_id": "56467e7b2de9e83a",
+    "system_state_sha256": "3e6f79341d38e4d19f6ddaac7a26768b5962b42a89b394d08816e5c95d388ea0",
+    "catalog_revision": 0,
+    "visit_count": 5,
+    "crew_observations": [
+      {
+        "event_id": "56467e7b2de9e83a:turn:1",
+        "event_hash": "2f76b02eda82b4e8ff0a6557fb6f46033f1e09bbcf08e506eb2f38d3b2b5215a",
+        "turn": 1,
+        "action": "Map dust and small bodies before approaching the planets.",
+        "outcome_id": "quiet-constraint",
+        "outcome_title": "Nothing rises above the current threshold",
+        "truth_type": "expedition_observation",
+        "measurement": null
+      },
+      {
+        "event_id": "56467e7b2de9e83a:turn:2",
+        "event_hash": "422f9095c126e91b08f42b9ccd6e8f4135bf3d8c8be7cb31b6380c6172d797e3",
+        "turn": 2,
+        "action": "Measure the radiation field before resuming science",
+        "outcome_id": "clear-evidence",
+        "outcome_title": "A repeatable result",
+        "truth_type": "expedition_observation",
+        "measurement": null
+      },
+      {
+        "event_id": "56467e7b2de9e83a:turn:3",
+        "event_hash": "26ab3ec8a589184fc7c0ae021f5c2f950b2b5c4d7b9b2b61e8ade113bdeab60b",
+        "turn": 3,
+        "action": "Cross-calibrate the signal against an independent sensor channel",
+        "outcome_id": "unexpected-coupling",
+        "outcome_title": "A second physical variable moves with the first",
+        "truth_type": "expedition_observation",
+        "measurement": null
+      },
+      {
+        "event_id": "56467e7b2de9e83a:turn:4",
+        "event_hash": "b033f9fe60c9458c746f27e21cb5dedd1f74a9d4c5112c575c2d7d7f8c20f0ec",
+        "turn": 4,
+        "action": "Measure the radiation field before resuming science",
+        "outcome_id": "ambiguous-evidence",
+        "outcome_title": "The uncertainty narrows, but survives",
+        "truth_type": "expedition_observation",
+        "measurement": null
+      }
+    ],
+    "render_history": [],
+    "route_status": "active_simulated_expedition",
+    "route_feasibility": {
+      "status": "simulation_contract",
+      "rule": "Travel is resolved by the simulator's ship and mission physics. The coordinate alone grants no capability."
+    },
+    "authoritative_snapshot_sha256": "ff9024dc9934015f5d33caa23a2c160ea577131c7af30bc19d7e1109f2baa31d"
+  },
+  "atlas_visit_chain_head": "7ff1c77f686dfe7b0a93bac13ccc87f12fcf49c76186c3abb5a0aa4960e8e8c8",
+  "packet_sha256": "d1660362da800f8b9e0555a735fb0ca185a11046b09e1c6e2bb7dd2371721cfb"
+}

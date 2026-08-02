@@ -1,0 +1,14 @@
+{
+  "schema": "axm.ship-interior-stress.v1",
+  "states": 180,
+  "room_visits": {
+    "mess_hall": 432,
+    "engineering": 432,
+    "research_strategy": 432,
+    "primary_quarters": 432,
+    "collaborator_quarters": 432
+  },
+  "command_recalls_resolved": 360,
+  "failures": [],
+  "valid": true
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "axm.browser-check.v0.9",
+  "files": [
+    {
+      "file": "output/adventure_slot_demo/slot_manager.html",
+      "scripts": []
+    },
+    {
+      "file": "output/adventure_slot_demo/slots/offline-foundation/session/player_public/player_console.html",
+      "scripts": [
+        {
+          "type": "json",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/adventure_slot_demo/slots/offline-foundation/slot_console.html",
+      "scripts": [
+        {
+          "type": "json",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/adventure_slot_demo/slots/optional-ai-forged/session/player_public/player_console.html",
+      "scripts": [
+        {
+          "type": "json",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "file": "output/adventure_slot_demo/slots/optional-ai-forged/slot_console.html",
+      "scripts": [
+        {
+          "type": "json",
+          "valid": true
+        }
+      ]
+    }
+  ],
+  "valid": true
+}

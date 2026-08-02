@@ -1,0 +1,72 @@
+{
+  "schema": "axm.location-export-packet.v1",
+  "map_id": "atlas-6a455acf6c3cba44",
+  "active_location_id": "frontier:bcf8b49b34fe0990",
+  "location": {
+    "schema": "axm.atlas-location.v1",
+    "location_id": "frontier:bcf8b49b34fe0990",
+    "name": "Orion Reach 4127",
+    "object_class": "generated_stellar_system",
+    "knowledge_class": "procedural_frontier",
+    "coordinates": {
+      "frame": "ICRS-like simulation frame",
+      "epoch": "campaign_origin",
+      "ra_deg": 14.652230773,
+      "dec_deg": 2.44799134,
+      "distance_ly": 1100.022601,
+      "truth_type": "simulation_prior",
+      "source_ids": [
+        "axm_simulation_priors_v1"
+      ],
+      "warning": "This coordinate is a deterministic simulation anchor. It is not a claim that a catalogued system exists here."
+    },
+    "cartesian_ly": {
+      "x_ly": 1063.277518016,
+      "y_ly": 277.998342884,
+      "z_ly": 46.984727596
+    },
+    "distance_ly": {
+      "value": 1100.022601,
+      "truth_type": "simulation_prior",
+      "source_ids": [
+        "axm_simulation_priors_v1"
+      ]
+    },
+    "known_worlds": [
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G"
+    ],
+    "source_ids": [
+      "axm_simulation_priors_v1"
+    ],
+    "system_id": "bcf8b49b34fe0990",
+    "system_state_sha256": "21d7d8a5f9dd18b939914f8f555cf05662ac25bf879d69ef8f7d7bc7dca38de3",
+    "catalog_revision": 0,
+    "visit_count": 2,
+    "crew_observations": [
+      {
+        "event_id": "bcf8b49b34fe0990:turn:1",
+        "event_hash": "fff4e340704b2eabc4a6b91dfed8b6ccc05d6fef4e02d1f91da08cb707abed79",
+        "turn": 1,
+        "action": "Observe from distance using occultation geometry.",
+        "outcome_id": "clear-evidence",
+        "outcome_title": "A repeatable result",
+        "truth_type": "expedition_observation",
+        "measurement": null
+      }
+    ],
+    "render_history": [],
+    "route_status": "active_simulated_expedition",
+    "route_feasibility": {
+      "status": "simulation_contract",
+      "rule": "Travel is resolved by the simulator's ship and mission physics. The coordinate alone grants no capability."
+    },
+    "authoritative_snapshot_sha256": "7fc98270c99cda18c987c5c4f59114cfe5e1dedb6b6f08955ccdff943faacc2c"
+  },
+  "atlas_visit_chain_head": "0e263f9b484a375b9c274645e78e4f68c1391a2eb5f702389e7a30c9cc5ecd72",
+  "packet_sha256": "f1ad4f7d1831698152ad9875ad203835a5375d76e4151bc86bc911520231bfd0"
+}

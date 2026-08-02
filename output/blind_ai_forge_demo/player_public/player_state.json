@@ -1,0 +1,15 @@
+{
+  "schema": "axm.blind-player-state.v1",
+  "commitment_sha256": "4ff4c8303a8326202f19f084911a2a4d895c0732ed4ae70ccb4ed35b6c50c7f7",
+  "turn": 0,
+  "evidence_stage": 0,
+  "claim_ceiling": "No unusual life-related claim is supported.",
+  "tested_channels": [],
+  "independent_confirmations": 0,
+  "false_positive_controls_completed": 0,
+  "mission_time_hours": 0.0,
+  "knowledge_points": 0.0,
+  "status": "active",
+  "last_observation": null,
+  "last_event_hash": "GENESIS"
+}

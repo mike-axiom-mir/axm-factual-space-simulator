@@ -1,0 +1,28 @@
+{
+  "schema": "axm.blind-player-state.v1",
+  "commitment_sha256": "4ff4c8303a8326202f19f084911a2a4d895c0732ed4ae70ccb4ed35b6c50c7f7",
+  "turn": 6,
+  "evidence_stage": 0,
+  "claim_ceiling": "No unusual life-related claim is supported.",
+  "tested_channels": [
+    "general_pattern",
+    "repeatability",
+    "independent_replication",
+    "chemical_complexity",
+    "false_positive_control"
+  ],
+  "independent_confirmations": 0,
+  "false_positive_controls_completed": 1,
+  "mission_time_hours": 98.0,
+  "knowledge_points": 35.26775,
+  "status": "active",
+  "last_observation": {
+    "channel": "independent_replication",
+    "outcome_class": "below_current_detection_threshold",
+    "expected_sensitivity": 0.86,
+    "realized_pattern_strength": 0.321004,
+    "detection_threshold": 0.46,
+    "interpretation": "Nothing exceeded this measurement's threshold. Other channels remain open."
+  },
+  "last_event_hash": "cf788830b5ca87a0509f630b40ff2dffeaf405d3f6740228c16d463c76d1230d"
+}

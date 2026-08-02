@@ -1,0 +1,20 @@
+{
+  "valid": true,
+  "files": [
+    {
+      "file": "output/crew_station_metric_demo/crew_station_console.html",
+      "valid": true,
+      "scripts": [
+        {
+          "type": "json",
+          "valid": true
+        },
+        {
+          "type": "javascript",
+          "valid": true,
+          "output": ""
+        }
+      ]
+    }
+  ]
+}

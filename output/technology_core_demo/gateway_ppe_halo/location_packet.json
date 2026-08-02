@@ -1,0 +1,74 @@
+{
+  "schema": "axm.location-export-packet.v1",
+  "map_id": "atlas-24ee6363667aab95",
+  "active_location_id": "frontier:40dad42079fcce6b",
+  "location": {
+    "schema": "axm.atlas-location.v1",
+    "location_id": "frontier:40dad42079fcce6b",
+    "name": "Orion Drift 7787",
+    "object_class": "generated_stellar_system",
+    "knowledge_class": "procedural_frontier",
+    "coordinates": {
+      "frame": "ICRS-like simulation frame",
+      "epoch": "campaign_origin",
+      "ra_deg": 143.651279814,
+      "dec_deg": 78.86747759,
+      "distance_ly": 501.967827,
+      "truth_type": "simulation_prior",
+      "source_ids": [
+        "axm_simulation_priors_v1"
+      ],
+      "warning": "This coordinate is a deterministic simulation anchor. It is not a claim that a catalogued system exists here."
+    },
+    "cartesian_ly": {
+      "x_ly": -78.061280355,
+      "y_ly": 57.443969884,
+      "z_ly": 492.522411523
+    },
+    "distance_ly": {
+      "value": 501.967827,
+      "truth_type": "simulation_prior",
+      "source_ids": [
+        "axm_simulation_priors_v1"
+      ]
+    },
+    "known_worlds": [
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I"
+    ],
+    "source_ids": [
+      "axm_simulation_priors_v1"
+    ],
+    "system_id": "40dad42079fcce6b",
+    "system_state_sha256": "3ab653e0ca9624ad602246fedf01cd63596e42aa88411a61438a01f0edfb4460",
+    "catalog_revision": 0,
+    "visit_count": 2,
+    "crew_observations": [
+      {
+        "event_id": "40dad42079fcce6b:turn:1",
+        "event_hash": "2e3d65e034886b9eb487b3922ff4d776b9d13d3c22507d7d25d7af2a35ab333d",
+        "turn": 1,
+        "action": "Map dust and small bodies before approaching the planets.",
+        "outcome_id": "ambiguous-evidence",
+        "outcome_title": "The uncertainty narrows, but survives",
+        "truth_type": "expedition_observation",
+        "measurement": null
+      }
+    ],
+    "render_history": [],
+    "route_status": "active_simulated_expedition",
+    "route_feasibility": {
+      "status": "simulation_contract",
+      "rule": "Travel is resolved by the simulator's ship and mission physics. The coordinate alone grants no capability."
+    },
+    "authoritative_snapshot_sha256": "a52d2197cd63c64f0c99e9bfdc43ff7ac2c8f1f6dfa38c0db54c2590285ea922"
+  },
+  "atlas_visit_chain_head": "84f11a5118736404c0a8164d1866d3059ed785a14439eda7f0d7fe48b5622b11",
+  "packet_sha256": "2fe8d37f65d61a3c193dcd8075eeeb6e95946d9e624826ff5cf49e2841c47e88"
+}

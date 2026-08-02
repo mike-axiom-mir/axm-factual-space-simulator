@@ -1,0 +1,218 @@
+{
+  "schema": "axm.future-potential-backlog.v1",
+  "registry_version": "0.15.0",
+  "selection_rule": "Prioritize foundations that increase causal depth, long-duration integrity, and principled autonomy before visual spectacle.",
+  "items": [
+    {
+      "id": "FUTURE-001",
+      "title": "Compartment fluid and atmosphere network",
+      "priority": "high",
+      "proposal": "Replace the lumped cabin model with room-level gas, pressure, ventilation and isolation nodes.",
+      "dependencies": [
+        "ship interior",
+        "ECLSS",
+        "fault management"
+      ],
+      "potential": "Leaks, smoke and contamination become spatial rather than global.",
+      "primary_risk_boundary": "Keep human-health interpretation bounded and validate conservation.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "FUTURE-002",
+      "title": "Full navigation covariance and geometry",
+      "priority": "high",
+      "proposal": "Add covariance matrices, relative-motion geometry and optional SPICE adapters.",
+      "dependencies": [
+        "GNC",
+        "sensor registry",
+        "atlas"
+      ],
+      "potential": "Encounters and rendezvous gain realistic uncertainty ellipsoids and closing geometry.",
+      "primary_risk_boundary": "Do not imply precision unsupported by ephemeris or sensor data.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "FUTURE-003",
+      "title": "Procedure and checklist engine",
+      "priority": "high",
+      "proposal": "Bind alerts and failure modes to versioned, role-authorized procedures with hold points.",
+      "dependencies": [
+        "station displays",
+        "fault registry",
+        "qualification"
+      ],
+      "potential": "Crew can train, execute and review realistic procedures.",
+      "primary_risk_boundary": "Procedures must not invent a successful repair or bypass command authority.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "FUTURE-004",
+      "title": "Damage topology and repair graph",
+      "priority": "high",
+      "proposal": "Represent components, lines, buses, zones, access paths, spares and repair dependencies.",
+      "dependencies": [
+        "ship interface graph",
+        "maintenance",
+        "rooms"
+      ],
+      "potential": "Damage produces local consequences and meaningful repair expeditions.",
+      "primary_risk_boundary": "Avoid fake component specificity until source-pinned or clearly assumed.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "FUTURE-005",
+      "title": "Effects-first tactical encounter geometry",
+      "priority": "high",
+      "proposal": "Model detection, relative geometry, maneuver, occlusion, power, heat, communications and damage propagation.",
+      "dependencies": [
+        "GNC",
+        "sensors",
+        "ship systems",
+        "encounters"
+      ],
+      "potential": "Supports tense conflict, rescue and avoidance without arbitrary hit points.",
+      "primary_risk_boundary": "No real-world weapon-construction instructions; intent remains evidence-bounded.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "FUTURE-006",
+      "title": "Multi-ship and docking registry",
+      "priority": "medium",
+      "proposal": "Add independent ship archetypes, compatible interfaces, transfer manifests and shared events.",
+      "dependencies": [
+        "migration policy",
+        "start registries",
+        "docking"
+      ],
+      "potential": "Allows fleets, visitors, rescue craft and radically different starting ships.",
+      "primary_risk_boundary": "Each ship keeps independent authority, resources and history.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "FUTURE-007",
+      "title": "Crew procedure learning and cross-training",
+      "priority": "medium",
+      "proposal": "Turn competency evidence into scheduled simulations, supervised tasks and cross-role qualification.",
+      "dependencies": [
+        "competency ledger",
+        "procedures",
+        "rooms"
+      ],
+      "potential": "Crew evolution becomes visible through actual work rather than XP.",
+      "primary_risk_boundary": "Learning pressure never automatically promotes skill.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "FUTURE-008",
+      "title": "Long-duration soak and corruption laboratory",
+      "priority": "high",
+      "proposal": "Run millions of deterministic turns, randomized save/reload, partial-write and corruption tests.",
+      "dependencies": [
+        "all ledgers",
+        "migration",
+        "handoff doctor"
+      ],
+      "potential": "Proves whether the world survives long campaigns and interrupted local operation.",
+      "primary_risk_boundary": "Store reproducible failure seeds and do not hide flaky cases.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "FUTURE-009",
+      "title": "Instrument plugin library",
+      "priority": "medium",
+      "proposal": "Register real and hypothetical-bounded instruments with calibration, noise and observation channels.",
+      "dependencies": [
+        "science station",
+        "source registry",
+        "evidence ladder"
+      ],
+      "potential": "Planets and anomalies can be studied through distinct factual tools.",
+      "primary_risk_boundary": "Instrument capability must be source-pinned or assumption-labelled.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "FUTURE-010",
+      "title": "Holodeck and renderer adapter contract",
+      "priority": "medium",
+      "proposal": "Allow 2D, 2.5D, 3D and cinematic renderers to consume immutable room, ship and event semantics.",
+      "dependencies": [
+        "bridge lock",
+        "room graph",
+        "migration policy"
+      ],
+      "potential": "Graphics can improve dramatically without rewriting expedition history.",
+      "primary_risk_boundary": "Renderer never becomes world authority.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "FUTURE-011",
+      "title": "Coexisting Village shared inhabitant kernel",
+      "priority": "high",
+      "proposal": "Port rooted option eligibility, role authority, provenance, learning evidence and append-only relationships into the village.",
+      "dependencies": [
+        "four roots",
+        "competency",
+        "resource ownership"
+      ],
+      "potential": "Tests the same principled autonomy in a social and economic world.",
+      "primary_risk_boundary": "Avoid reducing inhabitants to utility optimizers or hidden morality scores.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "FUTURE-012",
+      "title": "Local authoritative multiplayer host",
+      "priority": "medium",
+      "proposal": "Synchronize human and machine participants through deterministic intent packets and signed state updates.",
+      "dependencies": [
+        "save slots",
+        "command modes",
+        "network adapter"
+      ],
+      "potential": "Friends can join expeditions without giving clients world authority.",
+      "primary_risk_boundary": "Offline single-player remains complete; networking is optional.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "FUTURE-013",
+      "title": "Scientific source refresh pipeline",
+      "priority": "medium",
+      "proposal": "Import reviewed official catalog snapshots while preserving previous revisions and source dates.",
+      "dependencies": [
+        "source registry",
+        "atlas",
+        "technology cores"
+      ],
+      "potential": "Factual baselines can improve without silently changing old saves.",
+      "primary_risk_boundary": "No live source may overwrite pinned historical facts.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "FUTURE-014",
+      "title": "Private medical and wellbeing boundary",
+      "priority": "medium",
+      "proposal": "Separate private crew reports, task-fitness decisions and public operational consequences.",
+      "dependencies": [
+        "medical station",
+        "agency root",
+        "privacy policy"
+      ],
+      "potential": "Crew wellbeing can matter without exposing private narratives to every subsystem.",
+      "primary_risk_boundary": "No fake mind score and no medical diagnosis without a validated model.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "FUTURE-015",
+      "title": "Autonomous crew sandbox and counterfactual rehearsal",
+      "priority": "high",
+      "proposal": "Let crew test proposed actions in cloned state branches before requesting execution.",
+      "dependencies": [
+        "rooted reasoning",
+        "ship state",
+        "command gates"
+      ],
+      "potential": "Clever autonomy gains foresight without experimenting on canonical reality.",
+      "primary_risk_boundary": "Counterfactual outcomes remain simulations and may not be presented as observed facts.",
+      "status": "IDEA_NOT_IMPLEMENTED"
+    }
+  ]
+}

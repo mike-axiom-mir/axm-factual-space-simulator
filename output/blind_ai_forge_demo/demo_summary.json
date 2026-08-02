@@ -1,0 +1,11 @@
+{
+  "schema": "axm.blind-forge-demo.v1",
+  "system_id": "c995dc1a8702b58b",
+  "system_name": "Iona Crown 2293",
+  "commitment": "4ff4c8303a8326202f19f084911a2a4d895c0732ed4ae70ccb4ed35b6c50c7f7",
+  "player_public": "output/blind_ai_forge_demo/player_public",
+  "forge_private": "output/blind_ai_forge_demo/forge_private",
+  "sample_actions": [],
+  "reveal_verification": null,
+  "handoff_rule": "Give only player_public to the exploring AI or human."
+}

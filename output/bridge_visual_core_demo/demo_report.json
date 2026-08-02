@@ -1,0 +1,2171 @@
+{
+  "schema": "axm.bridge-visual-core-demo.v1",
+  "start_package": {
+    "schema": "axm.ship-start-package.v1",
+    "bridge_archetype": {
+      "id": "axm.bridge.frontier-survey.v1",
+      "version": 1,
+      "status": "CANON_FIRST_START",
+      "display_name": "Frontier Survey Bridge",
+      "scope": "First of many possible vessels and bridge starts.",
+      "room_grammar": {
+        "room_shape": "wide_forward_command_deck",
+        "default_camera_anchor": "rear_center_wide",
+        "alternate_camera_anchors": [
+          "human_command_seat",
+          "ai_collaborator_seat",
+          "science_station",
+          "engineering_station",
+          "navigation_station",
+          "communications_station"
+        ],
+        "dominant_world_view": {
+          "anchor_id": "forward_world_screen",
+          "wall": "front",
+          "minimum_viewport_share": 0.42,
+          "modes": [
+            "forward_observation",
+            "orbital_map",
+            "sensor_composite",
+            "probe_feed",
+            "communications",
+            "causal_reconstruction"
+          ]
+        },
+        "command_zone": {
+          "anchor_id": "command_duet",
+          "position": "center",
+          "seats": [
+            {
+              "id": "human_or_primary_explorer",
+              "role": "primary_explorer",
+              "visibility_required": true
+            },
+            {
+              "id": "ai_or_secondary_collaborator",
+              "role": "collaborating_explorer",
+              "visibility_required": true
+            }
+          ],
+          "empty_seat_policy": "Seat remains spatially present and may show remote, absent, autonomous, or unoccupied state."
+        },
+        "crew_stations": [
+          {
+            "id": "navigation",
+            "side": "front_left",
+            "visible": true
+          },
+          {
+            "id": "science",
+            "side": "left",
+            "visible": true
+          },
+          {
+            "id": "engineering",
+            "side": "right",
+            "visible": true
+          },
+          {
+            "id": "communications",
+            "side": "front_right",
+            "visible": true
+          }
+        ],
+        "rear_zone": {
+          "visible_depth_required": true,
+          "allowed_uses": [
+            "access_path",
+            "auxiliary_systems",
+            "mission_archive",
+            "crew_entry"
+          ]
+        },
+        "diegetic_ui": {
+          "primary_surfaces": [
+            "forward_world_screen",
+            "seat_consoles",
+            "crew_station_consoles",
+            "overhead_status_strip",
+            "room_alert_lighting"
+          ],
+          "web_chrome_allowed": false,
+          "debug_overlay_allowed": true,
+          "debug_overlay_default": "hidden"
+        }
+      },
+      "low_fidelity_profile": {
+        "minimum_shapes": [
+          "room_outline",
+          "deck_plane",
+          "forward_screen_rectangle",
+          "two_command_chairs",
+          "four_crew_station_markers",
+          "crew_silhouettes_or_icons",
+          "screen_glow",
+          "station_highlight_states"
+        ],
+        "minimum_motion": [
+          "subtle_panel_blink",
+          "screen_update",
+          "active_station_highlight"
+        ],
+        "textures_required": false,
+        "3d_required": false,
+        "character_animation_required": false
+      },
+      "semantic_anchors": [
+        "forward_world_screen",
+        "command_duet",
+        "human_or_primary_explorer",
+        "ai_or_secondary_collaborator",
+        "navigation",
+        "science",
+        "engineering",
+        "communications"
+      ],
+      "renderer_freedom": [
+        "paint",
+        "pixel",
+        "vector",
+        "2.5d",
+        "3d",
+        "cinematic",
+        "holodeck_reconstruction"
+      ]
+    },
+    "timeline_start": {
+      "id": "axm.timeline.near-future-factual.v1",
+      "version": 1,
+      "status": "CANON_FIRST_START",
+      "display_name": "Near-Future Factual Expedition",
+      "description": "Begins from source-pinned human space technology and expands only through derived, simulated, or theoretical layers with explicit truth labels.",
+      "allowed_bridge_archetypes": [
+        "axm.bridge.frontier-survey.v1"
+      ],
+      "technology_policy": "source_pinned_and_unknowns_preserved",
+      "universe_policy": "catalog_space_plus_labeled_frontier_space",
+      "contact_policy": "long_horizon_evidence_gated"
+    },
+    "crew_start": {
+      "id": "axm.crew.first-expedition.v1",
+      "version": 1,
+      "status": "CANON_FIRST_START",
+      "display_name": "First Expedition Crew",
+      "description": "A visible deterministic crew with a primary explorer and AI collaborator sharing the command zone.",
+      "command_presence": [
+        {
+          "seat_anchor": "human_or_primary_explorer",
+          "occupant_type": "human_or_machine_primary",
+          "inherits_root_kernel": "axm.roots.main-four.v1",
+          "root_override_authority": false,
+          "qualification_profile_id": "mission_commander"
+        },
+        {
+          "seat_anchor": "ai_or_secondary_collaborator",
+          "occupant_type": "ai_or_human_collaborator",
+          "inherits_root_kernel": "axm.roots.main-four.v1",
+          "root_override_authority": false,
+          "qualification_profile_id": "ai_systems_integrator"
+        }
+      ],
+      "crew_roles": [
+        {
+          "station_anchor": "navigation",
+          "role": "navigation",
+          "inherits_root_kernel": "axm.roots.main-four.v1",
+          "root_override_authority": false,
+          "qualification_profile_id": "flight_dynamics_navigation"
+        },
+        {
+          "station_anchor": "science",
+          "role": "science",
+          "inherits_root_kernel": "axm.roots.main-four.v1",
+          "root_override_authority": false,
+          "qualification_profile_id": "science_anomaly_specialist"
+        },
+        {
+          "station_anchor": "engineering",
+          "role": "engineering",
+          "inherits_root_kernel": "axm.roots.main-four.v1",
+          "root_override_authority": false,
+          "qualification_profile_id": "vehicle_systems_engineer"
+        },
+        {
+          "station_anchor": "communications",
+          "role": "communications",
+          "inherits_root_kernel": "axm.roots.main-four.v1",
+          "root_override_authority": false,
+          "qualification_profile_id": "communications_data_robotics"
+        }
+      ],
+      "visibility_policy": "All active seats and stations remain spatially represented even when represented by simple symbols.",
+      "root_kernel_binding": {
+        "kernel_id": "axm.roots.main-four.v1",
+        "kernel_version": 1,
+        "root_commitment_sha256": "01e6c42e4cfc6d8b7ea7999ddf9c29282d6d19722ef934d7c2e9ca095911a8f5",
+        "binding": "IMMUTABLE_MAINLINE",
+        "applies_to": [
+          "every deterministic crew seat",
+          "autonomous crew action generation",
+          "crew assessments",
+          "AI command proposals before execution",
+          "human command validity checks before execution",
+          "collaborative command",
+          "away-from-deck autonomy",
+          "crew evolution and derived principles"
+        ],
+        "override_policy": "No seat, commander, vote, model, efficiency score, update, or visual layer can alter or bypass the roots."
+      },
+      "perspective_order": [
+        "truth_source_truth",
+        "continuity_no_loss",
+        "agency_no_takeover",
+        "wisdom_over_speed",
+        "role_and_context",
+        "legitimate_options",
+        "long_term_consequences",
+        "efficiency_within_eligible_options"
+      ],
+      "evolution_policy": "Principles, practices, and strategies grow outward from immutable roots. Evolution is tested for root continuity rather than restrained by an unrelated after-the-fact guard.",
+      "secondary_assignments": [
+        {
+          "qualification_profile_id": "crew_medical_officer",
+          "default_holder_role": "science_anomaly_specialist",
+          "reassignment_allowed": true,
+          "training_required": true
+        }
+      ],
+      "ship_blueprint_id": "axm.ship.frontier-survey-stack.v1"
+    },
+    "ship_interior": {
+      "id": "axm.interior.frontier-survey.v1",
+      "version": 1,
+      "status": "CANON_FIRST_START",
+      "display_name": "Frontier Survey Interior",
+      "bridge_archetype_id": "axm.bridge.frontier-survey.v1",
+      "scope": "First ship interior; future vessels register independent room graphs.",
+      "default_room_id": "command_deck",
+      "default_continuity_mode": "realistic_continuity",
+      "rooms": [
+        {
+          "id": "command_deck",
+          "display_name": "Command Deck",
+          "room_type": "command",
+          "purpose": [
+            "navigation",
+            "live encounters",
+            "mission-critical decisions",
+            "crew command",
+            "command voting",
+            "recall resolution"
+          ],
+          "adjacent_rooms": [
+            "central_corridor"
+          ],
+          "visible_participants": [
+            "primary_explorer",
+            "ai_collaborator",
+            "navigation_crew",
+            "science_crew",
+            "engineering_crew",
+            "communications_crew"
+          ],
+          "interaction_ids": [
+            "review_command_queue",
+            "set_expedition_posture",
+            "resolve_command_recall"
+          ],
+          "ship_system_bindings": [
+            "gnc",
+            "avionics_cdh",
+            "communications",
+            "fault_management",
+            "external_sensors"
+          ]
+        },
+        {
+          "id": "central_corridor",
+          "display_name": "Central Corridor",
+          "room_type": "transit",
+          "purpose": [
+            "spatial continuity",
+            "room-to-room travel",
+            "ship alerts"
+          ],
+          "adjacent_rooms": [
+            "command_deck",
+            "mess_hall",
+            "engineering",
+            "research_strategy",
+            "primary_quarters",
+            "collaborator_quarters"
+          ],
+          "visible_participants": [
+            "transiting_crew"
+          ],
+          "interaction_ids": [
+            "review_ship_directory"
+          ],
+          "ship_system_bindings": [
+            "primary_structure",
+            "fire_and_emergency_response",
+            "eclss_atmosphere"
+          ]
+        },
+        {
+          "id": "mess_hall",
+          "display_name": "Mess Hall",
+          "room_type": "crew_life",
+          "purpose": [
+            "meals",
+            "informal debrief",
+            "crew-reported wellbeing",
+            "supply review",
+            "relationship continuity"
+          ],
+          "adjacent_rooms": [
+            "central_corridor"
+          ],
+          "visible_participants": [
+            "available_crew",
+            "primary_explorer",
+            "ai_collaborator"
+          ],
+          "interaction_ids": [
+            "review_consumable_duration",
+            "crew_debrief",
+            "informal_hypothesis_exchange",
+            "record_crew_wellbeing_report"
+          ],
+          "ship_system_bindings": [
+            "water_and_waste",
+            "eclss_atmosphere",
+            "crew_health_medical"
+          ]
+        },
+        {
+          "id": "engineering",
+          "display_name": "Engineering",
+          "room_type": "technical",
+          "purpose": [
+            "power review",
+            "thermal review",
+            "repair",
+            "sensor calibration",
+            "fabrication",
+            "radiation-risk review"
+          ],
+          "adjacent_rooms": [
+            "central_corridor"
+          ],
+          "visible_participants": [
+            "engineering_crew",
+            "primary_explorer",
+            "ai_collaborator"
+          ],
+          "interaction_ids": [
+            "inspect_power_balance",
+            "review_thermal_margin",
+            "estimate_repair_duration",
+            "calibrate_sensor",
+            "fabricate_room_item",
+            "review_radiation_risk_index"
+          ],
+          "ship_system_bindings": [
+            "electrical_power_generation",
+            "energy_storage",
+            "power_distribution",
+            "thermal_control",
+            "main_propulsion",
+            "reaction_control",
+            "eclss_atmosphere",
+            "water_and_waste",
+            "logistics_maintenance_fabrication",
+            "fault_management"
+          ]
+        },
+        {
+          "id": "research_strategy",
+          "display_name": "Research and Strategy Room",
+          "room_type": "analysis",
+          "purpose": [
+            "encounter analysis",
+            "planetary research",
+            "anomaly investigation",
+            "strategy",
+            "evidence comparison",
+            "control-test design"
+          ],
+          "adjacent_rooms": [
+            "central_corridor"
+          ],
+          "visible_participants": [
+            "science_crew",
+            "mission_specialists",
+            "primary_explorer",
+            "ai_collaborator"
+          ],
+          "interaction_ids": [
+            "compare_hypotheses",
+            "design_control_test",
+            "review_planetary_case",
+            "review_signal_case",
+            "build_mission_strategy"
+          ],
+          "ship_system_bindings": [
+            "science_payload_and_analysis",
+            "external_sensors",
+            "robotics_and_probe_operations"
+          ]
+        },
+        {
+          "id": "primary_quarters",
+          "display_name": "Primary Explorer Quarters",
+          "room_type": "personal",
+          "purpose": [
+            "private logs",
+            "rest",
+            "artifact display",
+            "room customization",
+            "personal inventory"
+          ],
+          "adjacent_rooms": [
+            "central_corridor"
+          ],
+          "visible_participants": [
+            "primary_explorer",
+            "invited_collaborator"
+          ],
+          "interaction_ids": [
+            "review_private_log",
+            "rest_cycle",
+            "display_provenanced_item",
+            "rearrange_room_items",
+            "design_personal_item"
+          ],
+          "ship_system_bindings": [
+            "crew_health_medical",
+            "radiation_monitoring_and_shelter"
+          ]
+        },
+        {
+          "id": "collaborator_quarters",
+          "display_name": "AI Collaborator Quarters",
+          "room_type": "personal_machine",
+          "purpose": [
+            "collaborator continuity",
+            "private working notes",
+            "artifact display",
+            "simulation review",
+            "room customization"
+          ],
+          "adjacent_rooms": [
+            "central_corridor"
+          ],
+          "visible_participants": [
+            "ai_collaborator",
+            "invited_primary_explorer"
+          ],
+          "interaction_ids": [
+            "review_collaborator_log",
+            "offline_alternative_review",
+            "display_provenanced_item",
+            "rearrange_room_items",
+            "design_personal_item"
+          ],
+          "ship_system_bindings": [
+            "avionics_cdh",
+            "fault_management",
+            "science_payload_and_analysis"
+          ]
+        }
+      ],
+      "travel_time_minutes": {
+        "command_deck|central_corridor": 1,
+        "central_corridor|mess_hall": 2,
+        "central_corridor|engineering": 2,
+        "central_corridor|research_strategy": 2,
+        "central_corridor|primary_quarters": 2,
+        "central_corridor|collaborator_quarters": 2
+      },
+      "semantic_rules": [
+        "rooms remain spatially connected",
+        "room focus does not become a generic website",
+        "future rooms require a new interior version or archetype",
+        "existing saves pin room graph and interaction versions",
+        "personal rooms may change appearance without changing recorded history"
+      ],
+      "ship_blueprint_id": "axm.ship.frontier-survey-stack.v1"
+    },
+    "ship_blueprint": {
+      "id": "axm.ship.frontier-survey-stack.v1",
+      "version": 1,
+      "status": "CANON_FIRST_SYSTEM_BLUEPRINT",
+      "display_name": "Frontier Survey Modular Expedition Ship",
+      "scope": "Simulation and engineering reference architecture, not a manufactured or flight-certified spacecraft.",
+      "bridge_archetype_id": "axm.bridge.frontier-survey.v1",
+      "interior_archetype_id": "axm.interior.frontier-survey.v1",
+      "crew_start_id": "axm.crew.first-expedition.v1",
+      "root_kernel_id": "axm.roots.main-four.v1",
+      "technology_lineages": [
+        "orion_esm_crew_transport",
+        "gateway_ppe_halo"
+      ],
+      "modules": [
+        {
+          "id": "forward_command_habitat",
+          "contains_rooms": [
+            "command_deck",
+            "research_strategy",
+            "primary_quarters",
+            "collaborator_quarters"
+          ],
+          "functions": [
+            "command",
+            "analysis",
+            "crew continuity"
+          ]
+        },
+        {
+          "id": "central_habitation_core",
+          "contains_rooms": [
+            "central_corridor",
+            "mess_hall"
+          ],
+          "functions": [
+            "crew life",
+            "logistics",
+            "storm shelter access"
+          ]
+        },
+        {
+          "id": "engineering_service_module",
+          "contains_rooms": [
+            "engineering"
+          ],
+          "functions": [
+            "power distribution",
+            "thermal control",
+            "maintenance",
+            "life support"
+          ]
+        },
+        {
+          "id": "power_propulsion_element",
+          "contains_rooms": [],
+          "functions": [
+            "solar power generation",
+            "main propulsion",
+            "communications",
+            "attitude control"
+          ]
+        },
+        {
+          "id": "docking_probe_node",
+          "contains_rooms": [],
+          "functions": [
+            "docking",
+            "airlock",
+            "robotics",
+            "probe deployment"
+          ]
+        }
+      ],
+      "design_points": {
+        "human_crew_active": {
+          "value": 5,
+          "unit": "persons",
+          "truth_type": "simulation_design_assumption",
+          "rationale": "Commander plus four human station specialists.",
+          "source_ids": []
+        },
+        "ai_collaborator_seats": {
+          "value": 1,
+          "unit": "computational_collaborator",
+          "truth_type": "simulation_design_assumption",
+          "rationale": "Persistent room and command seat, no human metabolic load.",
+          "source_ids": []
+        },
+        "maximum_human_berths": {
+          "value": 6,
+          "unit": "persons",
+          "truth_type": "simulation_design_assumption",
+          "rationale": "One contingency berth above active human crew.",
+          "source_ids": []
+        },
+        "nominal_power_source_kw": {
+          "value": 60.0,
+          "unit": "kW",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_gateway_reference_2026",
+            "nasa_gateway_power_on_2026"
+          ],
+          "note": "Nameplate lineage reference, not payload-available power."
+        },
+        "integrated_wet_mass_kg": {
+          "value": null,
+          "unit": "kg",
+          "truth_type": "unknown",
+          "reason": "No verified integrated mass statement.",
+          "source_ids": []
+        },
+        "verified_delta_v_m_s": {
+          "value": null,
+          "unit": "m/s",
+          "truth_type": "unknown",
+          "reason": "Mass, propellant, Isp, thrust, and reserves are not pinned.",
+          "source_ids": []
+        },
+        "verified_mission_duration_days": {
+          "value": null,
+          "unit": "days",
+          "truth_type": "unknown",
+          "reason": "Depends on life support, maintenance, radiation, spares, mission and abort profile.",
+          "source_ids": []
+        }
+      },
+      "systems": [
+        {
+          "id": "primary_structure",
+          "display_name": "Primary Structure and Pressure Hull",
+          "category": "structure",
+          "criticality": "crew_survival",
+          "functions": [
+            "carry loads",
+            "maintain pressure boundary",
+            "provide attachment points",
+            "transfer docking and propulsion loads",
+            "preserve compartment geometry"
+          ],
+          "room_bindings": [
+            "all_pressurized_rooms",
+            "engineering"
+          ],
+          "inputs": [
+            "mechanical_loads",
+            "pressure_differential",
+            "temperature_field",
+            "impact_events"
+          ],
+          "outputs": [
+            "structural_margin",
+            "pressure_boundary_status",
+            "alignment_status"
+          ],
+          "parameters": {
+            "pressurized_volume_m3": {
+              "value": 185.0,
+              "unit": "m3",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Replaceable first-ship gameplay baseline; not a real vehicle dimension.",
+              "source_ids": [],
+              "bounds": [
+                80,
+                400
+              ]
+            },
+            "nominal_cabin_pressure_kpa": {
+              "value": 101.3,
+              "unit": "kPa",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Earth-like demo baseline; mission profiles may choose other validated atmospheres.",
+              "source_ids": [],
+              "bounds": [
+                55,
+                110
+              ]
+            },
+            "dry_mass_kg": {
+              "value": null,
+              "unit": "kg",
+              "truth_type": "unknown",
+              "reason": "No integrated structural and mass design exists.",
+              "source_ids": []
+            },
+            "rated_acceleration_m_s2": {
+              "value": null,
+              "unit": "m/s2",
+              "truth_type": "unknown",
+              "reason": "Requires verified structural loads and propulsion configuration.",
+              "source_ids": []
+            }
+          },
+          "dependencies": [
+            "thermal_control",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_onboard_systems_2026",
+            "nasa_systems_engineering_handbook_2023",
+            "nasa_rm_standard_2017"
+          ]
+        },
+        {
+          "id": "mmod_and_external_protection",
+          "display_name": "Micrometeoroid, Debris, and External Protection",
+          "category": "protection",
+          "criticality": "crew_survival",
+          "functions": [
+            "reduce penetration probability",
+            "localize damage",
+            "impact detection",
+            "support collision avoidance"
+          ],
+          "room_bindings": [
+            "external_hull",
+            "command_deck",
+            "engineering"
+          ],
+          "inputs": [
+            "environment_model",
+            "relative_velocity",
+            "particle_size",
+            "impact_angle"
+          ],
+          "outputs": [
+            "impact_risk_index",
+            "shield_status",
+            "penetration_alarm"
+          ],
+          "parameters": {
+            "shield_areal_density_kg_m2": {
+              "value": null,
+              "unit": "kg/m2",
+              "truth_type": "unknown",
+              "reason": "Requires selected shield configuration and threat environment.",
+              "source_ids": []
+            },
+            "tracked_conjunction_avoidance_enabled": {
+              "value": true,
+              "unit": "boolean",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Simulator supports detected conjunctions; detection is environment-dependent.",
+              "source_ids": []
+            }
+          },
+          "dependencies": [
+            "primary_structure",
+            "gnc",
+            "external_sensors",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_mmod_2026"
+          ]
+        },
+        {
+          "id": "electrical_power_generation",
+          "display_name": "Electrical Power Generation",
+          "category": "power",
+          "criticality": "crew_survival",
+          "functions": [
+            "convert solar energy",
+            "track source availability",
+            "support array pointing and isolation"
+          ],
+          "room_bindings": [
+            "engineering",
+            "external_arrays"
+          ],
+          "inputs": [
+            "solar_flux_ratio",
+            "array_orientation",
+            "array_health"
+          ],
+          "outputs": [
+            "generated_power_kw",
+            "array_temperature",
+            "source_availability"
+          ],
+          "parameters": {
+            "reference_nameplate_power_kw": {
+              "value": 60.0,
+              "unit": "kW",
+              "truth_type": "catalog_fact",
+              "source_ids": [
+                "nasa_gateway_reference_2026",
+                "nasa_gateway_power_on_2026"
+              ],
+              "note": "Gateway PPE lineage reference; not all power is payload-available."
+            },
+            "nominal_availability_fraction": {
+              "value": 0.86,
+              "unit": "fraction",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Models pointing, conversion, degradation, reserve, and losses.",
+              "source_ids": [],
+              "bounds": [
+                0,
+                1
+              ]
+            },
+            "minimum_safe_generation_kw": {
+              "value": 21.0,
+              "unit": "kW",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "First-ship safe-state load estimate.",
+              "source_ids": [],
+              "bounds": [
+                5,
+                60
+              ]
+            }
+          },
+          "dependencies": [
+            "gnc",
+            "thermal_control",
+            "power_distribution",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_onboard_systems_2026",
+            "nasa_gateway_reference_2026",
+            "nasa_gateway_power_on_2026",
+            "nasa_deep_space_standards_2026"
+          ]
+        },
+        {
+          "id": "energy_storage",
+          "display_name": "Energy Storage",
+          "category": "power",
+          "criticality": "crew_survival",
+          "functions": [
+            "bridge eclipses and transients",
+            "support peak loads",
+            "safe-state energy",
+            "track state of charge"
+          ],
+          "room_bindings": [
+            "engineering",
+            "battery_bay"
+          ],
+          "inputs": [
+            "charge_power_kw",
+            "discharge_power_kw",
+            "temperature",
+            "cycle_count"
+          ],
+          "outputs": [
+            "state_of_charge",
+            "available_energy_kwh",
+            "battery_health"
+          ],
+          "parameters": {
+            "usable_capacity_kwh": {
+              "value": 240.0,
+              "unit": "kWh",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Simulation baseline for eclipse and fault decisions.",
+              "source_ids": [],
+              "bounds": [
+                40,
+                800
+              ]
+            },
+            "round_trip_efficiency": {
+              "value": 0.9,
+              "unit": "fraction",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Generic bounded simulation value.",
+              "source_ids": [],
+              "bounds": [
+                0.5,
+                1
+              ]
+            },
+            "minimum_reserve_fraction": {
+              "value": 0.2,
+              "unit": "fraction",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Operational reserve policy.",
+              "source_ids": [],
+              "bounds": [
+                0.05,
+                0.6
+              ]
+            }
+          },
+          "dependencies": [
+            "power_distribution",
+            "thermal_control",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_onboard_systems_2026",
+            "nasa_deep_space_standards_2026"
+          ]
+        },
+        {
+          "id": "power_distribution",
+          "display_name": "Power Conversion and Distribution",
+          "category": "power",
+          "criticality": "crew_survival",
+          "functions": [
+            "allocate power by priority",
+            "isolate failed branches",
+            "convert bus voltage",
+            "shed noncritical loads"
+          ],
+          "room_bindings": [
+            "engineering",
+            "command_deck"
+          ],
+          "inputs": [
+            "generated_power_kw",
+            "stored_power_kw",
+            "load_requests"
+          ],
+          "outputs": [
+            "served_loads",
+            "shed_loads",
+            "bus_status"
+          ],
+          "parameters": {
+            "distribution_efficiency": {
+              "value": 0.94,
+              "unit": "fraction",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "System-level assumption; actual requires converter and wiring design.",
+              "source_ids": [],
+              "bounds": [
+                0.7,
+                1
+              ]
+            }
+          },
+          "dependencies": [
+            "electrical_power_generation",
+            "energy_storage",
+            "avionics_cdh",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_onboard_systems_2026",
+            "nasa_deep_space_standards_2026"
+          ]
+        },
+        {
+          "id": "thermal_control",
+          "display_name": "Active and Passive Thermal Control",
+          "category": "thermal",
+          "criticality": "crew_survival",
+          "functions": [
+            "collect internal heat",
+            "transport heat",
+            "reject heat",
+            "maintain cabin and equipment temperature",
+            "cold storage support"
+          ],
+          "room_bindings": [
+            "engineering",
+            "external_radiators",
+            "all_pressurized_rooms"
+          ],
+          "inputs": [
+            "equipment_waste_heat_kw",
+            "solar_environment",
+            "radiator_state",
+            "coolant_state"
+          ],
+          "outputs": [
+            "rejected_heat_kw",
+            "thermal_margin_kw",
+            "temperature_limits"
+          ],
+          "parameters": {
+            "nominal_rejection_capacity_kw": {
+              "value": 49.0,
+              "unit": "kW",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Simulation baseline coupled to first-ship power budget.",
+              "source_ids": [],
+              "bounds": [
+                10,
+                120
+              ]
+            },
+            "safe_state_rejection_capacity_kw": {
+              "value": 25.0,
+              "unit": "kW",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Reduced survivable simulation posture.",
+              "source_ids": [],
+              "bounds": [
+                5,
+                80
+              ]
+            },
+            "thermal_model_fidelity": {
+              "value": "lumped_node",
+              "unit": "model",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Integrated margins, not finite-element temperatures.",
+              "source_ids": []
+            }
+          },
+          "dependencies": [
+            "electrical_power_generation",
+            "energy_storage",
+            "power_distribution",
+            "primary_structure",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_thermal_management_2026",
+            "nasa_onboard_systems_2026"
+          ]
+        },
+        {
+          "id": "main_propulsion",
+          "display_name": "Main Propulsion and Orbit Change",
+          "category": "propulsion",
+          "criticality": "mission_critical",
+          "functions": [
+            "planned trajectory changes",
+            "collision avoidance",
+            "propellant management",
+            "only source-pinned performance"
+          ],
+          "room_bindings": [
+            "engineering",
+            "command_deck",
+            "propulsion_module"
+          ],
+          "inputs": [
+            "burn_plan",
+            "propellant_state",
+            "power_available_kw",
+            "vehicle_mass"
+          ],
+          "outputs": [
+            "thrust_vector",
+            "propellant_used",
+            "trajectory_change"
+          ],
+          "parameters": {
+            "propulsion_lineage": {
+              "value": "Gateway-like solar-electric platform plus chemical contingency capability",
+              "unit": "architecture",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Functional lineage only; not an integrated design.",
+              "source_ids": []
+            },
+            "maximum_thrust_n": {
+              "value": null,
+              "unit": "N",
+              "truth_type": "unknown",
+              "reason": "No verified integrated throttle table.",
+              "source_ids": []
+            },
+            "specific_impulse_s": {
+              "value": null,
+              "unit": "s",
+              "truth_type": "unknown",
+              "reason": "Must come from selected reviewed thruster and operating point.",
+              "source_ids": []
+            },
+            "propellant_mass_kg": {
+              "value": null,
+              "unit": "kg",
+              "truth_type": "unknown",
+              "reason": "Requires tank and mission design.",
+              "source_ids": []
+            }
+          },
+          "dependencies": [
+            "power_distribution",
+            "thermal_control",
+            "gnc",
+            "primary_structure",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_onboard_systems_2026",
+            "nasa_gateway_reference_2026",
+            "nasa_gateway_power_on_2026",
+            "nasa_gnc_2026"
+          ]
+        },
+        {
+          "id": "reaction_control",
+          "display_name": "Attitude and Reaction Control Effectors",
+          "category": "propulsion",
+          "criticality": "crew_survival",
+          "functions": [
+            "momentum management",
+            "emergency pointing",
+            "docking support",
+            "safe thermal and communications attitude"
+          ],
+          "room_bindings": [
+            "engineering",
+            "command_deck",
+            "external_thruster_clusters"
+          ],
+          "inputs": [
+            "attitude_error",
+            "angular_rate",
+            "control_allocation"
+          ],
+          "outputs": [
+            "torque_vector",
+            "resource_use",
+            "actuator_status"
+          ],
+          "parameters": {
+            "actuator_inventory": {
+              "value": [
+                "reaction_wheels_or_control_moment_devices",
+                "small_thrusters"
+              ],
+              "unit": "functional_set",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Exact effectors depend on future ship version.",
+              "source_ids": []
+            }
+          },
+          "dependencies": [
+            "gnc",
+            "power_distribution",
+            "main_propulsion",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_onboard_systems_2026",
+            "nasa_gnc_2026"
+          ]
+        },
+        {
+          "id": "gnc",
+          "display_name": "Guidance, Navigation, and Control",
+          "category": "avionics",
+          "criticality": "crew_survival",
+          "functions": [
+            "estimate position velocity attitude and rates",
+            "plan and execute maneuvers",
+            "autonomous optical navigation",
+            "point antennas sensors radiators and arrays",
+            "rendezvous and docking"
+          ],
+          "room_bindings": [
+            "command_deck",
+            "navigation_station",
+            "avionics_bay"
+          ],
+          "inputs": [
+            "star_tracker",
+            "inertial_measurement",
+            "optical_navigation",
+            "radio_navigation",
+            "crew_commands",
+            "mission_plan"
+          ],
+          "outputs": [
+            "state_estimate",
+            "uncertainty",
+            "guidance_commands",
+            "control_commands"
+          ],
+          "parameters": {
+            "state_vector_dimensions": {
+              "value": 6,
+              "unit": "position_velocity_components",
+              "truth_type": "catalog_fact",
+              "source_ids": [
+                "nasa_gnc_2026"
+              ],
+              "note": "Position and velocity; attitude tracked separately."
+            },
+            "navigation_uncertainty_model": {
+              "value": "bounded_scalar_plus_source_labels",
+              "unit": "model",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "First model; future may use covariance and SPICE.",
+              "source_ids": []
+            }
+          },
+          "dependencies": [
+            "external_sensors",
+            "avionics_cdh",
+            "reaction_control",
+            "main_propulsion",
+            "communications",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_gnc_2026",
+            "nasa_onboard_systems_2026"
+          ]
+        },
+        {
+          "id": "avionics_cdh",
+          "display_name": "Avionics, Command, and Data Handling",
+          "category": "avionics",
+          "criticality": "crew_survival",
+          "functions": [
+            "execute flight software",
+            "route commands and telemetry",
+            "time-tag data",
+            "maintain event and health records",
+            "manual and automated modes"
+          ],
+          "room_bindings": [
+            "command_deck",
+            "avionics_bay",
+            "collaborator_quarters"
+          ],
+          "inputs": [
+            "crew_commands",
+            "sensor_data",
+            "remote_commands",
+            "timebase"
+          ],
+          "outputs": [
+            "validated_commands",
+            "telemetry",
+            "data_products",
+            "system_state"
+          ],
+          "parameters": {
+            "command_authority_model": {
+              "value": "rooted_role_authority_plus_state_validation",
+              "unit": "policy",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "AXM layer on conventional C&DH functions.",
+              "source_ids": []
+            },
+            "processor_redundancy": {
+              "value": "dual_or_triple_logical_channels",
+              "unit": "architecture",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Functional baseline; exact hardware unselected.",
+              "source_ids": []
+            }
+          },
+          "dependencies": [
+            "power_distribution",
+            "thermal_control",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_orion_components_2026",
+            "nasa_onboard_systems_2026",
+            "nasa_deep_space_standards_2026"
+          ]
+        },
+        {
+          "id": "communications",
+          "display_name": "Communications, Tracking, and Time Transfer",
+          "category": "communications",
+          "criticality": "mission_critical",
+          "functions": [
+            "uplink commands",
+            "downlink telemetry and science",
+            "ranging and tracking",
+            "local crew and vehicle links",
+            "store data during outages"
+          ],
+          "room_bindings": [
+            "command_deck",
+            "communications_station",
+            "external_antennas"
+          ],
+          "inputs": [
+            "data_queue",
+            "antenna_pointing",
+            "range",
+            "link_schedule",
+            "interference"
+          ],
+          "outputs": [
+            "transmitted_data",
+            "received_commands",
+            "link_status",
+            "one_way_light_time"
+          ],
+          "parameters": {
+            "propagation_speed_m_s": {
+              "value": 299792458.0,
+              "unit": "m/s",
+              "truth_type": "catalog_fact",
+              "source_ids": [
+                "si_speed_of_light"
+              ],
+              "note": "Exact SI speed of light."
+            },
+            "data_rate_bps": {
+              "value": null,
+              "unit": "bit/s",
+              "truth_type": "unknown",
+              "reason": "Depends on band, gains, power, coding, range, weather, and allocation.",
+              "source_ids": []
+            },
+            "store_and_forward_capacity_gb": {
+              "value": 120.0,
+              "unit": "GB",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Replaceable simulation storage baseline.",
+              "source_ids": [],
+              "bounds": [
+                10,
+                5000
+              ]
+            }
+          },
+          "dependencies": [
+            "gnc",
+            "avionics_cdh",
+            "power_distribution",
+            "thermal_control",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_dsn_2025",
+            "nasa_onboard_systems_2026",
+            "nasa_deep_space_standards_2026",
+            "si_speed_of_light"
+          ]
+        },
+        {
+          "id": "eclss_atmosphere",
+          "display_name": "Atmosphere Control and Revitalization",
+          "category": "life_support",
+          "criticality": "crew_survival",
+          "functions": [
+            "maintain pressure",
+            "supply oxygen",
+            "remove carbon dioxide",
+            "control humidity",
+            "remove trace contaminants",
+            "circulate and monitor air"
+          ],
+          "room_bindings": [
+            "engineering",
+            "all_pressurized_rooms"
+          ],
+          "inputs": [
+            "crew_metabolic_load",
+            "leak_rate",
+            "contaminants",
+            "power",
+            "cooling"
+          ],
+          "outputs": [
+            "oxygen_state",
+            "carbon_dioxide_state",
+            "humidity_state",
+            "air_quality"
+          ],
+          "parameters": {
+            "active_human_crew": {
+              "value": 5,
+              "unit": "persons",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Commander plus four human station specialists.",
+              "source_ids": [],
+              "bounds": [
+                1,
+                6
+              ]
+            },
+            "oxygen_recovery_reference_fraction": {
+              "value": 0.47,
+              "unit": "fraction",
+              "truth_type": "catalog_fact",
+              "source_ids": [
+                "nasa_eclss_2025"
+              ],
+              "note": "Sabatier-era reference context; future systems may differ."
+            },
+            "nominal_co2_removal_margin_fraction": {
+              "value": 0.35,
+              "unit": "fraction",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Reserve above modeled metabolic load.",
+              "source_ids": [],
+              "bounds": [
+                0,
+                2
+              ]
+            },
+            "emergency_suited_duration_h": {
+              "value": 144.0,
+              "unit": "hours",
+              "truth_type": "catalog_fact",
+              "source_ids": [
+                "nasa_orion_reference_2026",
+                "nasa_orion_components_2026"
+              ],
+              "note": "Orion lineage reference; not verified for the integrated AXM ship."
+            }
+          },
+          "dependencies": [
+            "power_distribution",
+            "thermal_control",
+            "primary_structure",
+            "water_and_waste",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_eclss_2025",
+            "nasa_std_3001_vol2_2025",
+            "nasa_orion_components_2026"
+          ]
+        },
+        {
+          "id": "water_and_waste",
+          "display_name": "Water Recovery, Potable Supply, and Waste Management",
+          "category": "life_support",
+          "criticality": "crew_survival",
+          "functions": [
+            "collect wastewater",
+            "recover potable water",
+            "monitor quality",
+            "store and distribute water",
+            "contain waste"
+          ],
+          "room_bindings": [
+            "engineering",
+            "mess_hall",
+            "sanitation_module"
+          ],
+          "inputs": [
+            "wastewater",
+            "humidity_condensate",
+            "stored_water",
+            "power",
+            "filters"
+          ],
+          "outputs": [
+            "potable_water",
+            "waste",
+            "quality_status"
+          ],
+          "parameters": {
+            "demonstrated_reference_recovery_fraction": {
+              "value": 0.98,
+              "unit": "fraction",
+              "truth_type": "catalog_fact",
+              "source_ids": [
+                "nasa_water_recovery_98pct_2023"
+              ],
+              "note": "ISS milestone reference; not guaranteed for this ship."
+            },
+            "simulation_nominal_recovery_fraction": {
+              "value": 0.95,
+              "unit": "fraction",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Conservative simulation value below cited milestone.",
+              "source_ids": [],
+              "bounds": [
+                0,
+                1
+              ]
+            },
+            "stored_potable_water_kg": {
+              "value": 650.0,
+              "unit": "kg",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Scenario design value, not flight manifest.",
+              "source_ids": [],
+              "bounds": [
+                50,
+                5000
+              ]
+            }
+          },
+          "dependencies": [
+            "power_distribution",
+            "thermal_control",
+            "eclss_atmosphere",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_eclss_2025",
+            "nasa_water_recovery_98pct_2023"
+          ]
+        },
+        {
+          "id": "fire_and_emergency_response",
+          "display_name": "Fire Detection, Suppression, and Emergency Response",
+          "category": "safety",
+          "criticality": "crew_survival",
+          "functions": [
+            "detect smoke heat and combustion products",
+            "isolate ventilation zones",
+            "remove local power",
+            "support suppression and evacuation",
+            "coordinate emergency procedures"
+          ],
+          "room_bindings": [
+            "all_pressurized_rooms",
+            "command_deck",
+            "engineering"
+          ],
+          "inputs": [
+            "smoke_sensors",
+            "temperature_sensors",
+            "air_quality",
+            "crew_reports"
+          ],
+          "outputs": [
+            "alarm",
+            "zone_isolation",
+            "suppression_response",
+            "command_recall"
+          ],
+          "parameters": {
+            "zone_count": {
+              "value": 7,
+              "unit": "zones",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "One logical emergency zone per room cluster.",
+              "source_ids": [],
+              "bounds": [
+                3,
+                24
+              ]
+            }
+          },
+          "dependencies": [
+            "eclss_atmosphere",
+            "power_distribution",
+            "avionics_cdh",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_std_3001_vol2_2025",
+            "nasa_fault_detection_response_2026"
+          ]
+        },
+        {
+          "id": "radiation_monitoring_and_shelter",
+          "display_name": "Radiation Monitoring and Storm Shelter",
+          "category": "protection",
+          "criticality": "crew_survival",
+          "functions": [
+            "measure environment",
+            "forecast operational risk",
+            "track relative exposure",
+            "trigger shelter posture",
+            "protect sensitive operations"
+          ],
+          "room_bindings": [
+            "command_deck",
+            "engineering",
+            "storm_shelter",
+            "crew_quarters"
+          ],
+          "inputs": [
+            "space_weather",
+            "detectors",
+            "shielding_map",
+            "crew_location",
+            "duration"
+          ],
+          "outputs": [
+            "relative_exposure_index",
+            "shelter_recommendation",
+            "instrument_status"
+          ],
+          "parameters": {
+            "medical_dose_model_available": {
+              "value": false,
+              "unit": "boolean",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "No medical absorbed-dose prediction is claimed.",
+              "source_ids": []
+            },
+            "storm_shelter_capacity_persons": {
+              "value": 6,
+              "unit": "persons",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Architecture requirement, not shield-thickness claim.",
+              "source_ids": [],
+              "bounds": [
+                1,
+                8
+              ]
+            }
+          },
+          "dependencies": [
+            "primary_structure",
+            "power_distribution",
+            "avionics_cdh",
+            "crew_health_medical",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_radiation_2026",
+            "nasa_space_radiation_environment"
+          ]
+        },
+        {
+          "id": "docking_airlock_eva",
+          "display_name": "Docking, Airlock, and EVA Support",
+          "category": "interfaces",
+          "criticality": "mission_critical",
+          "functions": [
+            "interoperable docking",
+            "verify pressure seals",
+            "crew transfer",
+            "EVA preparation and recovery",
+            "isolate external exposure"
+          ],
+          "room_bindings": [
+            "docking_node",
+            "airlock",
+            "command_deck",
+            "engineering"
+          ],
+          "inputs": [
+            "relative_state",
+            "docking_sensor_data",
+            "seal_pressure",
+            "suit_state"
+          ],
+          "outputs": [
+            "capture_state",
+            "hard_dock_state",
+            "seal_status",
+            "airlock_cycle_status"
+          ],
+          "parameters": {
+            "docking_interface": {
+              "value": "international_standard_compatible_functional_target",
+              "unit": "interface",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Models compatibility goal without certification claim.",
+              "source_ids": []
+            }
+          },
+          "dependencies": [
+            "gnc",
+            "reaction_control",
+            "primary_structure",
+            "eclss_atmosphere",
+            "communications",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_deep_space_standards_2026",
+            "nasa_gnc_2026",
+            "nasa_std_3001_vol2_2025"
+          ]
+        },
+        {
+          "id": "robotics_and_probe_operations",
+          "display_name": "Robotics, Probe, and External Manipulation",
+          "category": "robotics",
+          "criticality": "mission_support",
+          "functions": [
+            "deploy probes",
+            "manipulate payloads",
+            "inspect exterior",
+            "support maintenance",
+            "extend sensing"
+          ],
+          "room_bindings": [
+            "research_strategy",
+            "command_deck",
+            "probe_bay",
+            "external_robotics"
+          ],
+          "inputs": [
+            "operator_commands",
+            "autonomy_plan",
+            "camera_data",
+            "force_torque_data"
+          ],
+          "outputs": [
+            "robot_state",
+            "probe_state",
+            "inspection_data",
+            "contact_forces"
+          ],
+          "parameters": {
+            "robotic_arm_count": {
+              "value": 1,
+              "unit": "systems",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "First-ship inspection baseline.",
+              "source_ids": [],
+              "bounds": [
+                0,
+                4
+              ]
+            },
+            "probe_slots": {
+              "value": 4,
+              "unit": "slots",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Modular simulation inventory.",
+              "source_ids": [],
+              "bounds": [
+                0,
+                24
+              ]
+            }
+          },
+          "dependencies": [
+            "avionics_cdh",
+            "communications",
+            "gnc",
+            "power_distribution",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_astronaut_training_2025",
+            "nasa_gnc_2026"
+          ]
+        },
+        {
+          "id": "external_sensors",
+          "display_name": "External Navigation, Environment, and Science Sensors",
+          "category": "sensors",
+          "criticality": "mission_critical",
+          "functions": [
+            "navigation observables",
+            "hazard detection",
+            "target observation",
+            "environment measurements",
+            "uncertainty-tagged data"
+          ],
+          "room_bindings": [
+            "research_strategy",
+            "command_deck",
+            "external_sensor_mast"
+          ],
+          "inputs": [
+            "photons",
+            "radio_signals",
+            "particle_environment",
+            "thermal_environment"
+          ],
+          "outputs": [
+            "calibrated_measurements",
+            "uncertainty",
+            "quality_flags",
+            "raw_data_receipts"
+          ],
+          "parameters": {
+            "raw_data_preservation": {
+              "value": true,
+              "unit": "boolean",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Derived products never replace original measurements.",
+              "source_ids": []
+            },
+            "sensor_catalog_complete": {
+              "value": false,
+              "unit": "boolean",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Future missions register instruments individually.",
+              "source_ids": []
+            }
+          },
+          "dependencies": [
+            "power_distribution",
+            "thermal_control",
+            "avionics_cdh",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_onboard_systems_2026",
+            "nasa_gnc_2026"
+          ]
+        },
+        {
+          "id": "science_payload_and_analysis",
+          "display_name": "Science Payload and Analysis",
+          "category": "science",
+          "criticality": "mission_support",
+          "functions": [
+            "plan observations",
+            "calibrate instruments",
+            "preserve raw and processed data",
+            "compare hypotheses",
+            "design control tests",
+            "enforce claim ceilings"
+          ],
+          "room_bindings": [
+            "research_strategy",
+            "probe_bay",
+            "external_sensors"
+          ],
+          "inputs": [
+            "measurements",
+            "calibration_state",
+            "mission_questions",
+            "source_catalogs"
+          ],
+          "outputs": [
+            "evidence_records",
+            "hypothesis_comparisons",
+            "control_plans",
+            "science_products"
+          ],
+          "parameters": {
+            "claim_ceiling_enforced": {
+              "value": true,
+              "unit": "boolean",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Existing AXM evidence architecture remains authoritative.",
+              "source_ids": []
+            }
+          },
+          "dependencies": [
+            "external_sensors",
+            "avionics_cdh",
+            "communications",
+            "robotics_and_probe_operations"
+          ],
+          "source_ids": [
+            "nasa_systems_engineering_handbook_2023",
+            "nasa_life_detection_ladder_2026"
+          ]
+        },
+        {
+          "id": "crew_health_medical",
+          "display_name": "Crew Health, Medical, and Human Performance Support",
+          "category": "human_system",
+          "criticality": "crew_survival",
+          "functions": [
+            "routine and emergency care",
+            "track observations",
+            "exercise and countermeasures",
+            "behavioral health and workload reporting",
+            "training and procedures"
+          ],
+          "room_bindings": [
+            "primary_quarters",
+            "mess_hall",
+            "medical_locker",
+            "command_deck"
+          ],
+          "inputs": [
+            "crew_reports",
+            "medical_measurements",
+            "workload",
+            "environmental_state"
+          ],
+          "outputs": [
+            "care_plan",
+            "fitness_for_task",
+            "medical_alert",
+            "privacy_controlled_record"
+          ],
+          "parameters": {
+            "validated_psychology_model": {
+              "value": false,
+              "unit": "boolean",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Records reports and workload; does not calculate minds.",
+              "source_ids": []
+            },
+            "crew_medical_officer_required": {
+              "value": true,
+              "unit": "boolean",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "First crew carries a secondary CMO profile.",
+              "source_ids": []
+            }
+          },
+          "dependencies": [
+            "eclss_atmosphere",
+            "water_and_waste",
+            "radiation_monitoring_and_shelter",
+            "avionics_cdh"
+          ],
+          "source_ids": [
+            "nasa_std_3001_vol1_2023",
+            "nasa_std_3001_vol2_2025",
+            "nasa_crew_operations_training_2026"
+          ]
+        },
+        {
+          "id": "logistics_maintenance_fabrication",
+          "display_name": "Logistics, Maintenance, Spares, and Fabrication",
+          "category": "maintenance",
+          "criticality": "mission_critical",
+          "functions": [
+            "track spares and consumables",
+            "preventive maintenance",
+            "configuration records",
+            "repair replaceable units",
+            "fabricate provenance-tracked parts"
+          ],
+          "room_bindings": [
+            "engineering",
+            "storage",
+            "primary_quarters",
+            "collaborator_quarters"
+          ],
+          "inputs": [
+            "faults",
+            "maintenance_plan",
+            "spares_inventory",
+            "material",
+            "energy"
+          ],
+          "outputs": [
+            "work_orders",
+            "repair_status",
+            "inventory_state",
+            "validated_part_records"
+          ],
+          "parameters": {
+            "replaceable_unit_policy": {
+              "value": "line_replaceable_where_practical",
+              "unit": "policy",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Maintainability-oriented baseline; hardware unselected.",
+              "source_ids": []
+            }
+          },
+          "dependencies": [
+            "power_distribution",
+            "avionics_cdh",
+            "fault_management"
+          ],
+          "source_ids": [
+            "nasa_rm_standard_2017",
+            "nasa_systems_engineering_handbook_2023"
+          ]
+        },
+        {
+          "id": "fault_management",
+          "display_name": "Integrated Fault Detection, Isolation, Response, and Recovery",
+          "category": "safety",
+          "criticality": "crew_survival",
+          "functions": [
+            "monitor health",
+            "detect and isolate faults",
+            "coordinate cross-system response",
+            "enter safe state",
+            "preserve commandability and telemetry",
+            "support diagnosis and recovery"
+          ],
+          "room_bindings": [
+            "command_deck",
+            "engineering",
+            "avionics_bay",
+            "all_systems"
+          ],
+          "inputs": [
+            "telemetry",
+            "limit_checks",
+            "model_residuals",
+            "crew_reports",
+            "fault_votes"
+          ],
+          "outputs": [
+            "fault_records",
+            "safe_mode_actions",
+            "isolated_components",
+            "recovery_plan"
+          ],
+          "parameters": {
+            "credible_single_fault_coverage_target": {
+              "value": true,
+              "unit": "boolean",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Architecture target, not verified coverage claim.",
+              "source_ids": []
+            },
+            "safe_state_priorities": {
+              "value": [
+                "stabilize_attitude",
+                "preserve_thermal_limits",
+                "preserve_life_support",
+                "preserve_power",
+                "remain_commandable",
+                "transmit_health_beacon"
+              ],
+              "unit": "ordered_policy",
+              "truth_type": "simulation_design_assumption",
+              "rationale": "Grounded operational simulation policy.",
+              "source_ids": []
+            }
+          },
+          "dependencies": [
+            "avionics_cdh",
+            "power_distribution",
+            "communications",
+            "gnc",
+            "thermal_control"
+          ],
+          "source_ids": [
+            "nasa_fault_detection_response_2026",
+            "nasa_fmeca_2024",
+            "nasa_rm_standard_2017"
+          ]
+        }
+      ],
+      "encounter_effect_channels": [
+        "kinetic_impact",
+        "pressure_leak",
+        "thermal_load",
+        "radiation_environment",
+        "electromagnetic_interference",
+        "sensor_deception_or_ambiguity",
+        "communications_loss",
+        "power_generation_loss",
+        "navigation_uncertainty",
+        "software_or_data_fault",
+        "crew_medical_event",
+        "docking_contact_load"
+      ],
+      "future_conflict_boundary": {
+        "model_style": "effects_first_not_weapon_blueprints",
+        "allowed": [
+          "detection uncertainty",
+          "maneuver and geometry",
+          "power and thermal consequences",
+          "communications disruption",
+          "sensor degradation",
+          "structural and pressure damage",
+          "crew workload and injury consequences",
+          "repair and survival decisions"
+        ],
+        "not_in_v1": [
+          "real-world weapon construction instructions",
+          "unbounded magic shields",
+          "damage numbers detached from ship systems",
+          "automatic hostile intent inference"
+        ]
+      }
+    },
+    "render_profile": {
+      "id": "axm.render.paint-foundation.v1",
+      "version": 1,
+      "display_name": "Paint Foundation",
+      "fidelity_rank": 1,
+      "allowed_archetypes": [
+        "*"
+      ],
+      "changes_semantics": false
+    },
+    "experience_contract": {
+      "schema": "axm.bridge-experience-contract.v1",
+      "contract_id": "axm.bridge.experience-core",
+      "version": 1,
+      "status": "CANON",
+      "purpose": "Protect the lived-in vessel experience without hardcoding one ship, crew, era, or timeline.",
+      "required_in_every_playable_vessel": {
+        "spatial_room_identity": true,
+        "dominant_world_view": true,
+        "visible_command_presence": true,
+        "visible_crew_presence": true,
+        "diegetic_controls": true,
+        "orientation_axes": [
+          "front",
+          "left",
+          "right",
+          "rear",
+          "deck"
+        ],
+        "room_context_survives_station_focus": true,
+        "low_fidelity_survival": true,
+        "historical_reconstruction_safe": true
+      },
+      "forbidden_regressions": [
+        "generic_website_dashboard_as_primary_experience",
+        "disembodied_floating_hud_without_room_context",
+        "crew_reduced_to_hidden_text_only",
+        "main_world_view_reduced_to_minor_widget",
+        "command_presence_removed",
+        "ship_systems_presented_only_as_unrelated_cards",
+        "renderer_rewrites_historical_events",
+        "visual_upgrade_changes_room_semantics_without_new_archetype_version"
+      ],
+      "extensibility_rule": {
+        "new_ship": "register a new vessel archetype id and version",
+        "new_room": "register a new bridge grammar id and version",
+        "new_timeline": "register a new timeline start id and version",
+        "new_crew": "register a new crew manifest id and version",
+        "existing_save": "pins the exact ids and versions used at creation",
+        "visual_upgrade": "may change renderer and skin, not pinned semantic anchors",
+        "breaking_room_change": "requires a new archetype version; never silently migrates old saves"
+      }
+    },
+    "start_package_receipt": "32e2f0d0b6ed22a6925e5d2a1021d6becd0d4bd1ce706e4932a49837e4f1a4a7"
+  },
+  "start_pin": {
+    "schema": "axm.ship-start-pin.v1",
+    "bridge_archetype_id": "axm.bridge.frontier-survey.v1",
+    "bridge_archetype_version": 1,
+    "timeline_start_id": "axm.timeline.near-future-factual.v1",
+    "timeline_start_version": 1,
+    "crew_start_id": "axm.crew.first-expedition.v1",
+    "crew_start_version": 1,
+    "interior_archetype_id": "axm.interior.frontier-survey.v1",
+    "interior_archetype_version": 1,
+    "ship_blueprint_id": "axm.ship.frontier-survey-stack.v1",
+    "ship_blueprint_version": 1,
+    "ship_blueprint_commitment": "94e91fd0c78f17c3694be12e7eb8c1691e77be5d045f40c86a5f6b549f4811a1",
+    "initial_render_profile_id": "axm.render.paint-foundation.v1",
+    "initial_render_profile_version": 1,
+    "semantic_anchor_ids": [
+      "forward_world_screen",
+      "command_duet",
+      "human_or_primary_explorer",
+      "ai_or_secondary_collaborator",
+      "navigation",
+      "science",
+      "engineering",
+      "communications"
+    ],
+    "start_package_receipt": "32e2f0d0b6ed22a6925e5d2a1021d6becd0d4bd1ce706e4932a49837e4f1a4a7",
+    "migration_policy": "immutable_semantics_new_versions_only",
+    "pin_receipt": "b3e8513c0b55235f9bcb23da5fd250dc8b9544c75fdf2dff9dfb5305a3be2c57"
+  },
+  "layout_validation": {
+    "schema": "axm.bridge-layout-validation.v1",
+    "valid": true,
+    "failures": [],
+    "bridge_archetype_id": "axm.bridge.frontier-survey.v1",
+    "bridge_archetype_version": 1,
+    "checked_anchor_count": 8,
+    "validation_receipt": "3d77564dd7ca24ae2ae12a60e4d0822a4d0e5f5efb26a23949227d5b6676f2dc"
+  },
+  "future_reconstruction_packet": {
+    "schema": "axm.bridge-reconstruction-packet.v1",
+    "bridge_archetype_id": "axm.bridge.frontier-survey.v1",
+    "bridge_archetype_version": 1,
+    "semantic_anchor_ids": [
+      "forward_world_screen",
+      "command_duet",
+      "human_or_primary_explorer",
+      "ai_or_secondary_collaborator",
+      "navigation",
+      "science",
+      "engineering",
+      "communications"
+    ],
+    "historical_state_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "target_render_profile_id": "axm.render.holodeck-reconstruction.v1",
+    "target_render_profile_version": 1,
+    "renderer_may_change": [
+      "geometry_detail",
+      "materials",
+      "lighting",
+      "animation",
+      "character_detail",
+      "camera_transitions",
+      "sound",
+      "environmental_effects"
+    ],
+    "renderer_may_not_change": [
+      "semantic_anchor_identity",
+      "station_role",
+      "command_presence",
+      "dominant_world_view_role",
+      "historical_state",
+      "recorded_crew_actions"
+    ],
+    "reconstruction_receipt": "937db5942f8c4ef1c05a67930dac3c46c6e4d628aa6087d04ddf63aebfa93dac"
+  },
+  "first_bridge_is_one_of_many": "First of many possible vessels and bridge starts."
+}

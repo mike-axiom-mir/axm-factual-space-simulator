@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frontier Survey Bridge — Paint Foundation</title>
+<style>
+:root{color-scheme:dark;--bg:#050a0e;--deck:#101a20;--line:#7993a0;--screen:#08232d;--glow:#7ce7df;--text:#eef8fa;--muted:#9eb1b7}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;overflow:hidden}
+.bridge{position:relative;width:100vw;height:100vh;background:linear-gradient(#060b10 0 66%,#111a20 66%);perspective:800px}
+.ceiling{position:absolute;inset:0 0 auto;height:9%;border-bottom:3px solid var(--line);background:#0b1217}
+.world{position:absolute;left:17%;top:10%;width:66%;height:43%;border:5px solid var(--line);background:radial-gradient(circle at 65% 38%,#f8d37d 0 2%,transparent 3%),radial-gradient(circle at 35% 56%,#436b8e 0 5%,transparent 6%),linear-gradient(155deg,#07151d,#0b3039);box-shadow:0 0 22px #3b8f9688 inset}
+.world:before,.world:after{content:"";position:absolute;border:1px solid #8edbd6aa;border-radius:50%;left:25%;top:15%;width:50%;height:60%;transform:rotate(-10deg)}
+.world:after{left:34%;top:25%;width:32%;height:38%;transform:rotate(22deg)}
+.screen-label{position:absolute;left:18%;top:11%;font-size:12px;color:var(--glow);letter-spacing:.15em}
+.station{position:absolute;width:15%;height:20%;border:3px solid var(--line);background:#0c171d;bottom:16%;padding:8px;color:var(--glow);font-size:12px}
+.nav{left:2%}.science{left:18%;bottom:7%}.engineering{right:18%;bottom:7%}.comms{right:2%}
+.console{height:62%;margin-top:8px;border:2px solid #456b78;background:repeating-linear-gradient(90deg,#11303a 0 10px,#092029 10px 18px)}
+.command{position:absolute;left:34%;bottom:4%;width:32%;height:33%;border-top:4px solid var(--line)}
+.chair{position:absolute;bottom:0;width:38%;height:68%;border:4px solid var(--line);border-radius:35% 35% 12% 12%;background:#15232a}
+.chair.left{left:5%}.chair.right{right:5%}
+.head{position:absolute;left:35%;top:8%;width:30%;aspect-ratio:1;border-radius:50%;border:3px solid var(--glow);background:#0b1115}
+.body{position:absolute;left:22%;top:36%;width:56%;height:44%;border:3px solid var(--glow);border-radius:28% 28% 10% 10%}
+.caption{position:absolute;left:0;right:0;bottom:3px;text-align:center;font-size:10px;color:var(--muted)}
+.crew{position:absolute;width:18px;height:18px;border:2px solid var(--glow);border-radius:50%;bottom:42%}
+.nav .crew,.science .crew{right:12px}.engineering .crew,.comms .crew{left:12px}
+.deck-line{position:absolute;left:8%;right:8%;bottom:0;height:34%;border-top:3px solid #364d57;clip-path:polygon(18% 0,82% 0,100% 100%,0 100%);background:linear-gradient(90deg,transparent,#182329 50%,transparent)}
+.title{position:absolute;left:2%;top:2%;z-index:5;font-size:13px;letter-spacing:.12em;color:var(--glow)}
+.note{position:absolute;right:2%;top:2%;z-index:5;font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="bridge">
+  <div class="title">FRONTIER SURVEY BRIDGE · PAINT FOUNDATION</div>
+  <div class="note">First archetype — not a universal hardcode</div>
+  <div class="ceiling"></div>
+  <div class="world"></div>
+  <div class="screen-label">FORWARD WORLD SCREEN · ORBITAL SENSOR VIEW</div>
+  <div class="deck-line"></div>
+
+  <div class="station nav">NAVIGATION<div class="crew"></div><div class="console"></div></div>
+  <div class="station science">SCIENCE<div class="crew"></div><div class="console"></div></div>
+  <div class="station engineering">ENGINEERING<div class="crew"></div><div class="console"></div></div>
+  <div class="station comms">COMMUNICATIONS<div class="crew"></div><div class="console"></div></div>
+
+  <div class="command">
+    <div class="chair left"><div class="head"></div><div class="body"></div><div class="caption">PRIMARY EXPLORER</div></div>
+    <div class="chair right"><div class="head"></div><div class="body"></div><div class="caption">AI COLLABORATOR</div></div>
+  </div>
+</div>
+<script type="application/json" id="axm-bridge-demo">
+{"schema":"axm.bridge-layout-packet.v1","experience_type":"inhabited_vessel_interior","spatial_room_identity":true,"dominant_world_view":true,"dominant_world_view_share":0.52,"visible_command_presence":true,"visible_crew_presence":true,"diegetic_controls":true,"room_context_survives_station_focus":true,"low_fidelity_survival":true,"primary_interface_pattern":"bridge_room","semantic_anchor_ids":["forward_world_screen","command_duet","human_or_primary_explorer","ai_or_secondary_collaborator","navigation","science","engineering","communications"]}
+</script>
+</body>
+</html>

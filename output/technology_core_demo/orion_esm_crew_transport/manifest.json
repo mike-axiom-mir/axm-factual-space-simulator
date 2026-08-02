@@ -1,0 +1,16 @@
+{
+  "schema": "axm.output-manifest.v3",
+  "files": {
+    "system.json": "2d506771c50295c0b9c405c6fc3be810869e3f1f53a18a3dc54005cdfd84ae8a",
+    "causality_log.jsonl": "2f98493ba1393c3b2c5aff4c0d973d8bf4f9ec43868cb46cf32cd01a6b006e54",
+    "system.html": "bd6fa4bf640228d0f4be3fa24c83ac41f6ba7967f4dc97ae9e7dbaff410de70a",
+    "runtime_state.json": "d2088e452bfa9e0e17e588099feda16d4561adccbfc6692d7348fa33f576453f",
+    "event_ledger.jsonl": "2616e22f07ee36786793a6cc4b992d00ac2ca3e3de75add1d2d1577266d4c6b7",
+    "command_ledger.jsonl": "67ce8fd7a0d9dd91682f8ebbe4172ea8e741cd47ed75b494eb53ad26ff5279cd",
+    "adventure_console.html": "6487d358e9640a9d0636233bae7bbc5777bac18c7265e30582be18f1aadb5b18",
+    "command_console.html": "918521996033de3eb15b0b5f989b0a01f4a1a828d4433ee314b857b318d559c8",
+    "expedition_atlas.json": "b8763fc967fbdebe8d9162e3c41c481dd0ffdfffd8c2a355b3c9f846b30e9020",
+    "atlas.html": "82abc93226d575dcd717bcc7c9fd91680381969a30ca6878dc0f564c5d29c3f4",
+    "location_packet.json": "c6d2bb4a109f6507a0b123bafedf91b357dfbea23582ad9dd347db132dea8493"
+  }
+}

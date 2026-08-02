@@ -1,0 +1,349 @@
+{
+  "schema": "axm.ship-interior-state.v1",
+  "interior_id": "axm.interior.frontier-survey.v1",
+  "interior_version": 1,
+  "seed_receipt": "c2ddf2d0ac9420f7dff787b623532c087ca912aea6a98a6d0e5bdb051f62ff52",
+  "current_room_id": "primary_quarters",
+  "continuity_policy_id": "axm.continuity.realistic.v1",
+  "personal_clock_minutes": 37,
+  "expedition_clock_minutes": 37,
+  "crew_operation_ticks": 4,
+  "routine_events_resolved": [
+    {
+      "sequence": 1,
+      "event_type": "communications_archive_sync",
+      "authority_level": "routine",
+      "station": "communications",
+      "summary": "Communications archive synchronized.",
+      "expedition_clock_minutes": 27,
+      "event_hash": "94e72c35fc5be00d1ec743dfbd03c2af2fc02ed3defc8de57930a7d0f1091a93"
+    },
+    {
+      "sequence": 2,
+      "event_type": "course_solution_check",
+      "authority_level": "routine",
+      "station": "navigation",
+      "summary": "Navigation solution rechecked.",
+      "expedition_clock_minutes": 27,
+      "event_hash": "37d6f802e49fb735add64988b99ee9f560159e555854ab17e19b37bacacae557"
+    },
+    {
+      "sequence": 3,
+      "event_type": "passive_scan_update",
+      "authority_level": "routine",
+      "station": "science",
+      "summary": "Routine passive scan completed.",
+      "expedition_clock_minutes": 27,
+      "event_hash": "e314f81e7e201ff01e003cf6f9954cb56ed081b0a0b34fa168ad5471f8b60b9d"
+    },
+    {
+      "sequence": 4,
+      "event_type": "communications_archive_sync",
+      "authority_level": "routine",
+      "station": "communications",
+      "summary": "Communications archive synchronized.",
+      "expedition_clock_minutes": 27,
+      "event_hash": "ccd1dae439776284f5bcb2f5b3c19c2b1f43e74c695fa73d39baa6963cce7d2a"
+    },
+    {
+      "situation_id": "3b6366195c6d4e4b",
+      "authority_level": "command_required",
+      "summary": "A probe detects a rapidly closing object with several reversible and irreversible response options.",
+      "reversible": false,
+      "generated_at_expedition_minute": 27,
+      "crew_resolution": "irreversible_branch_held",
+      "safe_posture": "lowest immediate risk reversible posture",
+      "recall_required": true,
+      "event_hash": "f44389575f531dfb045b10b2b1c3dff274c1dd7c6a9f7d965caf11c14f80d76a",
+      "answered_at_personal_minute": 30,
+      "status": "resolved",
+      "command_choice": "hold_position_and_collect_passive_data",
+      "reasoning_summary": "The reversible option preserves safety and evidence while avoiding an unverified approach.",
+      "resolution_hash": "71b0027d7651e0ea51ea1261d6d6b41a551cb034190f69f3ceab3b5c6f5c9d87"
+    }
+  ],
+  "advisories": [],
+  "pending_command_recall": null,
+  "room_visit_history": [
+    {
+      "sequence": 1,
+      "room_id": "command_deck",
+      "personal_clock_minutes": 0,
+      "expedition_clock_minutes": 0,
+      "travel_minutes": 0,
+      "reason": "initial",
+      "previous_visit_hash": null,
+      "visit_hash": "6190c90096d36d3203a14e98048e74a9b4ee23b61e73b5db24954c1c4bbc5197"
+    },
+    {
+      "sequence": 2,
+      "room_id": "mess_hall",
+      "personal_clock_minutes": 3,
+      "expedition_clock_minutes": 3,
+      "travel_minutes": 3,
+      "reason": "player_navigation",
+      "previous_visit_hash": "6190c90096d36d3203a14e98048e74a9b4ee23b61e73b5db24954c1c4bbc5197",
+      "visit_hash": "f869206edadf7fb5d295017433f5585f6684ea99f0804c912204f451ffaef2c9"
+    },
+    {
+      "sequence": 3,
+      "room_id": "research_strategy",
+      "personal_clock_minutes": 7,
+      "expedition_clock_minutes": 7,
+      "travel_minutes": 4,
+      "reason": "player_navigation",
+      "previous_visit_hash": "f869206edadf7fb5d295017433f5585f6684ea99f0804c912204f451ffaef2c9",
+      "visit_hash": "6cd31d4b2737d4ccdaaba0a57f63d8a82c58fa1ca8379f77d421d7c6968c3540"
+    },
+    {
+      "sequence": 4,
+      "room_id": "command_deck",
+      "personal_clock_minutes": 30,
+      "expedition_clock_minutes": 30,
+      "travel_minutes": 3,
+      "reason": "command_recall",
+      "previous_visit_hash": "6cd31d4b2737d4ccdaaba0a57f63d8a82c58fa1ca8379f77d421d7c6968c3540",
+      "visit_hash": "512a9806f4634ddca996924c49b0a6a9bf6c19d606a5ea1d6bb7bd0c39957ec5"
+    },
+    {
+      "sequence": 5,
+      "room_id": "engineering",
+      "personal_clock_minutes": 33,
+      "expedition_clock_minutes": 33,
+      "travel_minutes": 3,
+      "reason": "player_navigation",
+      "previous_visit_hash": "512a9806f4634ddca996924c49b0a6a9bf6c19d606a5ea1d6bb7bd0c39957ec5",
+      "visit_hash": "58c1a9fe241825666ae17938c34dcc0baade8555630a91669328c8f369548323"
+    },
+    {
+      "sequence": 6,
+      "room_id": "primary_quarters",
+      "personal_clock_minutes": 37,
+      "expedition_clock_minutes": 37,
+      "travel_minutes": 4,
+      "reason": "player_navigation",
+      "previous_visit_hash": "58c1a9fe241825666ae17938c34dcc0baade8555630a91669328c8f369548323",
+      "visit_hash": "aa1101ef94c76d9f3eb9d90d0398c3579f80e744d11d521679522b0644854837"
+    }
+  ],
+  "interaction_history": [
+    {
+      "sequence": 1,
+      "room_id": "mess_hall",
+      "interaction_id": "review_consumable_duration",
+      "truth_class": "calculation_from_supplied_state",
+      "claim_limit": "Does not model nutrition quality, spoilage, recycling losses, medical needs, or individual variation.",
+      "inputs": {
+        "crew_count": 6,
+        "food_kg": 220,
+        "water_liters": 510,
+        "food_kg_per_person_day": 0.95,
+        "water_liters_per_person_day": 2.1
+      },
+      "result": {
+        "food_days_remaining": 38.596,
+        "water_days_remaining": 40.476,
+        "limiting_consumable_days": 38.596,
+        "limiting_consumable": "food"
+      },
+      "personal_clock_minutes": 3,
+      "expedition_clock_minutes": 3,
+      "previous_interaction_hash": null,
+      "interaction_hash": "803b115822bda91d037a9a1ea8fe490e8def338408bb47fd50accbcb2bd20bb8"
+    },
+    {
+      "sequence": 2,
+      "room_id": "research_strategy",
+      "interaction_id": "compare_hypotheses",
+      "truth_class": "transparent_evidence_heuristic",
+      "claim_limit": "Ranking organizes evidence; it does not prove the highest-ranked explanation.",
+      "inputs": {
+        "hypotheses": [
+          {
+            "hypothesis_id": "instrument_artifact",
+            "supporting_channels": 1,
+            "independent_replications": 0,
+            "controls_passed": 0,
+            "contradictions": 1,
+            "unresolved_controls": [
+              "independent_sensor"
+            ]
+          },
+          {
+            "hypothesis_id": "unusual_atmospheric_chemistry",
+            "supporting_channels": 3,
+            "independent_replications": 1,
+            "controls_passed": 2,
+            "contradictions": 0,
+            "unresolved_controls": [
+              "abiotic_photochemistry_model"
+            ]
+          }
+        ]
+      },
+      "result": {
+        "ranked_hypotheses": [
+          {
+            "hypothesis_id": "unusual_atmospheric_chemistry",
+            "transparent_score": 6.0,
+            "supporting_channels": 3,
+            "independent_replications": 1,
+            "controls_passed": 2,
+            "contradictions": 0
+          },
+          {
+            "hypothesis_id": "instrument_artifact",
+            "transparent_score": -0.25,
+            "supporting_channels": 1,
+            "independent_replications": 0,
+            "controls_passed": 0,
+            "contradictions": 1
+          }
+        ],
+        "unresolved_controls": [
+          "abiotic_photochemistry_model",
+          "independent_sensor"
+        ],
+        "claim_ceiling": "replicated_anomaly"
+      },
+      "personal_clock_minutes": 7,
+      "expedition_clock_minutes": 7,
+      "previous_interaction_hash": "803b115822bda91d037a9a1ea8fe490e8def338408bb47fd50accbcb2bd20bb8",
+      "interaction_hash": "23e856c2300017921fc0c550b2792c47b31551c67f278c8c7bfe82cd1dc10abf"
+    },
+    {
+      "sequence": 3,
+      "room_id": "engineering",
+      "interaction_id": "inspect_power_balance",
+      "truth_class": "calculation_from_supplied_state",
+      "claim_limit": "Published generation is not automatically payload-available power.",
+      "inputs": {
+        "generation_kw": 60,
+        "base_load_kw": 34,
+        "active_load_kw": 17,
+        "reserve_requirement_kw": 5
+      },
+      "result": {
+        "gross_margin_kw": 9.0,
+        "operational_margin_kw": 4.0,
+        "power_state": "surplus"
+      },
+      "personal_clock_minutes": 33,
+      "expedition_clock_minutes": 33,
+      "previous_interaction_hash": "23e856c2300017921fc0c550b2792c47b31551c67f278c8c7bfe82cd1dc10abf",
+      "interaction_hash": "cf6bffc3bedc249ab4cc7c6611f4c998d577ed3eed70d7ea96510abc01af962b"
+    },
+    {
+      "sequence": 4,
+      "room_id": "engineering",
+      "interaction_id": "fabricate_room_item",
+      "truth_class": "resource_constrained_fabrication",
+      "claim_limit": "Unvalidated items are decorative or experimental and grant no hidden capability.",
+      "inputs": {
+        "item_name": "First anomaly orbit model",
+        "material_kg": 0.8,
+        "energy_kwh": 2.5,
+        "fabrication_hours": 1.5,
+        "intended_capability": null,
+        "capability_validation": null
+      },
+      "result": {
+        "item_record": {
+          "display_name": "First anomaly orbit model",
+          "provenance_class": "fabricated",
+          "status_class": "decorative",
+          "material_kg": 0.8,
+          "energy_kwh": 2.5,
+          "fabrication_hours": 1.5,
+          "intended_capability": null,
+          "capability_validation": null,
+          "created_at_expedition_minute": 33,
+          "origin_receipt": "af25b33c5ade468192ddbeff0ea8ed00b2e5e675a2b24f10f6195ea1ff655e37",
+          "id": "axm.item.fabricated.af25b33c5ade4681"
+        },
+        "remaining_material_kg": 29.2,
+        "remaining_energy_kwh": 117.5
+      },
+      "personal_clock_minutes": 33,
+      "expedition_clock_minutes": 33,
+      "previous_interaction_hash": "cf6bffc3bedc249ab4cc7c6611f4c998d577ed3eed70d7ea96510abc01af962b",
+      "interaction_hash": "da7d536498e27e9f7e1d5ea1b407f16daaf5b29f9e0c6a711aa2e1b8aca35453"
+    },
+    {
+      "sequence": 5,
+      "room_id": "primary_quarters",
+      "interaction_id": "display_provenanced_item",
+      "truth_class": "inventory_and_provenance",
+      "claim_limit": "Displaying an item does not alter its scientific or technical status.",
+      "inputs": {
+        "item_id": "axm.item.fabricated.af25b33c5ade4681",
+        "room_id": "primary_quarters",
+        "display_anchor": "shelf_center"
+      },
+      "result": {
+        "placement": {
+          "item_id": "axm.item.fabricated.af25b33c5ade4681",
+          "room_id": "primary_quarters",
+          "display_anchor": "shelf_center",
+          "placed_at_expedition_minute": 37,
+          "item_status_class": "decorative",
+          "placement_receipt": "0dd8d228db5c2bf7c603e601b973a6cfd7e7e68b10422e25a8ed401fcf20855d"
+        }
+      },
+      "personal_clock_minutes": 37,
+      "expedition_clock_minutes": 37,
+      "previous_interaction_hash": "da7d536498e27e9f7e1d5ea1b407f16daaf5b29f9e0c6a711aa2e1b8aca35453",
+      "interaction_hash": "4ef219abb2aa3fc6cc3d0cc16a6ad4f57616646fa2b1f6761d2b6d566c04f5d0"
+    }
+  ],
+  "inventory": [
+    {
+      "id": "axm.item.first-expedition-plaque.v1",
+      "display_name": "First Expedition Plaque",
+      "provenance_class": "fabricated",
+      "status_class": "decorative",
+      "capabilities": []
+    },
+    {
+      "id": "axm.item.ship-atlas-projector.v1",
+      "display_name": "Ship Atlas Projector",
+      "provenance_class": "fabricated",
+      "status_class": "validated_tool",
+      "capabilities": [
+        "display_pinned_atlas_records"
+      ],
+      "capability_limit": "Displays records; does not create new astronomical facts."
+    },
+    {
+      "display_name": "First anomaly orbit model",
+      "provenance_class": "fabricated",
+      "status_class": "decorative",
+      "material_kg": 0.8,
+      "energy_kwh": 2.5,
+      "fabrication_hours": 1.5,
+      "intended_capability": null,
+      "capability_validation": null,
+      "created_at_expedition_minute": 33,
+      "origin_receipt": "af25b33c5ade468192ddbeff0ea8ed00b2e5e675a2b24f10f6195ea1ff655e37",
+      "id": "axm.item.fabricated.af25b33c5ade4681"
+    }
+  ],
+  "room_item_placements": {
+    "primary_quarters": [
+      {
+        "item_id": "axm.item.fabricated.af25b33c5ade4681",
+        "room_id": "primary_quarters",
+        "display_anchor": "shelf_center",
+        "placed_at_expedition_minute": 37,
+        "item_status_class": "decorative",
+        "placement_receipt": "0dd8d228db5c2bf7c603e601b973a6cfd7e7e68b10422e25a8ed401fcf20855d"
+      }
+    ],
+    "collaborator_quarters": []
+  },
+  "resource_state": {
+    "fabrication_material_kg": 29.2,
+    "fabrication_energy_kwh": 117.5
+  },
+  "state_hash": "c83510f09b7a7dfdda5ce0763cfb49211d0460c979e05fb7130ec4ce955f6131"
+}

@@ -1,0 +1,767 @@
+{
+  "schema": "axm.factual-ship-blueprint-demo.v1",
+  "blueprint_validation": {
+    "schema": "axm.ship-blueprint-validation.v1",
+    "blueprint_id": "axm.ship.frontier-survey-stack.v1",
+    "blueprint_version": 1,
+    "system_count": 22,
+    "module_count": 5,
+    "interface_count": 39,
+    "failure_mode_count": 20,
+    "role_profile_count": 7,
+    "telemetry_metric_count": 78,
+    "station_count": 6,
+    "competency_skill_count": 22,
+    "valid": true,
+    "failures": [],
+    "validation_receipt": "2697948c64cc33e933bfcbd9dcea1bd4ecd639c4e5a5aedc4ea230a8fd840125"
+  },
+  "blueprint_commitment": "94e91fd0c78f17c3694be12e7eb8c1691e77be5d045f40c86a5f6b549f4811a1",
+  "initial_evaluation": {
+    "schema": "axm.ship-evaluation.v1",
+    "mission_elapsed_minutes": 0.0,
+    "mode": "nominal",
+    "power": {
+      "generated_power_kw": 48.504,
+      "served_load_kw": 40.2,
+      "power_margin_kw": 8.304,
+      "battery_energy_kwh": 196.8,
+      "battery_reserve_energy_kwh": 48.0,
+      "battery_above_reserve": true,
+      "shed_loads": []
+    },
+    "thermal": {
+      "waste_heat_kw": 40.2,
+      "rejection_capacity_kw": 49.0,
+      "thermal_margin_kw": 8.8,
+      "thermal_storage_kwh": 0.0,
+      "thermal_storage_limit_kwh": 18.0
+    },
+    "life_support": {
+      "active_humans": 5,
+      "cabin_pressure_kpa": 101.3,
+      "pressure_loss_rate_kpa_per_hour": 0.0,
+      "co2_removal_margin_person_equivalent": 1.75,
+      "effective_water_recovery_fraction": 0.95,
+      "net_water_loss_kg_per_day": 2.3,
+      "estimated_water_days": 282.608696,
+      "stored_oxygen_days_at_current_crew": 18.0,
+      "air_quality_state": "nominal",
+      "water_quality_state": "nominal"
+    },
+    "communications": {
+      "distance_m": 384400000.0,
+      "one_way_light_time_s": 1.282220382,
+      "round_trip_light_time_s": 2.564440764,
+      "availability": 1.0,
+      "data_queue_gb": 4.0,
+      "store_capacity_gb": 120.0,
+      "queue_fraction": 0.033333,
+      "telemetry_visibility_fraction": 1.0
+    },
+    "navigation": {
+      "position_km": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity_km_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "attitude_error_deg": 0.05,
+      "navigation_uncertainty_km": 0.25,
+      "pointing_performance_multiplier": 1.0,
+      "propulsion_available": true
+    },
+    "radiation": {
+      "environment_index": 1.0,
+      "cumulative_relative_exposure": 0.0,
+      "shelter_active": false
+    },
+    "structure": {
+      "health": 1.0,
+      "isolated_rooms": [],
+      "pressure_boundary_state": "nominal"
+    },
+    "maintenance": {
+      "open_work_orders": [],
+      "spares_index": 1.0,
+      "repair_capacity_person_hours_per_day": 18.0
+    },
+    "command": {
+      "pending_recall": null,
+      "held_irreversible_actions": []
+    },
+    "minimum_critical_system_health": 1.0,
+    "crew_survival_state_currently_supported": true,
+    "evaluation_receipt": "0993715cae6ac556fdbb6c14081da92eb20e4f7af9c721cf646a4c213db14b34"
+  },
+  "final_evaluation": {
+    "schema": "axm.ship-evaluation.v1",
+    "mission_elapsed_minutes": 65.0,
+    "mode": "nominal",
+    "power": {
+      "generated_power_kw": 48.504,
+      "served_load_kw": 40.2,
+      "power_margin_kw": 8.304,
+      "battery_energy_kwh": 195.7692,
+      "battery_reserve_energy_kwh": 48.0,
+      "battery_above_reserve": true,
+      "shed_loads": []
+    },
+    "thermal": {
+      "waste_heat_kw": 46.2,
+      "rejection_capacity_kw": 49.0,
+      "thermal_margin_kw": 2.8,
+      "thermal_storage_kwh": 2.216667,
+      "thermal_storage_limit_kwh": 18.0
+    },
+    "life_support": {
+      "active_humans": 5,
+      "cabin_pressure_kpa": 101.3,
+      "pressure_loss_rate_kpa_per_hour": 0.0,
+      "co2_removal_margin_person_equivalent": 1.75,
+      "effective_water_recovery_fraction": 0.95,
+      "net_water_loss_kg_per_day": 2.3,
+      "estimated_water_days": 282.563557,
+      "stored_oxygen_days_at_current_crew": 18.0,
+      "air_quality_state": "nominal",
+      "water_quality_state": "nominal"
+    },
+    "communications": {
+      "distance_m": 384400000.0,
+      "one_way_light_time_s": 1.282220382,
+      "round_trip_light_time_s": 2.564440764,
+      "availability": 0.75,
+      "data_queue_gb": 19.75,
+      "store_capacity_gb": 120.0,
+      "queue_fraction": 0.164583,
+      "telemetry_visibility_fraction": 0.91
+    },
+    "navigation": {
+      "position_km": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity_km_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "attitude_error_deg": 0.05,
+      "navigation_uncertainty_km": 12.379999999999999,
+      "pointing_performance_multiplier": 1.0,
+      "propulsion_available": true
+    },
+    "radiation": {
+      "environment_index": 1.0,
+      "cumulative_relative_exposure": 1.0833333333333333,
+      "shelter_active": false
+    },
+    "structure": {
+      "health": 0.9465999573307065,
+      "isolated_rooms": [],
+      "pressure_boundary_state": "nominal"
+    },
+    "maintenance": {
+      "open_work_orders": [],
+      "spares_index": 1.0,
+      "repair_capacity_person_hours_per_day": 18.0
+    },
+    "command": {
+      "pending_recall": {
+        "reason": "navigation_sensor_disagreement",
+        "summary": "gnc fault requires command review.",
+        "held_irreversible_action": true
+      },
+      "held_irreversible_actions": [
+        {
+          "reason": "data_integrity_risk",
+          "fraction": 0.15,
+          "rule": "Irreversible commands held until state and command provenance are revalidated."
+        }
+      ]
+    },
+    "minimum_critical_system_health": 0.9466,
+    "crew_survival_state_currently_supported": true,
+    "evaluation_receipt": "78e8267b82ab104f2fc68ebcf8ab9ad17112cb7a0f48ce6ac9b6d683af0d4c9b"
+  },
+  "state_verification": {
+    "schema": "axm.ship-state-verification.v1",
+    "valid": true,
+    "failures": [],
+    "fault_count": 1,
+    "encounter_count": 1,
+    "history_count": 5,
+    "blueprint_commitment": "94e91fd0c78f17c3694be12e7eb8c1691e77be5d045f40c86a5f6b549f4811a1",
+    "verification_receipt": "9c28ed22ec7639c7265ec0ce5bf4cff5cf34fe1bd3393732b769f50dcd0603d9"
+  },
+  "role_perspectives": {
+    "mission_commander": {
+      "schema": "axm.crew-role-perspective.v1",
+      "role_id": "mission_commander",
+      "display_name": "Mission Commander / Primary Explorer",
+      "ship_state_hash": "5bc431e74b12cf3ebfbab3a2a3c34eabb9a85e9ac77affadcb5fec0e9ae415d5",
+      "starting_perspective_metrics": {
+        "crew_survival_margin": true,
+        "mission_objective_state": "nominal",
+        "irreversible_decision_count": 1,
+        "available_reversible_options": null,
+        "cross_system_risk": 0.0534,
+        "crew_readiness": 5,
+        "communications_latency": 1.282220382,
+        "command_authority": [
+          "mission_posture",
+          "irreversible_branch",
+          "safe_haven",
+          "crew_role_reassignment"
+        ]
+      },
+      "system_depth": {
+        "fault_management": 4,
+        "gnc": 3,
+        "eclss_atmosphere": 3,
+        "power_distribution": 3,
+        "communications": 3,
+        "crew_health_medical": 2
+      },
+      "role_training": [
+        "command under uncertainty",
+        "integrated mission operations",
+        "abort and safe-haven logic",
+        "crew resource management",
+        "timeline and priorities"
+      ],
+      "may_authorize": [
+        "mission_posture",
+        "irreversible_branch",
+        "safe_haven",
+        "crew_role_reassignment"
+      ],
+      "may_not_override": [
+        "immutable_roots",
+        "source_truth",
+        "physical_constraints"
+      ],
+      "perspective_rule": "The role begins with factual system metrics and qualification depth. It may evolve strategies and derived principles without changing the immutable roots.",
+      "perspective_receipt": "21e89c1b6177e47951d2522dbda0b5408877be39c50c8ed87d9f7e30357ad474"
+    },
+    "ai_systems_integrator": {
+      "schema": "axm.crew-role-perspective.v1",
+      "role_id": "ai_systems_integrator",
+      "display_name": "AI Systems Integrator / Collaborating Explorer",
+      "ship_state_hash": "5bc431e74b12cf3ebfbab3a2a3c34eabb9a85e9ac77affadcb5fec0e9ae415d5",
+      "starting_perspective_metrics": {
+        "interface_consistency": 0.99,
+        "telemetry_contradictions": 0.08999999999999997,
+        "root_eligibility": "required",
+        "cross_system_fault_propagation": 1,
+        "data_provenance": "hash_chained",
+        "model_uncertainty": 12.379999999999999,
+        "replay_integrity": true
+      },
+      "system_depth": {
+        "avionics_cdh": 5,
+        "fault_management": 5,
+        "science_payload_and_analysis": 4,
+        "power_distribution": 3,
+        "thermal_control": 3,
+        "gnc": 3
+      },
+      "role_training": [
+        "offline deterministic operation",
+        "model validation",
+        "source and uncertainty separation",
+        "human-readable explanation",
+        "safe proposal generation"
+      ],
+      "may_authorize": [
+        "reversible_automation",
+        "analysis_proposal",
+        "fault_isolation_proposal"
+      ],
+      "may_not_override": [
+        "human_or_shared_command_authority",
+        "immutable_roots",
+        "hidden_state_commitments"
+      ],
+      "perspective_rule": "The role begins with factual system metrics and qualification depth. It may evolve strategies and derived principles without changing the immutable roots.",
+      "perspective_receipt": "74d04106b4112acc3a95471a79269dc3de4f9a6335246efd15d85619385ae1d0"
+    },
+    "flight_dynamics_navigation": {
+      "schema": "axm.crew-role-perspective.v1",
+      "role_id": "flight_dynamics_navigation",
+      "display_name": "Flight Dynamics and Navigation Specialist",
+      "ship_state_hash": "5bc431e74b12cf3ebfbab3a2a3c34eabb9a85e9ac77affadcb5fec0e9ae415d5",
+      "starting_perspective_metrics": {
+        "position_velocity_state": {
+          "position_km": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "velocity_km_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "navigation_uncertainty": 12.379999999999999,
+        "relative_motion": "scenario_dependent",
+        "attitude_error": 0.05,
+        "pointing_constraints": {
+          "performance_multiplier": 1.0
+        },
+        "maneuver_reversibility": true,
+        "collision_risk": "requires encounter geometry"
+      },
+      "system_depth": {
+        "gnc": 5,
+        "reaction_control": 4,
+        "main_propulsion": 3,
+        "external_sensors": 4,
+        "communications": 2,
+        "docking_airlock_eva": 3
+      },
+      "role_training": [
+        "orbit determination",
+        "attitude control",
+        "rendezvous",
+        "optical navigation",
+        "burn planning",
+        "sensor disagreement response"
+      ],
+      "may_authorize": [
+        "routine_pointing",
+        "routine_navigation_update",
+        "reversible_course_correction_within_limits"
+      ],
+      "may_not_override": [
+        "command_required_maneuver_gate",
+        "unknown_propulsion_performance"
+      ],
+      "perspective_rule": "The role begins with factual system metrics and qualification depth. It may evolve strategies and derived principles without changing the immutable roots.",
+      "perspective_receipt": "250979967e44b1ae6cfbab3abc47b5155f125dfa0cb02afff0ab3f793707f9aa"
+    },
+    "vehicle_systems_engineer": {
+      "schema": "axm.crew-role-perspective.v1",
+      "role_id": "vehicle_systems_engineer",
+      "display_name": "Vehicle Systems Engineer",
+      "ship_state_hash": "5bc431e74b12cf3ebfbab3a2a3c34eabb9a85e9ac77affadcb5fec0e9ae415d5",
+      "starting_perspective_metrics": {
+        "power_margin_kw": 8.304,
+        "battery_state_of_charge": 0.8157049999999999,
+        "thermal_margin_kw": 2.8,
+        "pressure_integrity": "nominal",
+        "life_support_margin": 1.75,
+        "maintenance_backlog": 0,
+        "spares_and_repair_time": {
+          "spares_index": 1.0,
+          "person_hours_per_day": 18.0
+        }
+      },
+      "system_depth": {
+        "electrical_power_generation": 4,
+        "energy_storage": 4,
+        "power_distribution": 5,
+        "thermal_control": 5,
+        "primary_structure": 3,
+        "eclss_atmosphere": 3,
+        "water_and_waste": 3,
+        "logistics_maintenance_fabrication": 4
+      },
+      "role_training": [
+        "power and load analysis",
+        "thermal operations",
+        "pressure and leak response",
+        "configuration control",
+        "life-support interfaces",
+        "fault isolation"
+      ],
+      "may_authorize": [
+        "routine_load_shedding",
+        "reversible_reconfiguration",
+        "maintenance_work_order"
+      ],
+      "may_not_override": [
+        "crew_survival_reserves",
+        "unverified_repair_capability"
+      ],
+      "perspective_rule": "The role begins with factual system metrics and qualification depth. It may evolve strategies and derived principles without changing the immutable roots.",
+      "perspective_receipt": "8ee1e38292240b8a00c8b6a36e2691ea89d9c9e3ba70af99fdc7f46c18361bab"
+    },
+    "science_anomaly_specialist": {
+      "schema": "axm.crew-role-perspective.v1",
+      "role_id": "science_anomaly_specialist",
+      "display_name": "Science and Anomaly Specialist",
+      "ship_state_hash": "5bc431e74b12cf3ebfbab3a2a3c34eabb9a85e9ac77affadcb5fec0e9ae415d5",
+      "starting_perspective_metrics": {
+        "measurement_quality": 1.0,
+        "calibration_state": "nominal",
+        "independent_replication": "case_dependent",
+        "false_positive_controls": "case_dependent",
+        "hypothesis_contradictions": "case_dependent",
+        "claim_ceiling": "case_dependent",
+        "unresolved_alternatives": "case_dependent"
+      },
+      "system_depth": {
+        "science_payload_and_analysis": 5,
+        "external_sensors": 5,
+        "robotics_and_probe_operations": 3,
+        "radiation_monitoring_and_shelter": 2,
+        "avionics_cdh": 2
+      },
+      "role_training": [
+        "instrument calibration",
+        "planetary and geological reasoning",
+        "hypothesis testing",
+        "contamination control",
+        "evidence ladders",
+        "probe planning"
+      ],
+      "may_authorize": [
+        "routine_observation",
+        "calibration",
+        "reversible_probe_measurement"
+      ],
+      "may_not_override": [
+        "claim_ceiling",
+        "contamination_gate",
+        "command_required_contact"
+      ],
+      "perspective_rule": "The role begins with factual system metrics and qualification depth. It may evolve strategies and derived principles without changing the immutable roots.",
+      "perspective_receipt": "78a917b5fe251548196f1f4a148e9b7e6a1e3ca197b6e8ce4f3ff7d746c19899"
+    },
+    "communications_data_robotics": {
+      "schema": "axm.crew-role-perspective.v1",
+      "role_id": "communications_data_robotics",
+      "display_name": "Communications, Data, and Robotics Specialist",
+      "ship_state_hash": "5bc431e74b12cf3ebfbab3a2a3c34eabb9a85e9ac77affadcb5fec0e9ae415d5",
+      "starting_perspective_metrics": {
+        "one_way_light_time": 1.282220382,
+        "link_availability": 0.75,
+        "antenna_pointing": 1.0,
+        "data_queue": 19.75,
+        "command_integrity": 0.91,
+        "robot_contact_force": "operation_dependent",
+        "remote_system_latency": 1.282220382
+      },
+      "system_depth": {
+        "communications": 5,
+        "avionics_cdh": 4,
+        "robotics_and_probe_operations": 4,
+        "external_sensors": 3,
+        "gnc": 2
+      },
+      "role_training": [
+        "telemetry tracking and command",
+        "delay operations",
+        "data integrity",
+        "robotics",
+        "remote inspection",
+        "command authentication"
+      ],
+      "may_authorize": [
+        "routine_link_schedule",
+        "data_priority",
+        "reversible_robotic_motion_within_limits"
+      ],
+      "may_not_override": [
+        "command_authentication",
+        "force_torque_limits",
+        "rooted_command_gate"
+      ],
+      "perspective_rule": "The role begins with factual system metrics and qualification depth. It may evolve strategies and derived principles without changing the immutable roots.",
+      "perspective_receipt": "1ce83106e1b5278823706adcfda478af632c25bbfa9adb48d4fed2a87d0f6cbf"
+    },
+    "crew_medical_officer": {
+      "schema": "axm.crew-role-perspective.v1",
+      "role_id": "crew_medical_officer",
+      "display_name": "Crew Medical Officer",
+      "ship_state_hash": "5bc431e74b12cf3ebfbab3a2a3c34eabb9a85e9ac77affadcb5fec0e9ae415d5",
+      "starting_perspective_metrics": {
+        "crew_reported_condition": "privacy_controlled_record",
+        "environmental_exposure": 1.0833333333333333,
+        "fitness_for_task": "requires medical assessment",
+        "medical_resource_availability": 1.0,
+        "evacuation_or_safe_haven_time": "mission_geometry_dependent"
+      },
+      "system_depth": {
+        "crew_health_medical": 5,
+        "eclss_atmosphere": 3,
+        "radiation_monitoring_and_shelter": 3,
+        "water_and_waste": 2
+      },
+      "role_training": [
+        "medical procedures",
+        "space physiology",
+        "behavioral health",
+        "medical equipment",
+        "toxicology",
+        "countermeasures"
+      ],
+      "may_authorize": [
+        "medical_task_restriction",
+        "care_plan",
+        "medical_resource_use"
+      ],
+      "may_not_override": [
+        "patient_agency_except_immediate_emergency_policy",
+        "medical_privacy_controls"
+      ],
+      "perspective_rule": "The role begins with factual system metrics and qualification depth. It may evolve strategies and derived principles without changing the immutable roots.",
+      "perspective_receipt": "b8852244ce0d377f5936554964c93732ffbe5ef795cd0046c1d274b428dfb48c"
+    }
+  },
+  "qualification_gap_plan": {
+    "schema": "axm.crew-qualification-gap-plan.v1",
+    "role_id": "communications_data_robotics",
+    "ready_now": false,
+    "training_modules": [
+      {
+        "module_id": "qualify:robotics_and_probe_operations:5",
+        "system_id": "robotics_and_probe_operations",
+        "current_level": 4,
+        "target_level": 5,
+        "required_evidence": [
+          "knowledge_check",
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "instructor_or_system_verifier_signoff"
+        ],
+        "automatic_promotion_forbidden": true
+      },
+      {
+        "module_id": "qualify:gnc:3",
+        "system_id": "gnc",
+        "current_level": 2,
+        "target_level": 3,
+        "required_evidence": [
+          "knowledge_check",
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "instructor_or_system_verifier_signoff"
+        ],
+        "automatic_promotion_forbidden": true
+      }
+    ],
+    "rule": "Reading or model output alone does not grant operational qualification.",
+    "plan_receipt": "e6b4f2a26565bf35cfa78d3630e632308c7f39af85adcefc6f7e1d6abdfa4357"
+  },
+  "power_fault_paths": [
+    [
+      "electrical_power_generation",
+      "power_distribution"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "thermal_control"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "eclss_atmosphere"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "water_and_waste"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "avionics_cdh"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "communications"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "gnc"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "external_sensors"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "robotics_and_probe_operations"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "crew_health_medical"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "thermal_control",
+      "electrical_power_generation"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "thermal_control",
+      "energy_storage"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "thermal_control",
+      "avionics_cdh"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "thermal_control",
+      "eclss_atmosphere"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "thermal_control",
+      "communications"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "thermal_control",
+      "main_propulsion"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "eclss_atmosphere",
+      "crew_health_medical"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "water_and_waste",
+      "crew_health_medical"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "avionics_cdh",
+      "gnc"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "avionics_cdh",
+      "communications"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "avionics_cdh",
+      "power_distribution"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "avionics_cdh",
+      "thermal_control"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "avionics_cdh",
+      "fault_management"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "communications",
+      "avionics_cdh"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "gnc",
+      "reaction_control"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "gnc",
+      "main_propulsion"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "gnc",
+      "communications"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "gnc",
+      "docking_airlock_eva"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "external_sensors",
+      "gnc"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "external_sensors",
+      "science_payload_and_analysis"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "robotics_and_probe_operations",
+      "science_payload_and_analysis"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "thermal_control",
+      "energy_storage",
+      "power_distribution"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "thermal_control",
+      "main_propulsion",
+      "primary_structure"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "gnc",
+      "reaction_control",
+      "primary_structure"
+    ],
+    [
+      "electrical_power_generation",
+      "power_distribution",
+      "thermal_control",
+      "main_propulsion",
+      "primary_structure",
+      "eclss_atmosphere"
+    ]
+  ],
+  "honest_boundary": {
+    "flight_certified": false,
+    "complete_mass_known": false,
+    "verified_delta_v_known": false,
+    "system_architecture_complete_for_simulation": true,
+    "encounter_intent_inferred_from_damage": false
+  }
+}

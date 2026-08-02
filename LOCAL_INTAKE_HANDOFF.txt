@@ -1,0 +1,63 @@
+AXM LOCAL INTAKE HANDOFF — v0.15.0
+
+CURRENT STATUS
+--------------
+Complete local checkpoint for further engineering. Verify it before editing.
+
+CANONICAL ENTRY
+---------------
+- Human index: OPEN_LOCAL_HANDOFF.html
+- Machine index: MACHINE_INTAKE.json
+- Manifest: data/local_handoff_manifest.json
+- Root commitment: 01e6c42e4cfc6d8b7ea7999ddf9c29282d6d19722ef934d7c2e9ca095911a8f5
+
+PRESERVE
+--------
+- Truth / Source Truth
+- Continuity / No-Loss
+- Agency / No Takeover
+- Wisdom over Speed
+- deterministic replay and hash-chained history
+- hidden/private forge separation
+- source labels, uncertainty and claim ceilings
+- versioned bridge, interior, crew and ship IDs
+- role authority and irreversible-action gates
+- same authoritative ship state for every crew station
+- evidence-gated competency promotion
+
+DO NOT FAKE
+-----------
+- screenshots when no screenshot tool exists
+- external AI or internet connectivity
+- completed tests that were not run
+- flight performance that remains unknown
+- successful repairs before verification
+- crew mental states from a single score
+- hostile intent from damage alone
+- save compatibility without a migration assessment
+
+BUILDER CAPABILITY GAPS
+-----------------------
+Use data/builder_capability_declaration_schema.json. A missing tool is not punished. Preserve partial verified work and state the safe fallback and requested capability for the next instance.
+
+SAVE MIGRATION
+--------------
+Use axm.migration.no-silent-rewrite.v1. Visual reconstruction, additive adapters and derived indexes are allowed. Historical pins, seeds, commitments, ledgers, roots and claim ceilings may not be silently changed.
+
+NEXT RESEARCH
+-------------
+Potential work is listed in data/future_potential_backlog.json and docs/FUTURE_POTENTIAL_ROADMAP_v1.md. Items are ideas, not implemented capabilities.
+
+ACCEPTANCE
+----------
+python verify_package.py
+python -m unittest discover -s tests -v
+python -m axm_star_sim.handoff_cli audit --full
+
+
+LOCAL ACCEPTANCE COMMANDS
+-------------------------
+Windows: run_local_acceptance.bat
+Linux/macOS: ./run_local_acceptance.sh
+
+These wrappers set the source path and suppress transient Python bytecode, so the handoff audit remains clean even after its embedded test run.

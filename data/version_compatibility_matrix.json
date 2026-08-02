@@ -1,0 +1,72 @@
+{
+  "schema": "axm.version-compatibility-matrix.v1",
+  "current_version": "0.15.0",
+  "layers": [
+    {
+      "version": "0.1-0.3",
+      "capability": "deterministic factual universe and command foundations",
+      "status": "retained"
+    },
+    {
+      "version": "0.4",
+      "capability": "physics, causal threads and external entropy boundaries",
+      "status": "retained"
+    },
+    {
+      "version": "0.5",
+      "capability": "source-pinned technology cores",
+      "status": "retained"
+    },
+    {
+      "version": "0.6",
+      "capability": "long-horizon contact search",
+      "status": "retained"
+    },
+    {
+      "version": "0.7",
+      "capability": "persistent expedition atlas",
+      "status": "retained"
+    },
+    {
+      "version": "0.8",
+      "capability": "blind possibility forge",
+      "status": "retained"
+    },
+    {
+      "version": "0.9",
+      "capability": "offline adventure slots",
+      "status": "retained"
+    },
+    {
+      "version": "0.10",
+      "capability": "bridge visual grammar lock",
+      "status": "retained"
+    },
+    {
+      "version": "0.11",
+      "capability": "lived-in ship interior",
+      "status": "retained"
+    },
+    {
+      "version": "0.12",
+      "capability": "immutable rooted crew reasoning",
+      "status": "retained"
+    },
+    {
+      "version": "0.13",
+      "capability": "22-system factual ship blueprint",
+      "status": "retained"
+    },
+    {
+      "version": "0.14",
+      "capability": "crew station telemetry and evidence-gated skills",
+      "status": "retained"
+    },
+    {
+      "version": "0.15",
+      "capability": "strict local handoff, migration and builder honesty",
+      "status": "current"
+    }
+  ],
+  "rule": "Retained means tests and registries remain in the package; it does not claim every old save format has yet been tested against every future runtime."
+}

@@ -1,0 +1,385 @@
+{
+  "schema": "axm.ship-failure-mode-registry.v1",
+  "registry_version": "0.13.0",
+  "blueprint_id": "axm.ship.frontier-survey-stack.v1",
+  "method": "living_FMECA_style_registry",
+  "failure_modes": [
+    {
+      "id": "power_generation_degraded",
+      "system_id": "electrical_power_generation",
+      "criticality": "high",
+      "detection": [
+        "generated_power_below_expected",
+        "array_current_mismatch"
+      ],
+      "effects": {
+        "generation_multiplier": 0.55
+      },
+      "automatic_response": [
+        "recompute_power_budget",
+        "shed_noncritical_loads",
+        "preserve_life_support"
+      ],
+      "command_level": "advisory"
+    },
+    {
+      "id": "battery_low_state_of_charge",
+      "system_id": "energy_storage",
+      "criticality": "high",
+      "detection": [
+        "state_of_charge_below_reserve"
+      ],
+      "effects": {
+        "battery_soc_delta": -0.25
+      },
+      "automatic_response": [
+        "shed_noncritical_loads",
+        "restore_generation_pointing",
+        "prepare_safe_state"
+      ],
+      "command_level": "command_required"
+    },
+    {
+      "id": "power_bus_branch_fault",
+      "system_id": "power_distribution",
+      "criticality": "high",
+      "detection": [
+        "bus_voltage_out_of_limit",
+        "overcurrent_trip"
+      ],
+      "effects": {
+        "load_service_fraction": 0.72
+      },
+      "automatic_response": [
+        "isolate_branch",
+        "cross_tie_if_available",
+        "recompute_load_priority"
+      ],
+      "command_level": "advisory"
+    },
+    {
+      "id": "radiator_capacity_loss",
+      "system_id": "thermal_control",
+      "criticality": "high",
+      "detection": [
+        "coolant_temperature_rise",
+        "radiator_loop_flow_loss"
+      ],
+      "effects": {
+        "thermal_capacity_multiplier": 0.55
+      },
+      "automatic_response": [
+        "reduce_heat_generating_loads",
+        "change_attitude_if_safe",
+        "activate_backup_loop"
+      ],
+      "command_level": "command_required"
+    },
+    {
+      "id": "cabin_pressure_leak",
+      "system_id": "primary_structure",
+      "criticality": "crew_survival",
+      "detection": [
+        "pressure_decay",
+        "gas_mass_loss",
+        "impact_sensor"
+      ],
+      "effects": {
+        "pressure_leak_kpa_per_hour": 4.0,
+        "structure_health_delta": -0.08
+      },
+      "automatic_response": [
+        "isolate_compartment",
+        "alert_crew",
+        "prepare_suits",
+        "preserve_pressure"
+      ],
+      "command_level": "command_required"
+    },
+    {
+      "id": "co2_removal_degraded",
+      "system_id": "eclss_atmosphere",
+      "criticality": "crew_survival",
+      "detection": [
+        "co2_margin_below_zero",
+        "bed_fault"
+      ],
+      "effects": {
+        "co2_removal_multiplier": 0.55
+      },
+      "automatic_response": [
+        "reduce_metabolic_load",
+        "activate_backup_scrubber",
+        "increase_monitoring"
+      ],
+      "command_level": "command_required"
+    },
+    {
+      "id": "oxygen_generation_degraded",
+      "system_id": "eclss_atmosphere",
+      "criticality": "crew_survival",
+      "detection": [
+        "oxygen_generation_below_demand",
+        "electrolysis_fault"
+      ],
+      "effects": {
+        "oxygen_generation_multiplier": 0.5
+      },
+      "automatic_response": [
+        "activate_stored_oxygen",
+        "reduce_nonessential_activity",
+        "evaluate_safe_haven"
+      ],
+      "command_level": "command_required"
+    },
+    {
+      "id": "water_recovery_degraded",
+      "system_id": "water_and_waste",
+      "criticality": "high",
+      "detection": [
+        "water_quality_reject",
+        "processor_throughput_loss"
+      ],
+      "effects": {
+        "water_recovery_multiplier": 0.55
+      },
+      "automatic_response": [
+        "isolate_stream",
+        "use_stored_water",
+        "schedule_maintenance"
+      ],
+      "command_level": "advisory"
+    },
+    {
+      "id": "smoke_or_fire_alarm",
+      "system_id": "fire_and_emergency_response",
+      "criticality": "crew_survival",
+      "detection": [
+        "smoke_sensor",
+        "temperature_rise",
+        "crew_report"
+      ],
+      "effects": {
+        "affected_zone_available": false,
+        "power_load_kw_delta": -2.0
+      },
+      "automatic_response": [
+        "remove_local_power",
+        "isolate_ventilation",
+        "alert_and_recall",
+        "prepare_suppression"
+      ],
+      "command_level": "command_required"
+    },
+    {
+      "id": "cdh_channel_fault",
+      "system_id": "avionics_cdh",
+      "criticality": "crew_survival",
+      "detection": [
+        "processor_watchdog",
+        "channel_disagreement",
+        "telemetry_gap"
+      ],
+      "effects": {
+        "cdh_capacity_multiplier": 0.6
+      },
+      "automatic_response": [
+        "failover_channel",
+        "freeze_irreversible_commands",
+        "preserve_event_log"
+      ],
+      "command_level": "advisory"
+    },
+    {
+      "id": "data_bus_partition",
+      "system_id": "avionics_cdh",
+      "criticality": "high",
+      "detection": [
+        "missing_heartbeats",
+        "routing_failure"
+      ],
+      "effects": {
+        "telemetry_visibility_fraction": 0.65
+      },
+      "automatic_response": [
+        "isolate_partition",
+        "route_over_backup",
+        "limit_autonomy_to_visible_state"
+      ],
+      "command_level": "command_required"
+    },
+    {
+      "id": "navigation_sensor_disagreement",
+      "system_id": "gnc",
+      "criticality": "high",
+      "detection": [
+        "state_estimator_residual",
+        "sensor_cross_check_failure"
+      ],
+      "effects": {
+        "navigation_uncertainty_km_delta": 8.0
+      },
+      "automatic_response": [
+        "reject_outlier",
+        "increase_uncertainty",
+        "hold_high_consequence_maneuvers"
+      ],
+      "command_level": "command_required"
+    },
+    {
+      "id": "attitude_control_degraded",
+      "system_id": "reaction_control",
+      "criticality": "high",
+      "detection": [
+        "actuator_saturation",
+        "attitude_error_growth"
+      ],
+      "effects": {
+        "pointing_performance_multiplier": 0.55
+      },
+      "automatic_response": [
+        "desaturate_if_possible",
+        "enter_safe_attitude",
+        "limit_pointing_tasks"
+      ],
+      "command_level": "command_required"
+    },
+    {
+      "id": "communications_pointing_loss",
+      "system_id": "communications",
+      "criticality": "medium",
+      "detection": [
+        "carrier_loss",
+        "antenna_pointing_error"
+      ],
+      "effects": {
+        "communications_availability": 0.0
+      },
+      "automatic_response": [
+        "store_data",
+        "reacquire_attitude",
+        "transmit_health_beacon"
+      ],
+      "command_level": "advisory"
+    },
+    {
+      "id": "propulsion_channel_fault",
+      "system_id": "main_propulsion",
+      "criticality": "high",
+      "detection": [
+        "thrust_mismatch",
+        "valve_or_power_fault",
+        "unexpected_acceleration"
+      ],
+      "effects": {
+        "propulsion_available": false
+      },
+      "automatic_response": [
+        "terminate_burn",
+        "close_isolation_valves",
+        "update_trajectory_uncertainty"
+      ],
+      "command_level": "command_required"
+    },
+    {
+      "id": "docking_seal_leak",
+      "system_id": "docking_airlock_eva",
+      "criticality": "crew_survival",
+      "detection": [
+        "interseal_pressure_decay",
+        "leak_check_failure"
+      ],
+      "effects": {
+        "docking_transfer_allowed": false
+      },
+      "automatic_response": [
+        "do_not_open_hatches",
+        "hold_configuration",
+        "repeat_leak_check"
+      ],
+      "command_level": "command_required"
+    },
+    {
+      "id": "radiation_event",
+      "system_id": "radiation_monitoring_and_shelter",
+      "criticality": "crew_survival",
+      "detection": [
+        "particle_detector_rate",
+        "space_weather_alert"
+      ],
+      "effects": {
+        "radiation_index_delta": 4.0
+      },
+      "automatic_response": [
+        "recall_crew",
+        "enter_storm_shelter",
+        "protect_sensitive_operations"
+      ],
+      "command_level": "command_required"
+    },
+    {
+      "id": "mmod_impact",
+      "system_id": "mmod_and_external_protection",
+      "criticality": "variable",
+      "detection": [
+        "impact_sensor",
+        "pressure_change",
+        "external_inspection"
+      ],
+      "effects": {
+        "structure_health_delta": -0.12,
+        "sensor_health_delta": -0.05
+      },
+      "automatic_response": [
+        "localize_damage",
+        "check_pressure",
+        "inspect_exterior",
+        "reassess_attitude"
+      ],
+      "command_level": "command_required"
+    },
+    {
+      "id": "robotics_contact_overload",
+      "system_id": "robotics_and_probe_operations",
+      "criticality": "medium",
+      "detection": [
+        "force_torque_limit",
+        "motor_current_limit"
+      ],
+      "effects": {
+        "robotics_health_delta": -0.1
+      },
+      "automatic_response": [
+        "stop_motion",
+        "backdrive_or_release_if_safe",
+        "preserve_contact_data"
+      ],
+      "command_level": "advisory"
+    },
+    {
+      "id": "crew_medical_event",
+      "system_id": "crew_health_medical",
+      "criticality": "crew_survival",
+      "detection": [
+        "crew_report",
+        "medical_measurement",
+        "task_performance_change"
+      ],
+      "effects": {
+        "available_human_crew_delta": -1
+      },
+      "automatic_response": [
+        "assign_cmo",
+        "stabilize_patient",
+        "redistribute_roles",
+        "evaluate_mission_posture"
+      ],
+      "command_level": "command_required"
+    }
+  ],
+  "source_ids": [
+    "nasa_fmeca_2024",
+    "nasa_fault_detection_response_2026",
+    "nasa_rm_standard_2017"
+  ]
+}

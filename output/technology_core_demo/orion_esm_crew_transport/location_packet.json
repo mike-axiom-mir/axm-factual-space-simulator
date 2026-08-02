@@ -1,0 +1,70 @@
+{
+  "schema": "axm.location-export-packet.v1",
+  "map_id": "atlas-3154dab339a5fef7",
+  "active_location_id": "frontier:8651f4dccaf83212",
+  "location": {
+    "schema": "axm.atlas-location.v1",
+    "location_id": "frontier:8651f4dccaf83212",
+    "name": "Vela Crown 5595",
+    "object_class": "generated_stellar_system",
+    "knowledge_class": "procedural_frontier",
+    "coordinates": {
+      "frame": "ICRS-like simulation frame",
+      "epoch": "campaign_origin",
+      "ra_deg": 95.893324847,
+      "dec_deg": -41.400332691,
+      "distance_ly": 1240.696838,
+      "truth_type": "simulation_prior",
+      "source_ids": [
+        "axm_simulation_priors_v1"
+      ],
+      "warning": "This coordinate is a deterministic simulation anchor. It is not a claim that a catalogued system exists here."
+    },
+    "cartesian_ly": {
+      "x_ly": -95.556606158,
+      "y_ly": 925.736953908,
+      "z_ly": -820.492944356
+    },
+    "distance_ly": {
+      "value": 1240.696838,
+      "truth_type": "simulation_prior",
+      "source_ids": [
+        "axm_simulation_priors_v1"
+      ]
+    },
+    "known_worlds": [
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "source_ids": [
+      "axm_simulation_priors_v1"
+    ],
+    "system_id": "8651f4dccaf83212",
+    "system_state_sha256": "51dfc0ef1e86ec8ba11517406380c2a32a1538ba0320d3dfe7c79777c48643d7",
+    "catalog_revision": 0,
+    "visit_count": 2,
+    "crew_observations": [
+      {
+        "event_id": "8651f4dccaf83212:turn:1",
+        "event_hash": "b2a96f6bfb6f6b32ddaf988df4ed5754e433fb7a0a252fcc46f54381fdf42ddf",
+        "turn": 1,
+        "action": "Map dust and small bodies before approaching the planets.",
+        "outcome_id": "ambiguous-evidence",
+        "outcome_title": "The uncertainty narrows, but survives",
+        "truth_type": "expedition_observation",
+        "measurement": null
+      }
+    ],
+    "render_history": [],
+    "route_status": "active_simulated_expedition",
+    "route_feasibility": {
+      "status": "simulation_contract",
+      "rule": "Travel is resolved by the simulator's ship and mission physics. The coordinate alone grants no capability."
+    },
+    "authoritative_snapshot_sha256": "d20abe89bdae1d6455aee229fa8a1c037a472d251ddcd7ab2239f1c2954768c6"
+  },
+  "atlas_visit_chain_head": "4b1cd5fd330484542725941fd6926a8e150b2c2a2de26cec68c2c3ea389ffdeb",
+  "packet_sha256": "1c78b64cd732267b468918749c817c912f9018da795335723934756ec41a120d"
+}

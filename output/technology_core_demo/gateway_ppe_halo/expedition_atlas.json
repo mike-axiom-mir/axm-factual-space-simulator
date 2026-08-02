@@ -1,0 +1,502 @@
+{
+  "schema": "axm.expedition-atlas.v1",
+  "atlas_version": "0.7.0",
+  "map_id": "atlas-24ee6363667aab95",
+  "created_at": "2026-08-02T05:29:58.398008+00:00",
+  "updated_at": "2026-08-02T05:29:58.404309+00:00",
+  "active_location_id": "frontier:40dad42079fcce6b",
+  "origin_location_id": "catalog:sol",
+  "coordinate_contract": {
+    "catalog_frame": "ICRS with source epoch preserved",
+    "display_frame": "heliocentric Cartesian light-years",
+    "precision_rule": "Display propagation is never used as precision navigation. Solar-system navigation must use Horizons/SPICE snapshots."
+  },
+  "catalog_snapshot": {
+    "catalog_version": "2026-08-02-starter",
+    "catalog_sha256": "9eba840956f82f392b555ad5d741ca70a5aa76caa80153611f2bfe7c0aeb7522",
+    "identity_warning": "Gaia source identifiers are release-scoped and may change between releases. Cross-release identity must use positional neighbourhood and provenance, not blind source_id equality.",
+    "source_ids": [
+      "jpl_horizons",
+      "naif_spice",
+      "nasa_exoplanet_archive_pscomppars",
+      "nasa_exoplanet_catalog_51_pegasi_b",
+      "nasa_exoplanet_catalog_proxima_b",
+      "simbad_cds_gaia_dr3"
+    ]
+  },
+  "locations": {
+    "catalog:sol": {
+      "location_id": "catalog:sol",
+      "name": "Solar System",
+      "object_class": "planetary_system",
+      "knowledge_class": "catalog_anchor",
+      "coordinates": {
+        "frame": "heliocentric_cartesian",
+        "epoch": "local_origin",
+        "x_ly": 0.0,
+        "y_ly": 0.0,
+        "z_ly": 0.0,
+        "truth_type": "catalog_fact"
+      },
+      "distance_ly": {
+        "value": 0.0,
+        "truth_type": "catalog_fact",
+        "source_ids": [
+          "jpl_horizons"
+        ]
+      },
+      "known_worlds": [
+        "Mercury",
+        "Venus",
+        "Earth",
+        "Mars",
+        "Jupiter",
+        "Saturn",
+        "Uranus",
+        "Neptune"
+      ],
+      "source_ids": [
+        "jpl_horizons",
+        "naif_spice"
+      ],
+      "notes": "Atlas origin. Precision body geometry should come from Horizons or SPICE snapshots rather than this summary record.",
+      "cartesian_ly": {
+        "x_ly": 0.0,
+        "y_ly": 0.0,
+        "z_ly": 0.0
+      },
+      "schema": "axm.atlas-location.v1",
+      "catalog_revision": 1,
+      "visit_count": 1,
+      "crew_observations": [],
+      "render_history": [],
+      "route_status": "mapped_not_proven_reachable",
+      "route_feasibility": {
+        "status": "unknown",
+        "rule": "A mapped coordinate is not evidence that the selected spacecraft can reach it."
+      },
+      "authoritative_snapshot_sha256": "d5b5c8053aa959d6e533f8f6c3b40d989656f9ef9e2454c62f936c238081566d"
+    },
+    "catalog:proxima-centauri": {
+      "location_id": "catalog:proxima-centauri",
+      "name": "Proxima Centauri",
+      "object_class": "stellar_system",
+      "knowledge_class": "catalog_anchor",
+      "coordinates": {
+        "frame": "ICRS",
+        "epoch": "J2000",
+        "ra_deg": 217.4289422216058,
+        "dec_deg": -62.67949018907555,
+        "parallax_mas": 768.0665,
+        "parallax_error_mas": 0.0499,
+        "pmra_mas_yr": -3781.741,
+        "pmdec_mas_yr": 769.465,
+        "truth_type": "catalog_fact",
+        "source_ids": [
+          "simbad_cds_gaia_dr3"
+        ]
+      },
+      "distance_ly": {
+        "value": 4.246460139844662,
+        "truth_type": "derived",
+        "formula_id": "inverse_parallax_nearby_demo",
+        "source_ids": [
+          "simbad_cds_gaia_dr3"
+        ]
+      },
+      "known_worlds": [
+        "Proxima Centauri b"
+      ],
+      "world_facts": {
+        "Proxima Centauri b": {
+          "planet_type": "Super Earth",
+          "orbital_period_days": 11.2,
+          "orbital_radius_au": 0.04848,
+          "mass_earth": 1.055,
+          "source_ids": [
+            "nasa_exoplanet_catalog_proxima_b"
+          ]
+        }
+      },
+      "source_ids": [
+        "simbad_cds_gaia_dr3",
+        "nasa_exoplanet_catalog_proxima_b"
+      ],
+      "cartesian_ly": {
+        "x_ly": -1.547706157,
+        "y_ly": -1.184549992,
+        "z_ly": -3.772780233
+      },
+      "coordinates_2026_display": {
+        "frame": "ICRS",
+        "epoch": "J2000",
+        "ra_deg": 217.4289422216058,
+        "dec_deg": -62.67949018907555,
+        "parallax_mas": 768.0665,
+        "parallax_error_mas": 0.0499,
+        "pmra_mas_yr": -3781.741,
+        "pmdec_mas_yr": 769.465,
+        "truth_type": "catalog_fact",
+        "source_ids": [
+          "simbad_cds_gaia_dr3"
+        ],
+        "propagated_epoch": 2026.583,
+        "propagated_ra_deg": 217.3680991365,
+        "propagated_dec_deg": -62.6738083313,
+        "propagation_model": "linear tangent-plane proper-motion approximation",
+        "navigation_authority": "display_only",
+        "warning": "No perspective acceleration, orbital multiplicity, covariance propagation, or full radial-motion solution is included."
+      },
+      "schema": "axm.atlas-location.v1",
+      "catalog_revision": 1,
+      "visit_count": 0,
+      "crew_observations": [],
+      "render_history": [],
+      "route_status": "mapped_not_proven_reachable",
+      "route_feasibility": {
+        "status": "unknown",
+        "rule": "A mapped coordinate is not evidence that the selected spacecraft can reach it."
+      },
+      "authoritative_snapshot_sha256": "0b467d402bb562bc79d342a7bf926885a68c658cbd6374d871b8cefac7991cc1"
+    },
+    "catalog:trappist-1": {
+      "location_id": "catalog:trappist-1",
+      "name": "TRAPPIST-1",
+      "object_class": "stellar_system",
+      "knowledge_class": "catalog_anchor",
+      "coordinates": {
+        "frame": "ICRS",
+        "epoch": "J2000",
+        "ra_deg": 346.6223687285788,
+        "dec_deg": -5.041399250518333,
+        "parallax_mas": 80.2123,
+        "parallax_error_mas": 0.0716,
+        "pmra_mas_yr": 930.788,
+        "pmdec_mas_yr": -479.038,
+        "truth_type": "catalog_fact",
+        "source_ids": [
+          "simbad_cds_gaia_dr3"
+        ]
+      },
+      "distance_ly": {
+        "value": 40.66164138168336,
+        "truth_type": "derived",
+        "formula_id": "inverse_parallax_nearby_demo",
+        "source_ids": [
+          "simbad_cds_gaia_dr3"
+        ]
+      },
+      "known_worlds": [
+        "TRAPPIST-1 b",
+        "TRAPPIST-1 c",
+        "TRAPPIST-1 d",
+        "TRAPPIST-1 e",
+        "TRAPPIST-1 f",
+        "TRAPPIST-1 g",
+        "TRAPPIST-1 h"
+      ],
+      "world_facts": {
+        "TRAPPIST-1 c": {
+          "planet_type": "Super Earth",
+          "orbital_period_days": 2.4,
+          "orbital_radius_au": 0.0158,
+          "mass_earth": 1.308,
+          "source_ids": [
+            "nasa_exoplanet_catalog_trappist_1_c"
+          ]
+        },
+        "TRAPPIST-1 f": {
+          "planet_type": "Super Earth",
+          "orbital_period_days": 9.2,
+          "orbital_radius_au": 0.03849,
+          "mass_earth": 1.039,
+          "source_ids": [
+            "nasa_exoplanet_catalog_trappist_1_f"
+          ]
+        }
+      },
+      "source_ids": [
+        "simbad_cds_gaia_dr3",
+        "nasa_exoplanet_archive_pscomppars"
+      ],
+      "cartesian_ly": {
+        "x_ly": 39.405306916,
+        "y_ly": -9.371412524,
+        "z_ly": -3.573163028
+      },
+      "coordinates_2026_display": {
+        "frame": "ICRS",
+        "epoch": "J2000",
+        "ra_deg": 346.6223687285788,
+        "dec_deg": -5.041399250518333,
+        "parallax_mas": 80.2123,
+        "parallax_error_mas": 0.0716,
+        "pmra_mas_yr": 930.788,
+        "pmdec_mas_yr": -479.038,
+        "truth_type": "catalog_fact",
+        "source_ids": [
+          "simbad_cds_gaia_dr3"
+        ],
+        "propagated_epoch": 2026.583,
+        "propagated_ra_deg": 346.6292685144,
+        "propagated_dec_deg": -5.0449365469,
+        "propagation_model": "linear tangent-plane proper-motion approximation",
+        "navigation_authority": "display_only",
+        "warning": "No perspective acceleration, orbital multiplicity, covariance propagation, or full radial-motion solution is included."
+      },
+      "schema": "axm.atlas-location.v1",
+      "catalog_revision": 1,
+      "visit_count": 0,
+      "crew_observations": [],
+      "render_history": [],
+      "route_status": "mapped_not_proven_reachable",
+      "route_feasibility": {
+        "status": "unknown",
+        "rule": "A mapped coordinate is not evidence that the selected spacecraft can reach it."
+      },
+      "authoritative_snapshot_sha256": "88e7628650006e53d7ee389fd17ef8c5e92a84e40503c7ab1aa24bce1230be9e"
+    },
+    "catalog:51-pegasi": {
+      "location_id": "catalog:51-pegasi",
+      "name": "51 Pegasi",
+      "object_class": "stellar_system",
+      "knowledge_class": "catalog_anchor",
+      "coordinates": {
+        "frame": "ICRS",
+        "epoch": "J2000",
+        "ra_deg": 344.36658535524003,
+        "dec_deg": 20.768832511139998,
+        "parallax_mas": 64.4048,
+        "parallax_error_mas": 0.0771,
+        "pmra_mas_yr": 207.328,
+        "pmdec_mas_yr": 61.164,
+        "truth_type": "catalog_fact",
+        "source_ids": [
+          "simbad_cds_gaia_dr3"
+        ]
+      },
+      "distance_ly": {
+        "value": 50.64162573286464,
+        "truth_type": "derived",
+        "formula_id": "inverse_parallax_nearby_demo",
+        "source_ids": [
+          "simbad_cds_gaia_dr3"
+        ]
+      },
+      "known_worlds": [
+        "51 Pegasi b"
+      ],
+      "world_facts": {
+        "51 Pegasi b": {
+          "planet_type": "Gas Giant",
+          "orbital_period_days": 4.2,
+          "orbital_radius_au": 0.052,
+          "mass_jupiter": 0.61,
+          "source_ids": [
+            "nasa_exoplanet_catalog_51_pegasi_b"
+          ]
+        }
+      },
+      "source_ids": [
+        "simbad_cds_gaia_dr3",
+        "nasa_exoplanet_catalog_51_pegasi_b"
+      ],
+      "cartesian_ly": {
+        "x_ly": 45.599149095,
+        "y_ly": -12.760182168,
+        "z_ly": 17.957438841
+      },
+      "coordinates_2026_display": {
+        "frame": "ICRS",
+        "epoch": "J2000",
+        "ra_deg": 344.36658535524003,
+        "dec_deg": 20.768832511139998,
+        "parallax_mas": 64.4048,
+        "parallax_error_mas": 0.0771,
+        "pmra_mas_yr": 207.328,
+        "pmdec_mas_yr": 61.164,
+        "truth_type": "catalog_fact",
+        "source_ids": [
+          "simbad_cds_gaia_dr3"
+        ],
+        "propagated_epoch": 2026.583,
+        "propagated_ra_deg": 344.3682226963,
+        "propagated_dec_deg": 20.7692841563,
+        "propagation_model": "linear tangent-plane proper-motion approximation",
+        "navigation_authority": "display_only",
+        "warning": "No perspective acceleration, orbital multiplicity, covariance propagation, or full radial-motion solution is included."
+      },
+      "schema": "axm.atlas-location.v1",
+      "catalog_revision": 1,
+      "visit_count": 0,
+      "crew_observations": [],
+      "render_history": [],
+      "route_status": "mapped_not_proven_reachable",
+      "route_feasibility": {
+        "status": "unknown",
+        "rule": "A mapped coordinate is not evidence that the selected spacecraft can reach it."
+      },
+      "authoritative_snapshot_sha256": "e8000794c20c5bee4266f7881fab55052d8ff499cfccd4013bf4add421f3424b"
+    },
+    "frontier:40dad42079fcce6b": {
+      "schema": "axm.atlas-location.v1",
+      "location_id": "frontier:40dad42079fcce6b",
+      "name": "Orion Drift 7787",
+      "object_class": "generated_stellar_system",
+      "knowledge_class": "procedural_frontier",
+      "coordinates": {
+        "frame": "ICRS-like simulation frame",
+        "epoch": "campaign_origin",
+        "ra_deg": 143.651279814,
+        "dec_deg": 78.86747759,
+        "distance_ly": 501.967827,
+        "truth_type": "simulation_prior",
+        "source_ids": [
+          "axm_simulation_priors_v1"
+        ],
+        "warning": "This coordinate is a deterministic simulation anchor. It is not a claim that a catalogued system exists here."
+      },
+      "cartesian_ly": {
+        "x_ly": -78.061280355,
+        "y_ly": 57.443969884,
+        "z_ly": 492.522411523
+      },
+      "distance_ly": {
+        "value": 501.967827,
+        "truth_type": "simulation_prior",
+        "source_ids": [
+          "axm_simulation_priors_v1"
+        ]
+      },
+      "known_worlds": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I"
+      ],
+      "source_ids": [
+        "axm_simulation_priors_v1"
+      ],
+      "system_id": "40dad42079fcce6b",
+      "system_state_sha256": "3ab653e0ca9624ad602246fedf01cd63596e42aa88411a61438a01f0edfb4460",
+      "catalog_revision": 0,
+      "visit_count": 2,
+      "crew_observations": [
+        {
+          "event_id": "40dad42079fcce6b:turn:1",
+          "event_hash": "2e3d65e034886b9eb487b3922ff4d776b9d13d3c22507d7d25d7af2a35ab333d",
+          "turn": 1,
+          "action": "Map dust and small bodies before approaching the planets.",
+          "outcome_id": "ambiguous-evidence",
+          "outcome_title": "The uncertainty narrows, but survives",
+          "truth_type": "expedition_observation",
+          "measurement": null
+        }
+      ],
+      "render_history": [],
+      "route_status": "active_simulated_expedition",
+      "route_feasibility": {
+        "status": "simulation_contract",
+        "rule": "Travel is resolved by the simulator's ship and mission physics. The coordinate alone grants no capability."
+      },
+      "authoritative_snapshot_sha256": "a52d2197cd63c64f0c99e9bfdc43ff7ac2c8f1f6dfa38c0db54c2590285ea922"
+    }
+  },
+  "routes": [
+    {
+      "route_id": "route:sol:frontier:40dad42079fcce6b",
+      "from_location_id": "catalog:sol",
+      "to_location_id": "frontier:40dad42079fcce6b",
+      "kind": "campaign_entry",
+      "availability": "simulator_entry_route",
+      "feasibility": "not_a_real_spaceflight_claim",
+      "created_from": "master_seed + initial campaign state"
+    }
+  ],
+  "visits": [
+    {
+      "schema": "axm.atlas-visit.v1",
+      "visit_id": "visit-00000001",
+      "visit_number": 1,
+      "visited_at": "2026-08-02T05:29:58.398008+00:00",
+      "location_id": "catalog:sol",
+      "visit_kind": "expedition_origin",
+      "note": "Crew atlas initialized at the Solar System origin.",
+      "event_id": null,
+      "event_hash": null,
+      "state_after_sha256": null,
+      "action": null,
+      "outcome": null,
+      "authoritative_location_snapshot_sha256": "d5b5c8053aa959d6e533f8f6c3b40d989656f9ef9e2454c62f936c238081566d",
+      "previous_visit_hash": null,
+      "visit_hash": "d4c9fb420a0fafb009277f8441ba994dc06e5f7ccfb941d2bca307fdb3748fcf"
+    },
+    {
+      "schema": "axm.atlas-visit.v1",
+      "visit_id": "visit-00000002",
+      "visit_number": 2,
+      "visited_at": "2026-08-02T05:29:58.398008+00:00",
+      "location_id": "frontier:40dad42079fcce6b",
+      "visit_kind": "campaign_arrival",
+      "note": "Generated expedition location registered without claiming catalog existence.",
+      "event_id": null,
+      "event_hash": null,
+      "state_after_sha256": null,
+      "action": null,
+      "outcome": null,
+      "authoritative_location_snapshot_sha256": "a52d2197cd63c64f0c99e9bfdc43ff7ac2c8f1f6dfa38c0db54c2590285ea922",
+      "previous_visit_hash": "d4c9fb420a0fafb009277f8441ba994dc06e5f7ccfb941d2bca307fdb3748fcf",
+      "visit_hash": "61f096e68d43c3578ebc1ad76b8f1875e011c2add921c2cdebde77b99f667cdc"
+    },
+    {
+      "schema": "axm.atlas-visit.v1",
+      "visit_id": "visit-00000003",
+      "visit_number": 3,
+      "visited_at": "2026-08-02T05:29:58.404309+00:00",
+      "location_id": "frontier:40dad42079fcce6b",
+      "visit_kind": "exploration_event",
+      "note": null,
+      "event_id": "40dad42079fcce6b:turn:1",
+      "event_hash": "2e3d65e034886b9eb487b3922ff4d776b9d13d3c22507d7d25d7af2a35ab333d",
+      "state_after_sha256": "086263b59d2d27e813a9d8028fd58ed0c2606ea1cfcad83e52f8635bf570bc2e",
+      "action": "Map dust and small bodies before approaching the planets.",
+      "outcome": "The uncertainty narrows, but survives",
+      "authoritative_location_snapshot_sha256": "a52d2197cd63c64f0c99e9bfdc43ff7ac2c8f1f6dfa38c0db54c2590285ea922",
+      "previous_visit_hash": "61f096e68d43c3578ebc1ad76b8f1875e011c2add921c2cdebde77b99f667cdc",
+      "visit_hash": "84f11a5118736404c0a8164d1866d3059ed785a14439eda7f0d7fe48b5622b11"
+    }
+  ],
+  "visit_chain_head": "84f11a5118736404c0a8164d1866d3059ed785a14439eda7f0d7fe48b5622b11",
+  "catalog_revisions": [],
+  "revisit_packets": [],
+  "render_contract": {
+    "authoritative_inputs": [
+      "pinned catalog snapshot",
+      "location creation packet",
+      "event ledger",
+      "crew observation ledger"
+    ],
+    "mutable_inputs": [
+      "visual engine version",
+      "asset engine version",
+      "camera language",
+      "interface skin",
+      "audio engine"
+    ],
+    "forbidden": [
+      "changing an old outcome",
+      "adding facts because a later render looks convincing",
+      "silently replacing source values",
+      "claiming a navigable route is technologically feasible"
+    ]
+  },
+  "growth_contract": {
+    "future_catalogs": "New source snapshots add revisions and identity-resolution receipts. They never overwrite old expedition evidence.",
+    "future_visual_engines": "Old locations can be rendered again from immutable location and event hashes.",
+    "frontier": "Generated locations remain procedural_frontier unless later catalog evidence independently matches them; even then the match requires explicit review."
+  }
+}

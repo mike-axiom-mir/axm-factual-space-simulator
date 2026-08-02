@@ -1,0 +1,60 @@
+{
+  "schema": "axm.external-beacon-packet.v2",
+  "provider": "drand-quicknet",
+  "round": 42,
+  "randomness": "8ada64bae5c6c0f5540a6a13af56e663240edfbd2c76ac6a8f27671eb7259ce3",
+  "signature": "95a9f9f5b231b7714de1553105d8ffdf3dcda24cfdb1e689319bccf79a9c8ce430a91b811fbfaf763900bc998b5d686a",
+  "previous_signature": null,
+  "chain": {
+    "provider": "drand-quicknet",
+    "chain_hash": "52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971",
+    "public_key": "83cf0f2896adee7eb8b5f01fcad3912212c437e0073e911fb90022d3e760183c8c4b450b6a0a6c3ac6a5776a2d1064510d1fec758c921cc22b0e17e63aaf4bcb5ed66304de9cf809bd274ca73bab4af5a6e9c76a4bc09e76eae8991ef5ece45a",
+    "period_seconds": 3,
+    "genesis_time": 1692803367,
+    "scheme_id": "bls-unchained-g1-rfc9380",
+    "signature_group": "BLS12-381 G1",
+    "public_key_group": "BLS12-381 G2",
+    "dst": "BLS_SIG_BLS12381G1_XMD:SHA-256_SSWU_RO_NUL_"
+  },
+  "source_url": "https://api.drand.sh/v2/beacons/quicknet/rounds/42",
+  "retrieved_at": "official-documentation-fixture",
+  "packet_sha256": "77cf5dbc685fa89bc72015df9d68852eee4913f3d8ffa532ee8b1b60be40bd85",
+  "verification": {
+    "schema": "axm.drand-verification.v1",
+    "provider": "drand-quicknet",
+    "round": 42,
+    "verified_at": "2026-08-02T01:13:43.578601+00:00",
+    "structural": {
+      "schema": "axm.drand-structural-verification.v1",
+      "valid": true,
+      "round": 42,
+      "randomness_hash_valid": true,
+      "packet_hash_valid": true,
+      "failures": [],
+      "checks": [
+        "provider and positive round",
+        "quicknet 48-byte G1 signature encoding length",
+        "32-byte randomness encoding length",
+        "unchained packet shape",
+        "pinned chain hash/public key/scheme/DST",
+        "randomness = SHA-256(signature)",
+        "AXM packet material hash"
+      ],
+      "honesty": "Structural and hash validation is not a BLS signature verification."
+    },
+    "cryptographic": {
+      "attempted": false,
+      "valid": false,
+      "method": "pinned-node-noble-bls12-381",
+      "scheme_id": "bls-unchained-g1-rfc9380",
+      "dependency_versions": {
+        "@noble/curves": "1.6.0",
+        "@noble/hashes": "1.5.0"
+      },
+      "reason": "Node verifier dependencies are not installed. Run tools/drand_verifier/install.sh or install.bat."
+    },
+    "valid": false,
+    "status": "verifier_unavailable"
+  },
+  "verification_status": "verifier_unavailable"
+}

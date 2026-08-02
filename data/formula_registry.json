@@ -1,0 +1,167 @@
+{
+  "schema": "axm.formula-registry.v1",
+  "version": "2026-08-02-v0.7",
+  "formulas": {
+    "stefan_boltzmann_luminosity": {
+      "expression": "L = 4*pi*R^2*sigma*T_eff^4",
+      "purpose": "derive stellar luminosity from radius and effective temperature",
+      "sources": [
+        "nasa_exoplanet_archive_pscp_calc",
+        "iau_2015_b3"
+      ],
+      "limitations": "Assumes effective temperature and spherical radiating surface."
+    },
+    "planet_equilibrium_temperature": {
+      "expression": "T_eq = T_star * sqrt(R_star/a) * (1/4)^(1/4)",
+      "purpose": "zero-albedo full-redistribution equilibrium temperature used by the NASA Exoplanet Archive calculation page",
+      "sources": [
+        "nasa_exoplanet_archive_pscp_calc",
+        "iau_2015_b3"
+      ],
+      "limitations": "Not a surface temperature or climate prediction; ignores greenhouse effects, albedo variation, and heat redistribution differences."
+    },
+    "planet_insolation": {
+      "expression": "S/S_earth = (L_star/L_sun) * (AU/a)^2",
+      "purpose": "incident stellar flux relative to Earth",
+      "sources": [
+        "nasa_exoplanet_archive_pscp_calc"
+      ],
+      "limitations": "Bolometric flux alone does not establish climate or habitability."
+    },
+    "kepler_period": {
+      "expression": "P_years = sqrt(a_AU^3 / M_star_solar)",
+      "purpose": "two-body orbital-period approximation for planet mass much smaller than stellar mass",
+      "sources": [
+        "kepler_third_law"
+      ],
+      "limitations": "Does not include planet mass, perturbations, relativity, or multi-body integrations."
+    },
+    "mass_from_radius_density": {
+      "expression": "M/M_earth = (rho/rho_earth)*(R/R_earth)^3",
+      "purpose": "derive bulk mass from generated radius and density",
+      "sources": [
+        "iau_2015_b3"
+      ],
+      "limitations": "Only as good as the generated density prior."
+    },
+    "surface_gravity_ratio": {
+      "expression": "g/g_earth = (M/M_earth)/(R/R_earth)^2",
+      "purpose": "derive surface gravity ratio",
+      "sources": [
+        "iau_2015_b3"
+      ],
+      "limitations": "Uses spherical-body approximation."
+    },
+    "escape_velocity": {
+      "expression": "v_escape = sqrt(2*g*R)",
+      "purpose": "derive a surface escape-velocity estimate",
+      "sources": [
+        "iau_2015_b3"
+      ],
+      "limitations": "Spherical non-rotating approximation."
+    },
+    "starter_temperate_flux_screen": {
+      "expression": "0.35 <= S/S_earth <= 1.25",
+      "purpose": "broad game-side observation-priority screen",
+      "sources": [
+        "kopparapu_2013_hz"
+      ],
+      "limitations": "AXM starter heuristic only; not the Kopparapu climate model and never a habitability claim."
+    },
+    "display_temperature_bucket": {
+      "expression": "categorical display mapping from effective temperature",
+      "purpose": "visual color hint",
+      "sources": [],
+      "limitations": "Not a spectrum renderer or calibrated color transform."
+    },
+    "kepler_orbital_phase": {
+      "expression": "M(t)=M0+2*pi*t/P; solve E-e*sin(E)=M; r=a*(1-e*cos(E))",
+      "purpose": "advance deterministic orbital phase and star distance before each action",
+      "sources": [
+        "kepler_third_law"
+      ],
+      "limitations": "Two-body Keplerian orbit; no perturbations, precession, relativity, or N-body integration."
+    },
+    "photon_counting_snr": {
+      "expression": "SNR = S / sqrt(S + B + D + n_pix*n_read*sigma_read^2 + sigma_systematic^2)",
+      "purpose": "predict instrument signal-to-noise before entropy and generate a separate noisy realized measurement afterward",
+      "sources": [
+        "nasa_detector_noise_snr"
+      ],
+      "limitations": "Representative detector model, fixed wavelength and configurable synthetic instrument parameters; not calibrated flight hardware."
+    },
+    "spacecraft_thermal_balance": {
+      "expression": "Q_net = alpha*F*A_sun*f_incidence + P_instrument + Q_inherited - epsilon*sigma*A_rad*T_rad^4",
+      "purpose": "couple stellar flux, attitude, instrument use, inherited heat, and radiator capacity to action outcomes",
+      "sources": [
+        "nasa_spacecraft_thermal_control"
+      ],
+      "limitations": "Lumped steady-state power balance; no finite-element geometry, transient node network, conduction path, or material degradation."
+    },
+    "light_time_delay": {
+      "expression": "t_one_way = distance/c; t_earliest_full_response = 2*distance/c + data_volume/link_rate",
+      "purpose": "make command, telemetry, and discussion delays depend on actual simulated distance",
+      "sources": [
+        "nasa_space_communications_basics",
+        "si_speed_of_light"
+      ],
+      "limitations": "Vacuum propagation plus a simplified fixed link rate; no occultation, coding, antenna gain, or network scheduling model."
+    },
+    "hohmann_reference_transfer": {
+      "expression": "t_transfer = pi*sqrt(((r1+r2)/2)^3/mu); delta_v from circular and transfer-orbit vis-viva speeds",
+      "purpose": "provide a transparent two-impulse reference trajectory for probe travel and follow-up timing",
+      "sources": [
+        "classical_two_body_transfer"
+      ],
+      "limitations": "Reference transfer only; no launch-window phasing, plane changes, finite burns, perturbations, or mission optimization."
+    },
+    "radiation_operational_risk_index": {
+      "expression": "index = age_activity_factor * (1/r_AU^2) * (1-shielding_factor)",
+      "purpose": "couple stellar environment and shielding to electronics/operations risk bands",
+      "sources": [
+        "nasa_space_radiation_environment"
+      ],
+      "limitations": "AXM relative gameplay index only; not particle transport, absorbed dose, single-event-effect prediction, or medical exposure."
+    },
+    "product_of_catalog_values": {
+      "expression": "result = a * b",
+      "purpose": "derive transparent capacity totals only from pinned catalog facts",
+      "sources": [],
+      "limitations": "Arithmetic does not imply operational margin, simultaneous availability, or mission approval."
+    },
+    "sum_nameplate_power": {
+      "expression": "P_nameplate = sum(count_i * rated_power_i)",
+      "purpose": "sum published installed thruster nameplate input powers",
+      "sources": [
+        "nasa_gateway_power_on_2026"
+      ],
+      "limitations": "Nameplate sum is not a claim that every thruster can or will operate simultaneously, nor that all generated platform power is available to propulsion."
+    },
+    "inverse_parallax_nearby_demo": {
+      "expression": "distance_pc = 1000 / parallax_mas; distance_ly = distance_pc * 3.261563777",
+      "purpose": "derive starter-atlas distances for nearby, high signal-to-noise landmarks",
+      "sources": [
+        "esa_gaia_dr3_astrometry",
+        "simbad_cds_gaia_dr3"
+      ],
+      "limitations": "Naive parallax inversion is not a general distance estimator. It is used here only for nearby demonstration records with small relative parallax errors."
+    },
+    "icrs_spherical_to_cartesian": {
+      "expression": "x=d cos(dec) cos(ra); y=d cos(dec) sin(ra); z=d sin(dec)",
+      "purpose": "project source-pinned ICRS direction and distance into a heliocentric Cartesian atlas display",
+      "sources": [
+        "esa_gaia_dr3_astrometry"
+      ],
+      "limitations": "A coordinate projection is not a navigation solution. Epoch, proper motion, radial motion, covariance, and reference-frame details remain separate."
+    },
+    "linear_proper_motion_display": {
+      "expression": "ra(t)=ra0 + pmra*dt/(cos(dec)*3.6e6); dec(t)=dec0 + pmdec*dt/3.6e6",
+      "purpose": "small-angle display propagation of catalog landmarks",
+      "sources": [
+        "esa_gaia_dr3_astrometry",
+        "simbad_cds_gaia_dr3"
+      ],
+      "limitations": "Display only; excludes perspective acceleration, covariance propagation, multiplicity, and precision ephemeris requirements."
+    }
+  }
+}

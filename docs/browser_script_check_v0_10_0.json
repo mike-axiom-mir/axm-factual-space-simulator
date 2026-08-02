@@ -1,0 +1,12 @@
+{
+  "valid": true,
+  "files": [
+    {
+      "file": "output/bridge_visual_core_demo/paint_foundation_bridge.html",
+      "valid": true,
+      "scripts": [
+        "json"
+      ]
+    }
+  ]
+}

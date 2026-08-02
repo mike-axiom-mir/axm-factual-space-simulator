@@ -1,0 +1,356 @@
+{
+  "schema": "axm.adventure-runtime.v4",
+  "system_id": "40dad42079fcce6b",
+  "turn": 1,
+  "mission_time_hours": 1.0,
+  "resources": {
+    "reactor_reserve_percent": 62.467,
+    "sensor_health_percent": 61.0,
+    "hull_integrity_percent": 99.0,
+    "probe_count": 2,
+    "fuel_percent": 100.0,
+    "heat_percent": 34.0,
+    "knowledge_points": 6.0
+  },
+  "navigation": {
+    "ship_orbit_au": 0.0985,
+    "reference_frame": "star-centred two-body planning frame"
+  },
+  "active_probes": [],
+  "threads": {
+    "system-history-reconstruction": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "system-history-reconstruction",
+      "title": "A system that may have moved its worlds",
+      "kind": "initial-opportunity",
+      "status": "active",
+      "source_event_id": null,
+      "parent_thread_id": null,
+      "target_planet_id": "planet-0",
+      "depth": 0,
+      "visits": 1,
+      "evidence": [
+        {
+          "truth_type": "observation-plan",
+          "statement": "The system contains both a large outer world and compact rocky bodies.",
+          "source": "generated-opportunity"
+        },
+        {
+          "truth_type": "observation-plan",
+          "statement": "Current orbits alone do not reveal the system's formation history.",
+          "source": "generated-opportunity"
+        },
+        {
+          "event_id": "40dad42079fcce6b:turn:1",
+          "truth_type": "observation",
+          "statement": "The radiation coincidence channel signal remains measurable at SNR 288.29, while photon/background/read-noise terms and the current orbital phase still permit at least two explanations for 'A system that may have moved its worlds'.",
+          "outcome_id": "ambiguous-evidence"
+        }
+      ],
+      "created_turn": 0,
+      "updated_turn": 1
+    },
+    "competing-hypotheses": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "competing-hypotheses",
+      "title": "Competing Hypotheses",
+      "kind": "competing-hypotheses",
+      "status": "active",
+      "source_event_id": "40dad42079fcce6b:turn:1",
+      "parent_thread_id": "system-history-reconstruction",
+      "target_planet_id": "planet-0",
+      "depth": 1,
+      "visits": 0,
+      "evidence": [
+        {
+          "event_id": "40dad42079fcce6b:turn:1",
+          "truth_type": "hypothesis",
+          "statement": "Opened by the resolved event and remains investigable."
+        }
+      ],
+      "created_turn": 1,
+      "updated_turn": 1
+    },
+    "communication-latency": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "communication-latency",
+      "title": "Command and telemetry light-time",
+      "kind": "communication-latency",
+      "status": "active",
+      "source_event_id": "40dad42079fcce6b:turn:1",
+      "parent_thread_id": "system-history-reconstruction",
+      "target_planet_id": "planet-0",
+      "depth": 1,
+      "visits": 0,
+      "evidence": [
+        {
+          "event_id": "40dad42079fcce6b:turn:1",
+          "truth_type": "hypothesis",
+          "statement": "The communication loop is long enough to change command timing and autonomy requirements."
+        }
+      ],
+      "created_turn": 1,
+      "updated_turn": 1
+    },
+    "thermal-recovery": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "thermal-recovery",
+      "title": "Thermal load exceeds current radiator balance",
+      "kind": "thermal-recovery",
+      "status": "active",
+      "source_event_id": "40dad42079fcce6b:turn:1",
+      "parent_thread_id": "system-history-reconstruction",
+      "target_planet_id": "planet-0",
+      "depth": 1,
+      "visits": 0,
+      "evidence": [
+        {
+          "event_id": "40dad42079fcce6b:turn:1",
+          "truth_type": "hypothesis",
+          "statement": "Absorbed and internally generated heat exceed the simplified radiator capacity."
+        }
+      ],
+      "created_turn": 1,
+      "updated_turn": 1
+    },
+    "radiation-watch": {
+      "schema": "axm.causal-thread.v1",
+      "thread_id": "radiation-watch",
+      "title": "Elevated radiation environment",
+      "kind": "radiation-watch",
+      "status": "active",
+      "source_event_id": "40dad42079fcce6b:turn:1",
+      "parent_thread_id": "system-history-reconstruction",
+      "target_planet_id": "planet-0",
+      "depth": 1,
+      "visits": 0,
+      "evidence": [
+        {
+          "event_id": "40dad42079fcce6b:turn:1",
+          "truth_type": "hypothesis",
+          "statement": "The relative radiation risk index is high enough to affect electronics and operations."
+        }
+      ],
+      "created_turn": 1,
+      "updated_turn": 1
+    }
+  },
+  "open_threads": [
+    "system-history-reconstruction",
+    "competing-hypotheses",
+    "communication-latency",
+    "thermal-recovery",
+    "radiation-watch"
+  ],
+  "action_menu": {
+    "schema": "axm.dynamic-action-menu.v1",
+    "menu_version": 2,
+    "generated_from_turn": 1,
+    "active_thread_ids": [
+      "system-history-reconstruction",
+      "competing-hypotheses",
+      "communication-latency",
+      "thermal-recovery",
+      "radiation-watch"
+    ],
+    "actions": [
+      {
+        "action_id": "radiation-watch:reduce-exposed-operations-and-shelter-sensitive-systems",
+        "label": "Reduce exposed operations and shelter sensitive systems",
+        "category": "general",
+        "source_thread": "radiation-watch",
+        "target_planet_id": "planet-0",
+        "intent": "Lower radiation risk while preserving the mission.",
+        "priority": 1.01,
+        "parameters": {
+          "shield_mode": true
+        },
+        "index": 1
+      },
+      {
+        "action_id": "thermal-recovery:rotate-the-ship-to-reduce-absorbed-stellar-heating",
+        "label": "Rotate the ship to reduce absorbed stellar heating",
+        "category": "general",
+        "source_thread": "thermal-recovery",
+        "target_planet_id": "planet-0",
+        "intent": "Change incidence geometry to improve thermal balance.",
+        "priority": 1.0,
+        "parameters": {
+          "thermal_attitude": "edge-on"
+        },
+        "index": 2
+      },
+      {
+        "action_id": "communication-latency:hold-course-until-the-delayed-telemetry-response-arrives",
+        "label": "Hold course until the delayed telemetry response arrives",
+        "category": "patient_observation",
+        "source_thread": "communication-latency",
+        "target_planet_id": "planet-0",
+        "intent": "Respect one-way light time instead of inventing immediate feedback.",
+        "priority": 0.98,
+        "parameters": {
+          "wait_for_comm": true
+        },
+        "index": 3
+      },
+      {
+        "action_id": "thermal-recovery:enter-a-radiator-cooldown-period",
+        "label": "Enter a radiator cooldown period",
+        "category": "engineering",
+        "source_thread": "thermal-recovery",
+        "target_planet_id": "planet-0",
+        "intent": "Delay the mission to recover thermal margin.",
+        "priority": 0.98,
+        "parameters": {
+          "cooldown_hours": 8.0
+        },
+        "index": 4
+      },
+      {
+        "action_id": "radiation-watch:measure-the-radiation-field-before-resuming-science",
+        "label": "Measure the radiation field before resuming science",
+        "category": "general",
+        "source_thread": "radiation-watch",
+        "target_planet_id": "planet-0",
+        "intent": "Convert an environmental risk into evidence.",
+        "priority": 0.97,
+        "parameters": {
+          "radiation_survey": true
+        },
+        "index": 5
+      },
+      {
+        "action_id": "competing-hypotheses:isolate-the-strongest-wavelength-band-and-rescan",
+        "label": "Isolate the strongest wavelength band and rescan",
+        "category": "instrument",
+        "source_thread": "competing-hypotheses",
+        "target_planet_id": "planet-0",
+        "intent": "Discriminate between competing spectral explanations.",
+        "priority": 0.97,
+        "parameters": {
+          "band_isolation": true
+        },
+        "index": 6
+      },
+      {
+        "action_id": "communication-latency:send-a-store-and-forward-command-sequence",
+        "label": "Send a store-and-forward command sequence",
+        "category": "general",
+        "source_thread": "communication-latency",
+        "target_planet_id": "planet-0",
+        "intent": "Let the probe act locally during the communication gap.",
+        "priority": 0.94,
+        "parameters": {
+          "autonomous_probe_sequence": true
+        },
+        "index": 7
+      },
+      {
+        "action_id": "competing-hypotheses:change-viewing-geometry-before-repeating-the-observation",
+        "label": "Change viewing geometry before repeating the observation",
+        "category": "instrument",
+        "source_thread": "competing-hypotheses",
+        "target_planet_id": "planet-0",
+        "intent": "Use phase and line-of-sight changes as a causal test.",
+        "priority": 0.93,
+        "parameters": {
+          "phase_shift_deg": 35.0
+        },
+        "index": 8
+      },
+      {
+        "action_id": "thermal-recovery:continue-at-reduced-instrument-power",
+        "label": "Continue at reduced instrument power",
+        "category": "move_on",
+        "source_thread": "thermal-recovery",
+        "target_planet_id": "planet-0",
+        "intent": "Preserve the observation with lower heat and lower SNR.",
+        "priority": 0.9,
+        "parameters": {
+          "power_fraction": 0.5
+        },
+        "index": 9
+      }
+    ],
+    "honesty": "Actions are generated from current causal threads, ship state, and—only after its gates—the long-horizon evidence layer. They are not a fixed dialogue tree and impossible inventory actions are removed."
+  },
+  "timeline": [
+    {
+      "event_id": "40dad42079fcce6b:turn:1",
+      "action": "Map dust and small bodies before approaching the planets.",
+      "action_id": "system-history-reconstruction:map-dust-and-small-bodies-before-approaching-the-planets",
+      "outcome_id": "ambiguous-evidence",
+      "outcome_title": "The uncertainty narrows, but survives",
+      "entropy_mode": "deterministic",
+      "command_mode": "autonomous_deterministic",
+      "command_authority": "direct_runtime",
+      "command_hash": "0acce30f8060e26d496b3af8a7ca7109ddd98493079c559e31a7a64a03d7cc43",
+      "target_planet_id": "planet-0",
+      "realized_snr": 288.288185,
+      "thermal_load_ratio": 37.22451,
+      "radiation_risk_index": 97.405123,
+      "one_way_light_time_s": 9.379262,
+      "contact_evidence_stage": 0,
+      "contact_phase": "dormant"
+    }
+  ],
+  "last_event_hash": "2e3d65e034886b9eb487b3922ff4d776b9d13d3c22507d7d25d7af2a35ab333d",
+  "command": {
+    "active_mode": "autonomous_deterministic",
+    "last_command_hash": "0acce30f8060e26d496b3af8a7ca7109ddd98493079c559e31a7a64a03d7cc43",
+    "pending_session_id": null,
+    "authority_contract": "Command authority is explicit per mode and is recorded in every resolved event."
+  },
+  "contact_horizon": {
+    "schema": "axm.long-horizon-contact-state.v1",
+    "registry_version": "2026-08-02-v0.6",
+    "unlock_step": 100000,
+    "phase": "dormant",
+    "evidence_stage": 0,
+    "evidence_stage_id": "dormant",
+    "candidate_id": null,
+    "candidate_classes": [],
+    "confirmed_external_life": false,
+    "confirmed_external_technology": false,
+    "confirmed_external_agency": false,
+    "interaction_active": false,
+    "active_transmission_authorized": false,
+    "scientific_work": {
+      "total_science_actions": 1,
+      "independent_observation_context_ids": [
+        "planet-0:phase-08"
+      ],
+      "cross_validations": 0,
+      "false_positive_eliminations": 1,
+      "passive_search_hours": 1.0,
+      "dedicated_contact_searches": 0,
+      "replicated_contact_anomalies": 0,
+      "independent_contact_channels": [],
+      "natural_alternatives_constrained": 0,
+      "information_structure_tests": 0,
+      "response_consistency_tests": 0
+    },
+    "evidence_chain": [],
+    "epistemic_contract": {
+      "seed_scope": "No hidden alien species, intent, encounter, or contact date is selected by the master seed.",
+      "unlock_scope": "Step 100000 opens a scientific search layer; it does not create an encounter.",
+      "claim_scope": "Evidence stages cap what the simulator may say even when a dramatic interpretation is available.",
+      "silence_scope": "A quiet search constrains only the searched signal class, sensitivity, direction, and time window."
+    },
+    "current_step": 1
+  },
+  "future_contract": {
+    "seed_scope": "The master seed fixes the initial universe and stable generated facts, not every later event; it does not preselect extraterrestrial existence, intent, or a contact date.",
+    "deferred_resolution": true,
+    "physics_before_entropy": true,
+    "dynamic_action_menus": true,
+    "allowed_entropy_modes": [
+      "deterministic",
+      "local_live",
+      "mixed_live",
+      "external_beacon",
+      "party_commit"
+    ],
+    "no_retcon": "Resolved events are hash-chained and replayable from their recorded entropy packet."
+  }
+}

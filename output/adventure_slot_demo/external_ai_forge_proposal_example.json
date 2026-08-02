@@ -1,0 +1,18 @@
+{
+  "schema": "axm.external-ai-forge-proposal.v1",
+  "request_id": "1c86ad05004bbc3cac722a864678cd671fbf9d07a274e633f6465770b94fea13",
+  "proposal_author": "Example disconnected pre-play reasoning seat",
+  "preferred_anomaly_family_ids": [
+    "dusty_plasma_self_organization"
+  ],
+  "preferred_life_architecture_ids": [
+    "dusty_plasma_lifelike_control"
+  ],
+  "emphasis_observable_ids": [],
+  "investigation_emphasis": "falsification_first",
+  "rationale_summary": [
+    "Prefer a candidate with multiple observables and explicit natural controls.",
+    "Do not decide whether the hidden origin is living, abiotic, instrumental, or novel physics."
+  ],
+  "proposal_nonce": "AXM-V09-DEMO"
+}

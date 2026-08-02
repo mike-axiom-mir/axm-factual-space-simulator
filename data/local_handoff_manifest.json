@@ -1,0 +1,113 @@
+{
+  "schema": "axm.local-handoff-manifest.v1",
+  "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
+  "version": "0.15.0",
+  "status": "LOCAL_HANDOFF_READY_AFTER_VERIFICATION",
+  "canonical_open_file": "OPEN_LOCAL_HANDOFF.html",
+  "start_here": "START_HERE.txt",
+  "human_handoff": "LOCAL_INTAKE_HANDOFF.txt",
+  "machine_handoff": "MACHINE_INTAKE.json",
+  "root_kernel_id": "axm.roots.main-four.v1",
+  "root_commitment_sha256": "01e6c42e4cfc6d8b7ea7999ddf9c29282d6d19722ef934d7c2e9ca095911a8f5",
+  "default_start_ids": {
+    "bridge": "axm.bridge.frontier-survey.v1",
+    "interior": "axm.interior.frontier-survey.v1",
+    "crew": "axm.crew.first-expedition.v1",
+    "ship_blueprint": "axm.ship.frontier-survey-stack.v1",
+    "migration_policy": "axm.migration.no-silent-rewrite.v1"
+  },
+  "canonical_registries": [
+    "data/immutable_root_kernel.json",
+    "data/bridge_experience_contract.json",
+    "data/bridge_archetype_registry.json",
+    "data/ship_interior_archetype_registry.json",
+    "data/ship_system_blueprint_registry.json",
+    "data/ship_interface_graph.json",
+    "data/ship_failure_mode_registry.json",
+    "data/ship_telemetry_metric_registry.json",
+    "data/crew_start_registry.json",
+    "data/crew_role_qualification_registry.json",
+    "data/crew_competency_evolution_registry.json",
+    "data/crew_station_display_registry.json",
+    "data/save_migration_policy_registry.json",
+    "data/source_registry.json"
+  ],
+  "canonical_entrypoints": {
+    "main_simulator": "axm-star-sim",
+    "save_slots": "axm-adventure-slots",
+    "ship_interior": "axm-ship-interior",
+    "rooted_crew": "axm-rooted-crew",
+    "ship_blueprint": "axm-ship-blueprint",
+    "crew_stations": "axm-crew-stations",
+    "migration": "axm-migration",
+    "handoff_doctor": "axm-handoff"
+  },
+  "demo_entrypoints": [
+    "OPEN_LOCAL_HANDOFF.html",
+    "output/crew_station_metric_demo/crew_station_console.html",
+    "output/factual_ship_blueprint_demo/ship_blueprint_console.html",
+    "output/ship_interior_demo/ship_interior_console.html",
+    "output/rooted_crew_demo/rooted_crew_console.html",
+    "output/bridge_visual_core_demo/paint_foundation_bridge.html",
+    "output/adventure_slot_demo/slot_manager.html",
+    "output/persistent_atlas_demo/atlas.html",
+    "output/contact_horizon_demo/contact_horizon_console.html",
+    "output/local_handoff/LOCAL_HANDOFF_REPORT.html",
+    "output/local_handoff/BUILDER_CAPABILITY_DECLARATION_EXAMPLE.json"
+  ],
+  "required_docs": [
+    "README.md",
+    "START_HERE.txt",
+    "LOCAL_INTAKE_HANDOFF.txt",
+    "docs/LOCAL_HANDOFF_MASTER_v0_15_0.md",
+    "docs/FINAL_POLISH_AUDIT_v0_15_0.md",
+    "docs/FUTURE_POTENTIAL_ROADMAP_v1.md",
+    "docs/SAVE_AND_MIGRATION_POLICY_v1.md",
+    "docs/VERIFICATION_REPORT_v0_15_0.md",
+    "docs/LOCAL_PACKAGE_RECHECK_v0_15_0.md"
+  ],
+  "acceptance_commands": {
+    "windows": [
+      "run_local_acceptance.bat"
+    ],
+    "linux_macos": [
+      "./run_local_acceptance.sh"
+    ],
+    "tests_windows": [
+      "run_tests.bat"
+    ],
+    "tests_linux_macos": [
+      "./run_tests.sh"
+    ],
+    "advanced_after_editable_install": [
+      "python verify_package.py",
+      "axm-handoff audit --full",
+      "python scripts/build_all_demos_v0_15.py"
+    ]
+  },
+  "known_unknowns": [
+    "integrated wet mass",
+    "verified delta-v",
+    "source-pinned integrated propulsion map",
+    "flight structural margins",
+    "medical dose and health prediction",
+    "validated psychology model",
+    "multi-year soak proof",
+    "complete networked multiplayer security model"
+  ],
+  "declared_non_capabilities": [
+    "not a flight-certified spacecraft",
+    "not proof that alien life or technology exists",
+    "not a validated medical or psychology system",
+    "not a real-world weapon-construction package",
+    "not dependent on external AI or internet for normal local play"
+  ],
+  "builder_capability_declaration_schema": "data/builder_capability_declaration_schema.json",
+  "future_backlog": "data/future_potential_backlog.json",
+  "runtime_requirements": {
+    "python": ">=3.10",
+    "python_dependencies": [],
+    "normal_local_operation_is_offline": true,
+    "optional_drand_verifier_requires_node_and_pinned_npm_packages": true
+  }
+}

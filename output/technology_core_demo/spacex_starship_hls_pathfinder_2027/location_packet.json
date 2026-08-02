@@ -1,0 +1,73 @@
+{
+  "schema": "axm.location-export-packet.v1",
+  "map_id": "atlas-babdf64a60f7f723",
+  "active_location_id": "frontier:bde1b6719d096f1e",
+  "location": {
+    "schema": "axm.atlas-location.v1",
+    "location_id": "frontier:bde1b6719d096f1e",
+    "name": "Orion Haven 4530",
+    "object_class": "generated_stellar_system",
+    "knowledge_class": "procedural_frontier",
+    "coordinates": {
+      "frame": "ICRS-like simulation frame",
+      "epoch": "campaign_origin",
+      "ra_deg": 333.509316741,
+      "dec_deg": 1.865660871,
+      "distance_ly": 1447.811383,
+      "truth_type": "simulation_prior",
+      "source_ids": [
+        "axm_simulation_priors_v1"
+      ],
+      "warning": "This coordinate is a deterministic simulation anchor. It is not a claim that a catalogued system exists here."
+    },
+    "cartesian_ly": {
+      "x_ly": 1295.114290297,
+      "y_ly": -645.457240449,
+      "z_ly": 47.135195127
+    },
+    "distance_ly": {
+      "value": 1447.811383,
+      "truth_type": "simulation_prior",
+      "source_ids": [
+        "axm_simulation_priors_v1"
+      ]
+    },
+    "known_worlds": [
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H"
+    ],
+    "source_ids": [
+      "axm_simulation_priors_v1"
+    ],
+    "system_id": "bde1b6719d096f1e",
+    "system_state_sha256": "440009f3240ee2a831045c85effb16c7f4dd0ddbdeb08f2656af41e0c141a1fc",
+    "catalog_revision": 0,
+    "visit_count": 2,
+    "crew_observations": [
+      {
+        "event_id": "bde1b6719d096f1e:turn:1",
+        "event_hash": "9f65ae1488d469c421bec819a8be3ffe1736fc5b0abf10f4a916e3b412c09cac",
+        "turn": 1,
+        "action": "Map dust and small bodies before approaching the planets.",
+        "outcome_id": "operational-complication",
+        "outcome_title": "The ship pays for the attempt",
+        "truth_type": "expedition_observation",
+        "measurement": null
+      }
+    ],
+    "render_history": [],
+    "route_status": "active_simulated_expedition",
+    "route_feasibility": {
+      "status": "simulation_contract",
+      "rule": "Travel is resolved by the simulator's ship and mission physics. The coordinate alone grants no capability."
+    },
+    "authoritative_snapshot_sha256": "52610a3605533a1ab09d19031857de4f1cee4e12cfba7ed9d1bb8ffd2d20ce75"
+  },
+  "atlas_visit_chain_head": "2e2bf01daeef09beabc0a6727467ca2502aa2b8442a3955305dfa56d406bd111",
+  "packet_sha256": "8e3b692918a8cd3f6a045f041973f75a4c7aa8a8377d359787e23fef2a788743"
+}

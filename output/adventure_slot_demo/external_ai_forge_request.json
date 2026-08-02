@@ -1,0 +1,360 @@
+{
+  "schema": "axm.external-ai-forge-request.v1",
+  "forge_version": "0.13.0",
+  "system_id": "8d02e20822fd2748",
+  "system_name": "Vela Crown 2880",
+  "public_environment": {
+    "system_id": "8d02e20822fd2748",
+    "system_name": "Vela Crown 2880",
+    "target_planet_id": "planet-0",
+    "target_planet_name": "B",
+    "planet_kind": "neptune-like",
+    "equilibrium_temperature_k": 605.8,
+    "insolation_earth": 22.4383,
+    "surface_gravity_earth": 1.1671,
+    "orbital_period_days": 7.084,
+    "stellar_temperature_k": 4005.0,
+    "stellar_luminosity_solar": 0.0837,
+    "truth_note": "These values come from the generated system's explicit truth layers. Equilibrium temperature is not surface temperature, and no solvent, atmosphere, organism, or anomaly is implied."
+  },
+  "candidate_shortlist": [
+    {
+      "candidate_id": "dusty_plasma_self_organization::dusty_plasma_lifelike_control",
+      "anomaly_family_id": "dusty_plasma_self_organization",
+      "anomaly_name": "Dusty-plasma self-organization",
+      "life_architecture_id": "dusty_plasma_lifelike_control",
+      "life_architecture_name": "Dusty-plasma life-like control",
+      "local_constraint_score": 0.97975453,
+      "claim_ceiling": "Life-like shape or recurrence alone is insufficient; classify as complex plasma unless stronger evidence appears.",
+      "observable_channels": [
+        "bifurcations",
+        "chains",
+        "crystals",
+        "helical structures",
+        "helices",
+        "hysteresis",
+        "phase transitions",
+        "plasma crystals",
+        "vortices"
+      ],
+      "false_positive_control_count": 4,
+      "source_ids": [
+        "aps_complex_plasma_review_2009",
+        "nasa_dusty_plasma_1999"
+      ]
+    },
+    {
+      "candidate_id": "rare_morphology::dusty_plasma_lifelike_control",
+      "anomaly_family_id": "rare_morphology",
+      "anomaly_name": "Rare astronomical morphology",
+      "life_architecture_id": "dusty_plasma_lifelike_control",
+      "life_architecture_name": "Dusty-plasma life-like control",
+      "local_constraint_score": 0.95963809,
+      "claim_ceiling": "Life-like shape or recurrence alone is insufficient; classify as complex plasma unless stronger evidence appears.",
+      "observable_channels": [
+        "bifurcations",
+        "crystals",
+        "helices",
+        "hysteresis",
+        "lens arc",
+        "merger stream",
+        "unexpected symmetry",
+        "unusual shape",
+        "vortices"
+      ],
+      "false_positive_control_count": 4,
+      "source_ids": [
+        "aps_complex_plasma_review_2009",
+        "nasa_dusty_plasma_1999",
+        "nasa_hubble_ai_anomalies_2026"
+      ]
+    },
+    {
+      "candidate_id": "dusty_plasma_self_organization::agnostic_unknown_biochemistry",
+      "anomaly_family_id": "dusty_plasma_self_organization",
+      "anomaly_name": "Dusty-plasma self-organization",
+      "life_architecture_id": "agnostic_unknown_biochemistry",
+      "life_architecture_name": "Agnostic unknown biochemistry",
+      "local_constraint_score": 0.94436218,
+      "claim_ceiling": "Life-like organization can be tested without assuming DNA, proteins, or water.",
+      "observable_channels": [
+        "chains",
+        "chemical complexity",
+        "elemental compartmentalization",
+        "energy transfer",
+        "helical structures",
+        "phase transitions",
+        "plasma crystals",
+        "selection bias",
+        "vortices"
+      ],
+      "false_positive_control_count": 4,
+      "source_ids": [
+        "aps_complex_plasma_review_2009",
+        "nasa_agnostic_biosignatures_2019",
+        "nasa_dusty_plasma_1999",
+        "nasa_life_as_we_dont_know_it_2025"
+      ]
+    },
+    {
+      "candidate_id": "non_gravitational_orbital_behavior::dusty_plasma_lifelike_control",
+      "anomaly_family_id": "non_gravitational_orbital_behavior",
+      "anomaly_name": "Non-gravitational orbital behavior",
+      "life_architecture_id": "dusty_plasma_lifelike_control",
+      "life_architecture_name": "Dusty-plasma life-like control",
+      "local_constraint_score": 0.93242866,
+      "claim_ceiling": "Life-like shape or recurrence alone is insufficient; classify as complex plasma unless stronger evidence appears.",
+      "observable_channels": [
+        "bifurcations",
+        "crystals",
+        "helices",
+        "hysteresis",
+        "outgassing limits",
+        "residual acceleration",
+        "rotation changes",
+        "vortices"
+      ],
+      "false_positive_control_count": 4,
+      "source_ids": [
+        "aps_complex_plasma_review_2009",
+        "jpl_horizons",
+        "jpl_sbdb",
+        "nasa_dusty_plasma_1999"
+      ]
+    },
+    {
+      "candidate_id": "gravitational_mass_mismatch::dusty_plasma_lifelike_control",
+      "anomaly_family_id": "gravitational_mass_mismatch",
+      "anomaly_name": "Gravitational mass mismatch",
+      "life_architecture_id": "dusty_plasma_lifelike_control",
+      "life_architecture_name": "Dusty-plasma life-like control",
+      "local_constraint_score": 0.92847589,
+      "claim_ceiling": "Life-like shape or recurrence alone is insufficient; classify as complex plasma unless stronger evidence appears.",
+      "observable_channels": [
+        "bifurcations",
+        "crystals",
+        "helices",
+        "hysteresis",
+        "lensing mass",
+        "orbital dynamics",
+        "visible matter inventory",
+        "vortices"
+      ],
+      "false_positive_control_count": 4,
+      "source_ids": [
+        "aps_complex_plasma_review_2009",
+        "nasa_dark_universe_2024",
+        "nasa_dusty_plasma_1999"
+      ]
+    },
+    {
+      "candidate_id": "atmospheric_disequilibrium::dusty_plasma_lifelike_control",
+      "anomaly_family_id": "atmospheric_disequilibrium",
+      "anomaly_name": "Atmospheric disequilibrium",
+      "life_architecture_id": "dusty_plasma_lifelike_control",
+      "life_architecture_name": "Dusty-plasma life-like control",
+      "local_constraint_score": 0.92405031,
+      "claim_ceiling": "Life-like shape or recurrence alone is insufficient; classify as complex plasma unless stronger evidence appears.",
+      "observable_channels": [
+        "bifurcations",
+        "coexisting reactive gases",
+        "crystals",
+        "helices",
+        "hysteresis",
+        "isotopic fractionation",
+        "seasonal cycling",
+        "vortices"
+      ],
+      "false_positive_control_count": 4,
+      "source_ids": [
+        "aps_complex_plasma_review_2009",
+        "nasa_agnostic_biosignatures_2019",
+        "nasa_dusty_plasma_1999",
+        "national_academies_biosignature_evidence_2022"
+      ]
+    },
+    {
+      "candidate_id": "rare_morphology::agnostic_unknown_biochemistry",
+      "anomaly_family_id": "rare_morphology",
+      "anomaly_name": "Rare astronomical morphology",
+      "life_architecture_id": "agnostic_unknown_biochemistry",
+      "life_architecture_name": "Agnostic unknown biochemistry",
+      "local_constraint_score": 0.90982543,
+      "claim_ceiling": "Life-like organization can be tested without assuming DNA, proteins, or water.",
+      "observable_channels": [
+        "chemical complexity",
+        "elemental compartmentalization",
+        "energy transfer",
+        "lens arc",
+        "merger stream",
+        "selection bias",
+        "unexpected symmetry",
+        "unusual shape"
+      ],
+      "false_positive_control_count": 4,
+      "source_ids": [
+        "nasa_agnostic_biosignatures_2019",
+        "nasa_hubble_ai_anomalies_2026",
+        "nasa_life_as_we_dont_know_it_2025"
+      ]
+    },
+    {
+      "candidate_id": "gravitational_mass_mismatch::agnostic_unknown_biochemistry",
+      "anomaly_family_id": "gravitational_mass_mismatch",
+      "anomaly_name": "Gravitational mass mismatch",
+      "life_architecture_id": "agnostic_unknown_biochemistry",
+      "life_architecture_name": "Agnostic unknown biochemistry",
+      "local_constraint_score": 0.88952445,
+      "claim_ceiling": "Life-like organization can be tested without assuming DNA, proteins, or water.",
+      "observable_channels": [
+        "chemical complexity",
+        "elemental compartmentalization",
+        "energy transfer",
+        "lensing mass",
+        "orbital dynamics",
+        "selection bias",
+        "visible matter inventory"
+      ],
+      "false_positive_control_count": 4,
+      "source_ids": [
+        "nasa_agnostic_biosignatures_2019",
+        "nasa_dark_universe_2024",
+        "nasa_life_as_we_dont_know_it_2025"
+      ]
+    },
+    {
+      "candidate_id": "atmospheric_disequilibrium::agnostic_unknown_biochemistry",
+      "anomaly_family_id": "atmospheric_disequilibrium",
+      "anomaly_name": "Atmospheric disequilibrium",
+      "life_architecture_id": "agnostic_unknown_biochemistry",
+      "life_architecture_name": "Agnostic unknown biochemistry",
+      "local_constraint_score": 0.88598088,
+      "claim_ceiling": "Life-like organization can be tested without assuming DNA, proteins, or water.",
+      "observable_channels": [
+        "chemical complexity",
+        "coexisting reactive gases",
+        "elemental compartmentalization",
+        "energy transfer",
+        "isotopic fractionation",
+        "seasonal cycling",
+        "selection bias"
+      ],
+      "false_positive_control_count": 4,
+      "source_ids": [
+        "nasa_agnostic_biosignatures_2019",
+        "nasa_life_as_we_dont_know_it_2025",
+        "national_academies_biosignature_evidence_2022"
+      ]
+    },
+    {
+      "candidate_id": "non_gravitational_orbital_behavior::agnostic_unknown_biochemistry",
+      "anomaly_family_id": "non_gravitational_orbital_behavior",
+      "anomaly_name": "Non-gravitational orbital behavior",
+      "life_architecture_id": "agnostic_unknown_biochemistry",
+      "life_architecture_name": "Agnostic unknown biochemistry",
+      "local_constraint_score": 0.88367015,
+      "claim_ceiling": "Life-like organization can be tested without assuming DNA, proteins, or water.",
+      "observable_channels": [
+        "chemical complexity",
+        "elemental compartmentalization",
+        "energy transfer",
+        "outgassing limits",
+        "residual acceleration",
+        "rotation changes",
+        "selection bias"
+      ],
+      "false_positive_control_count": 4,
+      "source_ids": [
+        "jpl_horizons",
+        "jpl_sbdb",
+        "nasa_agnostic_biosignatures_2019",
+        "nasa_life_as_we_dont_know_it_2025"
+      ]
+    },
+    {
+      "candidate_id": "expansion_rate_disagreement::dusty_plasma_lifelike_control",
+      "anomaly_family_id": "expansion_rate_disagreement",
+      "anomaly_name": "Expansion-rate disagreement",
+      "life_architecture_id": "dusty_plasma_lifelike_control",
+      "life_architecture_name": "Dusty-plasma life-like control",
+      "local_constraint_score": 0.87873163,
+      "claim_ceiling": "Life-like shape or recurrence alone is insufficient; classify as complex plasma unless stronger evidence appears.",
+      "observable_channels": [
+        "CMB-inferred result",
+        "bifurcations",
+        "calibration covariance",
+        "crystals",
+        "distance-ladder result",
+        "helices",
+        "hysteresis",
+        "vortices"
+      ],
+      "false_positive_control_count": 3,
+      "source_ids": [
+        "aps_complex_plasma_review_2009",
+        "nasa_dusty_plasma_1999",
+        "nasa_hubble_tension_2026"
+      ]
+    },
+    {
+      "candidate_id": "expansion_rate_disagreement::agnostic_unknown_biochemistry",
+      "anomaly_family_id": "expansion_rate_disagreement",
+      "anomaly_name": "Expansion-rate disagreement",
+      "life_architecture_id": "agnostic_unknown_biochemistry",
+      "life_architecture_name": "Agnostic unknown biochemistry",
+      "local_constraint_score": 0.87591096,
+      "claim_ceiling": "Life-like organization can be tested without assuming DNA, proteins, or water.",
+      "observable_channels": [
+        "CMB-inferred result",
+        "calibration covariance",
+        "chemical complexity",
+        "distance-ladder result",
+        "elemental compartmentalization",
+        "energy transfer",
+        "selection bias"
+      ],
+      "false_positive_control_count": 3,
+      "source_ids": [
+        "nasa_agnostic_biosignatures_2019",
+        "nasa_hubble_tension_2026",
+        "nasa_life_as_we_dont_know_it_2025"
+      ]
+    }
+  ],
+  "allowed_investigation_emphasis": [
+    "anomaly_hunting",
+    "balanced",
+    "chemistry_first",
+    "conservative",
+    "falsification_first",
+    "physics_first"
+  ],
+  "allowed_observable_ids": [
+    "chemical_complexity",
+    "elemental_compartmentalization",
+    "energy_transfer",
+    "disequilibrium",
+    "selection_bias_in_chemistry",
+    "replication_like_recurrence",
+    "adaptive_response",
+    "information_bearing_structure"
+  ],
+  "external_ai_task": [
+    "Propose investigation lenses, not a guaranteed story.",
+    "Do not choose whether life, intelligence, contact, or new physics is actually present.",
+    "Prefer candidates with measurable observables and strong false-positive controls.",
+    "Return only the proposal schema shown in proposal_template."
+  ],
+  "proposal_template": {
+    "schema": "axm.external-ai-forge-proposal.v1",
+    "request_id": "1c86ad05004bbc3cac722a864678cd671fbf9d07a274e633f6465770b94fea13",
+    "proposal_author": "external model or human reasoning seat",
+    "preferred_anomaly_family_ids": [],
+    "preferred_life_architecture_ids": [],
+    "emphasis_observable_ids": [],
+    "investigation_emphasis": "balanced",
+    "rationale_summary": [],
+    "proposal_nonce": ""
+  },
+  "request_id": "1c86ad05004bbc3cac722a864678cd671fbf9d07a274e633f6465770b94fea13"
+}

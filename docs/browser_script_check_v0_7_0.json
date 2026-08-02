@@ -1,0 +1,9 @@
+{
+  "schema": "axm.browser-script-check.v0.7",
+  "status": "PASS",
+  "html_files": 31,
+  "script_blocks": 37,
+  "javascript_blocks": 30,
+  "json_blocks": 7,
+  "failures": []
+}

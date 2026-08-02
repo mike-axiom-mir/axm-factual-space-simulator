@@ -1,0 +1,14 @@
+{
+  "schema": "axm.factual-ship-blueprint-stress.v1",
+  "states": 260,
+  "encounters": 260,
+  "injected_failures": 260,
+  "role_snapshots": 1820,
+  "command_recalls": 227,
+  "mode_counts": {
+    "nominal": 234,
+    "safe_state": 26
+  },
+  "failures": [],
+  "valid": true
+}

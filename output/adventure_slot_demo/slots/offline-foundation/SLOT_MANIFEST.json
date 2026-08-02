@@ -1,0 +1,69 @@
+{
+  "schema": "axm.adventure-slot-manifest.v1",
+  "slot_id": "offline-foundation",
+  "slot_version": "0.13.0",
+  "generated_at": "2026-08-02T05:29:59.864813+00:00",
+  "managed_file_count": 15,
+  "files": {
+    "SHIP_START_PIN.json": {
+      "bytes": 1157,
+      "sha256": "52abbaed0d77a83755a1041aae43d58284cd8e72baa2501f4243d690b0b27ae7"
+    },
+    "SLOT_HANDOFF.txt": {
+      "bytes": 413,
+      "sha256": "b30ca179cdf0462d7690098eb875ef11342169ef48a19ae2379acb78e33267bc"
+    },
+    "SLOT_METADATA.json": {
+      "bytes": 1126,
+      "sha256": "72b3a45aff2eadadff5ecaf6b3796d22da9f727660343fcb087be5e1c15ce913"
+    },
+    "exports/offline-foundation_BLIND_PLAYER_BUNDLE.zip": {
+      "bytes": 31750,
+      "sha256": "19ec832d274ed0e6ab0261ba65c7b2e2cd9aa5743fe861525a5c2be534c0e5b8"
+    },
+    "session/BLIND_FORGE_HANDOFF.txt": {
+      "bytes": 332,
+      "sha256": "51a5ba68cdd9faa73ea632baeadceda9a608b0aa93e7f715f8a9007edb9e8b31"
+    },
+    "session/forge_private/ENTROPY_TOKENS.json": {
+      "bytes": 30,
+      "sha256": "6789e87d46850c5a38c5e36ea614844f7c82c3352262ef8577fa4a2b9b6167d5"
+    },
+    "session/forge_private/hidden_scenario.json": {
+      "bytes": 19301,
+      "sha256": "62a2165d715ccdbe134250478ff9b5e3564c52dbeefe5bf2573ee02a383e9942"
+    },
+    "session/player_public/PLAYER_HANDOFF.txt": {
+      "bytes": 494,
+      "sha256": "1aa7f0af7c6e73c8b98d1c050a00cf34ea156ac5284b6cc005a60d10aadca38c"
+    },
+    "session/player_public/event_ledger.jsonl": {
+      "bytes": 979,
+      "sha256": "8d50213cd34a75b50874bc49b83bc281daaa90bad2d22f0571d9aedc64ff2622"
+    },
+    "session/player_public/mission_bundle.json": {
+      "bytes": 7643,
+      "sha256": "6179781f05d80d968007e1b16a7cbdd2768853685aa1823590bdcb8a6fb94fe9"
+    },
+    "session/player_public/player_console.html": {
+      "bytes": 15181,
+      "sha256": "7d3fd356ecb429eeb566aa2ba146958a7cb6c24af810693803a46a9b7ce39d37"
+    },
+    "session/player_public/player_state.json": {
+      "bytes": 887,
+      "sha256": "06d808437e186d8565316c2b958a6a0e868e56864e33c985447b2609f0156d5e"
+    },
+    "session/player_public/system_public.json": {
+      "bytes": 109052,
+      "sha256": "3cc170eaed77f86aad63154c0c74af68bab515f9d4d04861fcd6241baf6b38dd"
+    },
+    "slot_console.html": {
+      "bytes": 12075,
+      "sha256": "7e9920233cd3787f2504d598c70cec094fbb68bbb880c19f7bdc13cdaf3ccbd0"
+    },
+    "slot_private/START_RECEIPT.json": {
+      "bytes": 609,
+      "sha256": "9b34bc3e3f7c8ad3fa452eceab83f40497a643bd8af40e8b26e69c6a202f712d"
+    }
+  }
+}

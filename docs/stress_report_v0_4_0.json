@@ -1,0 +1,43 @@
+{
+  "schema": "axm.v0.4-stress-report.v1",
+  "status": "PASS",
+  "systems": 300,
+  "turns_per_system": 12,
+  "events_replay_verified": 3600,
+  "deterministic_reproducibility_pairs": 40,
+  "deterministic_turns_per_pair": 10,
+  "action_categories_observed": {
+    "engineering": 694,
+    "general": 1032,
+    "instrument": 804,
+    "move_on": 137,
+    "patient_observation": 795,
+    "probe": 138
+  },
+  "outcomes_observed": {
+    "ambiguous-evidence": 856,
+    "clear-evidence": 1111,
+    "operational-complication": 948,
+    "quiet-constraint": 282,
+    "unexpected-coupling": 403
+  },
+  "causal_thread_kinds_observed": {
+    "communication-latency": 3600,
+    "competing-hypotheses": 2542,
+    "cross-system-coupling": 1783,
+    "detection-limit-review": 1364,
+    "precision-follow-up": 2960,
+    "probe-in-flight": 629,
+    "radiation-watch": 2478,
+    "repair-versus-discovery": 2678,
+    "seasonal-atmosphere-window": 696,
+    "stripped-world": 1176,
+    "system-history-reconstruction": 1680,
+    "thermal-recovery": 3413,
+    "weak-signal-investigation": 48
+  },
+  "dynamic_menu_size": {
+    "minimum": 3,
+    "maximum": 9
+  }
+}

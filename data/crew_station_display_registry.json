@@ -1,0 +1,482 @@
+{
+  "schema": "axm.crew-station-display-registry.v1",
+  "registry_version": "0.14.0",
+  "as_of_date": "2026-08-02",
+  "display_rules": {
+    "task_relevant_information_first": true,
+    "critical_controls_grouped_with_related_displays": true,
+    "current_mode_visible": true,
+    "operational_limit_violations_visible": true,
+    "stale_or_degraded_data_visible": true,
+    "simulation_and_mission_modes_visually_distinct": true,
+    "plain_language_explanation_available": true,
+    "numeric_value_never_hidden_by_explanation": true,
+    "unknown_is_not_rendered_as_zero": true
+  },
+  "alert_priorities": [
+    {
+      "id": "emergency",
+      "symbol": "E",
+      "semantic_color": "red"
+    },
+    {
+      "id": "warning",
+      "symbol": "W",
+      "semantic_color": "red"
+    },
+    {
+      "id": "caution",
+      "symbol": "C",
+      "semantic_color": "yellow"
+    },
+    {
+      "id": "advisory",
+      "symbol": "A",
+      "semantic_color": "blue"
+    }
+  ],
+  "alert_fields": [
+    "priority",
+    "event_id",
+    "name",
+    "timestamp",
+    "system_id",
+    "module_or_element",
+    "active_state",
+    "acknowledge_state",
+    "data_quality",
+    "root_cause_if_known",
+    "procedure_link_if_available"
+  ],
+  "control_influences": [
+    {
+      "id": "load_shedding",
+      "display_name": "Load shedding",
+      "authorized_roles": [
+        "vehicle_systems_engineer",
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "directly_influences": [
+        "power.load",
+        "power.margin",
+        "power.shed_load_count",
+        "thermal.waste_heat",
+        "thermal.margin"
+      ],
+      "secondary_consequences": [
+        "science.sensor_availability",
+        "robotics.availability",
+        "comms.queue_pct"
+      ],
+      "irreversible": "operation_dependent",
+      "authority_rule": "Engineering may shed reversible loads inside protected-load rules."
+    },
+    {
+      "id": "vehicle_attitude",
+      "display_name": "Vehicle attitude",
+      "authorized_roles": [
+        "flight_dynamics_navigation",
+        "mission_commander"
+      ],
+      "directly_influences": [
+        "nav.attitude_error",
+        "nav.pointing_performance",
+        "power.solar_flux",
+        "comms.availability",
+        "thermal.rejection"
+      ],
+      "secondary_consequences": [
+        "science.sensor_availability",
+        "hazard.external_heat"
+      ],
+      "irreversible": "operation_dependent",
+      "authority_rule": "Routine pointing is delegated; high-consequence attitude changes require command."
+    },
+    {
+      "id": "sensor_selection",
+      "display_name": "Navigation sensor selection",
+      "authorized_roles": [
+        "flight_dynamics_navigation",
+        "ai_systems_integrator"
+      ],
+      "directly_influences": [
+        "nav.uncertainty",
+        "science.sensor_availability"
+      ],
+      "secondary_consequences": [
+        "power.load",
+        "thermal.waste_heat",
+        "comms.queue"
+      ],
+      "irreversible": "operation_dependent",
+      "authority_rule": "Selection cannot lower uncertainty without validated measurements."
+    },
+    {
+      "id": "compartment_isolation",
+      "display_name": "Compartment isolation",
+      "authorized_roles": [
+        "vehicle_systems_engineer",
+        "mission_commander"
+      ],
+      "directly_influences": [
+        "life.pressure_loss_rate",
+        "structure.isolated_rooms",
+        "structure.boundary"
+      ],
+      "secondary_consequences": [
+        "life.available_crew",
+        "maintenance.work_orders"
+      ],
+      "irreversible": "operation_dependent",
+      "authority_rule": "Automatic isolation may protect life; reopening requires verification."
+    },
+    {
+      "id": "data_priority",
+      "display_name": "Data priority",
+      "authorized_roles": [
+        "communications_data_robotics",
+        "science_anomaly_specialist",
+        "mission_commander"
+      ],
+      "directly_influences": [
+        "comms.queue",
+        "comms.queue_pct"
+      ],
+      "secondary_consequences": [
+        "science.raw_data_preserved"
+      ],
+      "irreversible": "operation_dependent",
+      "authority_rule": "Priority may change; unique raw evidence may not be silently deleted."
+    },
+    {
+      "id": "robotic_operation",
+      "display_name": "Robotic operation",
+      "authorized_roles": [
+        "communications_data_robotics",
+        "science_anomaly_specialist"
+      ],
+      "directly_influences": [
+        "robotics.health",
+        "robotics.availability"
+      ],
+      "secondary_consequences": [
+        "power.load",
+        "thermal.waste_heat",
+        "science.sensor_availability"
+      ],
+      "irreversible": "operation_dependent",
+      "authority_rule": "Irreversible contact or release has separate authority gates."
+    },
+    {
+      "id": "science_observation_plan",
+      "display_name": "Science observation plan",
+      "authorized_roles": [
+        "science_anomaly_specialist",
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "directly_influences": [
+        "science.sensor_availability",
+        "comms.queue",
+        "power.load",
+        "thermal.waste_heat"
+      ],
+      "secondary_consequences": [
+        "nav.pointing_performance"
+      ],
+      "irreversible": "operation_dependent",
+      "authority_rule": "Observation plans cannot raise claim ceilings without evidence."
+    },
+    {
+      "id": "crew_task_assignment",
+      "display_name": "Crew task assignment",
+      "authorized_roles": [
+        "mission_commander",
+        "crew_medical_officer"
+      ],
+      "directly_influences": [
+        "crew.commander_workload",
+        "crew.engineering_workload",
+        "crew.science_workload",
+        "crew.navigation_workload"
+      ],
+      "secondary_consequences": [
+        "maintenance.repair_capacity",
+        "life.available_crew"
+      ],
+      "irreversible": "operation_dependent",
+      "authority_rule": "Medical restrictions and role qualification remain binding."
+    }
+  ],
+  "stations": [
+    {
+      "id": "command_duet",
+      "display_name": "Command Duet",
+      "seat_role_ids": [
+        "mission_commander",
+        "ai_systems_integrator"
+      ],
+      "display_surfaces": [
+        {
+          "id": "commander_left",
+          "owner_role_id": "mission_commander",
+          "purpose": "authority, survival, reversibility, mission posture",
+          "metric_ids": [
+            "ship.mode",
+            "ship.survival_supported",
+            "ship.critical_health_min",
+            "ship.active_faults",
+            "ship.pending_recall",
+            "ship.held_actions",
+            "power.margin",
+            "power.battery_soc",
+            "power.time_to_reserve",
+            "thermal.margin",
+            "thermal.time_to_limit",
+            "life.cabin_pressure",
+            "life.water_days",
+            "life.oxygen_days",
+            "nav.uncertainty",
+            "comms.one_way_light_time",
+            "comms.availability",
+            "structure.health",
+            "hazard.radiation_environment",
+            "life.available_crew"
+          ]
+        },
+        {
+          "id": "shared_center",
+          "owner_role_id": null,
+          "purpose": "shared world view, alerts, geometry, procedures and command choices",
+          "metric_ids": [
+            "ship.mode",
+            "ship.pending_recall",
+            "ship.active_faults",
+            "power.margin",
+            "thermal.margin",
+            "life.cabin_pressure",
+            "nav.speed",
+            "nav.uncertainty",
+            "nav.attitude_error",
+            "comms.one_way_light_time",
+            "science.last_intent_assessment",
+            "structure.boundary",
+            "hazard.shelter_active"
+          ]
+        },
+        {
+          "id": "collaborator_right",
+          "owner_role_id": "ai_systems_integrator",
+          "purpose": "interfaces, contradictions, provenance, quality and fault propagation",
+          "metric_ids": [
+            "ship.state_integrity",
+            "ship.critical_health_min",
+            "ship.active_faults",
+            "ship.held_actions",
+            "power.margin",
+            "thermal.margin",
+            "comms.telemetry_visibility",
+            "comms.command_integrity",
+            "nav.uncertainty",
+            "science.raw_data_preserved",
+            "science.sensor_health",
+            "maintenance.work_orders"
+          ]
+        }
+      ],
+      "control_influence_ids": [
+        "crew_task_assignment",
+        "vehicle_attitude",
+        "load_shedding",
+        "science_observation_plan"
+      ],
+      "source_ids": [
+        "nasa_orion_crew_systems_2026",
+        "nasa_crew_interfaces_2026"
+      ]
+    },
+    {
+      "id": "navigation_station",
+      "display_name": "Navigation Station",
+      "seat_role_ids": [
+        "flight_dynamics_navigation"
+      ],
+      "display_surfaces": [
+        {
+          "id": "navigation_primary",
+          "owner_role_id": "flight_dynamics_navigation",
+          "purpose": "state estimation, trajectory, attitude, pointing and maneuver readiness",
+          "metric_ids": [
+            "nav.position_x",
+            "nav.position_y",
+            "nav.position_z",
+            "nav.speed",
+            "nav.uncertainty",
+            "nav.attitude_error",
+            "nav.pointing_performance",
+            "nav.propulsion_available",
+            "nav.maneuver_performance_known",
+            "nav.collision_geometry_ready",
+            "power.solar_flux",
+            "comms.one_way_light_time",
+            "comms.availability"
+          ]
+        }
+      ],
+      "control_influence_ids": [
+        "vehicle_attitude",
+        "sensor_selection"
+      ]
+    },
+    {
+      "id": "engineering_station",
+      "display_name": "Engineering Station",
+      "seat_role_ids": [
+        "vehicle_systems_engineer"
+      ],
+      "display_surfaces": [
+        {
+          "id": "engineering_primary",
+          "owner_role_id": "vehicle_systems_engineer",
+          "purpose": "power, heat, pressure, life support, maintenance and fault isolation",
+          "metric_ids": [
+            "power.generated",
+            "power.load",
+            "power.margin",
+            "power.battery_soc",
+            "power.time_to_reserve",
+            "thermal.waste_heat",
+            "thermal.rejection",
+            "thermal.margin",
+            "thermal.storage_pct",
+            "thermal.time_to_limit",
+            "life.cabin_pressure",
+            "life.pressure_loss_rate",
+            "life.time_to_min_pressure",
+            "life.co2_margin",
+            "life.water_recovery",
+            "life.water_days",
+            "life.oxygen_days",
+            "structure.health",
+            "structure.boundary",
+            "maintenance.work_orders",
+            "maintenance.spares",
+            "maintenance.repair_capacity"
+          ]
+        }
+      ],
+      "control_influence_ids": [
+        "load_shedding",
+        "compartment_isolation"
+      ]
+    },
+    {
+      "id": "science_station",
+      "display_name": "Science Station",
+      "seat_role_ids": [
+        "science_anomaly_specialist"
+      ],
+      "display_surfaces": [
+        {
+          "id": "science_primary",
+          "owner_role_id": "science_anomaly_specialist",
+          "purpose": "measurement quality, calibration, alternatives, evidence and probes",
+          "metric_ids": [
+            "science.sensor_health",
+            "science.sensor_availability",
+            "science.calibration_state",
+            "science.encounter_count",
+            "science.last_intent_assessment",
+            "science.raw_data_preserved",
+            "robotics.health",
+            "robotics.availability",
+            "comms.queue",
+            "comms.queue_pct",
+            "nav.pointing_performance",
+            "hazard.external_heat",
+            "hazard.radiation_environment"
+          ]
+        }
+      ],
+      "control_influence_ids": [
+        "science_observation_plan",
+        "data_priority",
+        "robotic_operation"
+      ]
+    },
+    {
+      "id": "communications_station",
+      "display_name": "Communications and Robotics Station",
+      "seat_role_ids": [
+        "communications_data_robotics"
+      ],
+      "display_surfaces": [
+        {
+          "id": "communications_primary",
+          "owner_role_id": "communications_data_robotics",
+          "purpose": "links, delay, queues, command integrity and robotics",
+          "metric_ids": [
+            "comms.distance",
+            "comms.one_way_light_time",
+            "comms.round_trip_light_time",
+            "comms.availability",
+            "comms.queue",
+            "comms.queue_pct",
+            "comms.telemetry_visibility",
+            "comms.command_integrity",
+            "nav.attitude_error",
+            "nav.pointing_performance",
+            "robotics.health",
+            "robotics.availability",
+            "science.sensor_availability"
+          ]
+        }
+      ],
+      "control_influence_ids": [
+        "data_priority",
+        "robotic_operation",
+        "vehicle_attitude"
+      ]
+    },
+    {
+      "id": "medical_station",
+      "display_name": "Medical and Crew Readiness View",
+      "seat_role_ids": [
+        "crew_medical_officer"
+      ],
+      "display_surfaces": [
+        {
+          "id": "medical_primary",
+          "owner_role_id": "crew_medical_officer",
+          "purpose": "environmental exposure, task fitness, availability and workload",
+          "metric_ids": [
+            "life.available_crew",
+            "life.cabin_pressure",
+            "life.co2_margin",
+            "life.water_days",
+            "life.oxygen_days",
+            "life.air_quality",
+            "life.water_quality",
+            "hazard.radiation_environment",
+            "hazard.cumulative_exposure",
+            "hazard.shelter_active",
+            "crew.commander_workload",
+            "crew.engineering_workload",
+            "crew.science_workload",
+            "crew.navigation_workload"
+          ]
+        }
+      ],
+      "control_influence_ids": [
+        "crew_task_assignment"
+      ]
+    }
+  ],
+  "source_ids": [
+    "nasa_crew_interfaces_2026",
+    "nasa_display_standard_2026",
+    "nasa_orion_crew_systems_2026",
+    "nasa_human_in_loop_2026"
+  ]
+}

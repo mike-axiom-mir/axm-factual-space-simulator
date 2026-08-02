@@ -1,0 +1,102 @@
+{
+  "schema": "axm.crew-start-registry.v1",
+  "registry_version": 2,
+  "default_crew_start_id": "axm.crew.first-expedition.v1",
+  "crew_starts": [
+    {
+      "id": "axm.crew.first-expedition.v1",
+      "version": 1,
+      "status": "CANON_FIRST_START",
+      "display_name": "First Expedition Crew",
+      "description": "A visible deterministic crew with a primary explorer and AI collaborator sharing the command zone.",
+      "command_presence": [
+        {
+          "seat_anchor": "human_or_primary_explorer",
+          "occupant_type": "human_or_machine_primary",
+          "inherits_root_kernel": "axm.roots.main-four.v1",
+          "root_override_authority": false,
+          "qualification_profile_id": "mission_commander"
+        },
+        {
+          "seat_anchor": "ai_or_secondary_collaborator",
+          "occupant_type": "ai_or_human_collaborator",
+          "inherits_root_kernel": "axm.roots.main-four.v1",
+          "root_override_authority": false,
+          "qualification_profile_id": "ai_systems_integrator"
+        }
+      ],
+      "crew_roles": [
+        {
+          "station_anchor": "navigation",
+          "role": "navigation",
+          "inherits_root_kernel": "axm.roots.main-four.v1",
+          "root_override_authority": false,
+          "qualification_profile_id": "flight_dynamics_navigation"
+        },
+        {
+          "station_anchor": "science",
+          "role": "science",
+          "inherits_root_kernel": "axm.roots.main-four.v1",
+          "root_override_authority": false,
+          "qualification_profile_id": "science_anomaly_specialist"
+        },
+        {
+          "station_anchor": "engineering",
+          "role": "engineering",
+          "inherits_root_kernel": "axm.roots.main-four.v1",
+          "root_override_authority": false,
+          "qualification_profile_id": "vehicle_systems_engineer"
+        },
+        {
+          "station_anchor": "communications",
+          "role": "communications",
+          "inherits_root_kernel": "axm.roots.main-four.v1",
+          "root_override_authority": false,
+          "qualification_profile_id": "communications_data_robotics"
+        }
+      ],
+      "visibility_policy": "All active seats and stations remain spatially represented even when represented by simple symbols.",
+      "root_kernel_binding": {
+        "kernel_id": "axm.roots.main-four.v1",
+        "kernel_version": 1,
+        "root_commitment_sha256": "01e6c42e4cfc6d8b7ea7999ddf9c29282d6d19722ef934d7c2e9ca095911a8f5",
+        "binding": "IMMUTABLE_MAINLINE",
+        "applies_to": [
+          "every deterministic crew seat",
+          "autonomous crew action generation",
+          "crew assessments",
+          "AI command proposals before execution",
+          "human command validity checks before execution",
+          "collaborative command",
+          "away-from-deck autonomy",
+          "crew evolution and derived principles"
+        ],
+        "override_policy": "No seat, commander, vote, model, efficiency score, update, or visual layer can alter or bypass the roots."
+      },
+      "perspective_order": [
+        "truth_source_truth",
+        "continuity_no_loss",
+        "agency_no_takeover",
+        "wisdom_over_speed",
+        "role_and_context",
+        "legitimate_options",
+        "long_term_consequences",
+        "efficiency_within_eligible_options"
+      ],
+      "evolution_policy": "Principles, practices, and strategies grow outward from immutable roots. Evolution is tested for root continuity rather than restrained by an unrelated after-the-fact guard.",
+      "secondary_assignments": [
+        {
+          "qualification_profile_id": "crew_medical_officer",
+          "default_holder_role": "science_anomaly_specialist",
+          "reassignment_allowed": true,
+          "training_required": true
+        }
+      ],
+      "ship_blueprint_id": "axm.ship.frontier-survey-stack.v1"
+    }
+  ],
+  "root_kernel_requirement": {
+    "safe_mainline_crews_must_bind": "axm.roots.main-four.v1",
+    "unbound_or_changed_crews": "must be explicitly experimental and cannot silently replace mainline saves"
+  }
+}

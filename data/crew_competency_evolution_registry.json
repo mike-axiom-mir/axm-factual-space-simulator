@@ -1,0 +1,1742 @@
+{
+  "schema": "axm.crew-competency-evolution-registry.v1",
+  "registry_version": "0.14.0",
+  "as_of_date": "2026-08-02",
+  "model": {
+    "skill_evolution_is_not_personality_prediction": true,
+    "learning_pressure_means_operational_need_not_desire": true,
+    "metric_exposure_does_not_equal_qualification": true,
+    "automatic_promotion_forbidden": true,
+    "qualification_requires_evidence": true,
+    "roots_remain_immutable": true
+  },
+  "learning_pressure_factors": {
+    "metric_alert_exposure": 0.35,
+    "role_responsibility": 0.2,
+    "active_fault_in_related_system": 0.2,
+    "command_or_control_use": 0.1,
+    "qualification_gap": 0.15
+  },
+  "evidence_types": [
+    "knowledge_check",
+    "part_task_simulation",
+    "nominal_operation_observation",
+    "integrated_off_nominal_simulation",
+    "successful_supervised_operation",
+    "independent_operation",
+    "verifier_signoff",
+    "decision_review",
+    "team_simulation",
+    "model_validation",
+    "replay_verification",
+    "source_audit",
+    "explanation_review",
+    "crew_comprehension_check",
+    "sensor_disagreement_simulation",
+    "proximity_simulation",
+    "eclipse_simulation",
+    "radiator_loss_simulation",
+    "leak_response_simulation",
+    "scrubber_failure_simulation",
+    "calibration_exercise",
+    "case_review",
+    "control_test_design",
+    "independent_replication_review",
+    "integrated_observation_simulation",
+    "delay_operations_simulation",
+    "data_priority_exercise",
+    "integrity_failure_simulation",
+    "contact_force_simulation",
+    "medical_simulation",
+    "environmental_exposure_simulation"
+  ],
+  "skills": [
+    {
+      "id": "commander.cross_system_command",
+      "display_name": "Cross-System Command",
+      "role_id": "mission_commander",
+      "metric_ids": [
+        "ship.survival_supported",
+        "ship.critical_health_min",
+        "ship.active_faults",
+        "power.margin",
+        "thermal.margin",
+        "life.cabin_pressure",
+        "nav.uncertainty"
+      ],
+      "system_ids": [
+        "fault_management",
+        "power_distribution",
+        "thermal_control",
+        "eclss_atmosphere",
+        "gnc"
+      ],
+      "description": "Cross-System Command competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "commander.reversibility_risk",
+      "display_name": "Reversibility and Risk",
+      "role_id": "mission_commander",
+      "metric_ids": [
+        "ship.held_actions",
+        "ship.pending_recall",
+        "nav.maneuver_performance_known",
+        "science.last_intent_assessment",
+        "comms.command_integrity"
+      ],
+      "system_ids": [
+        "fault_management",
+        "gnc",
+        "science_payload_and_analysis",
+        "avionics_cdh"
+      ],
+      "description": "Reversibility and Risk competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "commander.crew_resource_management",
+      "display_name": "Crew Resource Management",
+      "role_id": "mission_commander",
+      "metric_ids": [
+        "life.available_crew",
+        "crew.commander_workload",
+        "crew.engineering_workload",
+        "crew.science_workload",
+        "crew.navigation_workload"
+      ],
+      "system_ids": [
+        "crew_health_medical",
+        "fault_management"
+      ],
+      "description": "Crew Resource Management competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "ai.interface_reasoning",
+      "display_name": "Interface and Fault-Propagation Reasoning",
+      "role_id": "ai_systems_integrator",
+      "metric_ids": [
+        "ship.critical_health_min",
+        "ship.active_faults",
+        "power.margin",
+        "thermal.margin",
+        "comms.telemetry_visibility",
+        "nav.uncertainty"
+      ],
+      "system_ids": [
+        "fault_management",
+        "avionics_cdh",
+        "power_distribution",
+        "thermal_control",
+        "gnc"
+      ],
+      "description": "Interface and Fault-Propagation Reasoning competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "ai.provenance_uncertainty",
+      "display_name": "Provenance and Uncertainty",
+      "role_id": "ai_systems_integrator",
+      "metric_ids": [
+        "ship.state_integrity",
+        "comms.command_integrity",
+        "science.raw_data_preserved",
+        "science.last_intent_assessment",
+        "nav.uncertainty"
+      ],
+      "system_ids": [
+        "avionics_cdh",
+        "science_payload_and_analysis",
+        "external_sensors"
+      ],
+      "description": "Provenance and Uncertainty competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "ai.human_explanation",
+      "display_name": "Human-Readable Systems Explanation",
+      "role_id": "ai_systems_integrator",
+      "metric_ids": [
+        "ship.pending_recall",
+        "ship.active_faults",
+        "power.time_to_reserve",
+        "thermal.time_to_limit",
+        "life.time_to_min_pressure"
+      ],
+      "system_ids": [
+        "fault_management",
+        "avionics_cdh"
+      ],
+      "description": "Human-Readable Systems Explanation competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "nav.state_estimation",
+      "display_name": "State Estimation and Uncertainty",
+      "role_id": "flight_dynamics_navigation",
+      "metric_ids": [
+        "nav.position_x",
+        "nav.position_y",
+        "nav.position_z",
+        "nav.speed",
+        "nav.uncertainty"
+      ],
+      "system_ids": [
+        "gnc",
+        "external_sensors"
+      ],
+      "description": "State Estimation and Uncertainty competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "nav.attitude_pointing",
+      "display_name": "Attitude and Pointing",
+      "role_id": "flight_dynamics_navigation",
+      "metric_ids": [
+        "nav.attitude_error",
+        "nav.pointing_performance",
+        "power.solar_flux",
+        "comms.availability",
+        "thermal.margin"
+      ],
+      "system_ids": [
+        "gnc",
+        "reaction_control",
+        "communications",
+        "thermal_control",
+        "electrical_power_generation"
+      ],
+      "description": "Attitude and Pointing competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "nav.proximity_hazard",
+      "display_name": "Proximity and Hazard Geometry",
+      "role_id": "flight_dynamics_navigation",
+      "metric_ids": [
+        "nav.collision_geometry_ready",
+        "nav.uncertainty",
+        "nav.propulsion_available",
+        "nav.maneuver_performance_known"
+      ],
+      "system_ids": [
+        "gnc",
+        "main_propulsion",
+        "docking_airlock_eva",
+        "mmod_and_external_protection"
+      ],
+      "description": "Proximity and Hazard Geometry competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "eng.power_energy",
+      "display_name": "Power and Energy Management",
+      "role_id": "vehicle_systems_engineer",
+      "metric_ids": [
+        "power.generated",
+        "power.load",
+        "power.margin",
+        "power.battery_soc",
+        "power.time_to_reserve",
+        "power.shed_load_count"
+      ],
+      "system_ids": [
+        "electrical_power_generation",
+        "energy_storage",
+        "power_distribution"
+      ],
+      "description": "Power and Energy Management competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "eng.thermal",
+      "display_name": "Thermal Management",
+      "role_id": "vehicle_systems_engineer",
+      "metric_ids": [
+        "thermal.waste_heat",
+        "thermal.rejection",
+        "thermal.margin",
+        "thermal.storage_pct",
+        "thermal.time_to_limit"
+      ],
+      "system_ids": [
+        "thermal_control",
+        "power_distribution"
+      ],
+      "description": "Thermal Management competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "eng.life_support",
+      "display_name": "Life-Support Systems",
+      "role_id": "vehicle_systems_engineer",
+      "metric_ids": [
+        "life.cabin_pressure",
+        "life.pressure_loss_rate",
+        "life.time_to_min_pressure",
+        "life.co2_margin",
+        "life.water_recovery",
+        "life.water_days",
+        "life.oxygen_days"
+      ],
+      "system_ids": [
+        "eclss_atmosphere",
+        "water_and_waste",
+        "primary_structure"
+      ],
+      "description": "Life-Support Systems competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "eng.fault_maintenance",
+      "display_name": "Fault Isolation and Maintenance",
+      "role_id": "vehicle_systems_engineer",
+      "metric_ids": [
+        "ship.active_faults",
+        "maintenance.work_orders",
+        "maintenance.spares",
+        "maintenance.repair_capacity",
+        "ship.critical_health_min"
+      ],
+      "system_ids": [
+        "fault_management",
+        "logistics_maintenance_fabrication"
+      ],
+      "description": "Fault Isolation and Maintenance competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "science.instrument_quality",
+      "display_name": "Instrument Quality and Calibration",
+      "role_id": "science_anomaly_specialist",
+      "metric_ids": [
+        "science.sensor_health",
+        "science.sensor_availability",
+        "science.calibration_state",
+        "nav.pointing_performance",
+        "comms.queue_pct"
+      ],
+      "system_ids": [
+        "external_sensors",
+        "science_payload_and_analysis",
+        "gnc"
+      ],
+      "description": "Instrument Quality and Calibration competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "science.evidence_controls",
+      "display_name": "Evidence and False-Positive Controls",
+      "role_id": "science_anomaly_specialist",
+      "metric_ids": [
+        "science.last_intent_assessment",
+        "science.raw_data_preserved",
+        "science.encounter_count",
+        "comms.telemetry_visibility"
+      ],
+      "system_ids": [
+        "science_payload_and_analysis",
+        "external_sensors",
+        "avionics_cdh"
+      ],
+      "description": "Evidence and False-Positive Controls competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "science.probe_planning",
+      "display_name": "Probe and Observation Planning",
+      "role_id": "science_anomaly_specialist",
+      "metric_ids": [
+        "robotics.health",
+        "robotics.availability",
+        "power.margin",
+        "thermal.margin",
+        "comms.queue_pct",
+        "nav.pointing_performance"
+      ],
+      "system_ids": [
+        "robotics_and_probe_operations",
+        "external_sensors",
+        "communications",
+        "power_distribution"
+      ],
+      "description": "Probe and Observation Planning competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "comms.link_delay",
+      "display_name": "Link and Delay Operations",
+      "role_id": "communications_data_robotics",
+      "metric_ids": [
+        "comms.one_way_light_time",
+        "comms.round_trip_light_time",
+        "comms.availability",
+        "nav.attitude_error",
+        "nav.pointing_performance"
+      ],
+      "system_ids": [
+        "communications",
+        "gnc"
+      ],
+      "description": "Link and Delay Operations competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "comms.data_integrity",
+      "display_name": "Data and Command Integrity",
+      "role_id": "communications_data_robotics",
+      "metric_ids": [
+        "comms.queue",
+        "comms.queue_pct",
+        "comms.telemetry_visibility",
+        "comms.command_integrity",
+        "ship.state_integrity",
+        "science.raw_data_preserved"
+      ],
+      "system_ids": [
+        "communications",
+        "avionics_cdh",
+        "science_payload_and_analysis"
+      ],
+      "description": "Data and Command Integrity competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "comms.robotics",
+      "display_name": "Robotics and Remote Operations",
+      "role_id": "communications_data_robotics",
+      "metric_ids": [
+        "robotics.health",
+        "robotics.availability",
+        "comms.one_way_light_time",
+        "nav.pointing_performance",
+        "science.sensor_availability"
+      ],
+      "system_ids": [
+        "robotics_and_probe_operations",
+        "communications",
+        "gnc"
+      ],
+      "description": "Robotics and Remote Operations competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "medical.environmental_exposure",
+      "display_name": "Environmental Exposure",
+      "role_id": "crew_medical_officer",
+      "metric_ids": [
+        "life.cabin_pressure",
+        "life.co2_margin",
+        "life.air_quality",
+        "life.water_quality",
+        "hazard.radiation_environment",
+        "hazard.cumulative_exposure"
+      ],
+      "system_ids": [
+        "crew_health_medical",
+        "eclss_atmosphere",
+        "radiation_monitoring_and_shelter"
+      ],
+      "description": "Environmental Exposure competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "medical.emergency_care",
+      "display_name": "Emergency Medical Operations",
+      "role_id": "crew_medical_officer",
+      "metric_ids": [
+        "life.available_crew",
+        "life.oxygen_days",
+        "life.water_days",
+        "ship.pending_recall",
+        "crew.commander_workload"
+      ],
+      "system_ids": [
+        "crew_health_medical",
+        "fault_management"
+      ],
+      "description": "Emergency Medical Operations competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    },
+    {
+      "id": "medical.workload_readiness",
+      "display_name": "Workload and Task Readiness",
+      "role_id": "crew_medical_officer",
+      "metric_ids": [
+        "crew.commander_workload",
+        "crew.engineering_workload",
+        "crew.science_workload",
+        "crew.navigation_workload",
+        "life.available_crew"
+      ],
+      "system_ids": [
+        "crew_health_medical"
+      ],
+      "description": "Workload and Task Readiness competency grounded in related ship metrics and operations.",
+      "maximum_level": 5,
+      "required_evidence_by_promotion": {
+        "1": [
+          "knowledge_check"
+        ],
+        "2": [
+          "knowledge_check",
+          "part_task_simulation"
+        ],
+        "3": [
+          "knowledge_check",
+          "part_task_simulation",
+          "nominal_operation_observation"
+        ],
+        "4": [
+          "part_task_simulation",
+          "integrated_off_nominal_simulation",
+          "successful_supervised_operation"
+        ],
+        "5": [
+          "integrated_off_nominal_simulation",
+          "independent_operation",
+          "verifier_signoff"
+        ]
+      },
+      "accepted_evidence_types": [
+        "knowledge_check",
+        "part_task_simulation",
+        "nominal_operation_observation",
+        "integrated_off_nominal_simulation",
+        "successful_supervised_operation",
+        "independent_operation",
+        "verifier_signoff",
+        "decision_review",
+        "team_simulation",
+        "model_validation",
+        "replay_verification",
+        "source_audit",
+        "explanation_review",
+        "crew_comprehension_check",
+        "sensor_disagreement_simulation",
+        "proximity_simulation",
+        "eclipse_simulation",
+        "radiator_loss_simulation",
+        "leak_response_simulation",
+        "scrubber_failure_simulation",
+        "calibration_exercise",
+        "case_review",
+        "control_test_design",
+        "independent_replication_review",
+        "integrated_observation_simulation",
+        "delay_operations_simulation",
+        "data_priority_exercise",
+        "integrity_failure_simulation",
+        "contact_force_simulation",
+        "medical_simulation",
+        "environmental_exposure_simulation"
+      ]
+    }
+  ],
+  "source_ids": [
+    "nasa_crew_operations_training_2026",
+    "nasa_astronaut_training_2025",
+    "nasa_human_in_loop_2026",
+    "nasa_crew_interfaces_2026",
+    "nasa_std_3001_vol1_2023",
+    "nasa_std_3001_vol2_2025"
+  ]
+}

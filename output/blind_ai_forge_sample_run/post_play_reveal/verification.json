@@ -1,0 +1,70 @@
+{
+  "valid": true,
+  "checks": [
+    {
+      "turn": 1,
+      "valid": true,
+      "event_hash": "63e9806f13c3e2eb5b91048c02117c1898d330859fbdd6bd2f60b1b61067b42a"
+    },
+    {
+      "turn": 2,
+      "valid": true,
+      "event_hash": "f7fb0c10caaef0e7184a58ee1b781d576dafdd750f2acbb02a4f679cf5360951"
+    },
+    {
+      "turn": 3,
+      "valid": true,
+      "event_hash": "e492a2e55df1329d32ed0fd70bbe3000656d8f384e602b5792f2ed90930d8994"
+    },
+    {
+      "turn": 4,
+      "valid": true,
+      "event_hash": "af79271d3375ba4bb0b622181294a06fe58968d7be1e7c40ba82146538a2a0ee"
+    },
+    {
+      "turn": 5,
+      "valid": true,
+      "event_hash": "7a54fadf7353c5e4fe5c090eaa9bfd35897994add45449be0cf2e9c7cb129108"
+    },
+    {
+      "turn": 6,
+      "valid": true,
+      "event_hash": "cf788830b5ca87a0509f630b40ff2dffeaf405d3f6740228c16d463c76d1230d"
+    }
+  ],
+  "final_state": {
+    "schema": "axm.blind-player-state.v1",
+    "commitment_sha256": "4ff4c8303a8326202f19f084911a2a4d895c0732ed4ae70ccb4ed35b6c50c7f7",
+    "turn": 6,
+    "evidence_stage": 0,
+    "claim_ceiling": "No unusual life-related claim is supported.",
+    "tested_channels": [
+      "general_pattern",
+      "repeatability",
+      "independent_replication",
+      "chemical_complexity",
+      "false_positive_control"
+    ],
+    "independent_confirmations": 0,
+    "false_positive_controls_completed": 1,
+    "mission_time_hours": 98.0,
+    "knowledge_points": 35.26775,
+    "status": "active",
+    "last_observation": {
+      "channel": "independent_replication",
+      "outcome_class": "below_current_detection_threshold",
+      "expected_sensitivity": 0.86,
+      "realized_pattern_strength": 0.321004,
+      "detection_threshold": 0.46,
+      "interpretation": "Nothing exceeded this measurement's threshold. Other channels remain open."
+    },
+    "last_event_hash": "cf788830b5ca87a0509f630b40ff2dffeaf405d3f6740228c16d463c76d1230d"
+  },
+  "reveal": {
+    "schema": "axm.blind-reveal-verification.v1",
+    "valid": true,
+    "expected_commitment": "4ff4c8303a8326202f19f084911a2a4d895c0732ed4ae70ccb4ed35b6c50c7f7",
+    "computed_commitment": "4ff4c8303a8326202f19f084911a2a4d895c0732ed4ae70ccb4ed35b6c50c7f7",
+    "public_leaks": []
+  }
+}

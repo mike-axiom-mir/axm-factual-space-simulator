@@ -1,0 +1,57 @@
+{
+  "schema": "axm.v0.8-stress-report.v1",
+  "systems": 300,
+  "events_attempted": 3000,
+  "registry_errors": [],
+  "origin_counts": {
+    "life_like_but_unresolved": 24,
+    "known_abiotic_physics": 93,
+    "instrumental_or_processing": 44,
+    "unmodeled_abiotic_complexity": 48,
+    "prebiotic_organized_chemistry": 50,
+    "novel_physics_unresolved": 18,
+    "candidate_living_system": 23
+  },
+  "anomaly_counts": {
+    "non_gravitational_orbital_behavior": 32,
+    "expansion_rate_disagreement": 9,
+    "dusty_plasma_self_organization": 110,
+    "gravitational_mass_mismatch": 37,
+    "atmospheric_disequilibrium": 42,
+    "rare_morphology": 70
+  },
+  "architecture_counts": {
+    "dusty_plasma_lifelike_control": 105,
+    "agnostic_unknown_biochemistry": 84,
+    "autocatalytic_protocell_network": 16,
+    "carbon_water_cellular": 43,
+    "anaerobic_chemotrophic": 48,
+    "sulfuric_acid_biochemistry": 1,
+    "distributed_planetary_metabolism": 2,
+    "noncarbon_information_chemistry": 1
+  },
+  "outcome_counts": {
+    "below_current_detection_threshold": 1709,
+    "clear_repeatable_pattern": 357,
+    "weak_or_contextual_pattern": 604,
+    "known_controls_fail_to_reproduce": 147,
+    "control_result_ambiguous": 88,
+    "candidate_partly_reproduced_by_control": 65,
+    "preserved_without_resolution": 30
+  },
+  "max_stage_counts": {
+    "0": 50,
+    "1": 116,
+    "2": 55,
+    "3": 50,
+    "4": 18,
+    "5": 8,
+    "6": 3
+  },
+  "distinct_selected_pairs": 27,
+  "same_world_distinct_private_commitments": 40,
+  "same_world_distinct_theory_pairs": 10,
+  "public_leak_failures": [],
+  "replay_failures": [],
+  "valid": true
+}

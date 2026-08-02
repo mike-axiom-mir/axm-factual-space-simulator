@@ -1,0 +1,45 @@
+{
+  "schema": "axm.interior-item-policy.v1",
+  "registry_version": 1,
+  "provenance_classes": [
+    "found",
+    "fabricated",
+    "gifted",
+    "reconstructed",
+    "catalog_replica"
+  ],
+  "status_classes": [
+    "decorative",
+    "experimental",
+    "validated_tool",
+    "evidence_object",
+    "unresolved_object"
+  ],
+  "rules": [
+    "Every item has an immutable origin receipt.",
+    "Room placement history is append-only.",
+    "A visual replica is never promoted to the original object.",
+    "An unresolved object remains unresolved after display.",
+    "A fabricated item grants capability only when a separate validation receipt supports it.",
+    "Future visual engines may improve appearance but not provenance."
+  ],
+  "starter_items": [
+    {
+      "id": "axm.item.first-expedition-plaque.v1",
+      "display_name": "First Expedition Plaque",
+      "provenance_class": "fabricated",
+      "status_class": "decorative",
+      "capabilities": []
+    },
+    {
+      "id": "axm.item.ship-atlas-projector.v1",
+      "display_name": "Ship Atlas Projector",
+      "provenance_class": "fabricated",
+      "status_class": "validated_tool",
+      "capabilities": [
+        "display_pinned_atlas_records"
+      ],
+      "capability_limit": "Displays records; does not create new astronomical facts."
+    }
+  ]
+}

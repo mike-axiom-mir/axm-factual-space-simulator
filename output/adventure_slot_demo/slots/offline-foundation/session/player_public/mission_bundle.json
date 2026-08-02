@@ -1,0 +1,206 @@
+{
+  "schema": "axm.blind-player-mission.v1",
+  "forge_version": "0.13.0",
+  "system_id": "b82d201dd2bb3a5c",
+  "system_name": "Tethys Trace 2652",
+  "target": {
+    "system_id": "b82d201dd2bb3a5c",
+    "system_name": "Tethys Trace 2652",
+    "target_planet_id": "planet-4",
+    "target_planet_name": "F",
+    "planet_kind": "super-earth",
+    "equilibrium_temperature_k": 274.9,
+    "insolation_earth": 0.9523,
+    "surface_gravity_earth": 0.887,
+    "orbital_period_days": 211.775,
+    "stellar_temperature_k": 5252.3,
+    "stellar_luminosity_solar": 0.3493
+  },
+  "mission": "Explore an unresolved physical or chemical possibility using broad measurements, independent controls, and claim ceilings. The player is not told whether the hidden starting state is instrumental, abiotic, prebiotic, biological, novel physics, or ultimately unresolved.",
+  "blindness_contract": {
+    "forge_ai_completed_before_play": true,
+    "player_ai_receives_private_scenario": false,
+    "public_bundle_contains_commitment_only": true,
+    "host_may_not_rewrite_private_state_after_commitment": true,
+    "future_events_not_fully_predetermined": true,
+    "post_play_reveal_can_be_verified": true,
+    "offline_runtime_can_resolve_every_turn": true,
+    "external_ai_connection_required_during_play": false
+  },
+  "private_scenario_commitment_sha256": "fc342da7c82db606da411b7bf5048e5c3d99db0dc257dd121a98e475cb03c2e3",
+  "evidence_ladder": [
+    {
+      "stage": 0,
+      "id": "no_candidate",
+      "name": "No candidate",
+      "claim_ceiling": "No unusual life-related claim is supported."
+    },
+    {
+      "stage": 1,
+      "id": "unusual_pattern",
+      "name": "Unusual pattern",
+      "claim_ceiling": "An unusual physical or chemical pattern is present."
+    },
+    {
+      "stage": 2,
+      "id": "repeatable_pattern",
+      "name": "Repeatable pattern",
+      "claim_ceiling": "The pattern repeats under recorded conditions."
+    },
+    {
+      "stage": 3,
+      "id": "organized_process",
+      "name": "Organized process",
+      "claim_ceiling": "Energy, chemistry, or structure shows persistent organization."
+    },
+    {
+      "stage": 4,
+      "id": "life_like_system",
+      "name": "Life-like system",
+      "claim_ceiling": "Multiple life-like properties are present, but abiotic origins remain viable."
+    },
+    {
+      "stage": 5,
+      "id": "abiotic_alternatives_constrained",
+      "name": "Abiotic alternatives constrained",
+      "claim_ceiling": "Known abiotic and instrumental explanations are substantially constrained."
+    },
+    {
+      "stage": 6,
+      "id": "candidate_living_system",
+      "name": "Candidate living system",
+      "claim_ceiling": "A living-system interpretation is scientifically plausible and requires independent confirmation."
+    },
+    {
+      "stage": 7,
+      "id": "external_biology_strongly_supported",
+      "name": "External biology strongly supported",
+      "claim_ceiling": "Convergent, independent evidence strongly supports biology; governance and external review remain required."
+    }
+  ],
+  "available_actions": [
+    {
+      "id": "broad_spectrum_survey",
+      "name": "Run a broad-spectrum survey",
+      "channel": "general_pattern",
+      "sensitivity": 0.55,
+      "independence": 0.25,
+      "cost_hours": 6.0,
+      "description": "Look for unusual structure without assuming a particular chemistry or organism."
+    },
+    {
+      "id": "repeat_changed_geometry",
+      "name": "Repeat from a changed geometry",
+      "channel": "repeatability",
+      "sensitivity": 0.68,
+      "independence": 0.65,
+      "cost_hours": 12.0,
+      "description": "Test whether the pattern survives orbital phase, pointing, and viewing-angle changes."
+    },
+    {
+      "id": "switch_instrument_family",
+      "name": "Use an independent instrument family",
+      "channel": "independent_replication",
+      "sensitivity": 0.72,
+      "independence": 0.92,
+      "cost_hours": 10.0,
+      "description": "Check the candidate with different hardware and processing assumptions."
+    },
+    {
+      "id": "measure_chemical_complexity",
+      "name": "Measure molecular diversity and complexity",
+      "channel": "chemical_complexity",
+      "sensitivity": 0.78,
+      "independence": 0.72,
+      "cost_hours": 18.0,
+      "description": "Test statistical organization rather than searching only for Earth-specific molecules."
+    },
+    {
+      "id": "map_energy_gradients",
+      "name": "Map persistent energy-transfer gradients",
+      "channel": "energy_transfer",
+      "sensitivity": 0.75,
+      "independence": 0.7,
+      "cost_hours": 16.0,
+      "description": "Look for maintained redox, electrochemical, or thermal organization."
+    },
+    {
+      "id": "search_compartments",
+      "name": "Search for bounded compartments",
+      "channel": "elemental_compartmentalization",
+      "sensitivity": 0.74,
+      "independence": 0.68,
+      "cost_hours": 20.0,
+      "description": "Search for repeated bounded regions that concentrate selected elements or molecules."
+    },
+    {
+      "id": "stress_response_test",
+      "name": "Apply a reversible environmental perturbation",
+      "channel": "adaptive_response",
+      "sensitivity": 0.7,
+      "independence": 0.66,
+      "cost_hours": 14.0,
+      "description": "Test whether the system shows retained, context-dependent response without assuming intent."
+    },
+    {
+      "id": "abiotic_control_campaign",
+      "name": "Run abiotic and instrumental controls",
+      "channel": "false_positive_control",
+      "sensitivity": 0.82,
+      "independence": 0.9,
+      "cost_hours": 22.0,
+      "description": "Attempt to reproduce the signal through known physics, chemistry, contamination, and processing artifacts."
+    },
+    {
+      "id": "independent_blind_reanalysis",
+      "name": "Commission a blind independent reanalysis",
+      "channel": "independent_replication",
+      "sensitivity": 0.86,
+      "independence": 1.0,
+      "cost_hours": 30.0,
+      "description": "Give another analysis seat the raw data without the favored hypothesis."
+    },
+    {
+      "id": "move_on_preserve_candidate",
+      "name": "Archive the candidate and continue exploring",
+      "channel": "mission_continuation",
+      "sensitivity": 0.0,
+      "independence": 0.0,
+      "cost_hours": 2.0,
+      "description": "Preserve all evidence without forcing a conclusion."
+    }
+  ],
+  "initial_state": {
+    "schema": "axm.blind-player-state.v1",
+    "commitment_sha256": "fc342da7c82db606da411b7bf5048e5c3d99db0dc257dd121a98e475cb03c2e3",
+    "turn": 0,
+    "evidence_stage": 0,
+    "claim_ceiling": "No unusual life-related claim is supported.",
+    "tested_channels": [],
+    "independent_confirmations": 0,
+    "false_positive_controls_completed": 0,
+    "mission_time_hours": 0.0,
+    "knowledge_points": 0.0,
+    "status": "active",
+    "last_observation": null,
+    "last_event_hash": "GENESIS"
+  },
+  "truth_boundary": [
+    "An unusual observation is not automatically an anomaly.",
+    "An anomaly is not automatically life or new physics.",
+    "Life-like organization is not automatically a living system.",
+    "A null result constrains only the tested channel and sensitivity.",
+    "The player may finish without learning the private origin class."
+  ],
+  "source_ids": [
+    "aps_complex_plasma_review_2009",
+    "nasa_dusty_plasma_1999"
+  ],
+  "adventure_slot_start": {
+    "forge_mode": "offline_base",
+    "offline_play_after_creation": true,
+    "external_connection_required_after_creation": false,
+    "private_seed_vault_included_in_player_bundle": false,
+    "local_runtime_is_authoritative": true
+  }
+}

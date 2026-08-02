@@ -1,0 +1,201 @@
+{
+  "schema": "axm.long-horizon-contact-registry.v1",
+  "registry_version": "2026-08-02-v0.6",
+  "unlock_step": 100000,
+  "policy": {
+    "unlock_is_eligibility_not_contact": true,
+    "master_seed_does_not_preselect_alien_existence_or_intent": true,
+    "contact_may_never_occur": true,
+    "every_claim_climbs_an_evidence_ladder": true,
+    "single_channel_detection_cannot_confirm_life_or_technology": true,
+    "natural_and_instrumental_alternatives_are_tested_first": true,
+    "absence_of_evidence_is_scaled_by_search_coverage": true,
+    "no_species_is_assumed_benevolent_hostile_superior_or_inferior": true,
+    "active_transmission_requires_explicit_governance": true,
+    "consequence_models_are_axes_not_pre-written_story_branches": true
+  },
+  "source_ids": [
+    "nasa_astrobiology_program_overview_2026",
+    "nasa_life_detection_ladder_2026",
+    "nasa_cold_scale_resources_2026",
+    "nasa_technosignatures_2023",
+    "nasa_search_for_life_fermi_drake_2024",
+    "national_academies_astrobiology_strategy_2019",
+    "seti_detection_protocols_2026",
+    "wright_seti_strategies_2021",
+    "westby_conselice_copernican_2020",
+    "wandel_contact_era_2022",
+    "hanson_loud_aliens_2021",
+    "forgan_zoo_constraints_2011"
+  ],
+  "readiness_requirements": {
+    "minimum_total_science_actions": 1000,
+    "minimum_cross_validations": 80,
+    "minimum_false_positive_eliminations": 50,
+    "minimum_passive_search_hours": 10000.0,
+    "minimum_independent_observation_contexts": 12
+  },
+  "evidence_ladder": [
+    {
+      "stage": 0,
+      "id": "dormant",
+      "name": "Long-horizon layer dormant",
+      "claim_ceiling": "No contact claim is available."
+    },
+    {
+      "stage": 1,
+      "id": "search_eligible",
+      "name": "Deep search becomes eligible",
+      "claim_ceiling": "The crew may begin dedicated biosignature and technosignature searches."
+    },
+    {
+      "stage": 2,
+      "id": "candidate_anomaly",
+      "name": "Candidate anomaly",
+      "claim_ceiling": "An observation is unusual; natural, instrumental, and data-processing explanations remain open."
+    },
+    {
+      "stage": 3,
+      "id": "replicated_anomaly",
+      "name": "Replicated anomaly",
+      "claim_ceiling": "The anomaly repeats or appears in an independent channel; artificial origin is still unconfirmed."
+    },
+    {
+      "stage": 4,
+      "id": "alternatives_constrained",
+      "name": "Major alternatives constrained",
+      "claim_ceiling": "Several ordinary explanations are weakened, but unconceived alternatives remain possible."
+    },
+    {
+      "stage": 5,
+      "id": "technological_origin_plausible",
+      "name": "Technological origin becomes plausible",
+      "claim_ceiling": "A technological explanation is scientifically discussable, not confirmed."
+    },
+    {
+      "stage": 6,
+      "id": "information_bearing_pattern",
+      "name": "Information-bearing structure",
+      "claim_ceiling": "Non-random structure survives independent analysis; agency and origin remain under review."
+    },
+    {
+      "stage": 7,
+      "id": "external_technology_confirmed",
+      "name": "External technology confirmed",
+      "claim_ceiling": "Evidence supports non-human technological origin; living creators are not automatically implied."
+    },
+    {
+      "stage": 8,
+      "id": "external_agency_confirmed",
+      "name": "External agency confirmed",
+      "claim_ceiling": "A responsive or contemporaneous external intelligence is supported by multiple independent evidence chains."
+    },
+    {
+      "stage": 9,
+      "id": "interaction",
+      "name": "Interaction phase",
+      "claim_ceiling": "Communication or physical interaction is occurring; intent and consequences remain uncertain."
+    }
+  ],
+  "hypothesis_families": [
+    {
+      "id": "drake_accounting_framework",
+      "epistemic_class": "scientific accounting framework",
+      "use": "Expose uncertain factors controlling the prevalence of detectable civilizations.",
+      "not_allowed": "Treating one chosen parameter set as a measured count."
+    },
+    {
+      "id": "fermi_silence_constraint",
+      "epistemic_class": "observational question and model constraint",
+      "use": "Compare expansion, longevity, detectability, distance, and search coverage against the observed lack of confirmed contact.",
+      "not_allowed": "Treating silence as proof that no extraterrestrial life exists."
+    },
+    {
+      "id": "copernican_assumption_models",
+      "epistemic_class": "assumption-sensitive quantitative model",
+      "use": "Explore what follows when Earth-like evolutionary timing is treated as typical or atypical.",
+      "not_allowed": "Calling the model output a census."
+    },
+    {
+      "id": "great_filter_family",
+      "epistemic_class": "explanatory hypothesis family",
+      "use": "Model bottlenecks between habitability, life, intelligence, technology, longevity, and detectability.",
+      "not_allowed": "Selecting a specific filter without evidence."
+    },
+    {
+      "id": "rare_complex_life_family",
+      "epistemic_class": "scientific hypothesis family",
+      "use": "Explore whether microbial life can be common while complex or technological life remains rare.",
+      "not_allowed": "Equating habitability with civilization."
+    },
+    {
+      "id": "contact_era_model",
+      "epistemic_class": "quantitative timing model",
+      "use": "Model the delay between a civilization becoming detectable and another civilization being able to notice and respond.",
+      "not_allowed": "Guaranteeing contact after a fixed age."
+    },
+    {
+      "id": "expansion_visibility_models",
+      "epistemic_class": "highly assumption-sensitive quantitative model",
+      "use": "Explore expanding technological populations, visible domains, and observation selection effects.",
+      "not_allowed": "Treating unseen expanding civilizations as established entities."
+    },
+    {
+      "id": "zoo_or_non_interference_family",
+      "epistemic_class": "soft speculative hypothesis",
+      "use": "Test whether coordinated concealment is causally and sociologically feasible.",
+      "not_allowed": "Using non-detection as positive evidence of deliberate concealment."
+    },
+    {
+      "id": "dark_forest_scenario",
+      "epistemic_class": "fictional-philosophical scenario",
+      "use": "Governance stress test only.",
+      "not_allowed": "Entering the scientific probability model or pre-labelling unknown agents as hostile."
+    }
+  ],
+  "candidate_classes": [
+    "abiotic_false_positive",
+    "instrument_or_pipeline_artifact",
+    "microbial_biosphere",
+    "complex_non_technological_life",
+    "extinct_biosphere",
+    "passive_technosignature",
+    "derelict_or_automated_artifact",
+    "delayed_beacon",
+    "contemporaneous_technological_civilization",
+    "autonomous_machine_ecology",
+    "unclassified_external_process"
+  ],
+  "consequence_axes": [
+    "evidence_confidence",
+    "communication_latency",
+    "physical_proximity",
+    "capability_asymmetry",
+    "intent_confidence",
+    "information_content",
+    "technical_interoperability",
+    "biological_compatibility",
+    "contamination_risk",
+    "information_hazard_risk",
+    "autonomy_of_detected_system",
+    "reversibility_of_response",
+    "governance_consensus"
+  ],
+  "possible_effect_classes": [
+    "no_confirmed_external_origin",
+    "scientific_reclassification",
+    "new_measurement_method",
+    "engineering_insight_only",
+    "decodable_but_unbuildable_knowledge",
+    "compatible_technical_innovation",
+    "misinterpretation_or_false_inference",
+    "biological_contamination_risk",
+    "information_hazard",
+    "accidental_physical_damage",
+    "resource_or_navigation_conflict",
+    "cooperative_exchange",
+    "non_response_or_unreachable_source",
+    "extinct_source_archaeology",
+    "systemic_or_existential_hazard"
+  ]
+}

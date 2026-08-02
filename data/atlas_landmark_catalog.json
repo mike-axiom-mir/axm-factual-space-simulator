@@ -1,0 +1,139 @@
+{
+  "schema": "axm.atlas-landmark-catalog.v1",
+  "catalog_version": "2026-08-02-starter",
+  "coordinate_frame": "ICRS",
+  "distance_rule": "For positive parallax values in this pinned starter catalog, distance_pc = 1000 / parallax_mas and distance_ly = distance_pc * 3.261563777. This simple inversion is used only for high signal-to-noise nearby demonstration stars.",
+  "identity_warning": "Gaia source identifiers are release-scoped and may change between releases. Cross-release identity must use positional neighbourhood and provenance, not blind source_id equality.",
+  "landmarks": [
+    {
+      "location_id": "catalog:sol",
+      "name": "Solar System",
+      "object_class": "planetary_system",
+      "knowledge_class": "catalog_anchor",
+      "coordinates": {
+        "frame": "heliocentric_cartesian",
+        "epoch": "local_origin",
+        "x_ly": 0.0,
+        "y_ly": 0.0,
+        "z_ly": 0.0,
+        "truth_type": "catalog_fact"
+      },
+      "distance_ly": {"value": 0.0, "truth_type": "catalog_fact", "source_ids": ["jpl_horizons"]},
+      "known_worlds": ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
+      "source_ids": ["jpl_horizons", "naif_spice"],
+      "notes": "Atlas origin. Precision body geometry should come from Horizons or SPICE snapshots rather than this summary record."
+    },
+    {
+      "location_id": "catalog:proxima-centauri",
+      "name": "Proxima Centauri",
+      "object_class": "stellar_system",
+      "knowledge_class": "catalog_anchor",
+      "coordinates": {
+        "frame": "ICRS",
+        "epoch": "J2000",
+        "ra_deg": 217.4289422216058,
+        "dec_deg": -62.67949018907555,
+        "parallax_mas": 768.0665,
+        "parallax_error_mas": 0.0499,
+        "pmra_mas_yr": -3781.741,
+        "pmdec_mas_yr": 769.465,
+        "truth_type": "catalog_fact",
+        "source_ids": ["simbad_cds_gaia_dr3"]
+      },
+      "distance_ly": {
+        "value": 4.246460139844662,
+        "truth_type": "derived",
+        "formula_id": "inverse_parallax_nearby_demo",
+        "source_ids": ["simbad_cds_gaia_dr3"]
+      },
+      "known_worlds": ["Proxima Centauri b"],
+      "world_facts": {
+        "Proxima Centauri b": {
+          "planet_type": "Super Earth",
+          "orbital_period_days": 11.2,
+          "orbital_radius_au": 0.04848,
+          "mass_earth": 1.055,
+          "source_ids": ["nasa_exoplanet_catalog_proxima_b"]
+        }
+      },
+      "source_ids": ["simbad_cds_gaia_dr3", "nasa_exoplanet_catalog_proxima_b"]
+    },
+    {
+      "location_id": "catalog:trappist-1",
+      "name": "TRAPPIST-1",
+      "object_class": "stellar_system",
+      "knowledge_class": "catalog_anchor",
+      "coordinates": {
+        "frame": "ICRS",
+        "epoch": "J2000",
+        "ra_deg": 346.6223687285788,
+        "dec_deg": -5.041399250518333,
+        "parallax_mas": 80.2123,
+        "parallax_error_mas": 0.0716,
+        "pmra_mas_yr": 930.788,
+        "pmdec_mas_yr": -479.038,
+        "truth_type": "catalog_fact",
+        "source_ids": ["simbad_cds_gaia_dr3"]
+      },
+      "distance_ly": {
+        "value": 40.66164138168336,
+        "truth_type": "derived",
+        "formula_id": "inverse_parallax_nearby_demo",
+        "source_ids": ["simbad_cds_gaia_dr3"]
+      },
+      "known_worlds": ["TRAPPIST-1 b", "TRAPPIST-1 c", "TRAPPIST-1 d", "TRAPPIST-1 e", "TRAPPIST-1 f", "TRAPPIST-1 g", "TRAPPIST-1 h"],
+      "world_facts": {
+        "TRAPPIST-1 c": {
+          "planet_type": "Super Earth",
+          "orbital_period_days": 2.4,
+          "orbital_radius_au": 0.0158,
+          "mass_earth": 1.308,
+          "source_ids": ["nasa_exoplanet_catalog_trappist_1_c"]
+        },
+        "TRAPPIST-1 f": {
+          "planet_type": "Super Earth",
+          "orbital_period_days": 9.2,
+          "orbital_radius_au": 0.03849,
+          "mass_earth": 1.039,
+          "source_ids": ["nasa_exoplanet_catalog_trappist_1_f"]
+        }
+      },
+      "source_ids": ["simbad_cds_gaia_dr3", "nasa_exoplanet_archive_pscomppars"]
+    },
+    {
+      "location_id": "catalog:51-pegasi",
+      "name": "51 Pegasi",
+      "object_class": "stellar_system",
+      "knowledge_class": "catalog_anchor",
+      "coordinates": {
+        "frame": "ICRS",
+        "epoch": "J2000",
+        "ra_deg": 344.36658535524003,
+        "dec_deg": 20.768832511139998,
+        "parallax_mas": 64.4048,
+        "parallax_error_mas": 0.0771,
+        "pmra_mas_yr": 207.328,
+        "pmdec_mas_yr": 61.164,
+        "truth_type": "catalog_fact",
+        "source_ids": ["simbad_cds_gaia_dr3"]
+      },
+      "distance_ly": {
+        "value": 50.64162573286464,
+        "truth_type": "derived",
+        "formula_id": "inverse_parallax_nearby_demo",
+        "source_ids": ["simbad_cds_gaia_dr3"]
+      },
+      "known_worlds": ["51 Pegasi b"],
+      "world_facts": {
+        "51 Pegasi b": {
+          "planet_type": "Gas Giant",
+          "orbital_period_days": 4.2,
+          "orbital_radius_au": 0.052,
+          "mass_jupiter": 0.61,
+          "source_ids": ["nasa_exoplanet_catalog_51_pegasi_b"]
+        }
+      },
+      "source_ids": ["simbad_cds_gaia_dr3", "nasa_exoplanet_catalog_51_pegasi_b"]
+    }
+  ]
+}

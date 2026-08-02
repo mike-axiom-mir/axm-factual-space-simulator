@@ -1,0 +1,11 @@
+{
+  "name": "axm-drand-quicknet-verifier",
+  "version": "0.4.0",
+  "private": true,
+  "type": "module",
+  "description": "Narrow pinned BLS12-381 verifier for AXM drand quicknet packets.",
+  "dependencies": {
+    "@noble/curves": "1.6.0",
+    "@noble/hashes": "1.5.0"
+  }
+}

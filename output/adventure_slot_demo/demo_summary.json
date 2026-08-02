@@ -1,0 +1,168 @@
+{
+  "schema": "axm.adventure-slot-demo.v1",
+  "slots": [
+    {
+      "schema": "axm.adventure-save-slot.v1",
+      "slot_version": "0.13.0",
+      "slot_id": "offline-foundation",
+      "display_name": "Offline Foundation Expedition",
+      "created_at": "2026-08-02T05:29:59.842501+00:00",
+      "updated_at": "2026-08-02T05:29:59.857771+00:00",
+      "forge_mode": "offline_base",
+      "offline_base_available": true,
+      "external_connection_required_after_creation": false,
+      "human_player_supported": true,
+      "machine_player_supported": true,
+      "collaborative_player_supported": true,
+      "system_id": "b82d201dd2bb3a5c",
+      "system_name": "Tethys Trace 2652",
+      "ship_blueprint_id": "axm.ship.frontier-survey-stack.v1",
+      "ship_blueprint_version": 1,
+      "ship_blueprint_commitment": "94e91fd0c78f17c3694be12e7eb8c1691e77be5d045f40c86a5f6b549f4811a1",
+      "interior_archetype_id": "axm.interior.frontier-survey.v1",
+      "crew_start_id": "axm.crew.first-expedition.v1",
+      "private_scenario_commitment_sha256": "fc342da7c82db606da411b7bf5048e5c3d99db0dc257dd121a98e475cb03c2e3",
+      "status": "active",
+      "turn": 1,
+      "evidence_stage": 1,
+      "session_directory": "session",
+      "player_public_directory": "session/player_public"
+    },
+    {
+      "schema": "axm.adventure-save-slot.v1",
+      "slot_version": "0.13.0",
+      "slot_id": "optional-ai-forged",
+      "display_name": "Optional AI-Forged Expedition",
+      "created_at": "2026-08-02T05:29:59.855735+00:00",
+      "updated_at": "2026-08-02T05:29:59.859763+00:00",
+      "forge_mode": "external_ai_assisted",
+      "offline_base_available": true,
+      "external_connection_required_after_creation": false,
+      "human_player_supported": true,
+      "machine_player_supported": true,
+      "collaborative_player_supported": true,
+      "system_id": "8d02e20822fd2748",
+      "system_name": "Vela Crown 2880",
+      "ship_blueprint_id": "axm.ship.frontier-survey-stack.v1",
+      "ship_blueprint_version": 1,
+      "ship_blueprint_commitment": "94e91fd0c78f17c3694be12e7eb8c1691e77be5d045f40c86a5f6b549f4811a1",
+      "interior_archetype_id": "axm.interior.frontier-survey.v1",
+      "crew_start_id": "axm.crew.first-expedition.v1",
+      "private_scenario_commitment_sha256": "4b2027514d19ea4cfd080f8fc765c372bfea274e28721a2ae9cee03ba8db2938",
+      "status": "active",
+      "turn": 1,
+      "evidence_stage": 1,
+      "session_directory": "session",
+      "player_public_directory": "session/player_public"
+    }
+  ],
+  "offline_verification": {
+    "schema": "axm.adventure-slot-verification.v1",
+    "slot_id": "offline-foundation",
+    "valid": true,
+    "manifest_valid": true,
+    "manifest_failures": [],
+    "session": {
+      "valid": true,
+      "checks": [
+        {
+          "turn": 1,
+          "valid": true,
+          "event_hash": "6b564d94a0c3b326711c469a5d1093cfa67605211766566b928ba60900833622"
+        }
+      ],
+      "final_state": {
+        "schema": "axm.blind-player-state.v1",
+        "commitment_sha256": "fc342da7c82db606da411b7bf5048e5c3d99db0dc257dd121a98e475cb03c2e3",
+        "turn": 1,
+        "evidence_stage": 1,
+        "claim_ceiling": "An unusual physical or chemical pattern is present.",
+        "tested_channels": [
+          "general_pattern"
+        ],
+        "independent_confirmations": 0,
+        "false_positive_controls_completed": 0,
+        "mission_time_hours": 6.0,
+        "knowledge_points": 8.206356,
+        "status": "active",
+        "last_observation": {
+          "channel": "general_pattern",
+          "outcome_class": "clear_repeatable_pattern",
+          "expected_sensitivity": 0.55,
+          "realized_pattern_strength": 0.815194,
+          "detection_threshold": 0.56,
+          "interpretation": "The tested channel contains a repeatable pattern. The claim ceiling advances by at most one stage."
+        },
+        "last_event_hash": "6b564d94a0c3b326711c469a5d1093cfa67605211766566b928ba60900833622"
+      },
+      "reveal": {
+        "schema": "axm.blind-reveal-verification.v1",
+        "valid": true,
+        "expected_commitment": "fc342da7c82db606da411b7bf5048e5c3d99db0dc257dd121a98e475cb03c2e3",
+        "computed_commitment": "fc342da7c82db606da411b7bf5048e5c3d99db0dc257dd121a98e475cb03c2e3",
+        "public_leaks": []
+      }
+    },
+    "state_matches_replay": true,
+    "metadata_matches_public_state": true,
+    "ship_start_pin_valid": true,
+    "events": 1
+  },
+  "external_verification": {
+    "schema": "axm.adventure-slot-verification.v1",
+    "slot_id": "optional-ai-forged",
+    "valid": true,
+    "manifest_valid": true,
+    "manifest_failures": [],
+    "session": {
+      "valid": true,
+      "checks": [
+        {
+          "turn": 1,
+          "valid": true,
+          "event_hash": "a8f10c64bc17704eb1c35eb39e4ad68d4adfe358ae90d18c14241dd8e6065c33"
+        }
+      ],
+      "final_state": {
+        "schema": "axm.blind-player-state.v1",
+        "commitment_sha256": "4b2027514d19ea4cfd080f8fc765c372bfea274e28721a2ae9cee03ba8db2938",
+        "turn": 1,
+        "evidence_stage": 1,
+        "claim_ceiling": "An unusual physical or chemical pattern is present.",
+        "tested_channels": [
+          "false_positive_control"
+        ],
+        "independent_confirmations": 1,
+        "false_positive_controls_completed": 1,
+        "mission_time_hours": 22.0,
+        "knowledge_points": 8.105581,
+        "status": "active",
+        "last_observation": {
+          "channel": "false_positive_control",
+          "outcome_class": "known_controls_fail_to_reproduce",
+          "expected_sensitivity": 0.82,
+          "realized_pattern_strength": 0.615083,
+          "detection_threshold": 0.46,
+          "interpretation": "The tested controls did not reproduce the pattern; untested alternatives remain."
+        },
+        "last_event_hash": "a8f10c64bc17704eb1c35eb39e4ad68d4adfe358ae90d18c14241dd8e6065c33"
+      },
+      "reveal": {
+        "schema": "axm.blind-reveal-verification.v1",
+        "valid": true,
+        "expected_commitment": "4b2027514d19ea4cfd080f8fc765c372bfea274e28721a2ae9cee03ba8db2938",
+        "computed_commitment": "4b2027514d19ea4cfd080f8fc765c372bfea274e28721a2ae9cee03ba8db2938",
+        "public_leaks": []
+      }
+    },
+    "state_matches_replay": true,
+    "metadata_matches_public_state": true,
+    "ship_start_pin_valid": true,
+    "events": 1
+  },
+  "offline_player_bundle": "output/adventure_slot_demo/slots/offline-foundation/exports/offline-foundation_BLIND_PLAYER_BUNDLE.zip",
+  "external_player_bundle": "output/adventure_slot_demo/slots/optional-ai-forged/exports/optional-ai-forged_BLIND_PLAYER_BUNDLE.zip",
+  "external_request": "output/adventure_slot_demo/external_ai_forge_request.json",
+  "external_proposal_example": "output/adventure_slot_demo/external_ai_forge_proposal_example.json",
+  "slot_manager": "output/adventure_slot_demo/slot_manager.html"
+}

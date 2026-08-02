@@ -1,0 +1,54 @@
+{
+  "schema": "axm.v0.7-atlas-demo-summary.v1",
+  "status": "PASS",
+  "map_id": "atlas-9fc4d22bcc70ed0e",
+  "mapped_locations": 6,
+  "routes": 2,
+  "visits": 10,
+  "visit_chain_valid": true,
+  "alpha_location_id": "frontier:56467e7b2de9e83a",
+  "beta_location_id": "frontier:3d6930fb5e74d6a9",
+  "revisit_options": [
+    {
+      "location_id": "frontier:56467e7b2de9e83a",
+      "name": "Mir Arc 7203",
+      "knowledge_class": "procedural_frontier",
+      "visit_count": 5,
+      "observation_count": 4,
+      "authoritative_snapshot_sha256": "ff9024dc9934015f5d33caa23a2c160ea577131c7af30bc19d7e1109f2baa31d",
+      "latest_render_engine": "future-immersive-visual-engine-v3",
+      "travel_option_status": "historical_revisit_available",
+      "physical_return_status": "must_be_resolved_by_current_ship_and_route_physics"
+    },
+    {
+      "location_id": "frontier:3d6930fb5e74d6a9",
+      "name": "Kepler Deep 2845",
+      "knowledge_class": "procedural_frontier",
+      "visit_count": 4,
+      "observation_count": 3,
+      "authoritative_snapshot_sha256": "2d9ca57917749afc9fb0d73ad8fc8a5fbcad309bcd5f953f65d2f359538619eb",
+      "latest_render_engine": null,
+      "travel_option_status": "historical_revisit_available",
+      "physical_return_status": "must_be_resolved_by_current_ship_and_route_physics"
+    },
+    {
+      "location_id": "catalog:sol",
+      "name": "Solar System",
+      "knowledge_class": "catalog_anchor",
+      "visit_count": 1,
+      "observation_count": 0,
+      "authoritative_snapshot_sha256": "d5b5c8053aa959d6e533f8f6c3b40d989656f9ef9e2454c62f936c238081566d",
+      "latest_render_engine": null,
+      "travel_option_status": "historical_revisit_available",
+      "physical_return_status": "must_be_resolved_by_current_ship_and_route_physics"
+    }
+  ],
+  "revisit_packets": [
+    "revisit-5916251b371460a265c9",
+    "revisit-9e86676d83e62502a1d5"
+  ],
+  "truth_layers": [
+    "catalog_anchor",
+    "procedural_frontier"
+  ]
+}

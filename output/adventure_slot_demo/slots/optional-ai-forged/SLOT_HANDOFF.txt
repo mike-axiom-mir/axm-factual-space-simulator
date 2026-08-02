@@ -1,0 +1,10 @@
+AXM ADVENTURE SAVE SLOT
+
+Slot: Optional AI-Forged Expedition
+Forge mode: external_ai_assisted
+
+The expedition is fully playable offline after creation.
+Give session/player_public to a blind human or machine explorer.
+Keep slot_private and session/forge_private hidden until the chosen reveal point.
+The built-in offline forge is always available for new slots.
+Pinned ship blueprint: axm.ship.frontier-survey-stack.v1 v1

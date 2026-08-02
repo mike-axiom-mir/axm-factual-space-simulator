@@ -1,0 +1,135 @@
+AXM BRIDGE VISUAL CORE LOCK v1
+================================
+
+STATUS: CANON
+SCOPE: UNIVERSAL EXPERIENCE CONTRACT + FIRST START ARCHETYPE
+PURPOSE: Protect the feeling of inhabiting a ship while allowing unlimited future ships, crews, universes, eras, and timeline starts.
+
+1. UNIVERSAL EXPERIENCE CONTRACT
+--------------------------------
+
+Every primary playable vessel must present an inhabited spatial environment.
+
+The player must experience:
+- a recognizable vessel interior;
+- a dominant view into the simulated universe;
+- visible command presence;
+- visible crew presence;
+- controls integrated into the vessel;
+- front, left, right, rear, and deck orientation;
+- room context that survives station focus;
+- a layout that still works with extremely simple graphics.
+
+The primary experience may not collapse into:
+- a generic website dashboard;
+- a disembodied collection of cards;
+- a floating HUD with no room;
+- hidden crew represented only by text;
+- a minor universe viewport surrounded by site interface;
+- a visual upgrade that rewrites recorded history.
+
+2. THE FIRST BRIDGE IS AN ARCHETYPE, NOT THE UNIVERSE
+------------------------------------------------------
+
+The first registered bridge is:
+
+  axm.bridge.frontier-survey.v1
+
+It is the first of many starts. It does not define every future ship.
+
+Its locked semantic anchors are:
+- forward_world_screen;
+- command_duet;
+- human_or_primary_explorer;
+- ai_or_secondary_collaborator;
+- navigation;
+- science;
+- engineering;
+- communications.
+
+Its first timeline is:
+
+  axm.timeline.near-future-factual.v1
+
+Its first crew is:
+
+  axm.crew.first-expedition.v1
+
+Future projects may register new:
+- ships;
+- room layouts;
+- command arrangements;
+- crew structures;
+- species or machine embodiments;
+- universe assumptions;
+- historical eras;
+- technology baselines;
+- timeline starts.
+
+They must receive new IDs and versions. They do not overwrite the first start.
+
+3. SAVE-SLOT PINNING
+--------------------
+
+Every adventure save pins:
+- bridge archetype ID and version;
+- timeline start ID and version;
+- crew start ID and version;
+- initial renderer ID and version;
+- semantic anchor IDs.
+
+A saved expedition keeps those semantics forever.
+
+A later renderer may reconstruct the same bridge using:
+- paint;
+- pixels;
+- vectors;
+- 2.5D;
+- 3D;
+- cinematic rendering;
+- holodeck-style rendering.
+
+It may improve detail, materials, lighting, animation, sound, camera transitions, and character quality.
+
+It may not change:
+- station identity;
+- command presence;
+- crew roles;
+- the main screen's role;
+- historical observations;
+- recorded actions;
+- causal outcomes.
+
+4. BREAKING CHANGES
+-------------------
+
+A change that moves or removes semantic functions is not a skin update.
+
+It requires:
+- a new bridge archetype version; or
+- a new bridge archetype ID.
+
+Old saves remain reconstructable with their original pinned grammar.
+
+5. LOW-FIDELITY PROMISE
+-----------------------
+
+The first bridge must remain recognizable using only:
+- a room outline;
+- a deck plane;
+- one large forward screen;
+- two command chairs;
+- four station markers;
+- simple crew silhouettes or icons;
+- panel glow;
+- station highlights.
+
+Graphic quality is optional.
+Ship presence is not.
+
+6. CORE STATEMENT
+-----------------
+
+The simulator must always present a lived-in vessel with a dominant universe view, visible command and crew presence, and diegetic controls. Visual fidelity may improve indefinitely. No renderer may flatten a pinned vessel into a generic website or rewrite its room semantics.
+
+END OF LOCK

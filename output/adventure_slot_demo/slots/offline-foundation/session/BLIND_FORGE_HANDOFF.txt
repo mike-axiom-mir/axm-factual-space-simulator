@@ -1,0 +1,6 @@
+AXM BLIND PLAYER HANDOFF
+
+Give only the player_public directory to the exploring human or AI.
+Keep forge_private inaccessible to the player until the chosen reveal point.
+The public commitment proves the hidden scenario existed before play.
+A host resolves submitted actions and refreshes player_state.json and player_console.html.

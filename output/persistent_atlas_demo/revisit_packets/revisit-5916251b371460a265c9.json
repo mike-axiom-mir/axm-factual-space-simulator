@@ -1,0 +1,107 @@
+{
+  "schema": "axm.revisit-render-packet.v1",
+  "packet_id": "revisit-5916251b371460a265c9",
+  "created_at": "2026-08-02T05:29:58.698846+00:00",
+  "map_id": "atlas-9fc4d22bcc70ed0e",
+  "location_id": "frontier:56467e7b2de9e83a",
+  "location_name": "Mir Arc 7203",
+  "knowledge_class": "procedural_frontier",
+  "authoritative_location_snapshot_sha256": "ff9024dc9934015f5d33caa23a2c160ea577131c7af30bc19d7e1109f2baa31d",
+  "visit_chain_head": "5489873b188a9c53d8ea6fbb45e85d61842e8b133d50256470fef3bf91567067",
+  "included_visit_hashes": [
+    "172eb93dbf3d51be657d8e1500bda2b284540e51a4b3747764d4880b1f9dbf1b",
+    "489cf04f1c1e1b3c13a33b11c5e43019d12c2bfc7a51fe05dcd85be1effc474a",
+    "99d3f191db930ab1ba8d846812d314eac2ba0671ec0329a713af78fca1fa0b88",
+    "10cda51af2cc91337baa043134dc62e48e6cc2738260bdfddfd0a688b72df84e",
+    "7ff1c77f686dfe7b0a93bac13ccc87f12fcf49c76186c3abb5a0aa4960e8e8c8"
+  ],
+  "included_event_hashes": [
+    "2f76b02eda82b4e8ff0a6557fb6f46033f1e09bbcf08e506eb2f38d3b2b5215a",
+    "422f9095c126e91b08f42b9ccd6e8f4135bf3d8c8be7cb31b6380c6172d797e3",
+    "26ab3ec8a589184fc7c0ae021f5c2f950b2b5c4d7b9b2b61e8ade113bdeab60b",
+    "b033f9fe60c9458c746f27e21cb5dedd1f74a9d4c5112c575c2d7d7f8c20f0ec"
+  ],
+  "catalog_revision": 0,
+  "coordinates": {
+    "frame": "ICRS-like simulation frame",
+    "epoch": "campaign_origin",
+    "ra_deg": 67.766553914,
+    "dec_deg": 29.68243142,
+    "distance_ly": 1749.869097,
+    "truth_type": "simulation_prior",
+    "source_ids": [
+      "axm_simulation_priors_v1"
+    ],
+    "warning": "This coordinate is a deterministic simulation anchor. It is not a claim that a catalogued system exists here."
+  },
+  "cartesian_ly": {
+    "x_ly": 575.236740895,
+    "y_ly": 1407.225886645,
+    "z_ly": 866.521697679
+  },
+  "known_worlds": [
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "crew_observations": [
+    {
+      "event_id": "56467e7b2de9e83a:turn:1",
+      "event_hash": "2f76b02eda82b4e8ff0a6557fb6f46033f1e09bbcf08e506eb2f38d3b2b5215a",
+      "turn": 1,
+      "action": "Map dust and small bodies before approaching the planets.",
+      "outcome_id": "quiet-constraint",
+      "outcome_title": "Nothing rises above the current threshold",
+      "truth_type": "expedition_observation",
+      "measurement": null
+    },
+    {
+      "event_id": "56467e7b2de9e83a:turn:2",
+      "event_hash": "422f9095c126e91b08f42b9ccd6e8f4135bf3d8c8be7cb31b6380c6172d797e3",
+      "turn": 2,
+      "action": "Measure the radiation field before resuming science",
+      "outcome_id": "clear-evidence",
+      "outcome_title": "A repeatable result",
+      "truth_type": "expedition_observation",
+      "measurement": null
+    },
+    {
+      "event_id": "56467e7b2de9e83a:turn:3",
+      "event_hash": "26ab3ec8a589184fc7c0ae021f5c2f950b2b5c4d7b9b2b61e8ade113bdeab60b",
+      "turn": 3,
+      "action": "Cross-calibrate the signal against an independent sensor channel",
+      "outcome_id": "unexpected-coupling",
+      "outcome_title": "A second physical variable moves with the first",
+      "truth_type": "expedition_observation",
+      "measurement": null
+    },
+    {
+      "event_id": "56467e7b2de9e83a:turn:4",
+      "event_hash": "b033f9fe60c9458c746f27e21cb5dedd1f74a9d4c5112c575c2d7d7f8c20f0ec",
+      "turn": 4,
+      "action": "Measure the radiation field before resuming science",
+      "outcome_id": "ambiguous-evidence",
+      "outcome_title": "The uncertainty narrows, but survives",
+      "truth_type": "expedition_observation",
+      "measurement": null
+    }
+  ],
+  "render_request": {
+    "visual_engine_version": "axm-vector-atlas-v0.7",
+    "asset_engine_version": "axm-asset-fabric-current",
+    "camera_language": "original-bridge-reconstruction",
+    "render_mode": "historical_reconstruction",
+    "may_improve_visual_fidelity": true,
+    "may_change_authoritative_history": false
+  },
+  "honesty": {
+    "new_render_is_not_new_evidence": true,
+    "catalog_facts_remain_source_pinned": true,
+    "simulation_frontier_remains_labelled": true
+  },
+  "packet_sha256": "44fa16ac126db03513a752a6d3ee91e202682b779c8bd0ddb784b1f9ee7de61c"
+}

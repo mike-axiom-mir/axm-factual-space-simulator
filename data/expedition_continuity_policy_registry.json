@@ -1,0 +1,73 @@
+{
+  "schema": "axm.expedition-continuity-policy-registry.v1",
+  "registry_version": 1,
+  "default_policy_id": "axm.continuity.realistic.v1",
+  "policies": [
+    {
+      "id": "axm.continuity.realistic.v1",
+      "version": 1,
+      "display_name": "Realistic Continuity",
+      "is_default": true,
+      "away_from_command_deck": {
+        "expedition_clock_advances": true,
+        "routine_operations_continue": true,
+        "advisory_events_continue": true,
+        "irreversible_command_decisions": "hold_for_recall",
+        "emergency_safe_posture": "deterministic_crew_selects_lowest_immediate_risk_reversible_action"
+      }
+    },
+    {
+      "id": "axm.continuity.pause-away.v1",
+      "version": 1,
+      "display_name": "Pause Away From Command",
+      "is_default": false,
+      "away_from_command_deck": {
+        "expedition_clock_advances": false,
+        "routine_operations_continue": false,
+        "advisory_events_continue": false,
+        "irreversible_command_decisions": "not_generated_while_paused",
+        "emergency_safe_posture": "not_applicable"
+      }
+    }
+  ],
+  "authority_levels": [
+    {
+      "id": "routine",
+      "crew_action": "resolve_and_log",
+      "recall": false,
+      "examples": [
+        "passive scanning",
+        "course maintenance",
+        "normal travel",
+        "minor calibration",
+        "archive update"
+      ]
+    },
+    {
+      "id": "advisory",
+      "crew_action": "continue_reversible_work_and_notify",
+      "recall": false,
+      "examples": [
+        "interesting scan",
+        "minor anomaly",
+        "non-urgent repair choice",
+        "new optional waypoint",
+        "hypothesis disagreement"
+      ]
+    },
+    {
+      "id": "command_required",
+      "crew_action": "hold_irreversible_branch_and_recall",
+      "recall": true,
+      "examples": [
+        "first-contact candidate",
+        "major anomaly",
+        "irreversible probe action",
+        "threat",
+        "landing decision",
+        "major damage",
+        "split command vote"
+      ]
+    }
+  ]
+}

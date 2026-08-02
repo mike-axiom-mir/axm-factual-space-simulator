@@ -1,0 +1,25 @@
+{
+  "schema": "axm.machine-intake.v1",
+  "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
+  "version": "0.15.0",
+  "read_first": [
+    "data/local_handoff_manifest.json",
+    "LOCAL_INTAKE_HANDOFF.txt",
+    "docs/LOCAL_HANDOFF_MASTER_v0_15_0.md"
+  ],
+  "verify_before_edit": [
+    "Windows: run_local_acceptance.bat",
+    "Linux/macOS: ./run_local_acceptance.sh",
+    "Equivalent advanced route: PYTHONDONTWRITEBYTECODE=1 with PYTHONPATH=src, then verify_package.py and axm_star_sim.handoff_cli audit --full"
+  ],
+  "immutable_root_commitment_sha256": "01e6c42e4cfc6d8b7ea7999ddf9c29282d6d19722ef934d7c2e9ca095911a8f5",
+  "builder_gap_rule": "Declare unavailable tools or capabilities using data/builder_capability_declaration_schema.json. Never fake completion.",
+  "next_action_rule": "Preserve canonical IDs and receipts; add new versions or explicit branches rather than mutating historical semantics.",
+  "runtime_requirements": {
+    "python": "3.10 or newer",
+    "required_python_dependencies": [],
+    "internet_required_for_normal_local_operation": false,
+    "external_ai_required_for_normal_local_operation": false,
+    "optional_node_tool": "tools/drand_verifier; only needed for live cryptographic drand BLS verification"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "axm.ship-interior-demo-report.v1",
+  "interior_validation": {
+    "schema": "axm.ship-interior-validation.v1",
+    "interior_id": "axm.interior.frontier-survey.v1",
+    "interior_version": 1,
+    "room_count": 7,
+    "valid": true,
+    "failures": [],
+    "validation_receipt": "6627d74e57d42b03443f5749aa4d35754cc60e2a6a2ad0071bcbc749b879125e"
+  },
+  "state_verification": {
+    "schema": "axm.ship-interior-state-verification.v1",
+    "valid": true,
+    "failures": [],
+    "visits": 6,
+    "interactions": 5,
+    "routine_events": 5,
+    "pending_command_recall": false,
+    "verification_receipt": "2fd6649d2f71a375deb5a8e0b69c7156d6ec49d79236dcb66b184419c2d4d147"
+  },
+  "current_room": "primary_quarters",
+  "rooms_visited": [
+    "command_deck",
+    "mess_hall",
+    "research_strategy",
+    "command_deck",
+    "engineering",
+    "primary_quarters"
+  ],
+  "fabricated_item_id": "axm.item.fabricated.af25b33c5ade4681",
+  "routine_events": 5,
+  "interactions": 5
+}

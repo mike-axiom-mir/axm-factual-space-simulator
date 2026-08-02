@@ -1,0 +1,60 @@
+{
+  "schema": "axm.v0.6-stress-report.v1",
+  "status": "PASS",
+  "technology_registry_valid": true,
+  "contact_horizon_registry_valid": true,
+  "eligible_technology_cores": [
+    "blue_moon_mk2_pathfinder_2027",
+    "gateway_ppe_halo",
+    "orion_esm_crew_transport",
+    "spacex_starship_hls_pathfinder_2027"
+  ],
+  "selection_population": 1000,
+  "selection_distribution": {
+    "blue_moon_mk2_pathfinder_2027": 262,
+    "gateway_ppe_halo": 247,
+    "orion_esm_crew_transport": 241,
+    "spacex_starship_hls_pathfinder_2027": 250
+  },
+  "systems": 250,
+  "turns_per_system": 12,
+  "events_replay_verified": 3000,
+  "runtime_core_distribution": {
+    "blue_moon_mk2_pathfinder_2027": 60,
+    "gateway_ppe_halo": 72,
+    "orion_esm_crew_transport": 61,
+    "spacex_starship_hls_pathfinder_2027": 57
+  },
+  "initial_contact_states_checked": 250,
+  "master_seed_preselected_contact_states": 0,
+  "contact_actions_before_step_100000": 0,
+  "contact_horizon_trials": 80,
+  "contact_events_replay_verified": 80,
+  "contact_stage_after_one_search_distribution": {
+    "1": 49,
+    "2": 31
+  },
+  "single_search_confirmed_external_agency": 0,
+  "deterministic_reproducibility_pairs": 30,
+  "deterministic_turns_per_pair": 10,
+  "action_categories_observed": {
+    "engineering": 572,
+    "general": 934,
+    "instrument": 659,
+    "move_on": 112,
+    "patient_observation": 620,
+    "probe": 103
+  },
+  "outcomes_observed": {
+    "ambiguous-evidence": 685,
+    "clear-evidence": 891,
+    "operational-complication": 822,
+    "quiet-constraint": 246,
+    "unexpected-coupling": 356
+  },
+  "dynamic_menu_size": {
+    "minimum": 3,
+    "maximum": 9
+  },
+  "unpublished_propulsion_performance_promoted": false
+}

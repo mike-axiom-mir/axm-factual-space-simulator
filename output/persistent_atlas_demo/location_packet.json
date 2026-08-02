@@ -1,0 +1,93 @@
+{
+  "schema": "axm.location-export-packet.v1",
+  "map_id": "atlas-9fc4d22bcc70ed0e",
+  "active_location_id": "frontier:3d6930fb5e74d6a9",
+  "location": {
+    "schema": "axm.atlas-location.v1",
+    "location_id": "frontier:3d6930fb5e74d6a9",
+    "name": "Kepler Deep 2845",
+    "object_class": "generated_stellar_system",
+    "knowledge_class": "procedural_frontier",
+    "coordinates": {
+      "frame": "ICRS-like simulation frame",
+      "epoch": "campaign_origin",
+      "ra_deg": 72.495963577,
+      "dec_deg": 41.855919282,
+      "distance_ly": 326.44094,
+      "truth_type": "simulation_prior",
+      "source_ids": [
+        "axm_simulation_priors_v1"
+      ],
+      "warning": "This coordinate is a deterministic simulation anchor. It is not a claim that a catalogued system exists here."
+    },
+    "cartesian_ly": {
+      "x_ly": 73.130369334,
+      "y_ly": 231.882936501,
+      "z_ly": 217.820889797
+    },
+    "distance_ly": {
+      "value": 326.44094,
+      "truth_type": "simulation_prior",
+      "source_ids": [
+        "axm_simulation_priors_v1"
+      ]
+    },
+    "known_worlds": [
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H"
+    ],
+    "source_ids": [
+      "axm_simulation_priors_v1"
+    ],
+    "system_id": "3d6930fb5e74d6a9",
+    "system_state_sha256": "af0ddd4f8ae3304953df12470dadb487cf2f6726b4cf94512a32aecee12a8b96",
+    "catalog_revision": 0,
+    "visit_count": 4,
+    "crew_observations": [
+      {
+        "event_id": "3d6930fb5e74d6a9:turn:1",
+        "event_hash": "fca7c7052bdc96bf74b911fc575865e7edbc50fac3e95779e7d285f8e6c702f4",
+        "turn": 1,
+        "action": "Delay arrival to observe a complete phase transition.",
+        "outcome_id": "clear-evidence",
+        "outcome_title": "A repeatable result",
+        "truth_type": "expedition_observation",
+        "measurement": null
+      },
+      {
+        "event_id": "3d6930fb5e74d6a9:turn:2",
+        "event_hash": "3a8d21967873b9aed0997de3d2a2e2aa3de307c706a8fed3903242b52997bfca",
+        "turn": 2,
+        "action": "Hold course until the delayed telemetry response arrives",
+        "outcome_id": "clear-evidence",
+        "outcome_title": "A repeatable result",
+        "truth_type": "expedition_observation",
+        "measurement": null
+      },
+      {
+        "event_id": "3d6930fb5e74d6a9:turn:3",
+        "event_hash": "a795f2e22ea26f27485f62ac4e31d7eb6bcc227891c3d63f946396151949c61f",
+        "turn": 3,
+        "action": "Cross-calibrate the signal against an independent sensor channel",
+        "outcome_id": "clear-evidence",
+        "outcome_title": "A repeatable result",
+        "truth_type": "expedition_observation",
+        "measurement": null
+      }
+    ],
+    "render_history": [],
+    "route_status": "active_simulated_expedition",
+    "route_feasibility": {
+      "status": "simulation_contract",
+      "rule": "Travel is resolved by the simulator's ship and mission physics. The coordinate alone grants no capability."
+    },
+    "authoritative_snapshot_sha256": "2d9ca57917749afc9fb0d73ad8fc8a5fbcad309bcd5f953f65d2f359538619eb"
+  },
+  "atlas_visit_chain_head": "5489873b188a9c53d8ea6fbb45e85d61842e8b133d50256470fef3bf91567067",
+  "packet_sha256": "9298e0b4ef9a76d863057cc10c54740a1da9dc78120b7a2a0cd36420d3cd384c"
+}

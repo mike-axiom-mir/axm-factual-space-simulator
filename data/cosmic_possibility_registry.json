@@ -1,0 +1,723 @@
+{
+  "schema": "axm.cosmic-possibility-registry.v1",
+  "registry_version": "0.8.0",
+  "name": "AXM Cosmic Possibility and Agnostic Life Registry",
+  "policy": {
+    "ai_synthesis_is_not_empirical_authority": true,
+    "master_seed_does_not_select_hidden_life_or_a_true_universe_theory": true,
+    "environment_controls_eligibility_not_existence": true,
+    "life_like_behavior_is_not_automatically_life": true,
+    "standard_physics_instrumental_and_geochemical_controls_are_tested_first": true,
+    "alternative_biochemistry_must_define_solvent_energy_information_and_compartment_questions": true,
+    "all_anomalies_have_claim_ceilings": true,
+    "quiet_results_constrain_only_the_tested_channel": true,
+    "theory_selection_creates_a_test_lens_not_a_world_fact": true
+  },
+  "evidence_ladder": [
+    {
+      "stage": 0,
+      "id": "no_candidate",
+      "name": "No candidate",
+      "claim_ceiling": "No unusual life-related claim is supported."
+    },
+    {
+      "stage": 1,
+      "id": "unusual_pattern",
+      "name": "Unusual pattern",
+      "claim_ceiling": "An unusual physical or chemical pattern is present."
+    },
+    {
+      "stage": 2,
+      "id": "repeatable_pattern",
+      "name": "Repeatable pattern",
+      "claim_ceiling": "The pattern repeats under recorded conditions."
+    },
+    {
+      "stage": 3,
+      "id": "organized_process",
+      "name": "Organized process",
+      "claim_ceiling": "Energy, chemistry, or structure shows persistent organization."
+    },
+    {
+      "stage": 4,
+      "id": "life_like_system",
+      "name": "Life-like system",
+      "claim_ceiling": "Multiple life-like properties are present, but abiotic origins remain viable."
+    },
+    {
+      "stage": 5,
+      "id": "abiotic_alternatives_constrained",
+      "name": "Abiotic alternatives constrained",
+      "claim_ceiling": "Known abiotic and instrumental explanations are substantially constrained."
+    },
+    {
+      "stage": 6,
+      "id": "candidate_living_system",
+      "name": "Candidate living system",
+      "claim_ceiling": "A living-system interpretation is scientifically plausible and requires independent confirmation."
+    },
+    {
+      "stage": 7,
+      "id": "external_biology_strongly_supported",
+      "name": "External biology strongly supported",
+      "claim_ceiling": "Convergent, independent evidence strongly supports biology; governance and external review remain required."
+    }
+  ],
+  "agnostic_observables": [
+    {
+      "id": "chemical_complexity",
+      "name": "Chemical complexity",
+      "description": "Molecular architectures, abundance patterns, or assemblage diversity difficult to reproduce through the modeled abiotic chemistry alone.",
+      "false_positives": [
+        "unmodeled catalysis",
+        "instrument fragmentation",
+        "contamination",
+        "high-energy photochemistry",
+        "sampling sparsity",
+        "mixture-model bias"
+      ]
+    },
+    {
+      "id": "elemental_compartmentalization",
+      "name": "Elemental compartmentalization",
+      "description": "Unexpected concentration of elements, isotopes, or molecules into bounded regions.",
+      "false_positives": [
+        "mineral sorting",
+        "phase separation",
+        "electrostatic trapping",
+        "sample handling"
+      ]
+    },
+    {
+      "id": "energy_transfer",
+      "name": "Organized energy transfer",
+      "description": "Persistent redox, electrochemical, or thermal gradients that resemble controlled energy use.",
+      "false_positives": [
+        "geothermal gradients",
+        "photochemistry",
+        "battery-like mineral interfaces",
+        "instrument heating"
+      ]
+    },
+    {
+      "id": "disequilibrium",
+      "name": "Chemical disequilibrium",
+      "description": "A mixture of compounds that should react away unless maintained by an active process.",
+      "false_positives": [
+        "atmospheric mixing barriers",
+        "recent volcanism",
+        "photolysis",
+        "impact delivery"
+      ]
+    },
+    {
+      "id": "selection_bias_in_chemistry",
+      "name": "Chemical selection",
+      "description": "Strong preference for chirality, chain length, isotope, or molecular family.",
+      "false_positives": [
+        "crystal templating",
+        "polarized radiation",
+        "surface catalysis",
+        "sampling bias"
+      ]
+    },
+    {
+      "id": "replication_like_recurrence",
+      "name": "Replication-like recurrence",
+      "description": "Structures or patterns recur with inherited variation under energy flow.",
+      "false_positives": [
+        "crystal growth",
+        "reaction-diffusion patterns",
+        "plasma instabilities",
+        "periodic forcing"
+      ]
+    },
+    {
+      "id": "adaptive_response",
+      "name": "Adaptive response",
+      "description": "A system changes behavior in a way correlated with environmental challenge and retained state.",
+      "false_positives": [
+        "hysteresis",
+        "phase transition",
+        "feedback controller",
+        "instrument auto-ranging"
+      ]
+    },
+    {
+      "id": "information_bearing_structure",
+      "name": "Information-bearing structure",
+      "description": "Non-random organization with testable compression, error correction, or context dependence.",
+      "false_positives": [
+        "resonance",
+        "orbital periodicity",
+        "data-processing artifacts",
+        "selection effects"
+      ]
+    }
+  ],
+  "universe_theory_families": [
+    {
+      "id": "general_relativity_lambda_cdm",
+      "name": "General relativity plus ΛCDM",
+      "epistemic_class": "best current large-scale working framework",
+      "allowed_influence": "Baseline predictions for gravity, expansion, lensing, and structure formation.",
+      "not_allowed": "May not be described as a complete explanation of dark matter, dark energy, or every observed tension.",
+      "source_ids": [
+        "nasa_hubble_tension_2026",
+        "nasa_dark_universe_2024"
+      ]
+    },
+    {
+      "id": "hubble_tension_model_family",
+      "name": "Hubble-tension model family",
+      "epistemic_class": "active measurement and model tension",
+      "allowed_influence": "Creates competing calibration, early-universe, and late-universe investigation branches.",
+      "not_allowed": "May not select early dark energy, exotic particles, or modified gravity as true.",
+      "source_ids": [
+        "nasa_hubble_tension_2026"
+      ]
+    },
+    {
+      "id": "dark_matter_model_family",
+      "name": "Dark-matter model family",
+      "epistemic_class": "open fundamental physics question",
+      "allowed_influence": "Creates lensing, dynamics, and missing-mass tests with multiple candidate explanations.",
+      "not_allowed": "May not choose a particle species or modified-gravity alternative as established fact.",
+      "source_ids": [
+        "nasa_dark_universe_2024"
+      ]
+    },
+    {
+      "id": "dark_energy_model_family",
+      "name": "Dark-energy model family",
+      "epistemic_class": "open fundamental physics question",
+      "allowed_influence": "Creates expansion-history and structure-growth comparisons.",
+      "not_allowed": "May not present vacuum energy, scalar fields, or modified gravity as confirmed.",
+      "source_ids": [
+        "nasa_dark_universe_2024"
+      ]
+    },
+    {
+      "id": "inflation_and_early_universe",
+      "name": "Inflation and early-universe alternatives",
+      "epistemic_class": "strong theoretical framework with unresolved mechanism",
+      "allowed_influence": "Creates primordial-spectrum and topology tests at very large scales.",
+      "not_allowed": "May not turn multiverse or specific inflation potentials into local adventure facts.",
+      "source_ids": [
+        "nasa_dark_universe_2024"
+      ]
+    },
+    {
+      "id": "modified_gravity_family",
+      "name": "Modified-gravity family",
+      "epistemic_class": "active theoretical alternative",
+      "allowed_influence": "May appear as a comparison model when gravity and mass-distribution predictions disagree.",
+      "not_allowed": "May not replace general relativity without convergent evidence.",
+      "source_ids": [
+        "nasa_hubble_tension_2026"
+      ]
+    },
+    {
+      "id": "cosmic_topology_and_multiverse",
+      "name": "Cosmic topology and multiverse scenarios",
+      "epistemic_class": "speculative cosmology",
+      "allowed_influence": "May inform distant, nonlocal philosophical or statistical investigations.",
+      "not_allowed": "May not create portals, parallel civilizations, or causal travel as factual outcomes.",
+      "source_ids": [
+        "nasa_dark_universe_2024"
+      ]
+    }
+  ],
+  "anomaly_families": [
+    {
+      "id": "rare_morphology",
+      "name": "Rare astronomical morphology",
+      "epistemic_class": "observational anomaly class",
+      "observables": [
+        "unusual shape",
+        "merger stream",
+        "lens arc",
+        "unexpected symmetry"
+      ],
+      "controls": [
+        "point-spread function",
+        "processing artifact",
+        "foreground overlap",
+        "known merger and lens models"
+      ],
+      "claim_ceiling": "Unusual object or geometry; not evidence of life or new physics.",
+      "source_ids": [
+        "nasa_hubble_ai_anomalies_2026"
+      ]
+    },
+    {
+      "id": "expansion_rate_disagreement",
+      "name": "Expansion-rate disagreement",
+      "epistemic_class": "precision cosmology tension",
+      "observables": [
+        "distance-ladder result",
+        "CMB-inferred result",
+        "calibration covariance"
+      ],
+      "controls": [
+        "distance calibration",
+        "population effects",
+        "model assumptions"
+      ],
+      "claim_ceiling": "A measurement/model tension remains; no new-physics cause is selected.",
+      "source_ids": [
+        "nasa_hubble_tension_2026"
+      ]
+    },
+    {
+      "id": "gravitational_mass_mismatch",
+      "name": "Gravitational mass mismatch",
+      "epistemic_class": "dark-sector investigation",
+      "observables": [
+        "lensing mass",
+        "orbital dynamics",
+        "visible matter inventory"
+      ],
+      "controls": [
+        "baryonic mass model",
+        "line-of-sight structure",
+        "instrument calibration",
+        "modified gravity comparison"
+      ],
+      "claim_ceiling": "Mass distribution is incompletely explained by visible matter under the current model.",
+      "source_ids": [
+        "nasa_dark_universe_2024"
+      ]
+    },
+    {
+      "id": "atmospheric_disequilibrium",
+      "name": "Atmospheric disequilibrium",
+      "epistemic_class": "biosignature candidate class",
+      "observables": [
+        "coexisting reactive gases",
+        "seasonal cycling",
+        "isotopic fractionation"
+      ],
+      "controls": [
+        "photochemistry",
+        "volcanism",
+        "surface reactions",
+        "atmospheric transport"
+      ],
+      "claim_ceiling": "A maintained disequilibrium requires explanation; biology is one hypothesis.",
+      "source_ids": [
+        "nasa_agnostic_biosignatures_2019",
+        "national_academies_biosignature_evidence_2022"
+      ]
+    },
+    {
+      "id": "non_gravitational_orbital_behavior",
+      "name": "Non-gravitational orbital behavior",
+      "epistemic_class": "small-body anomaly class",
+      "observables": [
+        "residual acceleration",
+        "rotation changes",
+        "outgassing limits"
+      ],
+      "controls": [
+        "volatile outgassing",
+        "radiation pressure",
+        "shape model",
+        "measurement arc"
+      ],
+      "claim_ceiling": "A nongravitational force is inferred; technology is not implied.",
+      "source_ids": [
+        "jpl_sbdb",
+        "jpl_horizons"
+      ]
+    },
+    {
+      "id": "dusty_plasma_self_organization",
+      "name": "Dusty-plasma self-organization",
+      "epistemic_class": "known complex-plasma phenomenon and life-like false-positive class",
+      "observables": [
+        "plasma crystals",
+        "chains",
+        "vortices",
+        "helical structures",
+        "phase transitions"
+      ],
+      "controls": [
+        "electric fields",
+        "ion flow",
+        "confinement",
+        "periodic forcing"
+      ],
+      "claim_ceiling": "Self-organized plasma structure; life remains unsupported without independent metabolism, information, and evolution evidence.",
+      "source_ids": [
+        "nasa_dusty_plasma_1999",
+        "aps_complex_plasma_review_2009"
+      ]
+    }
+  ],
+  "life_architectures": [
+    {
+      "id": "carbon_water_cellular",
+      "name": "Carbon-water cellular life",
+      "epistemic_class": "only confirmed life architecture",
+      "environment": {
+        "temperature_k": [
+          180,
+          430
+        ],
+        "solvent": "liquid water or brine"
+      },
+      "required_questions": [
+        "compartment",
+        "metabolism",
+        "information",
+        "evolution"
+      ],
+      "observables": [
+        "chemical complexity",
+        "disequilibrium",
+        "selection bias",
+        "cell-like compartments"
+      ],
+      "claim_ceiling": "Earth-analog biology is possible, not present by default.",
+      "source_ids": [
+        "nasa_astrobiology_program_overview_2026",
+        "nasa_life_detection_ladder_2026"
+      ]
+    },
+    {
+      "id": "anaerobic_chemotrophic",
+      "name": "Anaerobic chemotrophic life",
+      "epistemic_class": "confirmed Earth life strategy",
+      "environment": {
+        "temperature_k": [
+          150,
+          500
+        ],
+        "energy": "redox gradients without oxygen"
+      },
+      "required_questions": [
+        "electron donor",
+        "electron acceptor",
+        "solvent",
+        "nutrient cycling"
+      ],
+      "observables": [
+        "redox disequilibrium",
+        "isotopic fractionation",
+        "localized elemental cycling"
+      ],
+      "claim_ceiling": "Oxygen absence does not rule out life.",
+      "source_ids": [
+        "nasa_ask_astrobiologist_2026"
+      ]
+    },
+    {
+      "id": "agnostic_unknown_biochemistry",
+      "name": "Agnostic unknown biochemistry",
+      "epistemic_class": "active NASA life-detection research direction",
+      "environment": {
+        "temperature_k": [
+          50,
+          1000
+        ],
+        "solvent": "not presupposed"
+      },
+      "required_questions": [
+        "persistent organization",
+        "energy use",
+        "chemical complexity",
+        "compartmentalization",
+        "heritable variation"
+      ],
+      "observables": [
+        "chemical complexity",
+        "elemental compartmentalization",
+        "energy transfer",
+        "selection bias"
+      ],
+      "claim_ceiling": "Life-like organization can be tested without assuming DNA, proteins, or water.",
+      "source_ids": [
+        "nasa_agnostic_biosignatures_2019",
+        "nasa_life_as_we_dont_know_it_2025"
+      ]
+    },
+    {
+      "id": "hydrocarbon_protocell",
+      "name": "Hydrocarbon-solvent protocells",
+      "epistemic_class": "laboratory and theoretical astrobiology hypothesis",
+      "environment": {
+        "temperature_k": [
+          70,
+          130
+        ],
+        "solvent": "methane or ethane"
+      },
+      "required_questions": [
+        "membrane or compartment",
+        "reaction rate",
+        "information polymer",
+        "energy source"
+      ],
+      "observables": [
+        "vesicles",
+        "selective chemistry",
+        "hydrogen or acetylene gradients",
+        "recurring compartments"
+      ],
+      "claim_ceiling": "Cell-like compartments or prebiotic chemistry may be possible; life is unconfirmed.",
+      "source_ids": [
+        "nasa_titan_protocells_2025",
+        "nasa_titan_membranes_2017"
+      ]
+    },
+    {
+      "id": "ammonia_water_biochemistry",
+      "name": "Ammonia or ammonia-water biochemistry",
+      "epistemic_class": "alternative-solvent hypothesis",
+      "environment": {
+        "temperature_k": [
+          175,
+          300
+        ],
+        "solvent": "ammonia or ammonia-water"
+      },
+      "required_questions": [
+        "stable polymers",
+        "compartment chemistry",
+        "acid-base system",
+        "energy source"
+      ],
+      "observables": [
+        "non-terrestrial polymer selection",
+        "ammonia-linked redox cycles",
+        "compartments"
+      ],
+      "claim_ceiling": "Chemistry may be compatible with an alternative solvent; no organism is implied.",
+      "source_ids": [
+        "astrobiology_primer_alt_solvents_2016"
+      ]
+    },
+    {
+      "id": "sulfuric_acid_biochemistry",
+      "name": "Concentrated sulfuric-acid biochemistry",
+      "epistemic_class": "quantitatively explored alternative-solvent hypothesis",
+      "environment": {
+        "temperature_k": [
+          250,
+          450
+        ],
+        "solvent": "concentrated sulfuric acid"
+      },
+      "required_questions": [
+        "stable chemical diversity",
+        "origin pathway",
+        "compartment",
+        "energy source"
+      ],
+      "observables": [
+        "acid-stable complex molecules",
+        "persistent droplets",
+        "selective chemistry",
+        "redox disequilibrium"
+      ],
+      "claim_ceiling": "A sulfuric-acid solvent is not ruled out chemically, but origin and biology remain unproven.",
+      "source_ids": [
+        "sulfuric_acid_solvent_review_2021"
+      ]
+    },
+    {
+      "id": "noncellular_replicator_ecology",
+      "name": "Non-cellular replicator ecology",
+      "epistemic_class": "Earth analogs exist but depend on broader systems",
+      "environment": {
+        "temperature_k": [
+          100,
+          500
+        ],
+        "medium": "host or catalytic network required"
+      },
+      "required_questions": [
+        "replication machinery",
+        "host or catalyst",
+        "inheritance",
+        "ecological persistence"
+      ],
+      "observables": [
+        "sequence-like recurrence",
+        "host-linked cycles",
+        "selective amplification"
+      ],
+      "claim_ceiling": "Replicator-like entities may exist without cells, but standalone life is not established.",
+      "source_ids": [
+        "nasa_life_as_we_dont_know_it_2025"
+      ]
+    },
+    {
+      "id": "autocatalytic_protocell_network",
+      "name": "Autocatalytic and protocell networks",
+      "epistemic_class": "origin-of-life research family",
+      "environment": {
+        "temperature_k": [
+          150,
+          500
+        ],
+        "medium": "reactive fluid, pores, surfaces, or cycles"
+      },
+      "required_questions": [
+        "self-maintenance",
+        "bounded chemistry",
+        "variation",
+        "selection"
+      ],
+      "observables": [
+        "autocatalytic closure",
+        "vesicle growth",
+        "reaction-network memory",
+        "cycle persistence"
+      ],
+      "claim_ceiling": "Prebiotic or life-like chemistry may exist below the threshold of biology.",
+      "source_ids": [
+        "nasa_life_in_lab_2023",
+        "nasa_chemical_complexity_2021",
+        "nature_molecular_diversity_2026",
+        "nature_protobiosignatures_2026"
+      ]
+    },
+    {
+      "id": "shadow_biosphere",
+      "name": "Shadow biosphere",
+      "epistemic_class": "search hypothesis",
+      "environment": {
+        "temperature_k": [
+          150,
+          500
+        ],
+        "medium": "any sampled environment"
+      },
+      "required_questions": [
+        "independent lineage",
+        "alternate chirality or information chemistry",
+        "contamination exclusion"
+      ],
+      "observables": [
+        "unassigned metabolism",
+        "opposite chirality",
+        "unknown polymers",
+        "persistent uncultured chemistry"
+      ],
+      "claim_ceiling": "An alternate lineage is a hypothesis until independently isolated and characterized.",
+      "source_ids": [
+        "nasa_life_as_we_dont_know_it_2025"
+      ]
+    },
+    {
+      "id": "distributed_planetary_metabolism",
+      "name": "Distributed planetary metabolism",
+      "epistemic_class": "systems-level biosphere hypothesis",
+      "environment": {
+        "temperature_k": [
+          150,
+          600
+        ],
+        "scale": "regional to planetary"
+      },
+      "required_questions": [
+        "bounded feedback",
+        "energy source",
+        "persistence",
+        "reproduction or lineage"
+      ],
+      "observables": [
+        "coordinated cycles",
+        "spatially coupled disequilibrium",
+        "seasonal feedback"
+      ],
+      "claim_ceiling": "Planet-scale feedback may be ecological, geochemical, or climatic; it is not one giant organism by default.",
+      "source_ids": [
+        "nasa_agnostic_biosignatures_2019"
+      ]
+    },
+    {
+      "id": "dusty_plasma_lifelike_control",
+      "name": "Dusty-plasma life-like control",
+      "epistemic_class": "known self-organizing physics used as a false-positive control",
+      "environment": {
+        "temperature_k": [
+          1,
+          1000000
+        ],
+        "medium": "charged dust in plasma"
+      },
+      "required_questions": [
+        "independent metabolism",
+        "heritable information",
+        "open-ended evolution",
+        "autonomy"
+      ],
+      "observables": [
+        "crystals",
+        "helices",
+        "vortices",
+        "bifurcations",
+        "hysteresis"
+      ],
+      "claim_ceiling": "Life-like shape or recurrence alone is insufficient; classify as complex plasma unless stronger evidence appears.",
+      "source_ids": [
+        "nasa_dusty_plasma_1999",
+        "aps_complex_plasma_review_2009"
+      ]
+    },
+    {
+      "id": "noncarbon_information_chemistry",
+      "name": "Non-carbon information chemistry",
+      "epistemic_class": "low-confidence speculative chemistry",
+      "environment": {
+        "temperature_k": [
+          20,
+          1500
+        ],
+        "medium": "unknown"
+      },
+      "required_questions": [
+        "stable diverse bonds",
+        "solvent compatibility",
+        "replication",
+        "energy coupling"
+      ],
+      "observables": [
+        "unexpected polymer families",
+        "non-carbon selection",
+        "repeatable information structure"
+      ],
+      "claim_ceiling": "A search lens only; silicon or other backbones are not assumed viable.",
+      "source_ids": [
+        "nasa_ask_astrobiologist_2026",
+        "nasa_life_as_we_dont_know_it_2025"
+      ]
+    }
+  ],
+  "source_ids": [
+    "nasa_astrobiology_program_overview_2026",
+    "nasa_life_detection_ladder_2026",
+    "nasa_agnostic_biosignatures_2019",
+    "nasa_life_as_we_dont_know_it_2025",
+    "nasa_chemical_complexity_2021",
+    "nasa_titan_protocells_2025",
+    "nasa_titan_membranes_2017",
+    "nasa_life_in_lab_2023",
+    "nasa_ask_astrobiologist_2026",
+    "astrobiology_primer_alt_solvents_2016",
+    "sulfuric_acid_solvent_review_2021",
+    "national_academies_biosignature_evidence_2022",
+    "nasa_hubble_ai_anomalies_2026",
+    "nasa_hubble_tension_2026",
+    "nasa_dark_universe_2024",
+    "nasa_dusty_plasma_1999",
+    "aps_complex_plasma_review_2009",
+    "jpl_sbdb",
+    "jpl_horizons",
+    "nature_molecular_diversity_2026",
+    "nature_protobiosignatures_2026"
+  ]
+}

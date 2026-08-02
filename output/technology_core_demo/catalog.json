@@ -1,0 +1,310 @@
+{
+  "schema": "axm.v0.7-technology-core-demo.v1",
+  "generator_version": "0.6.0",
+  "cores": [
+    {
+      "core_id": "blue_moon_mk2_pathfinder_2027",
+      "seed": "AXM-V07-CORE-00002",
+      "name": "Blue Origin Blue Moon Mark 2 HLS pathfinder lineage",
+      "domain": "lander_pathfinder",
+      "status": "development and 2027 low-Earth-orbit pathfinder planning",
+      "selected_index": 0,
+      "eligible_count": 4,
+      "known_parameters": [],
+      "unknown_count": 4,
+      "event_hash": "fff4e340704b2eabc4a6b91dfed8b6ccc05d6fef4e02d1f91da08cb707abed79",
+      "ledger_valid": true
+    },
+    {
+      "core_id": "gateway_ppe_halo",
+      "seed": "AXM-V07-CORE-00008",
+      "name": "Gateway PPE + HALO deep-space platform lineage",
+      "domain": "deep_space_platform",
+      "status": "integration and qualification; launch no earlier than 2027",
+      "selected_index": 1,
+      "eligible_count": 4,
+      "known_parameters": [
+        {
+          "id": "solar_power_generation",
+          "group": "factual_parameters",
+          "value": 60,
+          "unit": "kW",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_gateway_reference_2026",
+            "nasa_gateway_power_on_2026"
+          ]
+        },
+        {
+          "id": "aeps_thruster_count",
+          "group": "factual_parameters",
+          "value": 3,
+          "unit": "thrusters",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_gateway_power_on_2026"
+          ]
+        },
+        {
+          "id": "aeps_thruster_rated_power_each",
+          "group": "factual_parameters",
+          "value": 12,
+          "unit": "kW",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_gateway_power_on_2026",
+            "nasa_aeps_qualification_2025"
+          ]
+        },
+        {
+          "id": "bht6000_thruster_count",
+          "group": "factual_parameters",
+          "value": 4,
+          "unit": "thrusters",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_gateway_power_on_2026"
+          ]
+        },
+        {
+          "id": "bht6000_thruster_rated_power_each",
+          "group": "factual_parameters",
+          "value": 6,
+          "unit": "kW",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_gateway_power_on_2026"
+          ]
+        },
+        {
+          "id": "early_crew_capacity",
+          "group": "factual_parameters",
+          "value": 4,
+          "unit": "persons",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_gateway_capabilities_2026"
+          ]
+        },
+        {
+          "id": "early_crew_stay_min",
+          "group": "factual_parameters",
+          "value": 30,
+          "unit": "days",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_gateway_capabilities_2026"
+          ]
+        },
+        {
+          "id": "early_crew_stay_max",
+          "group": "factual_parameters",
+          "value": 90,
+          "unit": "days",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_gateway_capabilities_2026"
+          ]
+        },
+        {
+          "id": "uncrewed_remote_operation_max",
+          "group": "factual_parameters",
+          "value": 3,
+          "unit": "years",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_gateway_capabilities_2026"
+          ]
+        },
+        {
+          "id": "nrho_period",
+          "group": "factual_parameters",
+          "value": 6.5,
+          "unit": "days",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_gateway_capabilities_2026"
+          ]
+        },
+        {
+          "id": "nrho_closest_approach",
+          "group": "factual_parameters",
+          "value": 1500,
+          "unit": "km",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_gateway_capabilities_2026"
+          ]
+        },
+        {
+          "id": "nrho_farthest_distance",
+          "group": "factual_parameters",
+          "value": 70000,
+          "unit": "km",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_gateway_capabilities_2026"
+          ]
+        },
+        {
+          "id": "installed_electric_thruster_nameplate_power",
+          "group": "derived_parameters",
+          "value": 60,
+          "unit": "kW",
+          "truth_type": "derived",
+          "source_ids": [
+            "nasa_gateway_power_on_2026"
+          ],
+          "formula_id": "sum_nameplate_power",
+          "inputs": [
+            "3 x 12 kW AEPS",
+            "4 x 6 kW BHT-6000"
+          ],
+          "notes": "This is a nameplate sum, not a simultaneous operating-power claim."
+        },
+        {
+          "id": "maximum_early_crew_person_days",
+          "group": "derived_parameters",
+          "value": 360,
+          "unit": "person-days",
+          "truth_type": "derived",
+          "source_ids": [
+            "nasa_gateway_capabilities_2026"
+          ],
+          "formula_id": "product_of_catalog_values",
+          "inputs": [
+            "early_crew_capacity",
+            "early_crew_stay_max"
+          ]
+        }
+      ],
+      "unknown_count": 4,
+      "event_hash": "2e3d65e034886b9eb487b3922ff4d776b9d13d3c22507d7d25d7af2a35ab333d",
+      "ledger_valid": true
+    },
+    {
+      "core_id": "orion_esm_crew_transport",
+      "seed": "AXM-V07-CORE-00001",
+      "name": "Orion + European Service Module crew transport lineage",
+      "domain": "crew_transport",
+      "status": "flight-proven with crew in 2026; planned for Artemis III in 2027",
+      "selected_index": 2,
+      "eligible_count": 4,
+      "known_parameters": [
+        {
+          "id": "crew_capacity",
+          "group": "factual_parameters",
+          "value": 4,
+          "unit": "persons",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_orion_components_2026"
+          ]
+        },
+        {
+          "id": "standalone_mission_duration_max",
+          "group": "factual_parameters",
+          "value": 21,
+          "unit": "days",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_orion_components_2026"
+          ]
+        },
+        {
+          "id": "solar_power_generation",
+          "group": "factual_parameters",
+          "value": 11,
+          "unit": "kW",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_orion_components_2026"
+          ]
+        },
+        {
+          "id": "engine_count_total",
+          "group": "factual_parameters",
+          "value": 33,
+          "unit": "engines",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_orion_reference_2026"
+          ]
+        },
+        {
+          "id": "solar_array_span",
+          "group": "factual_parameters",
+          "value": 62,
+          "unit": "ft",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_orion_components_2026"
+          ]
+        },
+        {
+          "id": "suited_emergency_life_support",
+          "group": "factual_parameters",
+          "value": 144,
+          "unit": "hours",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_orion_reference_2026"
+          ]
+        },
+        {
+          "id": "maximum_standalone_person_days",
+          "group": "derived_parameters",
+          "value": 84,
+          "unit": "person-days",
+          "truth_type": "derived",
+          "source_ids": [
+            "nasa_orion_components_2026"
+          ],
+          "formula_id": "product_of_catalog_values",
+          "inputs": [
+            "crew_capacity",
+            "standalone_mission_duration_max"
+          ]
+        }
+      ],
+      "unknown_count": 4,
+      "event_hash": "b2a96f6bfb6f6b32ddaf988df4ed5754e433fb7a0a252fcc46f54381fdf42ddf",
+      "ledger_valid": true
+    },
+    {
+      "core_id": "spacex_starship_hls_pathfinder_2027",
+      "seed": "AXM-V07-CORE-00000",
+      "name": "SpaceX Starship HLS pathfinder lineage",
+      "domain": "lander_pathfinder",
+      "status": "development and 2027 low-Earth-orbit pathfinder planning",
+      "selected_index": 3,
+      "eligible_count": 4,
+      "known_parameters": [
+        {
+          "id": "approximate_height",
+          "group": "factual_parameters",
+          "value": 50,
+          "unit": "m",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_hls_2026"
+          ]
+        },
+        {
+          "id": "large_scale_lox_transfer_project_threshold",
+          "group": "factual_parameters",
+          "value": 3,
+          "unit": "metric_tonnes_minimum",
+          "truth_type": "catalog_fact",
+          "source_ids": [
+            "nasa_spacex_cfm_techport_2026"
+          ],
+          "notes": "Project objective was more than 3 metric tons; this registry does not infer a successful flight result."
+        }
+      ],
+      "unknown_count": 5,
+      "event_hash": "9f65ae1488d469c421bec819a8be3ffe1736fc5b0abf10f4a916e3b412c09cac",
+      "ledger_valid": true
+    }
+  ]
+}

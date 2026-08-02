@@ -1,0 +1,407 @@
+{
+  "schema": "axm.technology-core-registry.v1",
+  "registry_version": "2026-08-02-v0.6",
+  "as_of_date": "2026-08-02",
+  "planning_horizon_year": 2027,
+  "policy": {
+    "no_invented_numeric_performance": true,
+    "unknown_values_remain_null": true,
+    "seed_selects_from_equal_eligible_catalog": true,
+    "manual_value_tuning_forbidden": true,
+    "research_only_technology_not_selectable_as_near_term_core": true,
+    "fictional_systems_never_become_catalog_facts": true,
+    "source_status_can_remove_future_eligibility": true
+  },
+  "cores": {
+    "orion_esm_crew_transport": {
+      "name": "Orion + European Service Module crew transport lineage",
+      "organization": "NASA / ESA",
+      "core_class": "flight_proven_crew_transport",
+      "selection": {
+        "eligible_for_2027_reference_ship": true,
+        "domain": "crew_transport",
+        "selection_reason": "Flown crewed deep-space transport architecture and scheduled Artemis III foundation."
+      },
+      "status": {
+        "truth_type": "catalog_fact",
+        "value": "flight-proven with crew in 2026; planned for Artemis III in 2027",
+        "source_ids": ["nasa_orion_reference_2026", "nasa_artemis_iii_2027"]
+      },
+      "schedule": {
+        "reference_year": 2027,
+        "event": "Artemis III low-Earth-orbit integrated demonstration",
+        "source_ids": ["nasa_artemis_iii_2027"]
+      },
+      "factual_parameters": {
+        "crew_capacity": {
+          "value": 4,
+          "unit": "persons",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_orion_components_2026"]
+        },
+        "standalone_mission_duration_max": {
+          "value": 21,
+          "unit": "days",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_orion_components_2026"]
+        },
+        "solar_power_generation": {
+          "value": 11,
+          "unit": "kW",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_orion_components_2026"]
+        },
+        "engine_count_total": {
+          "value": 33,
+          "unit": "engines",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_orion_reference_2026"]
+        },
+        "solar_array_span": {
+          "value": 62,
+          "unit": "ft",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_orion_components_2026"]
+        },
+        "suited_emergency_life_support": {
+          "value": 144,
+          "unit": "hours",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_orion_reference_2026"]
+        }
+      },
+      "derived_parameters": {
+        "maximum_standalone_person_days": {
+          "value": 84,
+          "unit": "person-days",
+          "truth_type": "derived",
+          "source_ids": ["nasa_orion_components_2026"],
+          "formula_id": "product_of_catalog_values",
+          "inputs": ["crew_capacity", "standalone_mission_duration_max"]
+        }
+      },
+      "capability_ids": [
+        "chemical_orbital_maneuvering",
+        "solar_electric_power",
+        "closed_loop_life_support",
+        "radiation_and_micrometeoroid_protection",
+        "crew_command_and_control",
+        "rendezvous_and_docking"
+      ],
+      "unknown_parameters": [
+        "publicly pinned wet mass for this AXM reference snapshot",
+        "publicly pinned main-engine thrust and specific impulse in this registry",
+        "continuous artificial gravity",
+        "interstellar capability"
+      ],
+      "allowed_physics": [
+        "crew-duration and power accounting",
+        "thermal and communication models",
+        "orbital mechanics when trajectory state is provided"
+      ],
+      "blocked_physics": [
+        "acceleration and delta-v from unpublished thrust/mass values",
+        "faster-than-light travel, inertia cancellation, force fields, or unaccounted propulsion"
+      ]
+    },
+    "gateway_ppe_halo": {
+      "name": "Gateway PPE + HALO deep-space platform lineage",
+      "organization": "NASA with international partners",
+      "core_class": "planned_solar_electric_deep_space_platform",
+      "selection": {
+        "eligible_for_2027_reference_ship": true,
+        "domain": "deep_space_platform",
+        "selection_reason": "The most direct planned 2027 human deep-space platform and high-power solar-electric architecture."
+      },
+      "status": {
+        "truth_type": "catalog_fact",
+        "value": "integration and qualification; launch no earlier than 2027",
+        "source_ids": ["nasa_gateway_reference_2026", "nasa_gateway_capabilities_2026"]
+      },
+      "schedule": {
+        "not_before_year": 2027,
+        "event": "PPE and HALO launch together before Artemis IV",
+        "source_ids": ["nasa_gateway_reference_2026"]
+      },
+      "factual_parameters": {
+        "solar_power_generation": {
+          "value": 60,
+          "unit": "kW",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_gateway_reference_2026", "nasa_gateway_power_on_2026"]
+        },
+        "aeps_thruster_count": {
+          "value": 3,
+          "unit": "thrusters",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_gateway_power_on_2026"]
+        },
+        "aeps_thruster_rated_power_each": {
+          "value": 12,
+          "unit": "kW",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_gateway_power_on_2026", "nasa_aeps_qualification_2025"]
+        },
+        "bht6000_thruster_count": {
+          "value": 4,
+          "unit": "thrusters",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_gateway_power_on_2026"]
+        },
+        "bht6000_thruster_rated_power_each": {
+          "value": 6,
+          "unit": "kW",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_gateway_power_on_2026"]
+        },
+        "early_crew_capacity": {
+          "value": 4,
+          "unit": "persons",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_gateway_capabilities_2026"]
+        },
+        "early_crew_stay_min": {
+          "value": 30,
+          "unit": "days",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_gateway_capabilities_2026"]
+        },
+        "early_crew_stay_max": {
+          "value": 90,
+          "unit": "days",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_gateway_capabilities_2026"]
+        },
+        "uncrewed_remote_operation_max": {
+          "value": 3,
+          "unit": "years",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_gateway_capabilities_2026"]
+        },
+        "nrho_period": {
+          "value": 6.5,
+          "unit": "days",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_gateway_capabilities_2026"]
+        },
+        "nrho_closest_approach": {
+          "value": 1500,
+          "unit": "km",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_gateway_capabilities_2026"]
+        },
+        "nrho_farthest_distance": {
+          "value": 70000,
+          "unit": "km",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_gateway_capabilities_2026"]
+        }
+      },
+      "derived_parameters": {
+        "installed_electric_thruster_nameplate_power": {
+          "value": 60,
+          "unit": "kW",
+          "truth_type": "derived",
+          "source_ids": ["nasa_gateway_power_on_2026"],
+          "formula_id": "sum_nameplate_power",
+          "inputs": [
+            "3 x 12 kW AEPS",
+            "4 x 6 kW BHT-6000"
+          ],
+          "notes": "This is a nameplate sum, not a simultaneous operating-power claim."
+        },
+        "maximum_early_crew_person_days": {
+          "value": 360,
+          "unit": "person-days",
+          "truth_type": "derived",
+          "source_ids": ["nasa_gateway_capabilities_2026"],
+          "formula_id": "product_of_catalog_values",
+          "inputs": ["early_crew_capacity", "early_crew_stay_max"]
+        }
+      },
+      "capability_ids": [
+        "solar_electric_propulsion",
+        "high_power_solar_generation",
+        "autonomous_remote_operations",
+        "deep_space_habitation",
+        "high_rate_communications",
+        "radiation_monitoring",
+        "modular_docking_and_robotics"
+      ],
+      "unknown_parameters": [
+        "publicly pinned total wet mass for the integrated 2027 launch configuration in this registry",
+        "published thrust and specific impulse for every installed throttle point in this registry",
+        "available payload power after all platform loads",
+        "crew acceleration capability"
+      ],
+      "allowed_physics": [
+        "published power and duration accounting",
+        "low-thrust mission envelopes when thrust and mass are supplied from a reviewed future source",
+        "NRHO timing and communication delay"
+      ],
+      "blocked_physics": [
+        "high-thrust maneuvers inferred from electrical power alone",
+        "instantaneous acceleration, force fields, static artificial gravity, or faster-than-light travel"
+      ]
+    },
+    "spacex_starship_hls_pathfinder_2027": {
+      "name": "SpaceX Starship HLS pathfinder lineage",
+      "organization": "SpaceX / NASA",
+      "core_class": "planned_cryogenic_lander_pathfinder",
+      "selection": {
+        "eligible_for_2027_reference_ship": true,
+        "domain": "lander_pathfinder",
+        "selection_reason": "One of the commercial HLS test articles NASA plans to integrate with Orion in 2027."
+      },
+      "status": {
+        "truth_type": "catalog_fact",
+        "value": "development and 2027 low-Earth-orbit pathfinder planning",
+        "source_ids": ["nasa_artemis_iii_2027", "nasa_hls_2026"]
+      },
+      "schedule": {
+        "reference_year": 2027,
+        "event": "Potential Artemis III rendezvous and docking demonstration with Orion",
+        "source_ids": ["nasa_artemis_iii_2027"]
+      },
+      "factual_parameters": {
+        "approximate_height": {
+          "value": 50,
+          "unit": "m",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_hls_2026"]
+        },
+        "large_scale_lox_transfer_project_threshold": {
+          "value": 3,
+          "unit": "metric_tonnes_minimum",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_spacex_cfm_techport_2026"],
+          "notes": "Project objective was more than 3 metric tons; this registry does not infer a successful flight result."
+        }
+      },
+      "derived_parameters": {},
+      "capability_ids": [
+        "cryogenic_propulsion",
+        "in_space_cryogenic_storage_and_transfer",
+        "rendezvous_and_docking",
+        "human_landing_system_pathfinder",
+        "integrated_life_support_test"
+      ],
+      "unknown_parameters": [
+        "verified 2027 test-article wet mass",
+        "verified 2027 test-article thrust and specific impulse",
+        "verified 2027 propellant load",
+        "crew capacity and duration for the exact 2027 pathfinder",
+        "public confirmation of the large-scale transfer project flight outcome"
+      ],
+      "allowed_physics": [
+        "cryogenic boil-off and transfer scenarios using separately sourced parameters",
+        "docking geometry and communications",
+        "scenario sweeps across published future ranges"
+      ],
+      "blocked_physics": [
+        "invented acceleration, delta-v, payload, tank capacity, or transfer success",
+        "treating concept art or contract goals as flight performance"
+      ]
+    },
+    "blue_moon_mk2_pathfinder_2027": {
+      "name": "Blue Origin Blue Moon Mark 2 HLS pathfinder lineage",
+      "organization": "Blue Origin / NASA",
+      "core_class": "planned_cryogenic_lander_pathfinder",
+      "selection": {
+        "eligible_for_2027_reference_ship": true,
+        "domain": "lander_pathfinder",
+        "selection_reason": "One of the commercial HLS test articles NASA plans to integrate with Orion in 2027."
+      },
+      "status": {
+        "truth_type": "catalog_fact",
+        "value": "development and 2027 low-Earth-orbit pathfinder planning",
+        "source_ids": ["nasa_artemis_iii_2027", "nasa_hls_2026"]
+      },
+      "schedule": {
+        "reference_year": 2027,
+        "event": "Potential Artemis III rendezvous and docking demonstration with Orion",
+        "source_ids": ["nasa_artemis_iii_2027"]
+      },
+      "factual_parameters": {},
+      "derived_parameters": {},
+      "capability_ids": [
+        "cryogenic_propulsion",
+        "precision_landing_lineage",
+        "autonomous_guidance_navigation_control",
+        "rendezvous_and_docking",
+        "human_landing_system_pathfinder",
+        "integrated_life_support_test"
+      ],
+      "supporting_demonstrator_ids": ["blue_moon_mk1_endurance_2026"],
+      "unknown_parameters": [
+        "verified 2027 test-article dimensions and wet mass",
+        "verified 2027 thrust, specific impulse, and propellant inventory",
+        "crew capacity and duration for the exact 2027 pathfinder",
+        "final Artemis III test configuration"
+      ],
+      "allowed_physics": [
+        "docking, landing-sensor, and cryogenic-management scenarios when reviewed inputs exist",
+        "unknown-preserving mission architecture comparisons"
+      ],
+      "blocked_physics": [
+        "invented performance values",
+        "copying Mark 1 cargo-demonstrator values into Mark 2 without a source"
+      ]
+    }
+  },
+  "supporting_technologies": {
+    "blue_moon_mk1_endurance_2026": {
+      "name": "Blue Moon Mark 1 Endurance demonstrator",
+      "status": "uncrewed commercial demonstration",
+      "source_ids": ["nasa_blue_moon_mk1_2026"],
+      "demonstrates": [
+        "precision landing",
+        "cryogenic propulsion",
+        "autonomous guidance navigation and control"
+      ],
+      "not_a_transfer_rule": "Do not copy undisclosed Mark 1 values into Mark 2."
+    },
+    "loxsat_2026": {
+      "name": "LOXSAT liquid-oxygen management demonstration",
+      "status": "planned/active 2026",
+      "source_ids": ["nasa_loxsat_2026", "nasa_cfm_2026"],
+      "factual_parameters": {
+        "mission_duration": {
+          "value": 9,
+          "unit": "months",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_loxsat_2026"]
+        },
+        "technology_count": {
+          "value": 11,
+          "unit": "technologies",
+          "truth_type": "catalog_fact",
+          "source_ids": ["nasa_loxsat_2026"]
+        }
+      },
+      "demonstrates": [
+        "cryogenic storage",
+        "pressure control",
+        "fluid transfer"
+      ]
+    },
+    "aeps_qualification_2027": {
+      "name": "AEPS 12 kW Hall-thruster qualification",
+      "status": "qualification expected to complete in 2027",
+      "source_ids": ["nasa_aeps_qualification_2025"],
+      "demonstrates": [
+        "long-life high-power Hall propulsion",
+        "environmental and life qualification"
+      ]
+    },
+    "nuclear_thermal_research_envelope": {
+      "name": "Nuclear thermal propulsion research envelope",
+      "status": "research only; DRACO flight path closed",
+      "source_ids": ["nasa_ntp_2026", "nasa_draco_closeout_2026", "darpa_draco_complete"],
+      "eligible_for_2027_reference_ship": false,
+      "reason": "NASA and DARPA records show DRACO completed/closed, while broader NTP research continues without a selectable 2027 human-flight core.",
+      "allowed_use": "Long-range research comparison and future source ingestion only.",
+      "forbidden_use": "Do not present DRACO as an upcoming 2027 flight or operational human propulsion system."
+    }
+  }
+}

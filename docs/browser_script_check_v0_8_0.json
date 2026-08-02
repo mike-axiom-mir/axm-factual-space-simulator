@@ -1,0 +1,272 @@
+{
+  "schema": "axm.browser-script-check.v0.8",
+  "html_files": 33,
+  "script_blocks": 39,
+  "valid": true,
+  "results": [
+    {
+      "file": "output/persistent_atlas_demo/atlas.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/contact_horizon_demo/contact_horizon_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/contact_horizon_demo/campaign/adventure_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/contact_horizon_demo/campaign/system.html",
+      "block": 0,
+      "type": "application/json",
+      "valid": true
+    },
+    {
+      "file": "output/contact_horizon_demo/campaign/system.html",
+      "block": 1,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/contact_horizon_demo/campaign/atlas.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/contact_horizon_demo/campaign/command_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/persistent_atlas_demo/expedition_beta/adventure_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/persistent_atlas_demo/expedition_beta/system.html",
+      "block": 0,
+      "type": "application/json",
+      "valid": true
+    },
+    {
+      "file": "output/persistent_atlas_demo/expedition_beta/system.html",
+      "block": 1,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/persistent_atlas_demo/expedition_beta/atlas.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/persistent_atlas_demo/expedition_beta/command_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/persistent_atlas_demo/expedition_alpha/adventure_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/persistent_atlas_demo/expedition_alpha/system.html",
+      "block": 0,
+      "type": "application/json",
+      "valid": true
+    },
+    {
+      "file": "output/persistent_atlas_demo/expedition_alpha/system.html",
+      "block": 1,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/persistent_atlas_demo/expedition_alpha/atlas.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/persistent_atlas_demo/expedition_alpha/command_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/adventure_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/system.html",
+      "block": 0,
+      "type": "application/json",
+      "valid": true
+    },
+    {
+      "file": "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/system.html",
+      "block": 1,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/atlas.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/command_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/orion_esm_crew_transport/adventure_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/orion_esm_crew_transport/system.html",
+      "block": 0,
+      "type": "application/json",
+      "valid": true
+    },
+    {
+      "file": "output/technology_core_demo/orion_esm_crew_transport/system.html",
+      "block": 1,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/orion_esm_crew_transport/atlas.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/orion_esm_crew_transport/command_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/gateway_ppe_halo/adventure_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/gateway_ppe_halo/system.html",
+      "block": 0,
+      "type": "application/json",
+      "valid": true
+    },
+    {
+      "file": "output/technology_core_demo/gateway_ppe_halo/system.html",
+      "block": 1,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/gateway_ppe_halo/atlas.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/gateway_ppe_halo/command_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/adventure_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/system.html",
+      "block": 0,
+      "type": "application/json",
+      "valid": true
+    },
+    {
+      "file": "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/system.html",
+      "block": 1,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/atlas.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/command_console.html",
+      "block": 0,
+      "type": "text/javascript",
+      "valid": true,
+      "error": null
+    },
+    {
+      "file": "output/blind_ai_forge_demo/player_public/player_console.html",
+      "block": 0,
+      "type": "application/json",
+      "valid": true
+    },
+    {
+      "file": "output/blind_ai_forge_sample_run/player_public/player_console.html",
+      "block": 0,
+      "type": "application/json",
+      "valid": true
+    }
+  ]
+}

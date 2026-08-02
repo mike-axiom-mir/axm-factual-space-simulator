@@ -1,0 +1,25 @@
+{
+  "schema": "axm.expedition-atlas-policy.v1",
+  "policy": {
+    "catalog_facts_and_simulation_frontier_are_never_merged_without_labels": true,
+    "old_visits_are_append_only": true,
+    "new_catalog_releases_create_revisions_not_rewrites": true,
+    "new_visual_engines_create_reconstruction_packets_not_new_history": true,
+    "route_availability_is_not_route_feasibility": true,
+    "unknown_space_may_be_generated_but_must_remain_simulation_prior": true,
+    "crew_observations_may_refine_a_location_but_may_not_rewrite_the_pinned_catalog_snapshot": true,
+    "cross_release_identity_requires_provenance_and_spatial_matching": true
+  },
+  "knowledge_classes": {
+    "catalog_anchor": "A real astronomical location with source-pinned coordinates or system facts.",
+    "catalog_incomplete": "A real astronomical location whose published information is too incomplete for a full simulation.",
+    "procedural_frontier": "A generated location anchored in a declared coordinate frame but not claimed to exist.",
+    "expedition_observation": "A fact inside this simulated expedition, derived from replayable crew actions and instruments.",
+    "render_reconstruction": "A later visual interpretation of preserved state, not a new event or fact."
+  },
+  "revisit_contract": {
+    "authoritative_inputs": ["pinned catalog snapshot", "location creation packet", "event ledger", "crew observation ledger"],
+    "mutable_inputs": ["visual engine version", "asset engine version", "camera language", "interface skin", "audio engine"],
+    "forbidden": ["changing an old outcome", "adding facts because a later render looks convincing", "silently replacing source values", "claiming a navigable route is technologically feasible"]
+  }
+}

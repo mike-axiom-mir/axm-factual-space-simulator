@@ -1,0 +1,1191 @@
+{
+  "schema": "axm.source-registry.v1",
+  "registry_version": "0.14.0",
+  "policy": {
+    "append_only_snapshots": true,
+    "silent_overwrite_forbidden": true,
+    "campaigns_pin_source_hashes": true,
+    "catalog_fact_requires_source": true,
+    "derived_value_requires_formula": true,
+    "atlas_catalog_snapshots_are_revisioned": true,
+    "cross_release_identity_requires_receipts": true
+  },
+  "sources": {
+    "iau_2015_b3": {
+      "name": "IAU 2015 Resolution B3 nominal solar and planetary conversion constants",
+      "authority": "International Astronomical Union",
+      "url": "https://www.iau.org/common/Uploaded%20files/IAUGA2015-Resolution-B3-recommended-nominal-conversion.pdf",
+      "role": [
+        "constants",
+        "unit conversion"
+      ],
+      "adapter": "embedded constants",
+      "status": "active"
+    },
+    "nasa_exoplanet_archive_pscomppars": {
+      "name": "NASA Exoplanet Archive Planetary Systems Composite Parameters",
+      "authority": "NASA Exoplanet Science Institute / Caltech-IPAC",
+      "url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync",
+      "protocol": "IVOA TAP / ADQL",
+      "table": "pscomppars",
+      "role": [
+        "observed exoplanet parameters",
+        "host-star parameters",
+        "empirical population calibration"
+      ],
+      "adapter": "implemented",
+      "status": "network optional"
+    },
+    "nasa_exoplanet_archive_ps": {
+      "name": "NASA Exoplanet Archive Planetary Systems",
+      "authority": "NASA Exoplanet Science Institute / Caltech-IPAC",
+      "url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync",
+      "protocol": "IVOA TAP / ADQL",
+      "table": "ps",
+      "role": [
+        "self-consistent literature solutions",
+        "reference-level provenance"
+      ],
+      "adapter": "planned",
+      "status": "registered"
+    },
+    "jpl_sbdb": {
+      "name": "JPL Small-Body Database API",
+      "authority": "NASA Jet Propulsion Laboratory Solar System Dynamics",
+      "url": "https://ssd-api.jpl.nasa.gov/sbdb.api",
+      "role": [
+        "asteroid and comet orbital data",
+        "selected physical data"
+      ],
+      "adapter": "implemented",
+      "status": "network optional"
+    },
+    "jpl_horizons": {
+      "name": "JPL Horizons API",
+      "authority": "NASA Jet Propulsion Laboratory Solar System Dynamics",
+      "url": "https://ssd-api.jpl.nasa.gov/doc/horizons.html",
+      "role": [
+        "ephemerides",
+        "vectors",
+        "orbital elements",
+        "future visual trajectory validation"
+      ],
+      "adapter": "planned",
+      "status": "registered"
+    },
+    "naif_spice": {
+      "name": "NASA NAIF SPICE",
+      "authority": "NASA Jet Propulsion Laboratory Navigation and Ancillary Information Facility",
+      "url": "https://naif.jpl.nasa.gov/naif/",
+      "role": [
+        "precision geometry",
+        "mission and body orientation kernels",
+        "future real-system mode"
+      ],
+      "adapter": "planned optional advanced module",
+      "status": "registered"
+    },
+    "nasa_pds": {
+      "name": "NASA Planetary Data System",
+      "authority": "NASA",
+      "url": "https://pds.nasa.gov/",
+      "role": [
+        "mission data",
+        "planetary surfaces",
+        "atmospheres",
+        "small bodies",
+        "rings and plasma"
+      ],
+      "adapter": "planned node-specific importers",
+      "status": "registered"
+    },
+    "esa_gaia": {
+      "name": "ESA Gaia Archive",
+      "authority": "European Space Agency",
+      "url": "https://gea.esac.esa.int/archive/",
+      "protocol": "TAP+ / ADQL",
+      "role": [
+        "stellar positions",
+        "distances",
+        "motions",
+        "stellar population calibration"
+      ],
+      "adapter": "planned generic TAP adapter",
+      "status": "registered"
+    },
+    "ivoa_tap": {
+      "name": "IVOA Table Access Protocol 1.1",
+      "authority": "International Virtual Observatory Alliance",
+      "url": "https://ivoa.net/documents/TAP/",
+      "role": [
+        "interoperable astronomical catalog ingestion"
+      ],
+      "adapter": "architecture standard",
+      "status": "active"
+    },
+    "nasa_exoplanet_archive_pscp_calc": {
+      "name": "NASA Exoplanet Archive PSCompPars calculated-value methodology",
+      "authority": "NASA Exoplanet Science Institute / Caltech-IPAC",
+      "url": "https://exoplanetarchive.ipac.caltech.edu/docs/pscp_calc.html",
+      "role": [
+        "documented derived-value equations",
+        "calculation provenance"
+      ],
+      "adapter": "documentation reference",
+      "status": "active"
+    },
+    "axm_simulation_priors_v1": {
+      "name": "AXM configurable offline simulation priors v1",
+      "authority": "Mike - Axiom/Mir",
+      "url": "data/simulation_priors.json",
+      "role": [
+        "fictional population inputs",
+        "offline demo generation"
+      ],
+      "adapter": "local versioned JSON",
+      "status": "active",
+      "warning": "These values are simulation inputs, not observations or a claim about true population frequencies."
+    },
+    "kepler_third_law": {
+      "name": "Kepler's third-law two-body approximation",
+      "authority": "Classical celestial mechanics relation",
+      "url": "docs/RESEARCH_FOUNDATION.md",
+      "role": [
+        "orbital period derivation"
+      ],
+      "adapter": "formula registry",
+      "status": "active",
+      "warning": "Current implementation neglects planet mass and multi-body perturbations."
+    },
+    "kopparapu_2013_hz": {
+      "name": "Kopparapu et al. 2013 habitable-zone research reference",
+      "authority": "The Astrophysical Journal / NASA ADS record",
+      "url": "https://ui.adsabs.harvard.edu/abs/2013ApJ...765..131K/abstract",
+      "role": [
+        "future climate-based habitable-zone implementation",
+        "context for broad flux screening"
+      ],
+      "adapter": "research reference only",
+      "status": "registered",
+      "warning": "Version 0.1 does not implement the full model and makes no habitability claim."
+    },
+    "nasa_detector_noise_snr": {
+      "name": "NASA detector signal-to-noise and noise-component references",
+      "authority": "NASA Technical Reports Server / NASA detector documentation",
+      "url": "https://ntrs.nasa.gov/",
+      "role": [
+        "photon statistics",
+        "background noise",
+        "dark current",
+        "read noise",
+        "instrument measurement modeling"
+      ],
+      "adapter": "formula/reference implementation",
+      "status": "active",
+      "warning": "AXM uses a transparent representative detector, not a calibrated copy of a specific NASA instrument."
+    },
+    "nasa_spacecraft_thermal_control": {
+      "name": "NASA Small Spacecraft Technology thermal control guidance",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/smallsat-institute/sst-soa/thermal-control/",
+      "role": [
+        "absorptivity/emissivity concepts",
+        "radiative thermal balance",
+        "spacecraft thermal design context"
+      ],
+      "adapter": "formula/reference implementation",
+      "status": "active"
+    },
+    "nasa_space_communications_basics": {
+      "name": "NASA Basics of Space Flight — telecommunications",
+      "authority": "NASA Jet Propulsion Laboratory",
+      "url": "https://science.nasa.gov/learn/basics-of-space-flight/chapter10-1/",
+      "role": [
+        "one-way light time",
+        "round-trip delay",
+        "deep-space communications context"
+      ],
+      "adapter": "formula/reference implementation",
+      "status": "active"
+    },
+    "si_speed_of_light": {
+      "name": "Exact SI speed of light in vacuum",
+      "authority": "BIPM / SI",
+      "url": "https://www.bipm.org/en/measurement-units/si-defining-constants",
+      "role": [
+        "communication propagation constant"
+      ],
+      "adapter": "embedded exact constant",
+      "status": "active"
+    },
+    "nasa_space_radiation_environment": {
+      "name": "NASA space-radiation environment and spacecraft-effects references",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/directorates/stmd/space-tech-research-grants/space-radiation/",
+      "role": [
+        "radiation-environment context",
+        "electronics and operations risk framing",
+        "future particle-model integration"
+      ],
+      "adapter": "bounded AXM risk-index reference",
+      "status": "active",
+      "warning": "Current implementation is explicitly not a dose or medical model."
+    },
+    "classical_two_body_transfer": {
+      "name": "Two-body Hohmann transfer reference equations",
+      "authority": "Classical astrodynamics relation",
+      "url": "docs/PHYSICS_AND_CAUSAL_THREADS.md",
+      "role": [
+        "probe reference transfer time",
+        "delta-v context"
+      ],
+      "adapter": "formula registry",
+      "status": "active"
+    },
+    "drand_quicknet": {
+      "name": "drand quicknet public randomness chain",
+      "authority": "drand / League of Entropy",
+      "url": "https://docs.drand.love/developer/http-api/",
+      "role": [
+        "public deferred entropy",
+        "multiplayer-auditable randomness"
+      ],
+      "adapter": "strict packet normalization plus optional pinned BLS12-381 verifier",
+      "status": "network optional",
+      "warning": "AXM rejects packets as entropy unless the BLS signature is cryptographically verified."
+    },
+    "noble_curves_1_6_0": {
+      "name": "@noble/curves 1.6.0",
+      "authority": "Paul Miller / noble cryptography",
+      "url": "https://github.com/paulmillr/noble-curves/tree/1.6.0",
+      "role": [
+        "optional isolated BLS12-381 quicknet signature verification"
+      ],
+      "adapter": "pinned Node dependency in tools/drand_verifier",
+      "status": "optional install",
+      "warning": "External cryptography module; it is not part of AXM simulation or physics roots."
+    },
+    "nasa_orion_reference_2026": {
+      "name": "NASA Orion spacecraft reference guide",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/reference/orion-spacecraft/",
+      "role": [
+        "crew transport architecture",
+        "life support",
+        "navigation",
+        "communications",
+        "radiation protection"
+      ],
+      "adapter": "pinned factual technology core",
+      "status": "flight-proven 2026"
+    },
+    "nasa_orion_components_2026": {
+      "name": "NASA Orion spacecraft components",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/reference/spacecraft-components/",
+      "role": [
+        "crew capacity",
+        "mission duration",
+        "power",
+        "propulsion architecture",
+        "micrometeoroid protection"
+      ],
+      "adapter": "pinned factual technology core",
+      "status": "flight-proven 2026"
+    },
+    "nasa_gateway_reference_2026": {
+      "name": "NASA Gateway space station reference",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/reference/gateway-about/",
+      "role": [
+        "deep-space platform",
+        "solar electric power and propulsion",
+        "autonomous operations",
+        "radiation science"
+      ],
+      "adapter": "pinned factual technology core",
+      "status": "integration / no earlier than 2027"
+    },
+    "nasa_gateway_capabilities_2026": {
+      "name": "NASA Gateway capabilities",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/gateway-capabilities/",
+      "role": [
+        "crew accommodation",
+        "autonomous duration",
+        "NRHO geometry",
+        "power and propulsion"
+      ],
+      "adapter": "pinned factual technology core",
+      "status": "integration / no earlier than 2027"
+    },
+    "nasa_gateway_power_on_2026": {
+      "name": "NASA starts Gateway PPE power system",
+      "authority": "NASA Glenn Research Center",
+      "url": "https://www.nasa.gov/centers-and-facilities/glenn/nasa-starts-up-gateways-power-system-for-first-time/",
+      "role": [
+        "PPE installed thruster inventory",
+        "60 kW power system integration status"
+      ],
+      "adapter": "pinned factual technology core",
+      "status": "integration 2026"
+    },
+    "nasa_aeps_qualification_2025": {
+      "name": "AEPS 12 kW Hall current thruster program overview",
+      "authority": "NASA Technical Reports Server / NASA Glenn",
+      "url": "https://ntrs.nasa.gov/citations/20250008681",
+      "role": [
+        "12 kW Hall thruster",
+        "qualification schedule through 2027"
+      ],
+      "adapter": "technical source record",
+      "status": "qualification"
+    },
+    "nasa_artemis_iii_2027": {
+      "name": "NASA Artemis III 2027 integrated lander demonstration",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/directorates/esdmd/artemis-campaign-development-division/human-landing-system-program/how-nasas-artemis-iii-lander-test-will-pave-way-for-moon-landings/",
+      "role": [
+        "2027 human spaceflight plan",
+        "Orion-HLS rendezvous and docking",
+        "integrated operations"
+      ],
+      "adapter": "planning horizon registry",
+      "status": "planned 2027"
+    },
+    "nasa_hls_2026": {
+      "name": "NASA Human Landing System program",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/humans-in-space/human-landing-system/",
+      "role": [
+        "Starship HLS",
+        "Blue Moon HLS",
+        "lunar transport function"
+      ],
+      "adapter": "pinned factual technology core",
+      "status": "development"
+    },
+    "nasa_blue_moon_mk1_2026": {
+      "name": "Blue Moon Mark 1 thermal-vacuum test and demonstration objectives",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/missions/artemis/blue-origin-moon-lander-completes-testing-at-nasa-vacuum-chamber/",
+      "role": [
+        "cryogenic propulsion",
+        "precision landing",
+        "autonomous guidance navigation and control"
+      ],
+      "adapter": "supporting technology record",
+      "status": "demonstration 2026"
+    },
+    "nasa_cfm_2026": {
+      "name": "NASA Cryogenic Fluid Management program",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/space-technology-mission-directorate/tdm/cryogenic-fluid-management-cfm/",
+      "role": [
+        "long-duration cryogenic storage",
+        "transfer",
+        "measurement"
+      ],
+      "adapter": "supporting technology record",
+      "status": "active"
+    },
+    "nasa_loxsat_2026": {
+      "name": "NASA LOXSAT cryogenic fuel technology demonstration",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/directorates/stmd/tech-demo-missions-program/cryogenic-fluid-management-cfm/nasa-industry-prepare-cryogenic-fuel-technology-demo/",
+      "role": [
+        "in-orbit liquid oxygen storage and transfer",
+        "propellant depot enabling technology"
+      ],
+      "adapter": "supporting technology record",
+      "status": "planned/active 2026"
+    },
+    "nasa_spacex_cfm_techport_2026": {
+      "name": "NASA TechPort large-scale Starship cryogenic propellant management and transfer project",
+      "authority": "NASA TechPort",
+      "url": "https://techport.nasa.gov/projects/116764",
+      "role": [
+        "large-scale in-space liquid oxygen transfer",
+        "Starship HLS risk reduction"
+      ],
+      "adapter": "supporting technology record",
+      "status": "project closed 2026; flight result not inferred"
+    },
+    "nasa_ntp_2026": {
+      "name": "NASA Nuclear Thermal Propulsion research",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/directorates/stmd/game-changing-development-program/nuclear-thermal-propulsion-ntp/",
+      "role": [
+        "nuclear thermal research envelope",
+        "future Mars propulsion studies"
+      ],
+      "adapter": "research-only envelope",
+      "status": "research active"
+    },
+    "nasa_draco_closeout_2026": {
+      "name": "NASA TechPort DRACO project closeout",
+      "authority": "NASA TechPort",
+      "url": "https://techport.nasa.gov/projects/105665",
+      "role": [
+        "program status correction",
+        "near-term technology exclusion"
+      ],
+      "adapter": "status gate",
+      "status": "closed April 2025",
+      "warning": "DARPA issued a stop-work memo on April 2, 2025; AXM must not present DRACO as a 2027 flight plan."
+    },
+    "darpa_draco_complete": {
+      "name": "DARPA DRACO program reference",
+      "authority": "DARPA",
+      "url": "https://www.darpa.mil/research/programs/demonstration-rocket-for-agile-cislunar-operations",
+      "role": [
+        "nuclear thermal concept",
+        "completed-program confirmation"
+      ],
+      "adapter": "status gate",
+      "status": "program complete"
+    },
+    "nasa_astrobiology_program_overview_2026": {
+      "name": "NASA Astrobiology Program Overview",
+      "authority": "NASA Science",
+      "url": "https://science.nasa.gov/astrobiology/program-overview/",
+      "role": [
+        "origin evolution and distribution of life",
+        "astrobiology research scope"
+      ],
+      "adapter": "research reference",
+      "status": "active"
+    },
+    "nasa_life_detection_ladder_2026": {
+      "name": "Ladder of Life Detection",
+      "authority": "NASA Astrobiology Program",
+      "url": "https://science.nasa.gov/astrobiology/researchers/life-detection-resources/ladder-of-life-detection/",
+      "role": [
+        "evidence ladder",
+        "life-detection measurement criteria"
+      ],
+      "adapter": "epistemic framework",
+      "status": "active"
+    },
+    "nasa_cold_scale_resources_2026": {
+      "name": "Confidence of Life Detection resources",
+      "authority": "NASA Astrobiology Program",
+      "url": "https://science.nasa.gov/astrobiology/researchers/life-detection-resources/",
+      "role": [
+        "progressive confidence framework",
+        "communication against sensationalism"
+      ],
+      "adapter": "epistemic framework",
+      "status": "active"
+    },
+    "nasa_technosignatures_2023": {
+      "name": "Searching for Signs of Intelligent Life: Technosignatures",
+      "authority": "NASA Science",
+      "url": "https://science.nasa.gov/universe/search-for-life/searching-for-signs-of-intelligent-life-technosignatures/",
+      "role": [
+        "technosignature classes",
+        "search targets"
+      ],
+      "adapter": "research reference",
+      "status": "active"
+    },
+    "nasa_search_for_life_fermi_drake_2024": {
+      "name": "Are We Alone? Search for Life overview",
+      "authority": "NASA Science",
+      "url": "https://science.nasa.gov/exoplanets/search-for-life/",
+      "role": [
+        "Fermi paradox framing",
+        "Drake equation uncertainty",
+        "current non-detection context"
+      ],
+      "adapter": "research reference",
+      "status": "active"
+    },
+    "national_academies_astrobiology_strategy_2019": {
+      "name": "An Astrobiology Strategy for the Search for Life in the Universe",
+      "authority": "National Academies of Sciences, Engineering, and Medicine",
+      "url": "https://nap.nationalacademies.org/catalog/25252/an-astrobiology-strategy-for-the-search-for-life-in-the-universe",
+      "role": [
+        "consensus astrobiology strategy",
+        "biosignature interpretation"
+      ],
+      "adapter": "consensus reference",
+      "status": "active"
+    },
+    "seti_detection_protocols_2026": {
+      "name": "Protocols for an ETI Signal Detection",
+      "authority": "International Academy of Astronautics SETI Committee / SETI Institute",
+      "url": "https://www.seti.org/research/seti-101/protocols-for-an-eti-signal-detection/",
+      "role": [
+        "independent confirmation",
+        "responsible disclosure",
+        "detection protocol"
+      ],
+      "adapter": "governance reference",
+      "status": "active"
+    },
+    "wright_seti_strategies_2021": {
+      "name": "Strategies and Advice for the Search for Extraterrestrial Intelligence",
+      "authority": "Jason T. Wright / arXiv preprint",
+      "url": "https://arxiv.org/abs/2107.07283",
+      "role": [
+        "SETI search philosophy",
+        "upper limits",
+        "model-based and anomaly-based searches"
+      ],
+      "adapter": "theory reference",
+      "status": "active"
+    },
+    "westby_conselice_copernican_2020": {
+      "name": "Astrobiological Copernican Weak and Strong Limits",
+      "authority": "Westby and Conselice / Astrophysical Journal preprint",
+      "url": "https://arxiv.org/abs/2004.03968",
+      "role": [
+        "assumption-sensitive civilization prevalence model"
+      ],
+      "adapter": "theory reference",
+      "status": "active"
+    },
+    "wandel_contact_era_2022": {
+      "name": "Fermi Paradox revisited: Technosignatures and the Contact Era",
+      "authority": "Amri Wandel / arXiv preprint",
+      "url": "https://arxiv.org/abs/2211.16505",
+      "role": [
+        "contact timing model",
+        "radiosphere and latency"
+      ],
+      "adapter": "theory reference",
+      "status": "active"
+    },
+    "hanson_loud_aliens_2021": {
+      "name": "If Loud Aliens Explain Human Earliness, Quiet Aliens Are Also Rare",
+      "authority": "Hanson et al. / arXiv preprint",
+      "url": "https://arxiv.org/abs/2102.01522",
+      "role": [
+        "expansion visibility model",
+        "observer-selection thought model"
+      ],
+      "adapter": "speculative quantitative model",
+      "status": "active with strong assumptions"
+    },
+    "forgan_zoo_constraints_2011": {
+      "name": "Spatio-temporal Constraints on the Zoo Hypothesis",
+      "authority": "Duncan H. Forgan / arXiv preprint",
+      "url": "https://arxiv.org/abs/1105.2497",
+      "role": [
+        "causal constraints on coordinated non-interference hypotheses"
+      ],
+      "adapter": "soft speculative hypothesis",
+      "status": "active with strong assumptions"
+    },
+    "simbad_cds_gaia_dr3": {
+      "name": "SIMBAD astronomical database records using Gaia DR3 astrometry",
+      "authority": "Centre de Données astronomiques de Strasbourg (CDS) / Gaia DPAC provenance",
+      "url": "https://simbad.cds.unistra.fr/simbad/",
+      "role": [
+        "object identifiers",
+        "ICRS coordinates",
+        "parallax",
+        "proper motion",
+        "cross-catalogue names"
+      ],
+      "adapter": "pinned starter landmarks plus planned TAP/name resolver",
+      "status": "active starter snapshot",
+      "warning": "SIMBAD aggregates literature and catalogue measurements. Each imported field must preserve its cited catalogue or bibliography provenance."
+    },
+    "esa_gaia_dr3_astrometry": {
+      "name": "ESA Gaia Data Release 3 astrometry",
+      "authority": "European Space Agency / Gaia DPAC",
+      "url": "https://www.cosmos.esa.int/web/gaia/dr3",
+      "role": [
+        "ICRS source positions at epoch 2016.0",
+        "parallax",
+        "proper motion",
+        "radial velocity where available"
+      ],
+      "adapter": "planned TAP snapshot importer",
+      "status": "registered",
+      "warning": "Gaia source_id is release-scoped and is not guaranteed to identify the same source across releases."
+    },
+    "nasa_exoplanet_catalog_proxima_b": {
+      "name": "NASA Science Exoplanet Catalog — Proxima Centauri b",
+      "authority": "NASA Science / NASA Exoplanet Archive data",
+      "url": "https://science.nasa.gov/exoplanet-catalog/proxima-centauri-b/",
+      "role": [
+        "starter landmark planet facts"
+      ],
+      "adapter": "pinned starter record",
+      "status": "active"
+    },
+    "nasa_exoplanet_catalog_trappist_1_c": {
+      "name": "NASA Science Exoplanet Catalog — TRAPPIST-1 c",
+      "authority": "NASA Science / NASA Exoplanet Archive data",
+      "url": "https://science.nasa.gov/exoplanet-catalog/trappist-1-c/",
+      "role": [
+        "starter landmark planet facts"
+      ],
+      "adapter": "pinned starter record",
+      "status": "active"
+    },
+    "nasa_exoplanet_catalog_trappist_1_f": {
+      "name": "NASA Science Exoplanet Catalog — TRAPPIST-1 f",
+      "authority": "NASA Science / NASA Exoplanet Archive data",
+      "url": "https://science.nasa.gov/exoplanet-catalog/trappist-1-f/",
+      "role": [
+        "starter landmark planet facts"
+      ],
+      "adapter": "pinned starter record",
+      "status": "active"
+    },
+    "nasa_exoplanet_catalog_51_pegasi_b": {
+      "name": "NASA Science Exoplanet Catalog — 51 Pegasi b",
+      "authority": "NASA Science / NASA Exoplanet Archive data",
+      "url": "https://science.nasa.gov/exoplanet-catalog/51-pegasi-b/",
+      "role": [
+        "starter landmark planet facts"
+      ],
+      "adapter": "pinned starter record",
+      "status": "active"
+    },
+    "nasa_agnostic_biosignatures_2019": {
+      "name": "Agnostic Biosignatures and Life as We Don't Know It",
+      "authority": "NASA Astrobiology Program",
+      "url": "https://astrobiology.nasa.gov/news/agnostic-biosignatures-and-the-path-to-life-as-we-dont-know-it/",
+      "role": [
+        "agnostic biosignatures",
+        "chemical complexity",
+        "elemental accumulation",
+        "energy transfer"
+      ],
+      "adapter": "epistemic and measurement framework",
+      "status": "active research direction"
+    },
+    "nasa_life_as_we_dont_know_it_2025": {
+      "name": "Life as We Don't Know It",
+      "authority": "NASA Technical Reports Server",
+      "url": "https://ntrs.nasa.gov/citations/20250000844",
+      "role": [
+        "alternative life architectures",
+        "shadow biosphere",
+        "agnostic detection"
+      ],
+      "adapter": "research reference",
+      "status": "published chapter"
+    },
+    "nasa_chemical_complexity_2021": {
+      "name": "Chemical Complexity as a Sign of Life as We Don't Know It",
+      "authority": "NASA Astrobiology Program",
+      "url": "https://astrobiology.nasa.gov/news/chemical-complexity-as-a-sign-of-life-as-we-dont-know-it/",
+      "role": [
+        "molecular complexity",
+        "mass spectrometry",
+        "agnostic biosignature"
+      ],
+      "adapter": "measurement reference",
+      "status": "active research"
+    },
+    "nasa_titan_protocells_2025": {
+      "name": "NASA Research Shows Path Toward Protocells on Titan",
+      "authority": "NASA Science",
+      "url": "https://science.nasa.gov/science-research/planetary-science/astrobiology/path-toward-protocells-on-titan/",
+      "role": [
+        "hydrocarbon vesicles",
+        "Titan prebiotic chemistry"
+      ],
+      "adapter": "environmental possibility reference",
+      "status": "research result"
+    },
+    "nasa_titan_membranes_2017": {
+      "name": "NASA Finds Titan Chemical That Could Form Membranes",
+      "authority": "NASA Astrobiology Program",
+      "url": "https://astrobiology.nasa.gov/news/nasa-finds-moon-of-saturn-has-chemical-that-could-form-membranes/",
+      "role": [
+        "acrylonitrile",
+        "azotosome hypothesis",
+        "hydrocarbon compartments"
+      ],
+      "adapter": "research reference",
+      "status": "hypothesis supported by observations and modeling"
+    },
+    "nasa_life_in_lab_2023": {
+      "name": "Life in the Lab",
+      "authority": "NASA Science",
+      "url": "https://science.nasa.gov/universe/search-for-life/life-in-the-lab/",
+      "role": [
+        "synthetic life research",
+        "Titan chemistry",
+        "self-templating crystals"
+      ],
+      "adapter": "research overview",
+      "status": "active"
+    },
+    "nasa_ask_astrobiologist_2026": {
+      "name": "Ask an Astrobiologist: Life as We Don't Know It",
+      "authority": "NASA Astrobiology Program",
+      "url": "https://astrobiology.nasa.gov/ask-an-astrobiologist/",
+      "role": [
+        "anaerobic life",
+        "alternative solvents",
+        "non-carbon possibilities",
+        "search limitations"
+      ],
+      "adapter": "scope reference",
+      "status": "active"
+    },
+    "astrobiology_primer_alt_solvents_2016": {
+      "name": "Astrobiology Primer v2.0 — Alternative Solvents",
+      "authority": "Peer-reviewed open-access review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5008114/",
+      "role": [
+        "ammonia",
+        "methane",
+        "ethane",
+        "sulfuric acid",
+        "alternative solvents"
+      ],
+      "adapter": "review reference",
+      "status": "peer reviewed"
+    },
+    "sulfuric_acid_solvent_review_2021": {
+      "name": "Evaluating Sulfuric Acid as a Solvent for Life",
+      "authority": "Peer-reviewed open-access research",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8145300/",
+      "role": [
+        "concentrated sulfuric acid chemistry",
+        "Venus cloud biochemistry"
+      ],
+      "adapter": "quantitative alternative-solvent analysis",
+      "status": "peer reviewed"
+    },
+    "national_academies_biosignature_evidence_2022": {
+      "name": "Independent Review of Biosignature Standards of Evidence",
+      "authority": "National Academies of Sciences, Engineering, and Medicine",
+      "url": "https://www.nationalacademies.org/read/26621/chapter/5",
+      "role": [
+        "progressive verification",
+        "life-detection communication",
+        "confidence framework"
+      ],
+      "adapter": "epistemic framework",
+      "status": "published report"
+    },
+    "nasa_hubble_ai_anomalies_2026": {
+      "name": "AI Unlocks Hundreds of Cosmic Anomalies in Hubble Archive",
+      "authority": "NASA Science",
+      "url": "https://science.nasa.gov/missions/hubble/ai-unlocks-hundreds-of-cosmic-anomalies-in-hubble-archive/",
+      "role": [
+        "AI anomaly search",
+        "rare morphology",
+        "archive mining",
+        "false novelty control"
+      ],
+      "adapter": "anomaly-search precedent",
+      "status": "published 2026"
+    },
+    "nasa_hubble_tension_2026": {
+      "name": "Hubble Constant and Tension",
+      "authority": "NASA Science",
+      "url": "https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-constant-and-tension/",
+      "role": [
+        "Hubble tension",
+        "distance ladder",
+        "CMB comparison",
+        "new physics candidates"
+      ],
+      "adapter": "cosmology tension reference",
+      "status": "active unresolved question"
+    },
+    "nasa_dark_universe_2024": {
+      "name": "Hubble Focus: Dark Universe",
+      "authority": "NASA Science",
+      "url": "https://science.nasa.gov/mission/hubble/multimedia/e-books/hubble-focus-dark-universe/",
+      "role": [
+        "dark matter",
+        "dark energy",
+        "lensing",
+        "structure formation"
+      ],
+      "adapter": "cosmology research overview",
+      "status": "active unresolved questions"
+    },
+    "nasa_dusty_plasma_1999": {
+      "name": "Condensed Plasmas under Microgravity",
+      "authority": "NASA Technical Reports Server",
+      "url": "https://ntrs.nasa.gov/citations/20010061716",
+      "role": [
+        "self-organized dusty plasma",
+        "plasma crystals",
+        "vortices",
+        "physical false positives"
+      ],
+      "adapter": "complex-plasma control",
+      "status": "peer-reviewed experiment record"
+    },
+    "aps_complex_plasma_review_2009": {
+      "name": "Complex Plasmas: An Interdisciplinary Research Field",
+      "authority": "Reviews of Modern Physics",
+      "url": "https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.81.1353",
+      "role": [
+        "complex plasma physics",
+        "self-organization",
+        "plasma state of soft matter"
+      ],
+      "adapter": "physics review and false-positive control",
+      "status": "peer reviewed"
+    },
+    "nature_molecular_diversity_2026": {
+      "name": "Molecular diversity as a biosignature",
+      "authority": "Nature Astronomy",
+      "url": "https://www.nature.com/articles/s41550-026-02864-z",
+      "role": [
+        "molecular assemblage diversity",
+        "agnostic biosignature",
+        "statistical organization"
+      ],
+      "adapter": "research reference",
+      "status": "peer reviewed 2026"
+    },
+    "nature_protobiosignatures_2026": {
+      "name": "Protobiosignatures in the framework of early life detection",
+      "authority": "Nature Astronomy",
+      "url": "https://www.nature.com/articles/s41550-026-02867-w",
+      "role": [
+        "prebiotic-to-biotic transition",
+        "abiotic biomorph controls",
+        "protobiosignatures"
+      ],
+      "adapter": "research reference",
+      "status": "peer reviewed 2026"
+    },
+    "nasa_onboard_systems_2026": {
+      "name": "NASA Basics of Space Flight — Onboard Systems",
+      "authority": "NASA / JPL",
+      "url": "https://science.nasa.gov/learn/basics-of-space-flight/chapter11-1/",
+      "role": [
+        "spacecraft subsystem decomposition",
+        "structure",
+        "data handling",
+        "attitude control",
+        "telecommunications",
+        "power",
+        "propulsion",
+        "thermal control"
+      ],
+      "adapter": "ship blueprint architecture reference",
+      "status": "active"
+    },
+    "nasa_std_3001_vol1_2023": {
+      "name": "NASA Spaceflight Human-System Standard Volume 1 — Crew Health",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/reference/nasa-std-3001v1/",
+      "role": [
+        "crew health",
+        "medical operations",
+        "crew training",
+        "human performance"
+      ],
+      "adapter": "crew qualification architecture reference",
+      "status": "active"
+    },
+    "nasa_std_3001_vol2_2025": {
+      "name": "NASA Spaceflight Human-System Standard Volume 2",
+      "authority": "NASA",
+      "url": "https://standards.nasa.gov/standard/NASA/NASA-STD-3001_VOL_2",
+      "role": [
+        "human-system integration",
+        "habitability",
+        "environmental health",
+        "crew interfaces",
+        "alerts"
+      ],
+      "adapter": "human-rated architecture reference",
+      "status": "active"
+    },
+    "nasa_hidh_2026": {
+      "name": "NASA Human Integration Design Handbook",
+      "authority": "NASA OCHMO",
+      "url": "https://www.nasa.gov/organizations/ochmo/human-integration-design-handbook/",
+      "role": [
+        "human-spaceflight lessons",
+        "human-system design rationale",
+        "crew interfaces"
+      ],
+      "adapter": "human-system design reference",
+      "status": "active"
+    },
+    "nasa_crew_operations_training_2026": {
+      "name": "NASA JSC Crew and Operations Training",
+      "authority": "NASA JSC",
+      "url": "https://www.nasa.gov/reference/jsc-crew-operations-training/",
+      "role": [
+        "training needs analysis",
+        "systems knowledge",
+        "integrated simulation",
+        "certification"
+      ],
+      "adapter": "crew qualification framework",
+      "status": "active"
+    },
+    "nasa_astronaut_training_2025": {
+      "name": "NASA 2025 Astronaut Candidate Training Overview",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/centers-and-facilities/johnson/nasas-2025-astronaut-candidates-shaping-artemis-exploration/",
+      "role": [
+        "spacecraft systems",
+        "spacewalk training",
+        "robotics",
+        "geology",
+        "survival",
+        "team operations"
+      ],
+      "adapter": "education-domain reference",
+      "status": "active"
+    },
+    "nasa_eclss_2025": {
+      "name": "NASA Environmental Control and Life Support Systems",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/reference/environmental-control-and-life-support-systems-eclss/",
+      "role": [
+        "water recovery",
+        "air revitalization",
+        "oxygen generation",
+        "carbon dioxide removal",
+        "trace contaminant control"
+      ],
+      "adapter": "life-support functional architecture",
+      "status": "active"
+    },
+    "nasa_water_recovery_98pct_2023": {
+      "name": "NASA ISS Water Recovery Milestone",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/missions/station/iss-research/nasa-achieves-water-recovery-milestone-on-international-space-station/",
+      "role": [
+        "water-recovery reference",
+        "life-support closure context"
+      ],
+      "adapter": "reference fact only",
+      "status": "active",
+      "warning": "Station demonstration is not automatically guaranteed performance for the AXM ship."
+    },
+    "nasa_thermal_management_2026": {
+      "name": "NASA JSC Thermal Management Subsystems",
+      "authority": "NASA JSC",
+      "url": "https://www.nasa.gov/reference/jsc-thermal-management-subsystems/",
+      "role": [
+        "active thermal control",
+        "passive thermal control",
+        "integrated thermal analysis",
+        "testing"
+      ],
+      "adapter": "thermal architecture",
+      "status": "active"
+    },
+    "nasa_radiation_2026": {
+      "name": "NASA JSC Radiation Monitoring, Protection, and Exposure Analysis",
+      "authority": "NASA JSC",
+      "url": "https://www.nasa.gov/reference/jsc-radiation/",
+      "role": [
+        "radiation prediction",
+        "monitoring",
+        "crew exposure minimization",
+        "alerts"
+      ],
+      "adapter": "bounded radiation operations model",
+      "status": "active",
+      "warning": "AXM is not a medical dose model."
+    },
+    "nasa_mmod_2026": {
+      "name": "NASA JSC Orbital Debris and MMOD",
+      "authority": "NASA JSC",
+      "url": "https://www.nasa.gov/reference/jsc-orbital-debris/",
+      "role": [
+        "debris environment",
+        "risk estimation",
+        "collision avoidance",
+        "shielding"
+      ],
+      "adapter": "hazard architecture",
+      "status": "active"
+    },
+    "nasa_dsn_2025": {
+      "name": "NASA Deep Space Network",
+      "authority": "NASA / JPL",
+      "url": "https://www.nasa.gov/directorates/somd/space-communications-navigation-program/what-is-the-deep-space-network/",
+      "role": [
+        "spacecraft command",
+        "tracking",
+        "telemetry",
+        "deep-space communications"
+      ],
+      "adapter": "communications architecture",
+      "status": "active"
+    },
+    "nasa_gnc_2026": {
+      "name": "NASA JSC Guidance, Navigation, and Control Subsystems",
+      "authority": "NASA JSC",
+      "url": "https://www.nasa.gov/reference/jsc-guidance-navigation-control-subsystems/",
+      "role": [
+        "trajectory design",
+        "orbit determination",
+        "attitude determination",
+        "rendezvous",
+        "docking",
+        "autonomous navigation"
+      ],
+      "adapter": "GNC architecture",
+      "status": "active"
+    },
+    "nasa_fault_detection_response_2026": {
+      "name": "NASA Software Engineering Handbook — Fault Detection and Response",
+      "authority": "NASA",
+      "url": "https://swehb.nasa.gov/spaces/SWEHBVC/pages/85426326/9.07%2BFault%2BDetection%2Band%2BResponse",
+      "role": [
+        "credible single faults",
+        "time-critical response",
+        "safe state",
+        "autonomous recovery"
+      ],
+      "adapter": "fault-management reference",
+      "status": "active"
+    },
+    "nasa_fmeca_2024": {
+      "name": "GSFC Guideline for Failure Modes and Effects Analysis and Risk Assessment",
+      "authority": "NASA GSFC",
+      "url": "https://standards.nasa.gov/node/12367",
+      "role": [
+        "living FMECA",
+        "failure modes",
+        "effects",
+        "criticality",
+        "risk updates"
+      ],
+      "adapter": "failure-mode registry reference",
+      "status": "active"
+    },
+    "nasa_rm_standard_2017": {
+      "name": "NASA Reliability and Maintainability Standard",
+      "authority": "NASA",
+      "url": "https://standards.nasa.gov/node/279",
+      "role": [
+        "reliability",
+        "maintainability",
+        "mission success"
+      ],
+      "adapter": "maintainability reference",
+      "status": "active"
+    },
+    "nasa_systems_engineering_handbook_2023": {
+      "name": "NASA Systems Engineering Handbook",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/reference/systems-engineering-handbook/",
+      "role": [
+        "system decomposition",
+        "interfaces",
+        "requirements",
+        "verification",
+        "MBSE"
+      ],
+      "adapter": "blueprint organization reference",
+      "status": "active"
+    },
+    "nasa_deep_space_standards_2026": {
+      "name": "NASA International Deep Space Standards",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/international-deep-space-standards/",
+      "role": [
+        "communications interfaces",
+        "power interfaces",
+        "software interfaces",
+        "docking interoperability"
+      ],
+      "adapter": "interface compatibility reference",
+      "status": "active"
+    },
+    "nasa_artemis_control_roles": {
+      "name": "NASA Artemis I Mission Control Roles",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/missions/artemis/orion/artemis-i-mission-control-at-a-glance/",
+      "role": [
+        "GNC role",
+        "communications role",
+        "mechanical and power role",
+        "ECLSS and emergency role",
+        "propulsion role",
+        "timeline operations"
+      ],
+      "adapter": "crew role reference",
+      "status": "active"
+    },
+    "nasa_crew_interfaces_2026": {
+      "name": "NASA-STD-3001 Volume 2 — Crew Interfaces",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/reference/10-0-crew-interfaces-vol-2/",
+      "role": [
+        "crew-interface consistency",
+        "information design",
+        "alerts",
+        "displays and controls",
+        "automation and robotics mode awareness"
+      ],
+      "adapter": "crew-station display and control architecture",
+      "status": "active"
+    },
+    "nasa_display_standard_2026": {
+      "name": "NASA-STD-3001 Volume 2 Appendix F — Display Standard",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/reference/appendix-f-vol-2/",
+      "role": [
+        "telemetry state and mode indication",
+        "operational-limit indication",
+        "stale-data indication",
+        "alert priorities",
+        "task-focused information density"
+      ],
+      "adapter": "telemetry-card, quality, threshold and alert presentation rules",
+      "status": "active"
+    },
+    "nasa_orion_crew_systems_2026": {
+      "name": "NASA Orion Crew Systems — Display Units",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/reference/crew-systems/",
+      "role": [
+        "commander display",
+        "pilot display",
+        "shared central display",
+        "seat-accessible controls"
+      ],
+      "adapter": "functional inspiration for command-duet and shared center display",
+      "status": "active",
+      "warning": "AXM does not claim to reproduce Orion hardware."
+    },
+    "nasa_human_in_loop_2026": {
+      "name": "NASA-STD-3001 Volume 2 — Systems Engineering Processes",
+      "authority": "NASA",
+      "url": "https://www.nasa.gov/reference/3-0-systems-engineering-processes-vol-2/",
+      "role": [
+        "iterative human-in-the-loop evaluation",
+        "usability",
+        "operability",
+        "workload",
+        "situation awareness",
+        "display commonality"
+      ],
+      "adapter": "station-view validation and training feedback loop",
+      "status": "active"
+    },
+    "nasa_spacecraft_subsystems_2026": {
+      "name": "NASA JSC Spacecraft Subsystems",
+      "authority": "NASA Johnson Space Center",
+      "url": "https://www.nasa.gov/johnson/frontdoor/capabilities/spacecraft-subsystems/",
+      "role": [
+        "subsystem engineering",
+        "command and data handling",
+        "GNC",
+        "materials and structures",
+        "component testing"
+      ],
+      "adapter": "system-to-station metric ownership reference",
+      "status": "active"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "axm.timeline-start-registry.v1",
+  "registry_version": 1,
+  "default_timeline_start_id": "axm.timeline.near-future-factual.v1",
+  "timeline_starts": [
+    {
+      "id": "axm.timeline.near-future-factual.v1",
+      "version": 1,
+      "status": "CANON_FIRST_START",
+      "display_name": "Near-Future Factual Expedition",
+      "description": "Begins from source-pinned human space technology and expands only through derived, simulated, or theoretical layers with explicit truth labels.",
+      "allowed_bridge_archetypes": [
+        "axm.bridge.frontier-survey.v1"
+      ],
+      "technology_policy": "source_pinned_and_unknowns_preserved",
+      "universe_policy": "catalog_space_plus_labeled_frontier_space",
+      "contact_policy": "long_horizon_evidence_gated"
+    }
+  ]
+}

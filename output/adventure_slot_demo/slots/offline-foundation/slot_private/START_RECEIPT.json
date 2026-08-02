@@ -1,0 +1,13 @@
+{
+  "schema": "axm.adventure-slot-private-start-receipt.v1",
+  "slot_id": "offline-foundation",
+  "world_seed": "MIKE-AXIOM-MIR-SLOT-WORLD-OFFLINE",
+  "forge_seed": "MIKE-AXIOM-MIR-SLOT-FORGE-OFFLINE",
+  "forge_mode": "offline_base",
+  "proposal": null,
+  "system_id": "b82d201dd2bb3a5c",
+  "commitment": "fc342da7c82db606da411b7bf5048e5c3d99db0dc257dd121a98e475cb03c2e3",
+  "ship_start_pin_receipt": "b3e8513c0b55235f9bcb23da5fd250dc8b9544c75fdf2dff9dfb5305a3be2c57",
+  "created_at": "2026-08-02T05:29:59.842501+00:00",
+  "warning": "Keep slot_private and session/forge_private away from a blind explorer."
+}

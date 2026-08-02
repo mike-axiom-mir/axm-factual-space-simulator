@@ -1,0 +1,12 @@
+{
+  "schema": "axm.rooted-crew-stress.v1",
+  "systems": 320,
+  "shortcut_cases": 500,
+  "recommended_categories": {
+    "patient_observation": 313,
+    "move_on": 7
+  },
+  "root_commitment_sha256": "01e6c42e4cfc6d8b7ea7999ddf9c29282d6d19722ef934d7c2e9ca095911a8f5",
+  "failures": [],
+  "valid": true
+}

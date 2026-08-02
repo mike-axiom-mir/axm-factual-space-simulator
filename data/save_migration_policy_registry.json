@@ -1,0 +1,54 @@
+{
+  "schema": "axm.save-migration-policy-registry.v1",
+  "registry_version": "0.15.0",
+  "default_policy_id": "axm.migration.no-silent-rewrite.v1",
+  "policies": [
+    {
+      "id": "axm.migration.no-silent-rewrite.v1",
+      "version": 1,
+      "status": "CANON_IMMUTABLE_MAINLINE",
+      "purpose": "Permit additive compatibility and visual reconstruction without rewriting historical expedition truth.",
+      "pinned_fields": [
+        "bridge_archetype_id",
+        "bridge_archetype_version",
+        "timeline_start_id",
+        "timeline_start_version",
+        "crew_start_id",
+        "crew_start_version",
+        "interior_archetype_id",
+        "interior_archetype_version",
+        "ship_blueprint_id",
+        "ship_blueprint_version",
+        "ship_blueprint_commitment",
+        "semantic_anchor_ids",
+        "start_package_receipt",
+        "pin_receipt"
+      ],
+      "allowed_migration_types": {
+        "visual_reconstruction": "A newer renderer may reconstruct old semantics while preserving the original pin and historical state.",
+        "additive_registry_adapter": "A new registry may understand an old ID without changing the old record.",
+        "derived_index_rebuild": "Indexes and caches may be regenerated from unchanged authoritative records.",
+        "format_wrapper": "A non-lossy wrapper may expose old data to a newer runtime while retaining the original bytes or canonical record.",
+        "explicit_fork": "A user may create a new separately identified branch; it may not masquerade as continuation of the original save."
+      },
+      "forbidden_changes": [
+        "silent root replacement or reordering",
+        "hidden scenario rewrite after commitment",
+        "master seed change",
+        "event, visit, fault, encounter, competency or principle ledger rewrite",
+        "unknown value promoted to fact",
+        "unvalidated capability inserted into a historical item or ship",
+        "visual reconstruction changing room or bridge semantics",
+        "new crew authority inserted retroactively",
+        "claim ceiling raised without evidence"
+      ],
+      "rules": [
+        "Existing saves remain readable through adapters before destructive conversion is considered.",
+        "Original records are retained or hash-pinned before any derived representation is produced.",
+        "A migration must state what changes, what does not change, and how rollback works.",
+        "Failure to prove non-loss results in HOLD, not automatic conversion.",
+        "A changed root set, timeline start, hidden seed, or ship blueprint commitment creates a new branch."
+      ]
+    }
+  ]
+}

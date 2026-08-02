@@ -1,0 +1,37 @@
+{
+  "schema": "axm.bridge-render-profile-registry.v1",
+  "registry_version": 1,
+  "profiles": [
+    {
+      "id": "axm.render.paint-foundation.v1",
+      "version": 1,
+      "display_name": "Paint Foundation",
+      "fidelity_rank": 1,
+      "allowed_archetypes": [
+        "*"
+      ],
+      "changes_semantics": false
+    },
+    {
+      "id": "axm.render.vector-bridge.v1",
+      "version": 1,
+      "display_name": "Vector Bridge",
+      "fidelity_rank": 2,
+      "allowed_archetypes": [
+        "*"
+      ],
+      "changes_semantics": false
+    },
+    {
+      "id": "axm.render.holodeck-reconstruction.v1",
+      "version": 1,
+      "display_name": "Holodeck Reconstruction",
+      "fidelity_rank": 10,
+      "allowed_archetypes": [
+        "*"
+      ],
+      "changes_semantics": false,
+      "historical_rule": "Consumes immutable reconstruction packets; may not rewrite room anchors or expedition history."
+    }
+  ]
+}

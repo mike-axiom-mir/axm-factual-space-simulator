@@ -1,0 +1,215 @@
+{
+  "schema": "axm.ship-interface-graph.v1",
+  "blueprint_id": "axm.ship.frontier-survey-stack.v1",
+  "edges": [
+    {
+      "source": "electrical_power_generation",
+      "target": "power_distribution",
+      "interface_type": "electrical_power"
+    },
+    {
+      "source": "energy_storage",
+      "target": "power_distribution",
+      "interface_type": "electrical_power"
+    },
+    {
+      "source": "power_distribution",
+      "target": "thermal_control",
+      "interface_type": "electrical_power"
+    },
+    {
+      "source": "power_distribution",
+      "target": "eclss_atmosphere",
+      "interface_type": "electrical_power"
+    },
+    {
+      "source": "power_distribution",
+      "target": "water_and_waste",
+      "interface_type": "electrical_power"
+    },
+    {
+      "source": "power_distribution",
+      "target": "avionics_cdh",
+      "interface_type": "electrical_power"
+    },
+    {
+      "source": "power_distribution",
+      "target": "communications",
+      "interface_type": "electrical_power"
+    },
+    {
+      "source": "power_distribution",
+      "target": "gnc",
+      "interface_type": "electrical_power"
+    },
+    {
+      "source": "power_distribution",
+      "target": "external_sensors",
+      "interface_type": "electrical_power"
+    },
+    {
+      "source": "power_distribution",
+      "target": "robotics_and_probe_operations",
+      "interface_type": "electrical_power"
+    },
+    {
+      "source": "power_distribution",
+      "target": "crew_health_medical",
+      "interface_type": "electrical_power"
+    },
+    {
+      "source": "thermal_control",
+      "target": "electrical_power_generation",
+      "interface_type": "temperature_control"
+    },
+    {
+      "source": "thermal_control",
+      "target": "energy_storage",
+      "interface_type": "temperature_control"
+    },
+    {
+      "source": "thermal_control",
+      "target": "avionics_cdh",
+      "interface_type": "temperature_control"
+    },
+    {
+      "source": "thermal_control",
+      "target": "eclss_atmosphere",
+      "interface_type": "temperature_control"
+    },
+    {
+      "source": "thermal_control",
+      "target": "communications",
+      "interface_type": "temperature_control"
+    },
+    {
+      "source": "thermal_control",
+      "target": "main_propulsion",
+      "interface_type": "temperature_control"
+    },
+    {
+      "source": "avionics_cdh",
+      "target": "gnc",
+      "interface_type": "command_and_data"
+    },
+    {
+      "source": "avionics_cdh",
+      "target": "communications",
+      "interface_type": "command_and_data"
+    },
+    {
+      "source": "avionics_cdh",
+      "target": "power_distribution",
+      "interface_type": "load_commands"
+    },
+    {
+      "source": "avionics_cdh",
+      "target": "thermal_control",
+      "interface_type": "thermal_commands"
+    },
+    {
+      "source": "avionics_cdh",
+      "target": "fault_management",
+      "interface_type": "telemetry"
+    },
+    {
+      "source": "external_sensors",
+      "target": "gnc",
+      "interface_type": "navigation_measurements"
+    },
+    {
+      "source": "external_sensors",
+      "target": "science_payload_and_analysis",
+      "interface_type": "science_measurements"
+    },
+    {
+      "source": "gnc",
+      "target": "reaction_control",
+      "interface_type": "control_commands"
+    },
+    {
+      "source": "gnc",
+      "target": "main_propulsion",
+      "interface_type": "burn_commands"
+    },
+    {
+      "source": "gnc",
+      "target": "communications",
+      "interface_type": "pointing_solution"
+    },
+    {
+      "source": "gnc",
+      "target": "docking_airlock_eva",
+      "interface_type": "relative_navigation"
+    },
+    {
+      "source": "reaction_control",
+      "target": "primary_structure",
+      "interface_type": "mechanical_load"
+    },
+    {
+      "source": "main_propulsion",
+      "target": "primary_structure",
+      "interface_type": "mechanical_load"
+    },
+    {
+      "source": "eclss_atmosphere",
+      "target": "crew_health_medical",
+      "interface_type": "environmental_state"
+    },
+    {
+      "source": "water_and_waste",
+      "target": "crew_health_medical",
+      "interface_type": "water_quality"
+    },
+    {
+      "source": "primary_structure",
+      "target": "eclss_atmosphere",
+      "interface_type": "pressure_boundary"
+    },
+    {
+      "source": "mmod_and_external_protection",
+      "target": "primary_structure",
+      "interface_type": "impact_mitigation"
+    },
+    {
+      "source": "radiation_monitoring_and_shelter",
+      "target": "crew_health_medical",
+      "interface_type": "relative_exposure"
+    },
+    {
+      "source": "communications",
+      "target": "avionics_cdh",
+      "interface_type": "uplink_downlink"
+    },
+    {
+      "source": "robotics_and_probe_operations",
+      "target": "science_payload_and_analysis",
+      "interface_type": "remote_measurements"
+    },
+    {
+      "source": "logistics_maintenance_fabrication",
+      "target": "all_systems",
+      "interface_type": "maintenance_and_spares"
+    },
+    {
+      "source": "fault_management",
+      "target": "all_systems",
+      "interface_type": "fault_detection_response"
+    }
+  ],
+  "interface_classes": [
+    "mechanical",
+    "fluid",
+    "electrical_power",
+    "electronic_signal",
+    "software_data",
+    "thermal",
+    "human_procedure",
+    "environmental"
+  ],
+  "source_ids": [
+    "nasa_systems_engineering_handbook_2023",
+    "nasa_deep_space_standards_2026"
+  ]
+}

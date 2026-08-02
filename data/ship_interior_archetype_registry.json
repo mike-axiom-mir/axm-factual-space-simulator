@@ -1,0 +1,267 @@
+{
+  "schema": "axm.ship-interior-archetype-registry.v1",
+  "registry_version": 2,
+  "default_interior_id": "axm.interior.frontier-survey.v1",
+  "interiors": [
+    {
+      "id": "axm.interior.frontier-survey.v1",
+      "version": 1,
+      "status": "CANON_FIRST_START",
+      "display_name": "Frontier Survey Interior",
+      "bridge_archetype_id": "axm.bridge.frontier-survey.v1",
+      "scope": "First ship interior; future vessels register independent room graphs.",
+      "default_room_id": "command_deck",
+      "default_continuity_mode": "realistic_continuity",
+      "rooms": [
+        {
+          "id": "command_deck",
+          "display_name": "Command Deck",
+          "room_type": "command",
+          "purpose": [
+            "navigation",
+            "live encounters",
+            "mission-critical decisions",
+            "crew command",
+            "command voting",
+            "recall resolution"
+          ],
+          "adjacent_rooms": [
+            "central_corridor"
+          ],
+          "visible_participants": [
+            "primary_explorer",
+            "ai_collaborator",
+            "navigation_crew",
+            "science_crew",
+            "engineering_crew",
+            "communications_crew"
+          ],
+          "interaction_ids": [
+            "review_command_queue",
+            "set_expedition_posture",
+            "resolve_command_recall"
+          ],
+          "ship_system_bindings": [
+            "gnc",
+            "avionics_cdh",
+            "communications",
+            "fault_management",
+            "external_sensors"
+          ]
+        },
+        {
+          "id": "central_corridor",
+          "display_name": "Central Corridor",
+          "room_type": "transit",
+          "purpose": [
+            "spatial continuity",
+            "room-to-room travel",
+            "ship alerts"
+          ],
+          "adjacent_rooms": [
+            "command_deck",
+            "mess_hall",
+            "engineering",
+            "research_strategy",
+            "primary_quarters",
+            "collaborator_quarters"
+          ],
+          "visible_participants": [
+            "transiting_crew"
+          ],
+          "interaction_ids": [
+            "review_ship_directory"
+          ],
+          "ship_system_bindings": [
+            "primary_structure",
+            "fire_and_emergency_response",
+            "eclss_atmosphere"
+          ]
+        },
+        {
+          "id": "mess_hall",
+          "display_name": "Mess Hall",
+          "room_type": "crew_life",
+          "purpose": [
+            "meals",
+            "informal debrief",
+            "crew-reported wellbeing",
+            "supply review",
+            "relationship continuity"
+          ],
+          "adjacent_rooms": [
+            "central_corridor"
+          ],
+          "visible_participants": [
+            "available_crew",
+            "primary_explorer",
+            "ai_collaborator"
+          ],
+          "interaction_ids": [
+            "review_consumable_duration",
+            "crew_debrief",
+            "informal_hypothesis_exchange",
+            "record_crew_wellbeing_report"
+          ],
+          "ship_system_bindings": [
+            "water_and_waste",
+            "eclss_atmosphere",
+            "crew_health_medical"
+          ]
+        },
+        {
+          "id": "engineering",
+          "display_name": "Engineering",
+          "room_type": "technical",
+          "purpose": [
+            "power review",
+            "thermal review",
+            "repair",
+            "sensor calibration",
+            "fabrication",
+            "radiation-risk review"
+          ],
+          "adjacent_rooms": [
+            "central_corridor"
+          ],
+          "visible_participants": [
+            "engineering_crew",
+            "primary_explorer",
+            "ai_collaborator"
+          ],
+          "interaction_ids": [
+            "inspect_power_balance",
+            "review_thermal_margin",
+            "estimate_repair_duration",
+            "calibrate_sensor",
+            "fabricate_room_item",
+            "review_radiation_risk_index"
+          ],
+          "ship_system_bindings": [
+            "electrical_power_generation",
+            "energy_storage",
+            "power_distribution",
+            "thermal_control",
+            "main_propulsion",
+            "reaction_control",
+            "eclss_atmosphere",
+            "water_and_waste",
+            "logistics_maintenance_fabrication",
+            "fault_management"
+          ]
+        },
+        {
+          "id": "research_strategy",
+          "display_name": "Research and Strategy Room",
+          "room_type": "analysis",
+          "purpose": [
+            "encounter analysis",
+            "planetary research",
+            "anomaly investigation",
+            "strategy",
+            "evidence comparison",
+            "control-test design"
+          ],
+          "adjacent_rooms": [
+            "central_corridor"
+          ],
+          "visible_participants": [
+            "science_crew",
+            "mission_specialists",
+            "primary_explorer",
+            "ai_collaborator"
+          ],
+          "interaction_ids": [
+            "compare_hypotheses",
+            "design_control_test",
+            "review_planetary_case",
+            "review_signal_case",
+            "build_mission_strategy"
+          ],
+          "ship_system_bindings": [
+            "science_payload_and_analysis",
+            "external_sensors",
+            "robotics_and_probe_operations"
+          ]
+        },
+        {
+          "id": "primary_quarters",
+          "display_name": "Primary Explorer Quarters",
+          "room_type": "personal",
+          "purpose": [
+            "private logs",
+            "rest",
+            "artifact display",
+            "room customization",
+            "personal inventory"
+          ],
+          "adjacent_rooms": [
+            "central_corridor"
+          ],
+          "visible_participants": [
+            "primary_explorer",
+            "invited_collaborator"
+          ],
+          "interaction_ids": [
+            "review_private_log",
+            "rest_cycle",
+            "display_provenanced_item",
+            "rearrange_room_items",
+            "design_personal_item"
+          ],
+          "ship_system_bindings": [
+            "crew_health_medical",
+            "radiation_monitoring_and_shelter"
+          ]
+        },
+        {
+          "id": "collaborator_quarters",
+          "display_name": "AI Collaborator Quarters",
+          "room_type": "personal_machine",
+          "purpose": [
+            "collaborator continuity",
+            "private working notes",
+            "artifact display",
+            "simulation review",
+            "room customization"
+          ],
+          "adjacent_rooms": [
+            "central_corridor"
+          ],
+          "visible_participants": [
+            "ai_collaborator",
+            "invited_primary_explorer"
+          ],
+          "interaction_ids": [
+            "review_collaborator_log",
+            "offline_alternative_review",
+            "display_provenanced_item",
+            "rearrange_room_items",
+            "design_personal_item"
+          ],
+          "ship_system_bindings": [
+            "avionics_cdh",
+            "fault_management",
+            "science_payload_and_analysis"
+          ]
+        }
+      ],
+      "travel_time_minutes": {
+        "command_deck|central_corridor": 1,
+        "central_corridor|mess_hall": 2,
+        "central_corridor|engineering": 2,
+        "central_corridor|research_strategy": 2,
+        "central_corridor|primary_quarters": 2,
+        "central_corridor|collaborator_quarters": 2
+      },
+      "semantic_rules": [
+        "rooms remain spatially connected",
+        "room focus does not become a generic website",
+        "future rooms require a new interior version or archetype",
+        "existing saves pin room graph and interaction versions",
+        "personal rooms may change appearance without changing recorded history"
+      ],
+      "ship_blueprint_id": "axm.ship.frontier-survey-stack.v1"
+    }
+  ]
+}

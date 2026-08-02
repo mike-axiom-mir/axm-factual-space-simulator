@@ -1,0 +1,33 @@
+{
+  "schema": "axm.crew-station-metric-stress.v1",
+  "states": 300,
+  "metric_cards": 23400,
+  "station_views": 1800,
+  "learning_pressure_snapshots": 2100,
+  "alert_priorities": {
+    "emergency": 1794,
+    "warning": 4086,
+    "caution": 16098
+  },
+  "top_skill_frequency": {
+    "commander.cross_system_command": 116,
+    "ai.interface_reasoning": 290,
+    "nav.attitude_pointing": 113,
+    "eng.power_energy": 167,
+    "science.probe_planning": 225,
+    "comms.data_integrity": 140,
+    "medical.emergency_care": 150,
+    "eng.thermal": 37,
+    "commander.reversibility_risk": 184,
+    "nav.proximity_hazard": 187,
+    "eng.life_support": 78,
+    "comms.link_delay": 160,
+    "medical.environmental_exposure": 150,
+    "science.evidence_controls": 35,
+    "science.instrument_quality": 40,
+    "eng.fault_maintenance": 18,
+    "ai.human_explanation": 10
+  },
+  "failures": [],
+  "valid": true
+}

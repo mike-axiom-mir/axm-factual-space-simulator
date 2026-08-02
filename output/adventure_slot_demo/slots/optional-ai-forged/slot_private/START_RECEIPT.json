@@ -1,0 +1,30 @@
+{
+  "schema": "axm.adventure-slot-private-start-receipt.v1",
+  "slot_id": "optional-ai-forged",
+  "world_seed": "MIKE-AXIOM-MIR-SLOT-WORLD-EXTERNAL",
+  "forge_seed": "MIKE-AXIOM-MIR-SLOT-FORGE-EXTERNAL",
+  "forge_mode": "external_ai_assisted",
+  "proposal": {
+    "schema": "axm.external-ai-forge-proposal.v1",
+    "request_id": "1c86ad05004bbc3cac722a864678cd671fbf9d07a274e633f6465770b94fea13",
+    "proposal_author": "Example disconnected pre-play reasoning seat",
+    "preferred_anomaly_family_ids": [
+      "dusty_plasma_self_organization"
+    ],
+    "preferred_life_architecture_ids": [
+      "dusty_plasma_lifelike_control"
+    ],
+    "emphasis_observable_ids": [],
+    "investigation_emphasis": "falsification_first",
+    "rationale_summary": [
+      "Prefer a candidate with multiple observables and explicit natural controls.",
+      "Do not decide whether the hidden origin is living, abiotic, instrumental, or novel physics."
+    ],
+    "proposal_nonce": "AXM-V09-DEMO"
+  },
+  "system_id": "8d02e20822fd2748",
+  "commitment": "4b2027514d19ea4cfd080f8fc765c372bfea274e28721a2ae9cee03ba8db2938",
+  "ship_start_pin_receipt": "b3e8513c0b55235f9bcb23da5fd250dc8b9544c75fdf2dff9dfb5305a3be2c57",
+  "created_at": "2026-08-02T05:29:59.855735+00:00",
+  "warning": "Keep slot_private and session/forge_private away from a blind explorer."
+}
