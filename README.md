@@ -82,6 +82,20 @@ Publish:   run_github_pr_publish.bat <reviewed-plan-digest>
 
 The wrappers set `PYTHONPATH` and disable transient bytecode generation. Advanced users may alternatively run `python -m pip install -e . --no-deps` and then use the registered `axm-*` commands.
 
+## Dependency-free branch backfeed
+
+The simulator now carries a bounded return lane for generic capabilities that
+can stand without the simulator. Run `run_platform_backfeed_build.bat` to build
+and verify the SHA-256 capsule in `platform_backfeed/dist/`. The first capsule
+contains strict canonical JSON, an immutable-history migration guard, and a
+Workshop browser receiver that verifies future capsules without executing or
+promoting them.
+
+`run_platform_backfeed_install_plan.bat` produces a digest-bound leaf-only plan
+for the active Workshop. Apply requires that exact digest and refuses existing
+targets. Registry wiring and promotion remain separate Graft/review gates; see
+`platform_backfeed/README.md`.
+
 ## Truth boundary
 
 This package is not a flight-certified spacecraft, not proof of alien life, not a validated medical or psychology model and not a weapon-construction package. Integrated mass, verified delta-v and complete propulsion performance remain unknown.
