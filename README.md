@@ -73,6 +73,8 @@ For the safe reseal and promotion sequence, read `docs/PORTABILITY_AND_PACKAGE_M
 
 Routine future changes use the digest-locked draft-PR lane in `docs/GITHUB_PR_LANE.md`. It verifies and hashes locally, refuses direct-main pushes and opens a draft pull request only after the exact plan digest is reviewed.
 
+Repository setup and first-publication evidence is recorded in `docs/GITHUB_REPOSITORY_SETUP_RECEIPT.md`.
+
 ```text
 Plan only: run_github_pr_plan.bat
 Publish:   run_github_pr_publish.bat <reviewed-plan-digest>

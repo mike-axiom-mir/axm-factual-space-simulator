@@ -3,7 +3,7 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 272,
+  "managed_file_count": 273,
   "files": {
     ".gitattributes": {
       "bytes": 45,
@@ -377,6 +377,10 @@
       "bytes": 2152,
       "sha256": "36d8d0cc74787e72c3670c1258d3429ab2444706e57a6db16a02b49c9f44bcb7"
     },
+    "docs/GITHUB_REPOSITORY_SETUP_RECEIPT.md": {
+      "bytes": 1348,
+      "sha256": "7ecba43fcf12a9d93148c4b520f06301e0aa455825801e18d4bd7dde08027f0e"
+    },
     "docs/IMMUTABLE_FOUR_ROOT_CREW_CORE_v1.md": {
       "bytes": 1259,
       "sha256": "e693743ae4f7d4fee55e8c9bef541d582efaffcba80d46d9cc89de4875c7c6b1"
@@ -602,8 +606,8 @@
       "sha256": "eb159e6844404e6b68e7ed0ea65fc389de9837ec3a2b2864e81eb49ee02a2fa4"
     },
     "README.md": {
-      "bytes": 3958,
-      "sha256": "31a75bdf97304b7c17390f11da7a13fa7c2087ba2a9272048c3631bb053678ae"
+      "bytes": 4065,
+      "sha256": "e0a3d9d2ed1b6ddac431f45e2e795a779739529927791b323d31cd9001ad5b09"
     },
     "run_crew_stations.bat": {
       "bytes": 263,
@@ -1082,8 +1086,8 @@
       "sha256": "4f35f06866c0b4f6d2485007d56b7cb16b7dbb4970dbdb37c0bfce0dc91e42a8"
     },
     "tools/New-VerifiedPullRequest.ps1": {
-      "bytes": 8743,
-      "sha256": "41ef93dc0025706118c53690b530a0e87e8cc6d3c6e9b685cf4801862ef017a7"
+      "bytes": 9166,
+      "sha256": "d668a7bd6d2c8d6ad169267eb1c6ff1da4fd9c431d40557b77ec1ee581cdc359"
     },
     "tools/reseal_package.py": {
       "bytes": 307,
