@@ -3,7 +3,7 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 272,
+  "managed_file_count": 283,
   "files": {
     ".gitattributes": {
       "bytes": 45,
@@ -82,8 +82,8 @@
       "sha256": "1e6b1cf7fa9030f08aff1caf89674cded1226d3bc4c5c68dd7d55d9059539467"
     },
     "data/bridge_render_profile_registry.json": {
-      "bytes": 925,
-      "sha256": "9e4332a47b348e01d090270edb3eec56cfe41bc1c1f52a03f223034acb118044"
+      "bytes": 1473,
+      "sha256": "c1fa593acf649372c66523969bcd5ea07e65c51d58275f23a1287650f3a232bd"
     },
     "data/builder_capability_declaration_schema.json": {
       "bytes": 2327,
@@ -188,6 +188,10 @@
     "data/technology_core_registry.json": {
       "bytes": 15585,
       "sha256": "16bbbc10a36969ef3bf601765c7b753786d2de5c455d12df2f649a5c1b1cf6ed"
+    },
+    "data/temporal_renderer_adapter_contract.json": {
+      "bytes": 1387,
+      "sha256": "50d4e53ddd80eee0919d46e7577785c54adaff96c7b043afd3b8c11e1ff068d6"
     },
     "data/timeline_start_registry.json": {
       "bytes": 792,
@@ -525,6 +529,10 @@
       "bytes": 3037,
       "sha256": "b038ec8b41c0bec1abb0b982478dfa14b0a4c91a503ac0f6a9b28fcb137131d4"
     },
+    "docs/TEMPORAL_RENDERER_INTEGRATION_CANDIDATE_v0_15_0.md": {
+      "bytes": 4469,
+      "sha256": "6f0078a9b7bb5639e4a23cab5d704e26adc027b6b7261b419073af5691fc79f4"
+    },
     "docs/UNIVERSE_PHILOSOPHY_AND_ALIEN_THEORIES.md": {
       "bytes": 10837,
       "sha256": "14ed855862da6259969a4f9a8f8040ffec87ba8e47b65b1dbcff3a1056dff40a"
@@ -701,6 +709,10 @@
       "bytes": 267,
       "sha256": "19fb70f8efcd82471bb5999f3ae643db5544756ba78ef6f828e759192f57def9"
     },
+    "scripts/browser_smoke_temporal_bridge_candidate.py": {
+      "bytes": 7613,
+      "sha256": "b364710d72129d51031506cb75e2507220ea00cd71ced4c70781b4ae7f1e7175"
+    },
     "scripts/build_all_demos_v0_15.py": {
       "bytes": 1204,
       "sha256": "ec19670fa62ab3f27ed0af5e4b96e5c651cf2b80d6bc499fdab550f3b79cd74a"
@@ -749,6 +761,10 @@
       "bytes": 607,
       "sha256": "a801a3e53eac363c256240a73a3abb6923679673ae2420586654317ae43a3b37"
     },
+    "scripts/build_temporal_bridge_candidate.py": {
+      "bytes": 2342,
+      "sha256": "8b348947ac34cac44f25fc771fb9a0c855f18d3b1cc352621c80fe9938e88e7e"
+    },
     "scripts/refresh_output_snapshot_v0_15.py": {
       "bytes": 1619,
       "sha256": "abb044b4cf9c2ced2d29f77cad45e946d7877e78b2bd512b39d208ee5ac8eb05"
@@ -788,6 +804,14 @@
     "scripts/stress_verify_v0_9.py": {
       "bytes": 4355,
       "sha256": "6fdbcd957d9601cfafd44af180ab35e6988dbef9772a3f095830ebf4b3e05ab5"
+    },
+    "scripts/temporal_bridge_runtime_smoke_v0_14.cjs": {
+      "bytes": 8557,
+      "sha256": "e5deee7d38ee9e0629952b2e42da2c48d15752ea65970798e77cc393eee73fce"
+    },
+    "scripts/temporal_bridge_runtime_smoke_v0_14.py": {
+      "bytes": 1361,
+      "sha256": "7e1cbce0c2e67b698f5fc12ae6ceea553e1346d1f8b98fe4e04b18a9c880e00d"
     },
     "src/axm_star_sim/__init__.py": {
       "bytes": 68,
@@ -957,6 +981,14 @@
       "bytes": 11277,
       "sha256": "8abf17c1ae49a18280cc43fb124c8daa0eab2ecb0094491207ab5f543e39bc2b"
     },
+    "src/axm_star_sim/temporal_bridge_view.py": {
+      "bytes": 37090,
+      "sha256": "cf81a2c0e943dcaf39b23997d3a3a0314d8a840647f374f1effdac721543effe"
+    },
+    "src/axm_star_sim/temporal_renderer_adapter.py": {
+      "bytes": 27121,
+      "sha256": "689cfe778cc3b9675b678434f10105b732de2a0e31806eefb2a2611a40dc437f"
+    },
     "src/axm_star_sim/thread_engine.py": {
       "bytes": 20949,
       "sha256": "b898b9704779df2aaf1358bf295650a749d0af57d01eeb8c7f7291f7c63ee621"
@@ -970,8 +1002,12 @@
       "sha256": "261093bba2eac94e3e3997bb3a4f9e8e1fb023065a88cc3014ab39fc6838868b"
     },
     "START_HERE.txt": {
-      "bytes": 1538,
-      "sha256": "202c39492bfe552e550851993c903b96df781c9b50aa1fec983a5384a7eb5e69"
+      "bytes": 1730,
+      "sha256": "b3cb1ad4358610a7b8fa36e67c9e588ba6bf460b9209272952a15e2eabf7aeb0"
+    },
+    "TEMPORAL_RENDERER_CANDIDATE_HANDOFF.txt": {
+      "bytes": 5696,
+      "sha256": "ef9a588461a9383b606380d02aa2e0aa1f18e3ed9a4e02e1411d34d7c079018f"
     },
     "tests/test_adventure_slots.py": {
       "bytes": 7751,
@@ -1056,6 +1092,14 @@
     "tests/test_technology_physics.py": {
       "bytes": 3066,
       "sha256": "7e9e016c26bfb7f01ac84df2877f34836cff3f3d4ecd7fa6704d0aafd847ad33"
+    },
+    "tests/test_temporal_bridge_view.py": {
+      "bytes": 2718,
+      "sha256": "31c7f7e1112a933bdee94ff7a338de4e5560c36539a18aeedee73e9e0265810d"
+    },
+    "tests/test_temporal_renderer_adapter.py": {
+      "bytes": 8599,
+      "sha256": "b1eb186d5e7d2693282f0f56d9b9eb50b1a3f516438b2341294c2117fd05f9ab"
     },
     "tools/drand_verifier/install.bat": {
       "bytes": 180,
