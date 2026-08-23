@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-RENDERER_VERSION = "0.10.0-candidate"
+RENDERER_VERSION = "0.11.0-candidate"
 ROOT = Path(__file__).resolve().parents[2]
 ASSET_DIR = ROOT / "assets" / "demo_templates" / "living_operations_bridge"
 
@@ -59,6 +59,16 @@ def render_living_bridge(storyboard: dict[str, Any], import_receipt: dict[str, A
             raise ValueError("recovery contract must not grant renderer mutation authority")
         if recovery.get("may_restore_resources") is not False:
             raise ValueError("recovery presentation contract must not restore resources")
+    readiness = storyboard.get("operational_readiness")
+    if readiness is not None:
+        if readiness.get("operationally_released") is not False:
+            raise ValueError("operational readiness presentation catalog must remain unapplied")
+        if readiness.get("may_modify_presentation_runtime") is not False:
+            raise ValueError("operational readiness contract must not mutate presentation runtime")
+        if readiness.get("may_execute_operation") is not False:
+            raise ValueError("operational readiness presentation must not execute operations")
+        if readiness.get("may_claim_nominal_with_residuals") is not False:
+            raise ValueError("operational readiness presentation cannot claim nominal with residuals")
 
     template = _asset("shell.html")
     css = (
@@ -69,6 +79,7 @@ def render_living_bridge(storyboard: dict[str, Any], import_receipt: dict[str, A
         + "\n" + _asset("repair_verification_v0_7.css")
         + "\n" + _asset("fault_clearance_apply_v0_8.css")
         + "\n" + _asset("post_clearance_recovery_v0_10.css")
+        + "\n" + _asset("operational_readiness_v0_11.css")
     )
     js = (
         _asset("living_operations_bridge_js_part1.txt")
@@ -79,6 +90,7 @@ def render_living_bridge(storyboard: dict[str, Any], import_receipt: dict[str, A
         + "\n" + _asset("repair_verification_v0_7.js")
         + "\n" + _asset("fault_clearance_apply_v0_8.js")
         + "\n" + _asset("post_clearance_recovery_v0_10.js")
+        + "\n" + _asset("operational_readiness_v0_11.js")
     )
     payload = json.dumps(storyboard, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     receipt = json.dumps(import_receipt, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")

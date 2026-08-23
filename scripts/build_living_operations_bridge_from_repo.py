@@ -51,6 +51,7 @@ def main() -> int:
     repair = board["repair_verification"]
     clearance = board["fault_clearance_apply"]
     recovery = board["post_clearance_recovery"]
+    readiness = board["operational_readiness"]
     available_access = sum(
         1 for row in topology["topologies"]
         if str(row.get("access", {}).get("status", "")).startswith("ACCESS_PATH_AVAILABLE")
@@ -58,9 +59,10 @@ def main() -> int:
     ready_repair_gates = sum(1 for row in repair["gates"] if row.get("status") == "READY_FOR_EXTERNAL_REPAIR_PLAN")
     clearance_engines = sum(1 for row in clearance["contracts"] if row.get("status") == "ENGINE_AVAILABLE_REQUIRES_VERIFIED_CANDIDATE_AND_LIVE_SHIP_STATE")
     recovery_engines = sum(1 for row in recovery["contracts"] if row.get("status") == "RECOVERY_ENGINE_AVAILABLE_AFTER_APPLIED_VERIFIED_CLEARANCE")
+    readiness_engines = sum(1 for row in readiness["contracts"] if row.get("status") == "OPERATIONAL_RELEASE_ENGINE_AVAILABLE_AFTER_VERIFIED_RECOVERY_CHAIN")
     print(json.dumps({
-        "schema":"axm.living-operations-bridge-repo-build.v7",
-        "version":"0.10.0-candidate",
+        "schema":"axm.living-operations-bridge-repo-build.v8",
+        "version":"0.11.0-candidate",
         "source_turn":board["operations_context"]["source_turn"],
         "open_threads":board["operations_context"]["open_thread_count"],
         "available_actions":board["operations_context"]["available_action_count"],
@@ -74,13 +76,17 @@ def main() -> int:
         "clearance_engines_available":clearance_engines,
         "post_clearance_recovery_contracts":recovery["contract_count"],
         "recovery_engines_available":recovery_engines,
+        "operational_readiness_contracts":readiness["contract_count"],
+        "operational_release_engines_available":readiness_engines,
         "component_specificity":topology["component_specificity"],
         "procedure_execution_authority":procedures["may_execute_response"],
         "repair_execution_authority":repair["may_execute_repair"],
         "renderer_fault_clear_authority":board["living_operations"]["renderer_may_apply_fault_clearance"],
         "renderer_safe_state_exit_authority":board["living_operations"]["renderer_may_apply_safe_state_exit"],
-        "renderer_resource_restore_authority":board["living_operations"]["renderer_may_restore_resources"],
-        "authority":"presentation_plus_authoritative_clearance_and_recovery_engine_contracts; renderer remains read_only",
+        "renderer_operational_release_authority":board["living_operations"]["renderer_may_apply_operational_release"],
+        "renderer_operation_execution_authority":board["living_operations"]["renderer_may_execute_operation"],
+        "renderer_nominal_claim_with_residuals":board["living_operations"]["renderer_may_claim_nominal_with_residuals"],
+        "authority":"presentation_plus_authoritative_clearance_recovery_and_operational_release_contracts; renderer remains read_only",
         "output":str(OUTPUT.relative_to(ROOT)),
     }, indent=2))
     return 0

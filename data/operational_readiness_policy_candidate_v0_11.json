@@ -1,0 +1,48 @@
+{
+  "schema": "axm.operational-readiness-policy-candidate.v1",
+  "version": "0.11.0-candidate",
+  "policy_id": "axm.operational-readiness-authority-policy.candidate.v1",
+  "truth_status": "simulation_policy_candidate_not_canon",
+  "purpose": "Prevent safe-state release from silently becoming a nominal-state claim and expose a read-only capability envelope from authoritative residual ship state.",
+  "operating_mode_classification": {
+    "safe_state": "Retained whenever the live ship evaluation does not support release.",
+    "degraded_operations": "Required when a verified recovery release is eligible but one or more authoritative residual indicators remain.",
+    "nominal": "Allowed only when the verified recovery assessment contains no residual indicators.",
+    "intermediate_nominal_state_may_be_persisted": false
+  },
+  "operation_statuses": [
+    "AVAILABLE",
+    "AVAILABLE_WITH_LIMITS",
+    "HOLD"
+  ],
+  "operation_classes": [
+    "life_support_monitoring",
+    "routine_internal_maintenance",
+    "science_payload_operations",
+    "robotics_probe_operations",
+    "precision_navigation_maneuver",
+    "docking_and_transfer",
+    "eva_external_operations",
+    "high_bandwidth_communications",
+    "irreversible_mission_commitment"
+  ],
+  "candidate_thresholds": {
+    "precision_navigation_hold_navigation_uncertainty_km": 5.0,
+    "precision_navigation_hold_pointing_multiplier": 0.5,
+    "communications_hold_pointing_multiplier": 0.2,
+    "docking_and_eva_hold_structure_health": 0.8,
+    "truth_status": "simulation_policy_candidate_not_real_vehicle_certification"
+  },
+  "authority_boundaries": {
+    "renderer_may_apply_operational_release": false,
+    "renderer_may_classify_operating_mode": false,
+    "renderer_may_execute_operation": false,
+    "renderer_may_override_hold": false,
+    "renderer_may_claim_nominal_with_residuals": false,
+    "operational_release_may_restore_resources": false,
+    "operational_release_may_restore_system_health": false,
+    "operational_release_may_remove_load_sheds": false,
+    "operational_release_may_clear_other_faults": false
+  },
+  "governance_note": "Candidate simulation policy only. It requires separate review before any CANON or real-vehicle interpretation."
+}
