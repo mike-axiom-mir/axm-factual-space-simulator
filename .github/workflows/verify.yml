@@ -1,21 +1,26 @@
-name: Reseal and stage v0.13 seal export
+name: Verify deterministic package
 
 on:
   pull_request:
-    paths-ignore:
-      - '.axm_reseal_export/**'
+  push:
+    branches: [main]
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: factual-space-v013-stage-seal-${{ github.ref }}
+  group: factual-space-verify-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  reseal:
-    name: Verify and stage deterministic seal bytes
-    runs-on: ubuntu-latest
+  verify:
+    name: ${{ matrix.os }} · Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        python: ['3.13']
     env:
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONUTF8: '1'
@@ -23,18 +28,10 @@ jobs:
       PYTHONPATH: ${{ github.workspace }}/src
     steps:
       - uses: actions/checkout@v6
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
-          python-version: '3.13'
-      - name: Restore canonical verifier in worktree
-        shell: bash
-        run: git show 1609bbbfebd0ad21c177fbfaf50f66d641b02f93:.github/workflows/verify.yml > .github/workflows/verify.yml
-      - name: Regenerate deterministic package seal
-        run: python tools/reseal_package.py --write
-      - name: Check regenerated seal
+          python-version: ${{ matrix.python }}
+      - name: Check deterministic package seal
         run: python tools/reseal_package.py --check
       - name: Verify canonical and generated snapshots
         run: python verify_package.py
@@ -42,19 +39,3 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Run structural handoff audit
         run: python -m axm_star_sim.handoff_cli audit
-      - name: Stage regenerated seal as ordinary export files
-        shell: bash
-        run: |
-          mkdir -p .axm_reseal_export
-          cp PACKAGE_MANIFEST.json .axm_reseal_export/PACKAGE_MANIFEST.json
-          cp CHECKSUMS.sha256 .axm_reseal_export/CHECKSUMS.sha256
-          git restore --source=HEAD .github/workflows/verify.yml PACKAGE_MANIFEST.json CHECKSUMS.sha256
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .axm_reseal_export/PACKAGE_MANIFEST.json .axm_reseal_export/CHECKSUMS.sha256
-          if git diff --cached --quiet; then
-            echo "Seal export already staged; no push required."
-          else
-            git commit -m "chore: stage v0.13 seal export"
-            git push origin HEAD:${{ github.event.pull_request.head.ref }}
-          fi
