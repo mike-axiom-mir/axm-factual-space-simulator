@@ -1,18 +1,18 @@
-name: Reseal and verify v0.9 steward
+name: Reseal and export v0.9 steward
 
 on:
   pull_request:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: factual-space-v09-reseal-${{ github.ref }}
+  group: factual-space-v09-reseal-export-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   reseal:
-    name: Reseal, verify, and restore canonical CI
+    name: Reseal, verify, and export seal evidence
     runs-on: ubuntu-latest
     env:
       PYTHONDONTWRITEBYTECODE: '1'
@@ -45,15 +45,15 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Run structural handoff audit
         run: python -m axm_star_sim.handoff_cli audit
-      - name: Commit repaired seal and restore canonical verifier
+      - name: Export regenerated seal evidence
         shell: bash
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if git diff --cached --quiet; then
-            echo "No reseal changes to commit."
-          else
-            git commit -m "chore: reseal repair attempt semantic replay v0.9"
-            git push origin HEAD:${{ github.event.pull_request.head.ref }}
-          fi
+          python - <<'PY'
+          import base64
+          from pathlib import Path
+          for name in ('PACKAGE_MANIFEST.json', 'CHECKSUMS.sha256'):
+              payload = base64.b64encode(Path(name).read_bytes()).decode('ascii')
+              print(f'AXM_SEAL_BEGIN:{name}')
+              print(payload)
+              print(f'AXM_SEAL_END:{name}')
+          PY
