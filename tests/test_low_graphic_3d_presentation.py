@@ -38,7 +38,7 @@ class LowGraphic3DPresentationTests(unittest.TestCase):
 
     def test_living_profile_exposes_animation_without_world_authority(self):
         profile = self.board["living_operations"]
-        self.assertEqual(profile["version"], "0.12.0-candidate")
+        self.assertEqual(profile["version"], "0.13.0-candidate")
         self.assertTrue(profile["low_graphic_3d_scene_present"])
         self.assertTrue(profile["renderer_may_animate"])
         self.assertFalse(profile["renderer_may_move_authoritative_crew"])

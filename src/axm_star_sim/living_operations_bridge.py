@@ -9,13 +9,14 @@ from .bridge_rehearsal import build_rehearsal_catalog
 from .damage_topology import build_damage_topology_catalog
 from .failure_procedures import build_failure_procedure_catalog
 from .fault_clearance_apply import build_clearance_apply_contract_catalog
+from .living_interior_animation import build_living_interior_animation
 from .low_graphic_scene import build_low_graphic_3d_scene
 from .operational_readiness import build_operational_readiness_contract_catalog
 from .post_clearance_recovery import build_post_clearance_recovery_contract_catalog
 from .repair_verification import build_repair_gate_catalog
 
 
-OPERATIONS_VERSION = "0.12.0-candidate"
+OPERATIONS_VERSION = "0.13.0-candidate"
 
 
 def _canonical(value: Any) -> str:
@@ -88,6 +89,7 @@ def enrich_storyboard(
         out["post_clearance_recovery"] = build_post_clearance_recovery_contract_catalog(out["fault_clearance_apply"])
         out["operational_readiness"] = build_operational_readiness_contract_catalog(out["post_clearance_recovery"])
         out["low_graphic_3d_scene"] = build_low_graphic_3d_scene(operations_context, station_registry, interior_registry, damage_topology_catalog=out["damage_topology"])
+        out["living_interior_animation"] = build_living_interior_animation(out["low_graphic_3d_scene"], procedure_catalog=out.get("failure_procedures"))
 
     out["living_operations"] = {
         "schema":"axm.living-operations-presentation-profile.v1",
@@ -105,11 +107,17 @@ def enrich_storyboard(
         "post_clearance_recovery_mode":"residual_state_assessment_plus_explicit_commander_safe_state_exit_authorization" if "post_clearance_recovery" in out else "not_loaded",
         "operational_readiness_mode":"truthful_residual_aware_operating_mode_classification_plus_read_only_capability_envelope" if "operational_readiness" in out else "not_loaded",
         "low_graphic_3d_mode":"whole_simulator_2_5d_read_only_scene_projection" if "low_graphic_3d_scene" in out else "not_loaded",
+        "living_interior_animation_mode":"registered_room_graph_portals_abstract_machinery_ambience_and_rehearsal_traversal" if "living_interior_animation" in out else "not_loaded",
         "authoritative_clearance_engine_present": "fault_clearance_apply" in out,
         "authoritative_recovery_engine_present": "post_clearance_recovery" in out,
         "authoritative_operational_release_engine_present": "operational_readiness" in out,
         "low_graphic_3d_scene_present": "low_graphic_3d_scene" in out,
+        "living_interior_animation_present": "living_interior_animation" in out,
         "renderer_may_animate": True,
+        "renderer_may_animate_room_ambience": "living_interior_animation" in out,
+        "renderer_may_animate_portals": "living_interior_animation" in out,
+        "renderer_may_animate_crew_reenactment": "living_interior_animation" in out,
+        "renderer_may_animate_abstract_machinery": "living_interior_animation" in out,
         "renderer_may_apply_fault_clearance": False,
         "renderer_may_apply_safe_state_exit": False,
         "renderer_may_apply_operational_release": False,
@@ -119,6 +127,8 @@ def enrich_storyboard(
         "renderer_may_restore_resources": False,
         "renderer_may_remove_load_sheds": False,
         "renderer_may_move_authoritative_crew": False,
+        "renderer_may_open_authoritative_doors": False,
+        "renderer_may_claim_physical_hardware": False,
         "renderer_may_claim_fault_active_from_rehearsal": False,
         "renderer_may_claim_physical_scene_geometry": False,
         "may_advance_mission_time":False,

@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-RENDERER_VERSION = "0.12.0-candidate"
+RENDERER_VERSION = "0.13.0-candidate"
 ROOT = Path(__file__).resolve().parents[2]
 ASSET_DIR = ROOT / "assets" / "demo_templates" / "living_operations_bridge"
 
@@ -81,6 +81,20 @@ def render_living_bridge(storyboard: dict[str, Any], import_receipt: dict[str, A
             raise ValueError("rehearsal animation cannot become active-fault truth")
         if scene.get("renderer_may_restore_resources") is not False:
             raise ValueError("low-graphic 3D scene must not restore resources")
+    interior_animation = storyboard.get("living_interior_animation")
+    if interior_animation is not None:
+        if interior_animation.get("authority") != "read_only_living_interior_presentation":
+            raise ValueError("living interior animation must remain read-only presentation")
+        if interior_animation.get("renderer_may_open_authoritative_doors") is not False:
+            raise ValueError("living interior animation cannot open authoritative doors")
+        if interior_animation.get("renderer_may_move_authoritative_crew") is not False:
+            raise ValueError("living interior animation cannot move authoritative crew")
+        if interior_animation.get("renderer_may_claim_physical_hardware") is not False:
+            raise ValueError("abstract machinery animation cannot become hardware truth")
+        if interior_animation.get("renderer_may_execute_repair") is not False:
+            raise ValueError("living interior animation cannot execute repairs")
+        if interior_animation.get("renderer_may_modify_resources") is not False:
+            raise ValueError("living interior animation cannot modify resources")
 
     template = _asset("shell.html")
     css = (
@@ -93,6 +107,7 @@ def render_living_bridge(storyboard: dict[str, Any], import_receipt: dict[str, A
         + "\n" + _asset("post_clearance_recovery_v0_10.css")
         + "\n" + _asset("operational_readiness_v0_11.css")
         + "\n" + _asset("scene_25d_v0_12.css")
+        + "\n" + _asset("living_interior_v0_13.css")
     )
     js = (
         _asset("living_operations_bridge_js_part1.txt")
@@ -105,6 +120,7 @@ def render_living_bridge(storyboard: dict[str, Any], import_receipt: dict[str, A
         + "\n" + _asset("post_clearance_recovery_v0_10.js")
         + "\n" + _asset("operational_readiness_v0_11.js")
         + "\n" + _asset("scene_25d_v0_12.js")
+        + "\n" + _asset("living_interior_v0_13.js")
     )
     payload = json.dumps(storyboard, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     receipt = json.dumps(import_receipt, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")

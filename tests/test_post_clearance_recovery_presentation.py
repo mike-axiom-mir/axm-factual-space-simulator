@@ -38,7 +38,7 @@ class PostClearanceRecoveryPresentationTests(unittest.TestCase):
 
     def test_living_profile_keeps_renderer_out_of_recovery_authority(self):
         profile = self.board["living_operations"]
-        self.assertEqual(profile["version"], "0.12.0-candidate")
+        self.assertEqual(profile["version"], "0.13.0-candidate")
         self.assertTrue(profile["authoritative_recovery_engine_present"])
         self.assertFalse(profile["renderer_may_apply_safe_state_exit"])
         self.assertFalse(profile["renderer_may_restore_resources"])

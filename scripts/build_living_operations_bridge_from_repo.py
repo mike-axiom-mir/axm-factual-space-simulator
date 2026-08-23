@@ -53,6 +53,7 @@ def main() -> int:
     recovery = board["post_clearance_recovery"]
     readiness = board["operational_readiness"]
     scene = board["low_graphic_3d_scene"]
+    interior_animation = board["living_interior_animation"]
     available_access = sum(
         1 for row in topology["topologies"]
         if str(row.get("access", {}).get("status", "")).startswith("ACCESS_PATH_AVAILABLE")
@@ -62,8 +63,8 @@ def main() -> int:
     recovery_engines = sum(1 for row in recovery["contracts"] if row.get("status") == "RECOVERY_ENGINE_AVAILABLE_AFTER_APPLIED_VERIFIED_CLEARANCE")
     readiness_engines = sum(1 for row in readiness["contracts"] if row.get("status") == "OPERATIONAL_RELEASE_ENGINE_AVAILABLE_AFTER_VERIFIED_RECOVERY_CHAIN")
     print(json.dumps({
-        "schema":"axm.living-operations-bridge-repo-build.v9",
-        "version":"0.12.0-candidate",
+        "schema":"axm.living-operations-bridge-repo-build.v10",
+        "version":"0.13.0-candidate",
         "source_turn":board["operations_context"]["source_turn"],
         "open_threads":board["operations_context"]["open_thread_count"],
         "available_actions":board["operations_context"]["available_action_count"],
@@ -83,7 +84,11 @@ def main() -> int:
         "low_graphic_3d_station_anchors":scene["station_count"],
         "low_graphic_3d_unresolved_station_anchors":len(scene["unresolved_station_anchors"]),
         "low_graphic_3d_rehearsal_routes":len(scene["rehearsal_routes"]),
-        "low_graphic_3d_render_style":scene["animation_profile"]["render_style"],
+        "living_interior_room_activity_profiles":len(interior_animation["room_activity_profiles"]),
+        "living_interior_portal_actors":len(interior_animation["portal_actors"]),
+        "living_interior_crew_reenactment_tracks":len(interior_animation["crew_reenactment_tracks"]),
+        "living_interior_resource_visual_channels":len(interior_animation["resource_visual_channels"]),
+        "living_interior_authority":interior_animation["authority"],
         "component_specificity":topology["component_specificity"],
         "procedure_execution_authority":procedures["may_execute_response"],
         "repair_execution_authority":repair["may_execute_repair"],
@@ -92,10 +97,11 @@ def main() -> int:
         "renderer_operational_release_authority":board["living_operations"]["renderer_may_apply_operational_release"],
         "renderer_operation_execution_authority":board["living_operations"]["renderer_may_execute_operation"],
         "renderer_3d_animation_authority":board["living_operations"]["renderer_may_animate"],
+        "renderer_portal_animation_authority":board["living_operations"]["renderer_may_animate_portals"],
+        "renderer_authoritative_door_authority":board["living_operations"]["renderer_may_open_authoritative_doors"],
         "renderer_crew_move_authority":board["living_operations"]["renderer_may_move_authoritative_crew"],
-        "renderer_rehearsal_fault_claim_authority":board["living_operations"]["renderer_may_claim_fault_active_from_rehearsal"],
-        "renderer_physical_geometry_claim_authority":board["living_operations"]["renderer_may_claim_physical_scene_geometry"],
-        "authority":"presentation_plus_authoritative_clearance_recovery_and_operational_release_contracts; 2.5d scene remains read_only",
+        "renderer_physical_hardware_claim_authority":board["living_operations"]["renderer_may_claim_physical_hardware"],
+        "authority":"presentation_plus_authoritative_clearance_recovery_and_operational_release_contracts; living interior remains read_only",
         "output":str(OUTPUT.relative_to(ROOT)),
     }, indent=2))
     return 0
