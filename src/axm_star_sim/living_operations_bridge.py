@@ -9,12 +9,13 @@ from .bridge_rehearsal import build_rehearsal_catalog
 from .damage_topology import build_damage_topology_catalog
 from .failure_procedures import build_failure_procedure_catalog
 from .fault_clearance_apply import build_clearance_apply_contract_catalog
+from .low_graphic_scene import build_low_graphic_3d_scene
 from .operational_readiness import build_operational_readiness_contract_catalog
 from .post_clearance_recovery import build_post_clearance_recovery_contract_catalog
 from .repair_verification import build_repair_gate_catalog
 
 
-OPERATIONS_VERSION = "0.11.0-candidate"
+OPERATIONS_VERSION = "0.12.0-candidate"
 
 
 def _canonical(value: Any) -> str:
@@ -66,12 +67,7 @@ def enrich_storyboard(
     if (failure_registry is None) != (station_registry is None):
         raise ValueError("failure and station registries must be supplied together")
 
-    topology_inputs = (
-        blueprint_registry,
-        interface_graph,
-        interior_registry,
-        room_interaction_registry,
-    )
+    topology_inputs = (blueprint_registry, interface_graph, interior_registry, room_interaction_registry)
     if any(value is not None for value in topology_inputs) and not all(value is not None for value in topology_inputs):
         raise ValueError("blueprint, interface, interior, and room-interaction registries must be supplied together")
     if all(value is not None for value in topology_inputs) and failure_registry is None:
@@ -86,28 +82,12 @@ def enrich_storyboard(
         out["failure_procedures"] = build_failure_procedure_catalog(failure_registry, station_registry)
 
     if all(value is not None for value in topology_inputs):
-        out["damage_topology"] = build_damage_topology_catalog(
-            failure_registry,
-            blueprint_registry,
-            interface_graph,
-            interior_registry,
-            room_interaction_registry,
-            procedure_catalog=out.get("failure_procedures"),
-        )
-        out["repair_verification"] = build_repair_gate_catalog(
-            out["failure_procedures"],
-            out["damage_topology"],
-        )
-        out["fault_clearance_apply"] = build_clearance_apply_contract_catalog(
-            out["repair_verification"],
-            out["failure_procedures"],
-        )
-        out["post_clearance_recovery"] = build_post_clearance_recovery_contract_catalog(
-            out["fault_clearance_apply"],
-        )
-        out["operational_readiness"] = build_operational_readiness_contract_catalog(
-            out["post_clearance_recovery"],
-        )
+        out["damage_topology"] = build_damage_topology_catalog(failure_registry, blueprint_registry, interface_graph, interior_registry, room_interaction_registry, procedure_catalog=out.get("failure_procedures"))
+        out["repair_verification"] = build_repair_gate_catalog(out["failure_procedures"], out["damage_topology"])
+        out["fault_clearance_apply"] = build_clearance_apply_contract_catalog(out["repair_verification"], out["failure_procedures"])
+        out["post_clearance_recovery"] = build_post_clearance_recovery_contract_catalog(out["fault_clearance_apply"])
+        out["operational_readiness"] = build_operational_readiness_contract_catalog(out["post_clearance_recovery"])
+        out["low_graphic_3d_scene"] = build_low_graphic_3d_scene(operations_context, station_registry, interior_registry, damage_topology_catalog=out["damage_topology"])
 
     out["living_operations"] = {
         "schema":"axm.living-operations-presentation-profile.v1",
@@ -124,9 +104,12 @@ def enrich_storyboard(
         "fault_clearance_apply_mode":"authoritative_ship_state_engine_available_requires_verified_candidate_authorization_and_exact_reconciliation" if "fault_clearance_apply" in out else "not_loaded",
         "post_clearance_recovery_mode":"residual_state_assessment_plus_explicit_commander_safe_state_exit_authorization" if "post_clearance_recovery" in out else "not_loaded",
         "operational_readiness_mode":"truthful_residual_aware_operating_mode_classification_plus_read_only_capability_envelope" if "operational_readiness" in out else "not_loaded",
+        "low_graphic_3d_mode":"whole_simulator_2_5d_read_only_scene_projection" if "low_graphic_3d_scene" in out else "not_loaded",
         "authoritative_clearance_engine_present": "fault_clearance_apply" in out,
         "authoritative_recovery_engine_present": "post_clearance_recovery" in out,
         "authoritative_operational_release_engine_present": "operational_readiness" in out,
+        "low_graphic_3d_scene_present": "low_graphic_3d_scene" in out,
+        "renderer_may_animate": True,
         "renderer_may_apply_fault_clearance": False,
         "renderer_may_apply_safe_state_exit": False,
         "renderer_may_apply_operational_release": False,
@@ -135,6 +118,9 @@ def enrich_storyboard(
         "renderer_may_claim_nominal_with_residuals": False,
         "renderer_may_restore_resources": False,
         "renderer_may_remove_load_sheds": False,
+        "renderer_may_move_authoritative_crew": False,
+        "renderer_may_claim_fault_active_from_rehearsal": False,
+        "renderer_may_claim_physical_scene_geometry": False,
         "may_advance_mission_time":False,
         "may_append_event":False,
         "may_retarget_event":False,

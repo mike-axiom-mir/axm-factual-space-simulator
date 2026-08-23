@@ -1,0 +1,39 @@
+{
+  "schema": "axm.low-graphic-3d-presentation-policy-candidate.v1",
+  "version": "0.12.0-candidate",
+  "policy_id": "axm.low-graphic-3d-presentation-policy.candidate.v1",
+  "truth_status": "simulation_policy_candidate_not_canon",
+  "purpose": "Animate the full factual simulator presentation through a lightweight low-pixel 2.5D shell without creating a second authoritative simulator.",
+  "rendering": {
+    "internal_framebuffer": [480, 270],
+    "style": "low_pixel_2_5d_flat_shaded",
+    "external_runtime_dependencies": [],
+    "room_geometry": "graph_derived_presentation_only_not_physical_dimensions",
+    "crew_markers": "reenactment_and_station_presence_only",
+    "fault_visuals": "active_fault_truth_only_if_authoritative_state_is_supplied; otherwise procedure selection is labelled rehearsal_only",
+    "camera": "bounded_presentation_choreography",
+    "reduced_motion": true
+  },
+  "scene_modes": [
+    "director",
+    "ship_cutaway",
+    "interior_follow",
+    "exterior_orbit",
+    "legacy_bridge"
+  ],
+  "authority_boundaries": {
+    "renderer_may_animate": true,
+    "renderer_may_modify_runtime": false,
+    "renderer_may_move_authoritative_crew": false,
+    "renderer_may_claim_fault_active_from_rehearsal": false,
+    "renderer_may_claim_physical_scene_geometry": false,
+    "renderer_may_execute_action": false,
+    "renderer_may_execute_repair": false,
+    "renderer_may_clear_fault": false,
+    "renderer_may_exit_safe_state": false,
+    "renderer_may_apply_operational_release": false,
+    "renderer_may_restore_resources": false,
+    "renderer_may_change_truth_labels": false
+  },
+  "governance_note": "Presentation candidate only. Visual geometry, movement, lighting and camera choreography are never allowed to become authoritative state by implication."
+}
