@@ -6,10 +6,11 @@ import json
 from typing import Any
 
 from .bridge_rehearsal import build_rehearsal_catalog
+from .damage_topology import build_damage_topology_catalog
 from .failure_procedures import build_failure_procedure_catalog
 
 
-OPERATIONS_VERSION = "0.5.0-candidate"
+OPERATIONS_VERSION = "0.6.0-candidate"
 
 
 def _canonical(value: Any) -> str:
@@ -40,7 +41,16 @@ def build_operations_context(runtime: dict[str, Any]) -> dict[str, Any]:
     return packet
 
 
-def enrich_storyboard(storyboard: dict[str, Any], runtime: dict[str, Any], failure_registry: dict[str, Any] | None = None, station_registry: dict[str, Any] | None = None) -> dict[str, Any]:
+def enrich_storyboard(
+    storyboard: dict[str, Any],
+    runtime: dict[str, Any],
+    failure_registry: dict[str, Any] | None = None,
+    station_registry: dict[str, Any] | None = None,
+    blueprint_registry: dict[str, Any] | None = None,
+    interface_graph: dict[str, Any] | None = None,
+    interior_registry: dict[str, Any] | None = None,
+    room_interaction_registry: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     if storyboard.get("schema") != "axm.main-simulator-temporal-storyboard.v1":
         raise ValueError("unsupported storyboard schema")
     if runtime.get("schema") != "axm.adventure-runtime.v4":
@@ -51,12 +61,60 @@ def enrich_storyboard(storyboard: dict[str, Any], runtime: dict[str, Any], failu
         raise ValueError("runtime/storyboard mission time mismatch")
     if (failure_registry is None) != (station_registry is None):
         raise ValueError("failure and station registries must be supplied together")
+
+    topology_inputs = (
+        blueprint_registry,
+        interface_graph,
+        interior_registry,
+        room_interaction_registry,
+    )
+    if any(value is not None for value in topology_inputs) and not all(value is not None for value in topology_inputs):
+        raise ValueError("blueprint, interface, interior, and room-interaction registries must be supplied together")
+    if all(value is not None for value in topology_inputs) and failure_registry is None:
+        raise ValueError("damage topology requires the failure registry")
+
     out = copy.deepcopy(storyboard)
     operations_context = build_operations_context(runtime)
     out["operations_context"] = operations_context
     out["bridge_rehearsal"] = build_rehearsal_catalog(operations_context)
+
     if failure_registry is not None and station_registry is not None:
         out["failure_procedures"] = build_failure_procedure_catalog(failure_registry, station_registry)
-    out["living_operations"] = {"schema":"axm.living-operations-presentation-profile.v1","version":OPERATIONS_VERSION,"director_mode":"receipt_phase_driven_camera_choreography","crew_mode":"receipt_phase_driven_reenactment_only","resource_mode":"read_only_source_snapshot","thread_mode":"read_only_runtime_summary","action_mode":"inspect_and_rehearse_only_not_executable","rehearsal_mode":"deterministic_planning_rehearsal_with_hold_points","failure_procedure_mode":"versioned_evidence_gated_review_only" if failure_registry is not None else "not_loaded","may_advance_mission_time":False,"may_append_event":False,"may_retarget_event":False,"may_modify_runtime_resources":False,"may_execute_action":False,"may_execute_failure_response":False,"may_clear_fault":False,"may_close_thread":False,"may_change_truth_labels":False}
+
+    if all(value is not None for value in topology_inputs):
+        out["damage_topology"] = build_damage_topology_catalog(
+            failure_registry,
+            blueprint_registry,
+            interface_graph,
+            interior_registry,
+            room_interaction_registry,
+            procedure_catalog=out.get("failure_procedures"),
+        )
+
+    out["living_operations"] = {
+        "schema":"axm.living-operations-presentation-profile.v1",
+        "version":OPERATIONS_VERSION,
+        "director_mode":"receipt_phase_driven_camera_choreography",
+        "crew_mode":"receipt_phase_driven_reenactment_only",
+        "resource_mode":"read_only_source_snapshot",
+        "thread_mode":"read_only_runtime_summary",
+        "action_mode":"inspect_and_rehearse_only_not_executable",
+        "rehearsal_mode":"deterministic_planning_rehearsal_with_hold_points",
+        "failure_procedure_mode":"versioned_evidence_gated_review_only" if failure_registry is not None else "not_loaded",
+        "damage_topology_mode":"derived_existing_graph_composition_only" if "damage_topology" in out else "not_loaded",
+        "may_advance_mission_time":False,
+        "may_append_event":False,
+        "may_retarget_event":False,
+        "may_modify_runtime_resources":False,
+        "may_execute_action":False,
+        "may_execute_failure_response":False,
+        "may_execute_repair":False,
+        "may_consume_spares":False,
+        "may_fabricate_repair_part":False,
+        "may_clear_fault":False,
+        "may_claim_neighbor_failed":False,
+        "may_close_thread":False,
+        "may_change_truth_labels":False,
+    }
     out["living_operations"]["profile_hash"] = _hash(out["living_operations"], "AXM-LIVING-OPERATIONS-PRESENTATION-PROFILE-V1")
     return out

@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-RENDERER_VERSION = "0.5.0-candidate"
+RENDERER_VERSION = "0.6.0-candidate"
 ROOT = Path(__file__).resolve().parents[2]
 ASSET_DIR = ROOT / "assets" / "demo_templates" / "living_operations_bridge"
 
@@ -27,9 +27,17 @@ def render_living_bridge(storyboard: dict[str, Any], import_receipt: dict[str, A
             raise ValueError("failure procedure catalog must remain non-executable")
         if procedures.get("may_clear_fault") is not False:
             raise ValueError("failure procedure catalog must not clear faults")
+    topology = storyboard.get("damage_topology")
+    if topology is not None:
+        if topology.get("may_execute_repair") is not False:
+            raise ValueError("damage topology must remain non-executable")
+        if topology.get("may_consume_spares") is not False:
+            raise ValueError("damage topology must not consume spares")
+        if topology.get("may_clear_fault") is not False:
+            raise ValueError("damage topology must not clear faults")
     template = _asset("shell.html")
-    css = _asset("living_operations_bridge.css") + "\n" + _asset("bridge_rehearsal_v0_4.css") + "\n" + _asset("failure_procedure_v0_5.css")
-    js = _asset("living_operations_bridge_js_part1.txt") + _asset("living_operations_bridge_js_part2.txt") + "\n" + _asset("bridge_rehearsal_v0_4.js") + "\n" + _asset("failure_procedure_v0_5.js")
+    css = _asset("living_operations_bridge.css") + "\n" + _asset("bridge_rehearsal_v0_4.css") + "\n" + _asset("failure_procedure_v0_5.css") + "\n" + _asset("damage_topology_v0_6.css")
+    js = _asset("living_operations_bridge_js_part1.txt") + _asset("living_operations_bridge_js_part2.txt") + "\n" + _asset("bridge_rehearsal_v0_4.js") + "\n" + _asset("failure_procedure_v0_5.js") + "\n" + _asset("damage_topology_v0_6.js")
     payload = json.dumps(storyboard, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     receipt = json.dumps(import_receipt, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     title = html.escape(str(storyboard.get("system_name", "AXM Factual Space Simulator")))
