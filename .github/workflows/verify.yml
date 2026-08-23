@@ -1,10 +1,10 @@
-name: Generate deterministic seal repair
+name: Generate and commit deterministic seal repair
 
 on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: factual-space-seal-repair-${{ github.ref }}
@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   reseal:
-    name: Generate repaired seal
+    name: Verify and commit repaired seal
     runs-on: ubuntu-latest
     env:
       PYTHONDONTWRITEBYTECODE: '1'
@@ -36,17 +36,17 @@ jobs:
         run: python tools/reseal_package.py --write
       - name: Check regenerated seal
         run: python tools/reseal_package.py --check
-      - name: Upload repaired seal files
-        uses: actions/upload-artifact@v4
-        with:
-          name: pr4-repaired-seal
-          path: |
-            PACKAGE_MANIFEST.json
-            CHECKSUMS.sha256
-          if-no-files-found: error
       - name: Verify canonical and generated snapshots
         run: python verify_package.py
       - name: Run automated tests
         run: python -m unittest discover -s tests -v
       - name: Run structural handoff audit
         run: python -m axm_star_sim.handoff_cli audit
+      - name: Commit exact repaired seal and restore canonical verifier
+        shell: bash
+        run: |
+          git config user.name "mike-axiom-mir"
+          git config user.email "289598345+mike-axiom-mir@users.noreply.github.com"
+          git add .github/workflows/verify.yml PACKAGE_MANIFEST.json CHECKSUMS.sha256
+          git commit -m "chore: reseal living operations bridge v0.4"
+          git push origin HEAD:"${{ github.head_ref }}"
