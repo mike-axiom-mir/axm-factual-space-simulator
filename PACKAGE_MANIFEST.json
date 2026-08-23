@@ -3,7 +3,7 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 298,
+  "managed_file_count": 304,
   "files": {
     ".gitattributes": {
       "bytes": 45,
@@ -48,6 +48,14 @@
     "assets/demo_templates/living_operations_bridge/bridge_rehearsal_v0_4.js": {
       "bytes": 6379,
       "sha256": "8edffbcbd9c48110583a10e5bbab117e1efcdfb6855330733ea6f17593a8f9a4"
+    },
+    "assets/demo_templates/living_operations_bridge/failure_procedure_v0_5.css": {
+      "bytes": 1207,
+      "sha256": "f844f7f9a428db116583c44ee62727220baee2596864fd5fec0cf80eb4234201"
+    },
+    "assets/demo_templates/living_operations_bridge/failure_procedure_v0_5.js": {
+      "bytes": 7507,
+      "sha256": "1abfce84c7b958ec9e4195d561040d524e47eb72c6254bef6c420c377660c5f6"
     },
     "assets/demo_templates/living_operations_bridge/living_operations_bridge.css": {
       "bytes": 4799,
@@ -157,6 +165,10 @@
       "bytes": 5152,
       "sha256": "340abf0c99d24fbd225798dbcb9f3b2e9a2534475e3af61cbb083662f7d1c83e"
     },
+    "data/failure_procedure_contract_candidate_v0_5.json": {
+      "bytes": 661,
+      "sha256": "2208555d423e2300dfd82b354ff64676b4838898fd7294be78cc14baad1304e8"
+    },
     "data/formula_registry.json": {
       "bytes": 7947,
       "sha256": "697abc88dc3642beef4c6294e4602667426833b509ce26bce68e314bca64bb87"
@@ -248,6 +260,10 @@
     "docs/ACTION_REPORT_LIVING_OPERATIONS_BRIDGE_v0_4.md": {
       "bytes": 2348,
       "sha256": "021a7ff0a921f1112ba87f00e0aed3b904253277fa5489faa7e9141c06d4a4e5"
+    },
+    "docs/ACTION_REPORT_LIVING_OPERATIONS_BRIDGE_v0_5.md": {
+      "bytes": 1959,
+      "sha256": "2b5fe734815ed39fe3161413a1bb5a54d9637a47678212f294e1657ad5f67041"
     },
     "docs/ACTION_REPORT_v0_10_0.md": {
       "bytes": 1248,
@@ -798,8 +814,8 @@
       "sha256": "e83ec0c9cdf099bfc4abafa36003a24a28a81ff8a556bea1a7e7d72cf608a6d6"
     },
     "scripts/build_living_operations_bridge_from_repo.py": {
-      "bytes": 1952,
-      "sha256": "17b3ccfbfdb14901cbf99f3ed4b11f6abb51fbb9479b4e2db864362fe0d9a9a5"
+      "bytes": 2431,
+      "sha256": "a865bd4ee6e78e0346d1f1a98290fd0b454c9646ac5cfe62d4f80d12cde27a86"
     },
     "scripts/build_local_handoff_outputs_v0_15.py": {
       "bytes": 607,
@@ -941,6 +957,10 @@
       "bytes": 9547,
       "sha256": "9a79f9e5378813ec2de14bd45267cee86f78a94e0f4d344fe537eeabd6f5c0e1"
     },
+    "src/axm_star_sim/failure_procedures.py": {
+      "bytes": 14429,
+      "sha256": "b512abeccd7dee3430dc00ce8ef17eb46850d075f4165f1a46da468342b38d76"
+    },
     "src/axm_star_sim/generator.py": {
       "bytes": 12369,
       "sha256": "ec5b55a7e8dd051be7461239faf6e2018128fe7724e859703ca51721afbf5e9f"
@@ -962,12 +982,12 @@
       "sha256": "057bea1a5f48edec926c85f8b4edc9ba79c2cf860c3708b165ab8b6bc83cc315"
     },
     "src/axm_star_sim/living_operations_bridge.py": {
-      "bytes": 4586,
-      "sha256": "192f376bb75ae50dc907605d8385e2e583f81f56e225a21cf455834819b971b4"
+      "bytes": 4954,
+      "sha256": "9e3d150737b85255ee761944ab526ee8498bb2e6ed7dc1f2b0cb9767f928f817"
     },
     "src/axm_star_sim/living_operations_bridge_view.py": {
-      "bytes": 1765,
-      "sha256": "54f00e6666efd0dc4c7d5717348b67a93c6a8291396064b4a4abb755df4c6021"
+      "bytes": 2229,
+      "sha256": "dd36ce492ccec9ad6ce1ba79d7f488da8cf19b9e2919b286b8099d63445e7302"
     },
     "src/axm_star_sim/migration.py": {
       "bytes": 4580,
@@ -1108,6 +1128,10 @@
     "tests/test_factual_ship_blueprint.py": {
       "bytes": 10757,
       "sha256": "67d004f1bda320eba1d6b78d8beb39db4a0f0d9bb26cb8ef2130ae53a6bb3c7d"
+    },
+    "tests/test_failure_procedures.py": {
+      "bytes": 5992,
+      "sha256": "0682bba62d47c4c0d30d3fc4e3d70d12d867401c26dc24819bb1fdda018523da"
     },
     "tests/test_generator.py": {
       "bytes": 4693,
