@@ -1074,8 +1074,8 @@
       "sha256": "6363573a31472324215450e586ae918b5153b6b68519d74356f422a1ffe1322c"
     },
     "src/axm_star_sim/repair_verification.py": {
-      "bytes": 14938,
-      "sha256": "773d87f6ef6ffbed2c0f7ef2326832a92f97fb62828fd3e57ab430beea4f53a2"
+      "bytes": 23160,
+      "sha256": "b440b73e7d13f36aad7ebe243545b180eff3bf7872cfa163921ef9c994051af8"
     },
     "src/axm_star_sim/rooted_crew.py": {
       "bytes": 19107,
@@ -1234,8 +1234,8 @@
       "sha256": "53b1983410ffea5d7e5cfceb3424904eb9f410813de3827973265533b5ba9d2a"
     },
     "tests/test_repair_verification.py": {
-      "bytes": 9262,
-      "sha256": "c32dd11bb67eed9c1ad7031bbc81f8ee325912724cbcf556268a4701bebf24ac"
+      "bytes": 11696,
+      "sha256": "d56801900ef3c5bbe3f5494f325e3d6f992395035acccfa3a9853e3e49f78bd7"
     },
     "tests/test_ship_interior.py": {
       "bytes": 8510,
