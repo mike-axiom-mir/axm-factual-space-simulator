@@ -11,6 +11,7 @@ from .damage_topology import build_damage_topology_catalog
 from .exterior_operations_animation import build_exterior_operations_animation
 from .failure_procedures import build_failure_procedure_catalog
 from .fault_clearance_apply import build_clearance_apply_contract_catalog
+from .interactive_exploration import build_interactive_exploration
 from .living_interior_animation import build_living_interior_animation
 from .low_graphic_scene import build_low_graphic_3d_scene
 from .operational_readiness import build_operational_readiness_contract_catalog
@@ -18,7 +19,7 @@ from .post_clearance_recovery import build_post_clearance_recovery_contract_cata
 from .repair_verification import build_repair_gate_catalog
 
 
-OPERATIONS_VERSION = "0.14.0-candidate"
+OPERATIONS_VERSION = "0.15.0-candidate"
 
 
 def _canonical(value: Any) -> str:
@@ -94,6 +95,12 @@ def enrich_storyboard(
         out["living_interior_animation"] = build_living_interior_animation(out["low_graphic_3d_scene"], procedure_catalog=out.get("failure_procedures"))
         out["exterior_operations_animation"] = build_exterior_operations_animation(blueprint_registry, out["low_graphic_3d_scene"], out, procedure_catalog=out.get("failure_procedures"))
         out["causal_cinematic_director"] = build_causal_cinematic_director(out, out["exterior_operations_animation"], out["living_interior_animation"])
+        out["interactive_exploration"] = build_interactive_exploration(
+            out["low_graphic_3d_scene"],
+            out["living_interior_animation"],
+            out["exterior_operations_animation"],
+            out["causal_cinematic_director"],
+        )
 
     out["living_operations"] = {
         "schema":"axm.living-operations-presentation-profile.v1",
@@ -114,6 +121,7 @@ def enrich_storyboard(
         "living_interior_animation_mode":"registered_room_graph_portals_abstract_machinery_ambience_and_rehearsal_traversal" if "living_interior_animation" in out else "not_loaded",
         "exterior_operations_animation_mode":"declared_module_and_system_capability_actors_plus_rehearsal_only_external_choreography" if "exterior_operations_animation" in out else "not_loaded",
         "causal_cinematic_director_mode":"immutable_cue_segment_order_plus_recorded_state_change_camera_focus" if "causal_cinematic_director" in out else "not_loaded",
+        "interactive_exploration_mode":"select_follow_and_inspect_registered_presentation_targets_only" if "interactive_exploration" in out else "not_loaded",
         "authoritative_clearance_engine_present": "fault_clearance_apply" in out,
         "authoritative_recovery_engine_present": "post_clearance_recovery" in out,
         "authoritative_operational_release_engine_present": "operational_readiness" in out,
@@ -121,6 +129,7 @@ def enrich_storyboard(
         "living_interior_animation_present": "living_interior_animation" in out,
         "exterior_operations_animation_present": "exterior_operations_animation" in out,
         "causal_cinematic_director_present": "causal_cinematic_director" in out,
+        "interactive_exploration_present": "interactive_exploration" in out,
         "renderer_may_animate": True,
         "renderer_may_animate_room_ambience": "living_interior_animation" in out,
         "renderer_may_animate_portals": "living_interior_animation" in out,
@@ -129,6 +138,9 @@ def enrich_storyboard(
         "renderer_may_animate_exterior_capability_actors": "exterior_operations_animation" in out,
         "renderer_may_route_camera_from_immutable_cues": "causal_cinematic_director" in out,
         "renderer_may_adjust_visual_detail": "causal_cinematic_director" in out,
+        "renderer_may_select_presentation_target": "interactive_exploration" in out,
+        "renderer_may_inspect_declared_source_metadata": "interactive_exploration" in out,
+        "renderer_may_follow_existing_presentation_context": "interactive_exploration" in out,
         "renderer_may_apply_fault_clearance": False,
         "renderer_may_apply_safe_state_exit": False,
         "renderer_may_apply_operational_release": False,
@@ -141,6 +153,7 @@ def enrich_storyboard(
         "renderer_may_deploy_probe": False,
         "renderer_may_reorder_events": False,
         "renderer_may_change_cue_timing_fractions": False,
+        "renderer_may_change_authoritative_selection": False,
         "renderer_may_claim_nominal_with_residuals": False,
         "renderer_may_restore_resources": False,
         "renderer_may_remove_load_sheds": False,

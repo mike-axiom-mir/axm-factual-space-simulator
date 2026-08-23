@@ -56,6 +56,7 @@ def main() -> int:
     interior_animation = board["living_interior_animation"]
     exterior_animation = board["exterior_operations_animation"]
     cinematic = board["causal_cinematic_director"]
+    exploration = board["interactive_exploration"]
     available_access = sum(
         1 for row in topology["topologies"]
         if str(row.get("access", {}).get("status", "")).startswith("ACCESS_PATH_AVAILABLE")
@@ -64,9 +65,10 @@ def main() -> int:
     clearance_engines = sum(1 for row in clearance["contracts"] if row.get("status") == "ENGINE_AVAILABLE_REQUIRES_VERIFIED_CANDIDATE_AND_LIVE_SHIP_STATE")
     recovery_engines = sum(1 for row in recovery["contracts"] if row.get("status") == "RECOVERY_ENGINE_AVAILABLE_AFTER_APPLIED_VERIFIED_CLEARANCE")
     readiness_engines = sum(1 for row in readiness["contracts"] if row.get("status") == "OPERATIONAL_RELEASE_ENGINE_AVAILABLE_AFTER_VERIFIED_RECOVERY_CHAIN")
+    exploration_holds = sum(1 for row in exploration["targets"] if str(row.get("selection_status", "")).startswith("HOLD_"))
     print(json.dumps({
-        "schema":"axm.living-operations-bridge-repo-build.v11",
-        "version":"0.14.0-candidate",
+        "schema":"axm.living-operations-bridge-repo-build.v12",
+        "version":"0.15.0-candidate",
         "source_turn":board["operations_context"]["source_turn"],
         "open_threads":board["operations_context"]["open_thread_count"],
         "available_actions":board["operations_context"]["available_action_count"],
@@ -93,19 +95,20 @@ def main() -> int:
         "exterior_cue_choreography":len(exterior_animation["cue_choreography"]),
         "cinematic_cue_plans":cinematic["cue_plan_count"],
         "cinematic_default_visual_detail":cinematic["default_visual_detail"],
+        "interactive_exploration_targets":exploration["target_count"],
+        "interactive_exploration_holds":exploration_holds,
+        "interactive_exploration_follow_modes":len(exploration["follow_modes"]),
+        "interactive_exploration_default_target":exploration["default_target_id"],
         "component_specificity":topology["component_specificity"],
         "procedure_execution_authority":procedures["may_execute_response"],
         "repair_execution_authority":repair["may_execute_repair"],
-        "renderer_exterior_animation_authority":board["living_operations"]["renderer_may_animate_exterior_capability_actors"],
-        "renderer_causal_camera_authority":board["living_operations"]["renderer_may_route_camera_from_immutable_cues"],
-        "renderer_visual_detail_authority":board["living_operations"]["renderer_may_adjust_visual_detail"],
-        "renderer_exterior_operation_execution_authority":board["living_operations"]["renderer_may_execute_exterior_operation"],
-        "renderer_thrust_authority":board["living_operations"]["renderer_may_apply_thrust"],
-        "renderer_docking_authority":board["living_operations"]["renderer_may_dock"],
-        "renderer_eva_authority":board["living_operations"]["renderer_may_begin_eva"],
-        "renderer_probe_deployment_authority":board["living_operations"]["renderer_may_deploy_probe"],
-        "renderer_event_reorder_authority":board["living_operations"]["renderer_may_reorder_events"],
-        "authority":"presentation_plus_authoritative_clearance_recovery_and_operational_release contracts; exterior/cinematic layers remain read_only",
+        "renderer_exploration_selection_authority":board["living_operations"]["renderer_may_select_presentation_target"],
+        "renderer_exploration_inspection_authority":board["living_operations"]["renderer_may_inspect_declared_source_metadata"],
+        "renderer_authoritative_selection_authority":board["living_operations"]["renderer_may_change_authoritative_selection"],
+        "renderer_retarget_event_authority":board["living_operations"]["may_retarget_event"],
+        "renderer_operation_execution_authority":board["living_operations"]["renderer_may_execute_operation"],
+        "renderer_world_state_authority":board["living_operations"]["may_modify_runtime_resources"],
+        "authority":"presentation plus authoritative clearance/recovery/operational-release contracts; interactive exploration remains read_only",
         "output":str(OUTPUT.relative_to(ROOT)),
     }, indent=2))
     return 0

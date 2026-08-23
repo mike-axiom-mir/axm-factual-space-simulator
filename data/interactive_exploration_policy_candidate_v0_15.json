@@ -1,0 +1,33 @@
+{
+  "schema": "axm.interactive-exploration-presentation-policy-candidate.v1",
+  "version": "0.15.0-candidate",
+  "policy_id": "axm.interactive-exploration-presentation-policy.candidate.v1",
+  "truth_status": "simulation_policy_candidate_not_canon",
+  "purpose": "Make the animated factual simulator easier to explore and inspect without turning presentation selection into spacecraft command authority.",
+  "interaction": {
+    "target_catalog": "registered rooms, stations, unresolved station holds, interior system bindings, presentation portals, declared exterior systems and modules",
+    "follow_modes": ["director", "selected_target", "active_procedure", "active_event"],
+    "room_tap": "presentation focus only",
+    "inspection": "source-backed metadata only",
+    "unresolved_mapping_behavior": "visible_hold_not_invention"
+  },
+  "authority_boundaries": {
+    "renderer_may_select_presentation_target": true,
+    "renderer_may_inspect_declared_source_metadata": true,
+    "renderer_may_follow_existing_presentation_context": true,
+    "renderer_may_change_authoritative_selection": false,
+    "renderer_may_retarget_event": false,
+    "renderer_may_move_authoritative_crew": false,
+    "renderer_may_move_authoritative_robotics": false,
+    "renderer_may_open_authoritative_doors": false,
+    "renderer_may_execute_action": false,
+    "renderer_may_execute_operation": false,
+    "renderer_may_modify_world_state": false,
+    "renderer_may_modify_resources": false,
+    "renderer_may_advance_mission_time": false,
+    "renderer_may_claim_physical_geometry": false,
+    "renderer_may_claim_physical_hardware": false,
+    "renderer_may_change_truth_labels": false
+  },
+  "governance_note": "Presentation candidate only. Selecting, tapping, following or inspecting changes camera/UI focus, never simulation authority or factual state."
+}

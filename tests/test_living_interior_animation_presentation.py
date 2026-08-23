@@ -38,7 +38,7 @@ class LivingInteriorAnimationPresentationTests(unittest.TestCase):
 
     def test_living_profile_exposes_animation_without_new_authority(self):
         profile = self.board["living_operations"]
-        self.assertEqual(profile["version"], "0.14.0-candidate")
+        self.assertEqual(profile["version"], "0.15.0-candidate")
         self.assertTrue(profile["living_interior_animation_present"])
         self.assertTrue(profile["renderer_may_animate_room_ambience"])
         self.assertTrue(profile["renderer_may_animate_portals"])

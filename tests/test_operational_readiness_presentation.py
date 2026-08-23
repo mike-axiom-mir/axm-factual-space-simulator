@@ -50,7 +50,7 @@ class OperationalReadinessPresentationTests(unittest.TestCase):
 
     def test_living_profile_keeps_renderer_out_of_operational_authority(self):
         profile = self.board["living_operations"]
-        self.assertEqual(profile["version"], "0.14.0-candidate")
+        self.assertEqual(profile["version"], "0.15.0-candidate")
         self.assertTrue(
             profile["authoritative_operational_release_engine_present"]
         )

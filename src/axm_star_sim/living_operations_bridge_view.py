@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-RENDERER_VERSION = "0.14.0-candidate"
+RENDERER_VERSION = "0.15.0-candidate"
 ROOT = Path(__file__).resolve().parents[2]
 ASSET_DIR = ROOT / "assets" / "demo_templates" / "living_operations_bridge"
 
@@ -127,6 +127,28 @@ def render_living_bridge(storyboard: dict[str, Any], import_receipt: dict[str, A
             raise ValueError("cinematic director cannot modify world state")
         if cinematic.get("renderer_may_execute_operation") is not False:
             raise ValueError("cinematic director cannot execute operations")
+    exploration = storyboard.get("interactive_exploration")
+    if exploration is not None:
+        if exploration.get("authority") != "read_only_interactive_exploration_presentation":
+            raise ValueError("interactive exploration must remain read-only presentation")
+        if exploration.get("renderer_may_change_authoritative_selection") is not False:
+            raise ValueError("interactive exploration cannot change authoritative selection")
+        if exploration.get("renderer_may_retarget_event") is not False:
+            raise ValueError("interactive exploration cannot retarget immutable events")
+        if exploration.get("renderer_may_move_authoritative_crew") is not False:
+            raise ValueError("interactive exploration cannot move authoritative crew")
+        if exploration.get("renderer_may_move_authoritative_robotics") is not False:
+            raise ValueError("interactive exploration cannot move authoritative robotics")
+        if exploration.get("renderer_may_open_authoritative_doors") is not False:
+            raise ValueError("interactive exploration cannot open authoritative doors")
+        if exploration.get("renderer_may_execute_action") is not False:
+            raise ValueError("interactive exploration cannot execute actions")
+        if exploration.get("renderer_may_execute_operation") is not False:
+            raise ValueError("interactive exploration cannot execute operations")
+        if exploration.get("renderer_may_modify_world_state") is not False:
+            raise ValueError("interactive exploration cannot modify world state")
+        if exploration.get("renderer_may_modify_resources") is not False:
+            raise ValueError("interactive exploration cannot modify resources")
 
     template = _asset("shell.html")
     css = (
@@ -142,6 +164,7 @@ def render_living_bridge(storyboard: dict[str, Any], import_receipt: dict[str, A
         + "\n" + _asset("living_interior_v0_13.css")
         + "\n" + _asset("exterior_operations_v0_14.css")
         + "\n" + _asset("causal_director_v0_14.css")
+        + "\n" + _asset("interactive_exploration_v0_15.css")
     )
     js = (
         _asset("living_operations_bridge_js_part1.txt")
@@ -157,6 +180,7 @@ def render_living_bridge(storyboard: dict[str, Any], import_receipt: dict[str, A
         + "\n" + _asset("living_interior_v0_13.js")
         + "\n" + _asset("exterior_operations_v0_14.js")
         + "\n" + _asset("causal_director_v0_14.js")
+        + "\n" + _asset("interactive_exploration_v0_15.js")
     )
     payload = json.dumps(storyboard, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     receipt = json.dumps(import_receipt, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
