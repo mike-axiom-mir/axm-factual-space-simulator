@@ -1,0 +1,37 @@
+{
+  "schema": "axm.post-clearance-recovery-policy-candidate.v1",
+  "version": "0.10.0-candidate",
+  "status": "NON_CANON_CANDIDATE",
+  "authority_policy_id": "axm.post-clearance-recovery-authority-policy.candidate.v1",
+  "scope": "post_verified_fault_clearance_residual_assessment_and_safe_state_exit",
+  "principles": [
+    "fault_clearance_does_not_imply_full_recovery",
+    "authoritative_ship_state_is_reassessed_at_release_time",
+    "active_crew_survival_or_command_required_faults_block_release",
+    "pending_command_recall_or_irreversible_action_holds_block_release",
+    "recovery_evidence_and_independent_checks_are_required",
+    "mission_commander_authorization_is_required_for_safe_state_exit",
+    "safe_state_exit_changes_control_mode_only",
+    "residual_resources_crew_structure_system_health_and_load_sheds_are_preserved",
+    "renderer_has_no_recovery_mutation_authority"
+  ],
+  "release_statuses": [
+    "FAULT_CLEARED_RECOVERY_INCOMPLETE",
+    "DEGRADED_SAFE_RECOVERY_RELEASE_ELIGIBLE",
+    "NOMINAL_RECOVERY_RELEASE_ELIGIBLE",
+    "RECOVERY_NO_SAFE_STATE_EXIT_REQUIRED"
+  ],
+  "automatic_restoration": {
+    "resources": false,
+    "system_health": false,
+    "load_sheds": false,
+    "other_faults": false,
+    "safe_state_exit": false
+  },
+  "governance": {
+    "canon": false,
+    "merge_authority_granted": false,
+    "release_authority_granted": false,
+    "policy_note": "Candidate simulation policy only; this file does not promote authority or CANON."
+  }
+}

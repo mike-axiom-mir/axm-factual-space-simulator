@@ -9,10 +9,11 @@ from .bridge_rehearsal import build_rehearsal_catalog
 from .damage_topology import build_damage_topology_catalog
 from .failure_procedures import build_failure_procedure_catalog
 from .fault_clearance_apply import build_clearance_apply_contract_catalog
+from .post_clearance_recovery import build_post_clearance_recovery_contract_catalog
 from .repair_verification import build_repair_gate_catalog
 
 
-OPERATIONS_VERSION = "0.8.0-candidate"
+OPERATIONS_VERSION = "0.10.0-candidate"
 
 
 def _canonical(value: Any) -> str:
@@ -100,6 +101,9 @@ def enrich_storyboard(
             out["repair_verification"],
             out["failure_procedures"],
         )
+        out["post_clearance_recovery"] = build_post_clearance_recovery_contract_catalog(
+            out["fault_clearance_apply"],
+        )
 
     out["living_operations"] = {
         "schema":"axm.living-operations-presentation-profile.v1",
@@ -114,8 +118,13 @@ def enrich_storyboard(
         "damage_topology_mode":"derived_existing_graph_composition_only" if "damage_topology" in out else "not_loaded",
         "repair_verification_mode":"external_execution_receipts_plus_post_repair_evidence_gate" if "repair_verification" in out else "not_loaded",
         "fault_clearance_apply_mode":"authoritative_ship_state_engine_available_requires_verified_candidate_authorization_and_exact_reconciliation" if "fault_clearance_apply" in out else "not_loaded",
+        "post_clearance_recovery_mode":"residual_state_assessment_plus_explicit_commander_safe_state_exit_authorization" if "post_clearance_recovery" in out else "not_loaded",
         "authoritative_clearance_engine_present": "fault_clearance_apply" in out,
+        "authoritative_recovery_engine_present": "post_clearance_recovery" in out,
         "renderer_may_apply_fault_clearance": False,
+        "renderer_may_apply_safe_state_exit": False,
+        "renderer_may_restore_resources": False,
+        "renderer_may_remove_load_sheds": False,
         "may_advance_mission_time":False,
         "may_append_event":False,
         "may_retarget_event":False,
@@ -127,6 +136,7 @@ def enrich_storyboard(
         "may_consume_spares":False,
         "may_fabricate_repair_part":False,
         "may_clear_fault":False,
+        "may_exit_safe_state":False,
         "may_claim_neighbor_failed":False,
         "may_close_thread":False,
         "may_change_truth_labels":False,
