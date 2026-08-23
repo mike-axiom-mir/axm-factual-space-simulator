@@ -1,0 +1,32 @@
+name: Temporary PR4 reseal artifact
+
+on:
+  push:
+    branches:
+      - automation/reseal-pr4-helper
+
+permissions:
+  contents: read
+
+jobs:
+  reseal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Recreate target-tree seal
+        shell: bash
+        run: |
+          rm .github/workflows/temporary-reseal-pr4-helper.yml
+          python tools/reseal_package.py --write
+          python tools/reseal_package.py --check
+      - name: Upload exact seal files
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr4-reseal-files
+          path: |
+            PACKAGE_MANIFEST.json
+            CHECKSUMS.sha256
+          if-no-files-found: error
