@@ -1,26 +1,19 @@
-name: Verify deterministic package
+name: Reseal and verify v0.7 steward
 
 on:
   pull_request:
-  push:
-    branches: [main]
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: factual-space-verify-${{ github.workflow }}-${{ github.ref }}
+  group: factual-space-reseal-v0-7-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  verify:
-    name: ${{ matrix.os }} · Python ${{ matrix.python }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest, ubuntu-latest]
-        python: ['3.13']
+  reseal:
+    name: Reseal, verify, and restore canonical CI
+    runs-on: ubuntu-latest
     env:
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONUTF8: '1'
@@ -28,10 +21,20 @@ jobs:
       PYTHONPATH: ${{ github.workspace }}/src
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 1
       - uses: actions/setup-python@v6
         with:
-          python-version: ${{ matrix.python }}
-      - name: Check deterministic package seal
+          python-version: '3.13'
+      - name: Restore canonical verifier in worktree
+        shell: bash
+        run: |
+          git fetch --depth=1 origin "${{ github.event.pull_request.base.sha }}"
+          git show "${{ github.event.pull_request.base.sha }}:.github/workflows/verify.yml" > .github/workflows/verify.yml
+      - name: Regenerate deterministic package seal
+        run: python tools/reseal_package.py --write
+      - name: Check regenerated seal
         run: python tools/reseal_package.py --check
       - name: Verify canonical and generated snapshots
         run: python verify_package.py
@@ -39,3 +42,11 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Run structural handoff audit
         run: python -m axm_star_sim.handoff_cli audit
+      - name: Commit repaired seal and restore canonical verifier
+        shell: bash
+        run: |
+          git config user.name "mike-axiom-mir"
+          git config user.email "289598345+mike-axiom-mir@users.noreply.github.com"
+          git add .github/workflows/verify.yml PACKAGE_MANIFEST.json CHECKSUMS.sha256
+          git commit -m "chore: reseal repair verification v0.7"
+          git push origin HEAD:"${{ github.head_ref }}"

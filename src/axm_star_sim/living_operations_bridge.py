@@ -8,9 +8,10 @@ from typing import Any
 from .bridge_rehearsal import build_rehearsal_catalog
 from .damage_topology import build_damage_topology_catalog
 from .failure_procedures import build_failure_procedure_catalog
+from .repair_verification import build_repair_gate_catalog
 
 
-OPERATIONS_VERSION = "0.6.0-candidate"
+OPERATIONS_VERSION = "0.7.0-candidate"
 
 
 def _canonical(value: Any) -> str:
@@ -90,6 +91,10 @@ def enrich_storyboard(
             room_interaction_registry,
             procedure_catalog=out.get("failure_procedures"),
         )
+        out["repair_verification"] = build_repair_gate_catalog(
+            out["failure_procedures"],
+            out["damage_topology"],
+        )
 
     out["living_operations"] = {
         "schema":"axm.living-operations-presentation-profile.v1",
@@ -102,6 +107,7 @@ def enrich_storyboard(
         "rehearsal_mode":"deterministic_planning_rehearsal_with_hold_points",
         "failure_procedure_mode":"versioned_evidence_gated_review_only" if failure_registry is not None else "not_loaded",
         "damage_topology_mode":"derived_existing_graph_composition_only" if "damage_topology" in out else "not_loaded",
+        "repair_verification_mode":"external_execution_receipts_plus_post_repair_evidence_gate" if "repair_verification" in out else "not_loaded",
         "may_advance_mission_time":False,
         "may_append_event":False,
         "may_retarget_event":False,
@@ -109,6 +115,7 @@ def enrich_storyboard(
         "may_execute_action":False,
         "may_execute_failure_response":False,
         "may_execute_repair":False,
+        "may_record_external_execution_as_fact_without_receipt":False,
         "may_consume_spares":False,
         "may_fabricate_repair_part":False,
         "may_clear_fault":False,

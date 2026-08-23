@@ -11,10 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "output" / "persistent_atlas_demo" / "expedition_alpha"
 OUTPUT = ROOT / "output" / "living_operations_bridge_candidate" / "living_operations_bridge_demo.html"
 
-
 def _load_data(name: str) -> dict:
     return json.loads((ROOT / "data" / name).read_text(encoding="utf-8"))
-
 
 def main() -> int:
     snapshot = load_verified_snapshot(
@@ -48,14 +46,15 @@ def main() -> int:
 
     procedures = board["failure_procedures"]
     topology = board["damage_topology"]
+    repair = board["repair_verification"]
     available_access = sum(
-        1
-        for row in topology["topologies"]
+        1 for row in topology["topologies"]
         if str(row.get("access", {}).get("status", "")).startswith("ACCESS_PATH_AVAILABLE")
     )
+    ready_repair_gates = sum(1 for row in repair["gates"] if row.get("status") == "READY_FOR_EXTERNAL_REPAIR_PLAN")
     print(json.dumps({
-        "schema":"axm.living-operations-bridge-repo-build.v4",
-        "version":"0.6.0-candidate",
+        "schema":"axm.living-operations-bridge-repo-build.v5",
+        "version":"0.7.0-candidate",
         "source_turn":board["operations_context"]["source_turn"],
         "open_threads":board["operations_context"]["open_thread_count"],
         "available_actions":board["operations_context"]["available_action_count"],
@@ -63,16 +62,16 @@ def main() -> int:
         "failure_procedures":procedures["procedure_count"],
         "damage_topologies":topology["topology_count"],
         "mapped_access_topologies":available_access,
+        "repair_verification_gates":repair["gate_count"],
+        "repair_gates_ready_for_external_plan":ready_repair_gates,
         "component_specificity":topology["component_specificity"],
         "procedure_execution_authority":procedures["may_execute_response"],
-        "repair_execution_authority":topology["may_execute_repair"],
-        "spares_consumption_authority":topology["may_consume_spares"],
-        "fault_clear_authority":topology["may_clear_fault"],
-        "authority":"presentation_procedure_and_derived_topology_review_only",
+        "repair_execution_authority":repair["may_execute_repair"],
+        "fault_clear_authority":repair["may_clear_fault"],
+        "authority":"presentation_procedure_topology_and_repair_verification_review_only",
         "output":str(OUTPUT.relative_to(ROOT)),
     }, indent=2))
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

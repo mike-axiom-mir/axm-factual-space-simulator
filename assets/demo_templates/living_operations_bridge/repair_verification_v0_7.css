@@ -1,0 +1,10 @@
+.repairVerificationPanel{display:grid;gap:8px;padding:8px;border:1px solid #284354;background:#071018}
+.repairGateTitle{font-weight:800;letter-spacing:.04em}
+.repairLadder{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.repairLadder span{border:1px solid #294454;padding:5px 3px;text-align:center;font-size:10px;line-height:1.15}
+.repairLadder span.active{border-color:#78f3b4;box-shadow:0 0 0 1px #78f3b433 inset;color:#baffd7}
+.repairLadder span.hold{border-color:#a36c38;color:#ffd078}
+.repairGateMeta{display:flex;gap:6px;flex-wrap:wrap}
+.repairGateBoundary{padding:7px;border-left:3px solid #ffd078;background:#15110a;font-size:11px}
+.repairStageControls{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+@media(max-width:780px){.repairLadder{grid-template-columns:1fr}.repairStageControls{grid-template-columns:1fr}}
