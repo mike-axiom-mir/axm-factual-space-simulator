@@ -8,10 +8,11 @@ from typing import Any
 from .bridge_rehearsal import build_rehearsal_catalog
 from .damage_topology import build_damage_topology_catalog
 from .failure_procedures import build_failure_procedure_catalog
+from .fault_clearance_apply import build_clearance_apply_contract_catalog
 from .repair_verification import build_repair_gate_catalog
 
 
-OPERATIONS_VERSION = "0.7.0-candidate"
+OPERATIONS_VERSION = "0.8.0-candidate"
 
 
 def _canonical(value: Any) -> str:
@@ -95,6 +96,10 @@ def enrich_storyboard(
             out["failure_procedures"],
             out["damage_topology"],
         )
+        out["fault_clearance_apply"] = build_clearance_apply_contract_catalog(
+            out["repair_verification"],
+            out["failure_procedures"],
+        )
 
     out["living_operations"] = {
         "schema":"axm.living-operations-presentation-profile.v1",
@@ -108,6 +113,9 @@ def enrich_storyboard(
         "failure_procedure_mode":"versioned_evidence_gated_review_only" if failure_registry is not None else "not_loaded",
         "damage_topology_mode":"derived_existing_graph_composition_only" if "damage_topology" in out else "not_loaded",
         "repair_verification_mode":"external_execution_receipts_plus_post_repair_evidence_gate" if "repair_verification" in out else "not_loaded",
+        "fault_clearance_apply_mode":"authoritative_ship_state_engine_available_requires_verified_candidate_authorization_and_exact_reconciliation" if "fault_clearance_apply" in out else "not_loaded",
+        "authoritative_clearance_engine_present": "fault_clearance_apply" in out,
+        "renderer_may_apply_fault_clearance": False,
         "may_advance_mission_time":False,
         "may_append_event":False,
         "may_retarget_event":False,

@@ -47,14 +47,16 @@ def main() -> int:
     procedures = board["failure_procedures"]
     topology = board["damage_topology"]
     repair = board["repair_verification"]
+    clearance = board["fault_clearance_apply"]
     available_access = sum(
         1 for row in topology["topologies"]
         if str(row.get("access", {}).get("status", "")).startswith("ACCESS_PATH_AVAILABLE")
     )
     ready_repair_gates = sum(1 for row in repair["gates"] if row.get("status") == "READY_FOR_EXTERNAL_REPAIR_PLAN")
+    clearance_engines = sum(1 for row in clearance["contracts"] if row.get("status") == "ENGINE_AVAILABLE_REQUIRES_VERIFIED_CANDIDATE_AND_LIVE_SHIP_STATE")
     print(json.dumps({
-        "schema":"axm.living-operations-bridge-repo-build.v5",
-        "version":"0.7.0-candidate",
+        "schema":"axm.living-operations-bridge-repo-build.v6",
+        "version":"0.8.0-candidate",
         "source_turn":board["operations_context"]["source_turn"],
         "open_threads":board["operations_context"]["open_thread_count"],
         "available_actions":board["operations_context"]["available_action_count"],
@@ -64,11 +66,13 @@ def main() -> int:
         "mapped_access_topologies":available_access,
         "repair_verification_gates":repair["gate_count"],
         "repair_gates_ready_for_external_plan":ready_repair_gates,
+        "fault_clearance_apply_contracts":clearance["contract_count"],
+        "clearance_engines_available":clearance_engines,
         "component_specificity":topology["component_specificity"],
         "procedure_execution_authority":procedures["may_execute_response"],
         "repair_execution_authority":repair["may_execute_repair"],
-        "fault_clear_authority":repair["may_clear_fault"],
-        "authority":"presentation_procedure_topology_and_repair_verification_review_only",
+        "renderer_fault_clear_authority":board["living_operations"]["renderer_may_apply_fault_clearance"],
+        "authority":"presentation_plus_authoritative_clearance_engine_contract; renderer remains read_only",
         "output":str(OUTPUT.relative_to(ROOT)),
     }, indent=2))
     return 0

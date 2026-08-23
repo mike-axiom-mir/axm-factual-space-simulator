@@ -1,0 +1,111 @@
+    if command_level == "command_required" and "mission_commander" not in roles:
+        raise PermissionError("command-required fault clearance also needs mission commander authorization")
+    receipt = copy.deepcopy(authorization)
+    receipt["actor_role_ids"] = sorted(roles)
+    return _hash(receipt, "AXM-FAULT-CLEARANCE-AUTHORIZATION-V1")
+
+
+def _get_path(root: dict[str, Any], path: str) -> Any:
+    cur: Any = root
+    for part in path.split("."):
+        if not isinstance(cur, dict) or part not in cur:
+            raise ValueError(f"state reconciliation path does not exist: {path}")
+        cur = cur[part]
+    return cur
+
+
+def _set_path(root: dict[str, Any], path: str, value: Any) -> None:
+    parts = path.split(".")
+    cur: Any = root
+    for part in parts[:-1]:
+        if not isinstance(cur, dict) or part not in cur:
+            raise ValueError(f"state reconciliation path does not exist: {path}")
+        cur = cur[part]
+    if not isinstance(cur, dict) or parts[-1] not in cur:
+        raise ValueError(f"state reconciliation path does not exist: {path}")
+    cur[parts[-1]] = copy.deepcopy(value)
+
+
+def _validate_verified_value(path: str, value: Any, state: dict[str, Any]) -> None:
+    current = _get_path(state, path)
+    if isinstance(current, bool):
+        if not isinstance(value, bool):
+            raise ValueError(f"verified value type mismatch at {path}")
+        return
+    if isinstance(current, (int, float)) and not isinstance(current, bool):
+        if not isinstance(value, (int, float)) or isinstance(value, bool):
+            raise ValueError(f"verified value type mismatch at {path}")
+        number = float(value)
+        if not (number == number and abs(number) != float("inf")):
+            raise ValueError(f"verified numeric value must be finite at {path}")
+        if path.endswith((".availability", ".health", "_multiplier", "_fraction")) or path.endswith("pointing_performance_multiplier"):
+            if not 0.0 <= number <= 1.0:
+                raise ValueError(f"verified fractional state out of range at {path}")
+        if path == "power.battery_energy_kwh":
+            capacity = float(state.get("power", {}).get("battery_capacity_kwh", 0.0))
+            if number < 0.0 or (capacity > 0.0 and number > capacity):
+                raise ValueError("verified battery energy is outside pinned capacity")
+        if path in {"atmosphere.pressure_leak_kpa_per_hour", "navigation.navigation_uncertainty_km", "radiation.environment_index"} and number < 0.0:
+            raise ValueError(f"verified state cannot be negative at {path}")
+        if path == "power.loads_kw.habitability_and_lighting" and number < 0.0:
+            raise ValueError("verified load cannot be negative")
+        if path == "crew.available_human_crew" and (number < 0.0 or int(number) != number):
+            raise ValueError("verified available crew must be a non-negative integer")
+        return
+    if isinstance(current, str):
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"verified string state is invalid at {path}")
+        return
+    if isinstance(current, list):
+        if not isinstance(value, list):
+            raise ValueError(f"verified list state is invalid at {path}")
+        return
+    if type(value) is not type(current):
+        raise ValueError(f"verified value type mismatch at {path}")
+
+
+def _validate_reconciliation(
+    reconciliation: dict[str, Any],
+    *,
+    state: dict[str, Any],
+    failure_mode: dict[str, Any],
+    candidate: dict[str, Any],
+) -> tuple[list[dict[str, Any]], str]:
+    required = {"reconciliation_id", "source_ref", "candidate_hash", "state_hash_before", "source_failure_id", "source_system_id", "updates"}
+    missing = sorted(required - set(reconciliation))
+    if missing:
+        raise ValueError("state reconciliation receipt missing: " + ", ".join(missing))
+    if reconciliation.get("candidate_hash") != candidate.get("candidate_hash"):
+        raise ValueError("reconciliation candidate hash mismatch")
+    if reconciliation.get("state_hash_before") != state.get("state_hash"):
+        raise ValueError("reconciliation state hash mismatch")
+    if reconciliation.get("source_failure_id") != candidate.get("source_failure_id"):
+        raise ValueError("reconciliation failure mismatch")
+    if reconciliation.get("source_system_id") != candidate.get("source_system_id"):
+        raise ValueError("reconciliation system mismatch")
+    updates = reconciliation.get("updates")
+    if not isinstance(updates, list):
+        raise ValueError("reconciliation updates must be a list")
+    required_paths = set(required_reconciliation_paths(failure_mode, source_system_id=str(candidate.get("source_system_id"))))
+    supplied_paths = {str(row.get("path")) for row in updates if isinstance(row, dict) and row.get("path")}
+    if supplied_paths != required_paths:
+        missing_paths = sorted(required_paths - supplied_paths)
+        extra_paths = sorted(supplied_paths - required_paths)
+        parts = []
+        if missing_paths:
+            parts.append("missing paths: " + ", ".join(missing_paths))
+        if extra_paths:
+            parts.append("unapproved paths: " + ", ".join(extra_paths))
+        raise ValueError("state reconciliation path set mismatch; " + "; ".join(parts))
+    normalized = []
+    for row in updates:
+        if not isinstance(row, dict):
+            raise ValueError("reconciliation update must be an object")
+        path = str(row.get("path") or "")
+        evidence_ids = row.get("evidence_ids")
+        if not isinstance(evidence_ids, list) or not evidence_ids:
+            raise ValueError(f"reconciliation update requires evidence: {path}")
+        if "expected_current_value" not in row or "verified_value" not in row:
+            raise ValueError(f"reconciliation update missing values: {path}")
+        actual = _get_path(state, path)
+        if actual != row["expected_current_value"]:

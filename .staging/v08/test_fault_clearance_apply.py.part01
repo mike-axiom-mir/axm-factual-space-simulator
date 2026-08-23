@@ -1,0 +1,97 @@
+import copy
+import json
+import unittest
+from pathlib import Path
+
+from axm_star_sim.fault_clearance_apply import (
+    AUTHORITY_POLICY_ID,
+    build_clearance_apply_contract,
+    build_clearance_apply_contract_catalog,
+    required_reconciliation_paths,
+    _active_command_required_faults,
+    _validate_authorization,
+    _validate_reconciliation,
+    apply_verified_fault_clearance,
+)
+
+FAILURE = {
+    "id":"power_bus_branch_fault",
+    "system_id":"power_distribution",
+    "effects":{"load_service_fraction":0.72},
+    "command_level":"advisory",
+}
+GATE = {
+    "schema":"axm.repair-verification-gate.v1",
+    "gate_id":"repair-gate:power_bus_branch_fault:v1",
+    "gate_hash":"g",
+    "source_failure_id":"power_bus_branch_fault",
+    "source_system_id":"power_distribution",
+    "status":"READY_FOR_EXTERNAL_REPAIR_PLAN",
+}
+CANDIDATE = {
+    "candidate_hash":"cand",
+    "source_failure_id":"power_bus_branch_fault",
+    "source_system_id":"power_distribution",
+}
+STATE = {
+    "state_hash":"state",
+    "system_health":{"power_distribution":{"availability":0.72,"mode":"faulted"}},
+}
+
+class ClearanceFocusedTests(unittest.TestCase):
+    def test_required_paths_derive_from_existing_effect_map(self):
+        self.assertEqual(
+            required_reconciliation_paths(FAILURE),
+            ["system_health.power_distribution.availability","system_health.power_distribution.mode"],
+        )
+
+    def test_unknown_effect_mapping_holds(self):
+        bad=copy.deepcopy(FAILURE); bad["effects"]["mystery_effect"]=1
+        with self.assertRaises(ValueError): required_reconciliation_paths(bad)
+
+    def test_contract_is_candidate_policy_not_silent_authority(self):
+        c=build_clearance_apply_contract(GATE,command_level="advisory",primary_role_id="vehicle_systems_engineer")
+        self.assertEqual(c["status"],"ENGINE_AVAILABLE_REQUIRES_VERIFIED_CANDIDATE_AND_LIVE_SHIP_STATE")
+        self.assertEqual(c["candidate_authority_policy"]["truth_status"],"simulation_policy_candidate_not_canon")
+        self.assertFalse(c["fault_cleared"])
+
+    def test_catalog_preserves_upstream_hold(self):
+        held=copy.deepcopy(GATE);held["status"]="HOLD_NO_PINNED_REPAIR_ACCESS"
+        cat=build_clearance_apply_contract_catalog({"schema":"axm.repair-verification-gate-catalog.v1","gates":[held]})
+        self.assertEqual(cat["contracts"][0]["status"],"HOLD_UPSTREAM_REPAIR_GATE")
+
+    def test_advisory_requires_primary_role(self):
+        auth={"authorization_id":"a","source_ref":"x","candidate_hash":"cand","state_hash_before":"state","decision":"authorize_fault_clearance_apply","actor_role_ids":["mission_commander"],"authority_policy_id":AUTHORITY_POLICY_ID}
+        with self.assertRaises(PermissionError):
+            _validate_authorization(auth,candidate=CANDIDATE,state_hash_before="state",command_level="advisory",primary_role_id="vehicle_systems_engineer")
+
+    def test_command_required_needs_commander_plus_primary(self):
+        auth={"authorization_id":"a","source_ref":"x","candidate_hash":"cand","state_hash_before":"state","decision":"authorize_fault_clearance_apply","actor_role_ids":["vehicle_systems_engineer"],"authority_policy_id":AUTHORITY_POLICY_ID}
+        with self.assertRaises(PermissionError):
+            _validate_authorization(auth,candidate=CANDIDATE,state_hash_before="state",command_level="command_required",primary_role_id="vehicle_systems_engineer")
+        auth["actor_role_ids"].append("mission_commander")
+        self.assertEqual(len(_validate_authorization(auth,candidate=CANDIDATE,state_hash_before="state",command_level="command_required",primary_role_id="vehicle_systems_engineer")),64)
+
+    def test_reconciliation_requires_exact_paths_and_evidence(self):
+        rec={"reconciliation_id":"r","source_ref":"s","candidate_hash":"cand","state_hash_before":"state","source_failure_id":"power_bus_branch_fault","source_system_id":"power_distribution","updates":[
+            {"path":"system_health.power_distribution.availability","expected_current_value":0.72,"verified_value":1.0,"evidence_ids":["voltage-test"]},
+            {"path":"system_health.power_distribution.mode","expected_current_value":"faulted","verified_value":"nominal","evidence_ids":["system-check"]},
+        ]}
+        updates,h=_validate_reconciliation(rec,state=STATE,failure_mode=FAILURE,candidate=CANDIDATE)
+        self.assertEqual(len(updates),2);self.assertEqual(len(h),64)
+
+    def test_reconciliation_rejects_unapproved_mutation(self):
+        rec={"reconciliation_id":"r","source_ref":"s","candidate_hash":"cand","state_hash_before":"state","source_failure_id":"power_bus_branch_fault","source_system_id":"power_distribution","updates":[
+            {"path":"system_health.power_distribution.availability","expected_current_value":0.72,"verified_value":1.0,"evidence_ids":["x"]},
+            {"path":"system_health.power_distribution.mode","expected_current_value":"faulted","verified_value":"nominal","evidence_ids":["y"]},
+            {"path":"power.battery_energy_kwh","expected_current_value":1,"verified_value":999,"evidence_ids":["z"]},
+        ]}
+        with self.assertRaises(ValueError): _validate_reconciliation(rec,state={**STATE,"power":{"battery_energy_kwh":1}},failure_mode=FAILURE,candidate=CANDIDATE)
+
+    def test_reconciliation_rejects_stale_precondition(self):
+        rec={"reconciliation_id":"r","source_ref":"s","candidate_hash":"cand","state_hash_before":"state","source_failure_id":"power_bus_branch_fault","source_system_id":"power_distribution","updates":[
+            {"path":"system_health.power_distribution.availability","expected_current_value":0.5,"verified_value":1.0,"evidence_ids":["x"]},
+            {"path":"system_health.power_distribution.mode","expected_current_value":"faulted","verified_value":"nominal","evidence_ids":["y"]},
+        ]}
+        with self.assertRaises(ValueError): _validate_reconciliation(rec,state=STATE,failure_mode=FAILURE,candidate=CANDIDATE)
+

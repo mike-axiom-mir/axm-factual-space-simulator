@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-RENDERER_VERSION = "0.7.0-candidate"
+RENDERER_VERSION = "0.8.0-candidate"
 ROOT = Path(__file__).resolve().parents[2]
 ASSET_DIR = ROOT / "assets" / "demo_templates" / "living_operations_bridge"
 
@@ -43,9 +43,15 @@ def render_living_bridge(storyboard: dict[str, Any], import_receipt: dict[str, A
             raise ValueError("repair verification gate must not clear faults")
         if repair.get("fault_cleared") is not False:
             raise ValueError("renderer cannot load a pre-cleared repair gate catalog")
+    clearance = storyboard.get("fault_clearance_apply")
+    if clearance is not None:
+        if clearance.get("fault_cleared") is not False:
+            raise ValueError("clearance apply presentation catalog must remain unapplied")
+        if clearance.get("may_modify_presentation_runtime") is not False:
+            raise ValueError("clearance apply contract must not grant renderer mutation authority")
     template = _asset("shell.html")
-    css = _asset("living_operations_bridge.css") + "\n" + _asset("bridge_rehearsal_v0_4.css") + "\n" + _asset("failure_procedure_v0_5.css") + "\n" + _asset("damage_topology_v0_6.css") + "\n" + _asset("repair_verification_v0_7.css")
-    js = _asset("living_operations_bridge_js_part1.txt") + _asset("living_operations_bridge_js_part2.txt") + "\n" + _asset("bridge_rehearsal_v0_4.js") + "\n" + _asset("failure_procedure_v0_5.js") + "\n" + _asset("damage_topology_v0_6.js") + "\n" + _asset("repair_verification_v0_7.js")
+    css = _asset("living_operations_bridge.css") + "\n" + _asset("bridge_rehearsal_v0_4.css") + "\n" + _asset("failure_procedure_v0_5.css") + "\n" + _asset("damage_topology_v0_6.css") + "\n" + _asset("repair_verification_v0_7.css") + "\n" + _asset("fault_clearance_apply_v0_8.css")
+    js = _asset("living_operations_bridge_js_part1.txt") + _asset("living_operations_bridge_js_part2.txt") + "\n" + _asset("bridge_rehearsal_v0_4.js") + "\n" + _asset("failure_procedure_v0_5.js") + "\n" + _asset("damage_topology_v0_6.js") + "\n" + _asset("repair_verification_v0_7.js") + "\n" + _asset("fault_clearance_apply_v0_8.js")
     payload = json.dumps(storyboard, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     receipt = json.dumps(import_receipt, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     title = html.escape(str(storyboard.get("system_name", "AXM Factual Space Simulator")))

@@ -1,0 +1,117 @@
+        for row in procedure_catalog.get("procedures", []):
+            if isinstance(row, dict) and row.get("source_failure_id"):
+                procedures[str(row["source_failure_id"])] = row
+    rows = []
+    for gate in repair_gate_catalog.get("gates", []):
+        if not isinstance(gate, dict):
+            continue
+        proc = procedures.get(str(gate.get("source_failure_id")), {})
+        rows.append(build_clearance_apply_contract(
+            gate,
+            command_level=proc.get("source_command_level"),
+            primary_role_id=proc.get("primary_role_id"),
+        ))
+    packet = {
+        "schema": "axm.fault-clearance-apply-contract-catalog.v1",
+        "version": CLEARANCE_VERSION,
+        "contract_count": len(rows),
+        "contracts": rows,
+        "authority": "contract_and_engine_availability_only",
+        "fault_cleared": False,
+        "may_modify_presentation_runtime": False,
+    }
+    packet["catalog_hash"] = _hash(packet, "AXM-FAULT-CLEARANCE-APPLY-CONTRACT-CATALOG-V1")
+    return packet
+
+
+def _validate_candidate(candidate: dict[str, Any], attempt: dict[str, Any]) -> None:
+    if candidate.get("schema") != "axm.fault-clearance-candidate.v1":
+        raise ValueError("unsupported fault clearance candidate")
+    raw = copy.deepcopy(candidate)
+    claimed = raw.pop("candidate_hash", None)
+    if claimed != _hash(raw, "AXM-FAULT-CLEARANCE-CANDIDATE-V1"):
+        raise ValueError("fault clearance candidate hash mismatch")
+    if candidate.get("status") != "CLEARANCE_CANDIDATE_REQUIRES_AUTHORITATIVE_APPLY":
+        raise ValueError("candidate is not awaiting authoritative apply")
+    if candidate.get("fault_clearance_eligible") is not True or candidate.get("fault_cleared") is not False:
+        raise ValueError("candidate does not preserve clearance eligibility boundary")
+    if attempt.get("status") != "VERIFIED_EFFECTIVE_CLEARANCE_ELIGIBLE":
+        raise ValueError("repair attempt is not verified effective")
+    if verify_repair_attempt_receipts(attempt).get("status") != "PASS":
+        raise ValueError("repair attempt receipt chain failed")
+    if candidate.get("attempt_id") != attempt.get("attempt_id"):
+        raise ValueError("candidate/attempt id mismatch")
+    if candidate.get("verification_receipt_hash") != attempt.get("previous_receipt_hash"):
+        raise ValueError("candidate does not pin the repair verification receipt")
+    if candidate.get("source_failure_id") != attempt.get("source_failure_id"):
+        raise ValueError("candidate/attempt failure mismatch")
+    if candidate.get("source_system_id") != attempt.get("source_system_id"):
+        raise ValueError("candidate/attempt system mismatch")
+
+
+def _validate_procedure_definition(procedure: dict[str, Any]) -> None:
+    if procedure.get("schema") != "axm.failure-procedure-definition.v1":
+        raise ValueError("unsupported failure procedure definition")
+    raw = copy.deepcopy(procedure)
+    claimed = raw.pop("procedure_hash", None)
+    if claimed != _hash(raw, "AXM-FAILURE-PROCEDURE-DEFINITION-V1"):
+        raise ValueError("failure procedure definition hash mismatch")
+
+
+def _validate_attempt_identity(attempt: dict[str, Any]) -> None:
+    required = {
+        "attempt_id", "gate_hash", "procedure_session_id", "repair_plan_receipt",
+        "actor_role_ids", "source_failure_id", "source_system_id",
+    }
+    missing = sorted(required - set(attempt))
+    if missing:
+        raise ValueError("repair attempt identity missing: " + ", ".join(missing))
+    expected = _hash({
+        "gate_hash": attempt.get("gate_hash"),
+        "procedure_session_id": attempt.get("procedure_session_id"),
+        "repair_plan_receipt": attempt.get("repair_plan_receipt"),
+        "actor_role_ids": sorted({str(v) for v in attempt.get("actor_role_ids", []) if v}),
+    }, "AXM-REPAIR-ATTEMPT-ID-V1")
+    if attempt.get("attempt_id") != expected:
+        raise ValueError("repair attempt id mismatch")
+    plan = attempt.get("repair_plan_receipt")
+    if not isinstance(plan, dict) or str(plan.get("target_system_id")) != str(attempt.get("source_system_id")):
+        raise ValueError("repair attempt plan target no longer matches source system")
+    if attempt.get("fault_cleared") is not False:
+        raise ValueError("repair attempt must remain uncleared before authoritative apply")
+    if attempt.get("repair_verified") is not True or attempt.get("verification_complete") is not True:
+        raise ValueError("repair attempt lacks completed effective verification")
+    if attempt.get("fault_clearance_eligible") is not True:
+        raise ValueError("repair attempt is not clearance eligible")
+
+
+def _validate_authorization(
+    authorization: dict[str, Any],
+    *,
+    candidate: dict[str, Any],
+    state_hash_before: str,
+    command_level: str,
+    primary_role_id: str,
+) -> str:
+    required = {"authorization_id", "source_ref", "candidate_hash", "state_hash_before", "decision", "actor_role_ids", "authority_policy_id"}
+    missing = sorted(required - set(authorization))
+    if missing:
+        raise ValueError("clearance authorization receipt missing: " + ", ".join(missing))
+    if authorization.get("candidate_hash") != candidate.get("candidate_hash"):
+        raise ValueError("authorization candidate hash mismatch")
+    if authorization.get("state_hash_before") != state_hash_before:
+        raise ValueError("authorization state hash mismatch")
+    if authorization.get("decision") != "authorize_fault_clearance_apply":
+        raise PermissionError("fault clearance was not authorized")
+    if authorization.get("authority_policy_id") != AUTHORITY_POLICY_ID:
+        raise PermissionError("unsupported fault clearance authority policy")
+    roles = {str(v) for v in authorization.get("actor_role_ids", []) if v}
+    if not roles:
+        raise PermissionError("authorization requires actor roles")
+    if primary_role_id not in roles:
+        raise PermissionError("primary procedure role must authorize fault clearance")
+    if command_level == "command_required" and "mission_commander" not in roles:
+        raise PermissionError("command-required fault clearance also needs mission commander authorization")
+    receipt = copy.deepcopy(authorization)
+    receipt["actor_role_ids"] = sorted(roles)
+    return _hash(receipt, "AXM-FAULT-CLEARANCE-AUTHORIZATION-V1")
