@@ -289,6 +289,9 @@ def assess_post_repair_verification(
 def build_fault_clearance_candidate(attempt: dict[str, Any]) -> dict[str, Any]:
     if attempt.get("status") != "VERIFIED_EFFECTIVE_CLEARANCE_ELIGIBLE":
         raise ValueError("repair attempt is not eligible for a fault-clearance candidate")
+    chain_check = verify_repair_attempt_receipts(attempt)
+    if chain_check.get("status") != "PASS":
+        raise ValueError("repair attempt failed receipt and semantic verification")
     packet = {
         "schema": "axm.fault-clearance-candidate.v1",
         "version": REPAIR_VERIFICATION_VERSION,
@@ -306,23 +309,177 @@ def build_fault_clearance_candidate(attempt: dict[str, Any]) -> dict[str, Any]:
     packet["candidate_hash"] = _hash(packet, "AXM-FAULT-CLEARANCE-CANDIDATE-V1")
     return packet
 
+def _expected_attempt_identity(attempt: dict[str, Any]) -> str | None:
+    required = ("gate_hash", "procedure_session_id", "repair_plan_receipt", "actor_role_ids")
+    if any(key not in attempt for key in required):
+        return None
+    roles = attempt.get("actor_role_ids")
+    if not isinstance(roles, list):
+        return None
+    return _hash({
+        "gate_hash": attempt.get("gate_hash"),
+        "procedure_session_id": attempt.get("procedure_session_id"),
+        "repair_plan_receipt": attempt.get("repair_plan_receipt"),
+        "actor_role_ids": sorted(set(str(v) for v in roles)),
+    }, "AXM-REPAIR-ATTEMPT-ID-V1")
+
+def _expected_verification_outcome(payload: dict[str, Any]) -> str | None:
+    outcome = str(payload.get("outcome"))
+    if outcome not in {"effective", "not_effective", "inconclusive"}:
+        return None
+    checks = payload.get("independent_check_ids")
+    effective_claim_supported = (
+        outcome == "effective"
+        and bool(payload.get("observed_fault_absent"))
+        and bool(payload.get("system_function_restored"))
+        and isinstance(checks, list)
+        and len(checks) > 0
+    )
+    if outcome == "effective" and not effective_claim_supported:
+        return "inconclusive"
+    return outcome
+
 def verify_repair_attempt_receipts(attempt: dict[str, Any]) -> dict[str, Any]:
     failures: list[str] = []
+    if not isinstance(attempt, dict):
+        return {
+            "schema": "axm.repair-attempt-chain-verification.v1",
+            "status": "FAIL",
+            "receipt_count": 0,
+            "failures": ["attempt must be an object"],
+        }
+
+    if attempt.get("schema") != "axm.repair-attempt.v1":
+        failures.append("unsupported repair attempt schema")
+    if attempt.get("authority") != "record_and_verify_only":
+        failures.append("attempt authority boundary violated")
+    if attempt.get("may_execute_repair") is not False:
+        failures.append("attempt execution authority boundary violated")
+    if attempt.get("may_modify_runtime") is not False:
+        failures.append("attempt runtime authority boundary violated")
+    if attempt.get("may_clear_fault") is not False:
+        failures.append("attempt clearance authority boundary violated")
+
+    expected_attempt_id = _expected_attempt_identity(attempt)
+    if expected_attempt_id is None:
+        failures.append("attempt identity inputs missing or invalid")
+    elif attempt.get("attempt_id") != expected_attempt_id:
+        failures.append("attempt id mismatch")
+
+    receipts = attempt.get("receipts")
+    if not isinstance(receipts, list):
+        failures.append("attempt receipts must be a list")
+        receipts = []
+
     previous = None
-    for index, receipt in enumerate(attempt.get("receipts", [])):
+    receipt_types: list[str] = []
+    for index, receipt in enumerate(receipts):
+        if not isinstance(receipt, dict):
+            failures.append(f"receipt[{index}] must be an object")
+            continue
+        if receipt.get("schema") != "axm.repair-attempt-receipt.v1":
+            failures.append(f"receipt[{index}] schema mismatch")
+        if receipt.get("attempt_id") != attempt.get("attempt_id"):
+            failures.append(f"receipt[{index}] attempt id mismatch")
         if receipt.get("previous_receipt_hash") != previous:
             failures.append(f"receipt[{index}] previous hash mismatch")
+        if receipt.get("fault_cleared") is not False:
+            failures.append(f"receipt[{index}] fault_cleared boundary violated")
+        if receipt.get("may_modify_runtime") is not False:
+            failures.append(f"receipt[{index}] runtime authority boundary violated")
+        if receipt.get("may_clear_fault") is not False:
+            failures.append(f"receipt[{index}] clearance authority boundary violated")
         raw = copy.deepcopy(receipt)
         claimed = raw.pop("receipt_hash", None)
         expected = _hash(raw, "AXM-REPAIR-ATTEMPT-RECEIPT-V1")
         if claimed != expected:
             failures.append(f"receipt[{index}] hash mismatch")
         previous = claimed
-    if attempt.get("receipts") and attempt.get("previous_receipt_hash") != previous:
+        receipt_types.append(str(receipt.get("receipt_type") or ""))
+
+    if attempt.get("previous_receipt_hash") != previous:
         failures.append("attempt ledger head mismatch")
+
+    allowed_sequences = [
+        [],
+        ["external_execution"],
+        ["external_execution", "post_repair_verification"],
+    ]
+    if receipt_types not in allowed_sequences:
+        failures.append("repair receipt sequence mismatch")
+
+    expected_status = None
+    expected_verification_complete = False
+    expected_repair_verified = False
+    expected_clearance_eligible = False
+    expected_verification_outcome = None
+
+    if receipt_types == []:
+        expected_status = "STAGED_AWAIT_EXTERNAL_EXECUTION"
+    elif receipt_types == ["external_execution"]:
+        expected_status = "ATTEMPT_RECORDED_AWAIT_POST_REPAIR_VERIFICATION"
+        payload = receipts[0].get("payload") if isinstance(receipts[0], dict) else None
+        if not isinstance(payload, dict):
+            failures.append("external execution receipt payload must be an object")
+        else:
+            required = {"execution_id", "executor_ref", "result_claim", "evidence_ids"}
+            missing = sorted(required - set(payload))
+            if missing:
+                failures.append("external execution payload missing: " + ", ".join(missing))
+            evidence_ids = payload.get("evidence_ids")
+            if not isinstance(evidence_ids, list) or not evidence_ids:
+                failures.append("external execution payload requires evidence")
+            if attempt.get("external_result_claim") != payload.get("result_claim"):
+                failures.append("external result claim mismatch")
+    elif receipt_types == ["external_execution", "post_repair_verification"]:
+        payload = receipts[1].get("payload") if isinstance(receipts[1], dict) else None
+        if not isinstance(payload, dict):
+            failures.append("post-repair verification receipt payload must be an object")
+        else:
+            required = {
+                "verification_id", "source_ref", "evidence_ids", "independent_check_ids",
+                "outcome", "observed_fault_absent", "system_function_restored", "normalized_outcome",
+            }
+            missing = sorted(required - set(payload))
+            if missing:
+                failures.append("post-repair verification payload missing: " + ", ".join(missing))
+            evidence_ids = payload.get("evidence_ids")
+            if not isinstance(evidence_ids, list) or not evidence_ids:
+                failures.append("post-repair verification payload requires evidence")
+            if not isinstance(payload.get("independent_check_ids"), list):
+                failures.append("post-repair verification independent checks must be a list")
+            expected_verification_outcome = _expected_verification_outcome(payload)
+            if expected_verification_outcome is None:
+                failures.append("post-repair verification outcome is invalid")
+            else:
+                if payload.get("normalized_outcome") != expected_verification_outcome:
+                    failures.append("post-repair normalized outcome mismatch")
+                expected_verification_complete = expected_verification_outcome in {"effective", "not_effective"}
+                expected_repair_verified = expected_verification_outcome == "effective"
+                expected_clearance_eligible = expected_verification_outcome == "effective"
+                expected_status = {
+                    "effective": "VERIFIED_EFFECTIVE_CLEARANCE_ELIGIBLE",
+                    "not_effective": "VERIFIED_NOT_EFFECTIVE_FAULT_REMAINS",
+                    "inconclusive": "VERIFICATION_INCONCLUSIVE_FAULT_REMAINS",
+                }[expected_verification_outcome]
+
+    if expected_status is not None and attempt.get("status") != expected_status:
+        failures.append("attempt status does not match receipt replay")
+    if attempt.get("fault_cleared") is not False:
+        failures.append("attempt fault_cleared boundary violated")
+    if attempt.get("repair_verified") is not expected_repair_verified:
+        failures.append("attempt repair_verified does not match receipt replay")
+    if attempt.get("verification_complete") is not expected_verification_complete:
+        failures.append("attempt verification_complete does not match receipt replay")
+    if attempt.get("fault_clearance_eligible") is not expected_clearance_eligible:
+        failures.append("attempt fault_clearance_eligible does not match receipt replay")
+    if receipt_types == ["external_execution", "post_repair_verification"]:
+        if attempt.get("verification_outcome") != expected_verification_outcome:
+            failures.append("attempt verification_outcome does not match receipt replay")
+
     return {
         "schema": "axm.repair-attempt-chain-verification.v1",
         "status": "PASS" if not failures else "FAIL",
-        "receipt_count": len(attempt.get("receipts", [])),
+        "receipt_count": len(receipts),
         "failures": failures,
     }
