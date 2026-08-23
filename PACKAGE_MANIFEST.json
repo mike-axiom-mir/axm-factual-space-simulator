@@ -3,7 +3,7 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 322,
+  "managed_file_count": 329,
   "files": {
     ".gitattributes": {
       "bytes": 45,
@@ -84,6 +84,14 @@
     "assets/demo_templates/living_operations_bridge/living_operations_bridge_js_part2.txt": {
       "bytes": 9913,
       "sha256": "ef4c4a98087f89975130d461331f365f2c5e39ac720e1da276a4a6df78d2257b"
+    },
+    "assets/demo_templates/living_operations_bridge/post_clearance_recovery_v0_10.css": {
+      "bytes": 1203,
+      "sha256": "9903e6c2e5a42c91fdff2abc11c07445c9f584f08be06ef465d499fb6aa83bac"
+    },
+    "assets/demo_templates/living_operations_bridge/post_clearance_recovery_v0_10.js": {
+      "bytes": 4719,
+      "sha256": "6a75498758df17cc3379b6347c0104ad3b9e16fcd9e5eb63b2c155ca378097e3"
     },
     "assets/demo_templates/living_operations_bridge/repair_verification_v0_7.css": {
       "bytes": 846,
@@ -225,6 +233,10 @@
       "bytes": 4218,
       "sha256": "2333d9f14e6ee3c1cf029c7bdec70139abe8a6cca5fbe4dea564ea405a2cb339"
     },
+    "data/post_clearance_recovery_policy_candidate_v0_10.json": {
+      "bytes": 1489,
+      "sha256": "f05884be6ea020fb149226b16f4b35430c01b5ab5369bd8f814e544f1576a47f"
+    },
     "data/repair_verification_contract_candidate_v0_7.json": {
       "bytes": 1577,
       "sha256": "86e38f234d1dfaedd70167da741160fd22e86c361f20f96accad7aace9f47065"
@@ -288,6 +300,10 @@
     "docs/ACTION_REPORT.md": {
       "bytes": 6312,
       "sha256": "b1eb28271077fe4758223a3acaab0d0aba7a3d1474b9ce1f7dc9ec255b1c3a4a"
+    },
+    "docs/ACTION_REPORT_LIVING_OPERATIONS_BRIDGE_v0_10.md": {
+      "bytes": 2563,
+      "sha256": "5b408ca982682d54a9da07f9d332426f4c32b2f07a4d5eb30d12186e6438b1e3"
     },
     "docs/ACTION_REPORT_LIVING_OPERATIONS_BRIDGE_v0_3.md": {
       "bytes": 3631,
@@ -862,8 +878,8 @@
       "sha256": "e83ec0c9cdf099bfc4abafa36003a24a28a81ff8a556bea1a7e7d72cf608a6d6"
     },
     "scripts/build_living_operations_bridge_from_repo.py": {
-      "bytes": 4130,
-      "sha256": "e59c47c9f8f5dcfce944a7cb8219419a8f80cc1fe85a3d1edc12fbf0aa70e0e8"
+      "bytes": 4690,
+      "sha256": "b4a18f41ee34dfc5c16621421f49e6be51807af01739edf513f17ba10eeed884"
     },
     "scripts/build_local_handoff_outputs_v0_15.py": {
       "bytes": 607,
@@ -1038,12 +1054,12 @@
       "sha256": "057bea1a5f48edec926c85f8b4edc9ba79c2cf860c3708b165ab8b6bc83cc315"
     },
     "src/axm_star_sim/living_operations_bridge.py": {
-      "bytes": 7608,
-      "sha256": "20934611afbf0d8ad30cde319bb6c58e18c0f1bb8377d9fa0d05a013aa54841b"
+      "bytes": 8281,
+      "sha256": "5d2ebcf32193a1a411e7843e217ccca3f462723358d63e20c4799f66d33755c4"
     },
     "src/axm_star_sim/living_operations_bridge_view.py": {
-      "bytes": 3881,
-      "sha256": "697dfb998189df0d53b74f0474f2f2a97a56442a0ecc945c65054ffa6b032762"
+      "bytes": 4674,
+      "sha256": "64be9d75c6f5babdbc56a8325954f28f89d3a9295e33145ccf3a10e108a6c78f"
     },
     "src/axm_star_sim/migration.py": {
       "bytes": 4580,
@@ -1068,6 +1084,10 @@
     "src/axm_star_sim/physics_runtime.py": {
       "bytes": 26899,
       "sha256": "e6a1b98737fa397b432e8afe198992b129169784fe6bf9b783828c7acfb54ee1"
+    },
+    "src/axm_star_sim/post_clearance_recovery.py": {
+      "bytes": 25827,
+      "sha256": "5669a631286579853b97485c7bd26e2414c579acbf3b1115c4c52e9612c7a807"
     },
     "src/axm_star_sim/registry.py": {
       "bytes": 862,
@@ -1232,6 +1252,14 @@
     "tests/test_polished_handoff.py": {
       "bytes": 3475,
       "sha256": "53b1983410ffea5d7e5cfceb3424904eb9f410813de3827973265533b5ba9d2a"
+    },
+    "tests/test_post_clearance_recovery.py": {
+      "bytes": 11338,
+      "sha256": "18101a081d5ab5052dc64ede766c520309635febb08a1472decd4afeaa43f36a"
+    },
+    "tests/test_post_clearance_recovery_presentation.py": {
+      "bytes": 2776,
+      "sha256": "feb323abed62bd1fff0b6152c64c536957c40adadffa43f7dcca275c8af7ae6d"
     },
     "tests/test_repair_verification.py": {
       "bytes": 11696,
