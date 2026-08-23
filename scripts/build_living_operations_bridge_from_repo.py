@@ -26,11 +26,13 @@ def main() -> int:
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(render_living_bridge(board, snapshot["import_receipt"]), encoding="utf-8")
     print(json.dumps({
-        "schema":"axm.living-operations-bridge-repo-build.v1",
-        "version":"0.3.0-candidate",
+        "schema":"axm.living-operations-bridge-repo-build.v2",
+        "version":"0.4.0-candidate",
         "source_turn":board["operations_context"]["source_turn"],
         "open_threads":board["operations_context"]["open_thread_count"],
         "available_actions":board["operations_context"]["available_action_count"],
+        "rehearsals":board["bridge_rehearsal"]["rehearsal_count"],
+        "rehearsal_execution_authority":board["bridge_rehearsal"]["may_execute_action"],
         "authority":"presentation_only",
         "output":str(OUTPUT.relative_to(ROOT)),
     }, indent=2))
