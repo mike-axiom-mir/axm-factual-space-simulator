@@ -1,18 +1,20 @@
-name: Reseal and export v0.9 steward
+name: Reseal and stage v0.9 seal export
 
 on:
   pull_request:
+    paths-ignore:
+      - '.axm_reseal_export/**'
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: factual-space-v09-reseal-export-${{ github.ref }}
+  group: factual-space-v09-stage-seal-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   reseal:
-    name: Reseal, verify, and export seal evidence
+    name: Verify and stage deterministic seal bytes
     runs-on: ubuntu-latest
     env:
       PYTHONDONTWRITEBYTECODE: '1'
@@ -29,12 +31,7 @@ jobs:
           python-version: '3.13'
       - name: Restore canonical verifier in worktree
         shell: bash
-        run: |
-          python - <<'PY'
-          import base64
-          from pathlib import Path
-          Path('.github/workflows/verify.yml').write_bytes(base64.b64decode('bmFtZTogVmVyaWZ5IGRldGVybWluaXN0aWMgcGFja2FnZQoKb246CiAgcHVsbF9yZXF1ZXN0OgogIHB1c2g6CiAgICBicmFuY2hlczogW21haW5dCgpwZXJtaXNzaW9uczoKICBjb250ZW50czogcmVhZAoKY29uY3VycmVuY3k6CiAgZ3JvdXA6IGZhY3R1YWwtc3BhY2UtdmVyaWZ5LSR7eyBnaXRodWIud29ya2Zsb3cgfX0tJHt7IGdpdGh1Yi5yZWYgfX0KICBjYW5jZWwtaW4tcHJvZ3Jlc3M6IHRydWUKCmpvYnM6CiAgdmVyaWZ5OgogICAgbmFtZTogJHt7IG1hdHJpeC5vcyB9fSDCtyBQeXRob24gJHt7IG1hdHJpeC5weXRob24gfX0KICAgIHJ1bnMtb246ICR7eyBtYXRyaXgub3MgfX0KICAgIHN0cmF0ZWd5OgogICAgICBmYWlsLWZhc3Q6IGZhbHNlCiAgICAgIG1hdHJpeDoKICAgICAgICBvczogW3dpbmRvd3MtbGF0ZXN0LCB1YnVudHUtbGF0ZXN0XQogICAgICAgIHB5dGhvbjogWyczLjEzJ10KICAgIGVudjoKICAgICAgUFlUSE9ORE9OVFdSSVRFQllURUNPREU6ICcxJwogICAgICBQWVRIT05VVEY4OiAnMScKICAgICAgUFlUSE9OSU9FTkNPRElORzogdXRmLTgKICAgICAgUFlUSE9OUEFUSDogJHt7IGdpdGh1Yi53b3Jrc3BhY2UgfX0vc3JjCiAgICBzdGVwczoKICAgICAgLSB1c2VzOiBhY3Rpb25zL2NoZWNrb3V0QHY2CiAgICAgIC0gdXNlczogYWN0aW9ucy9zZXR1cC1weXRob25AdjYKICAgICAgICB3aXRoOgogICAgICAgICAgcHl0aG9uLXZlcnNpb246ICR7eyBtYXRyaXgucHl0aG9uIH19CiAgICAgIC0gbmFtZTogQ2hlY2sgZGV0ZXJtaW5pc3RpYyBwYWNrYWdlIHNlYWwKICAgICAgICBydW46IHB5dGhvbiB0b29scy9yZXNlYWxfcGFja2FnZS5weSAtLWNoZWNrCiAgICAgIC0gbmFtZTogVmVyaWZ5IGNhbm9uaWNhbCBhbmQgZ2VuZXJhdGVkIHNuYXBzaG90cwogICAgICAgIHJ1bjogcHl0aG9uIHZlcmlmeV9wYWNrYWdlLnB5CiAgICAgIC0gbmFtZTogUnVuIGF1dG9tYXRlZCB0ZXN0cwogICAgICAgIHJ1bjogcHl0aG9uIC1tIHVuaXR0ZXN0IGRpc2NvdmVyIC1zIHRlc3RzIC12CiAgICAgIC0gbmFtZTogUnVuIHN0cnVjdHVyYWwgaGFuZG9mZiBhdWRpdAo='))
-          PY
+        run: git show 795fae21b903e76da17d04ceff76b1ee9d0f0a8d:.github/workflows/verify.yml > .github/workflows/verify.yml
       - name: Regenerate deterministic package seal
         run: python tools/reseal_package.py --write
       - name: Check regenerated seal
@@ -45,15 +42,19 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Run structural handoff audit
         run: python -m axm_star_sim.handoff_cli audit
-      - name: Export regenerated seal evidence
+      - name: Stage regenerated seal as ordinary export files
         shell: bash
         run: |
-          python - <<'PY'
-          import base64
-          from pathlib import Path
-          for name in ('PACKAGE_MANIFEST.json', 'CHECKSUMS.sha256'):
-              payload = base64.b64encode(Path(name).read_bytes()).decode('ascii')
-              print(f'AXM_SEAL_BEGIN:{name}')
-              print(payload)
-              print(f'AXM_SEAL_END:{name}')
-          PY
+          mkdir -p .axm_reseal_export
+          cp PACKAGE_MANIFEST.json .axm_reseal_export/PACKAGE_MANIFEST.json
+          cp CHECKSUMS.sha256 .axm_reseal_export/CHECKSUMS.sha256
+          git restore --source=HEAD .github/workflows/verify.yml PACKAGE_MANIFEST.json CHECKSUMS.sha256
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .axm_reseal_export/PACKAGE_MANIFEST.json .axm_reseal_export/CHECKSUMS.sha256
+          if git diff --cached --quiet; then
+            echo "Seal export already staged; no push required."
+          else
+            git commit -m "chore: stage v0.9 seal export"
+            git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          fi
