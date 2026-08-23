@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-RENDERER_VERSION = "0.13.0-candidate"
+RENDERER_VERSION = "0.14.0-candidate"
 ROOT = Path(__file__).resolve().parents[2]
 ASSET_DIR = ROOT / "assets" / "demo_templates" / "living_operations_bridge"
 
@@ -95,6 +95,38 @@ def render_living_bridge(storyboard: dict[str, Any], import_receipt: dict[str, A
             raise ValueError("living interior animation cannot execute repairs")
         if interior_animation.get("renderer_may_modify_resources") is not False:
             raise ValueError("living interior animation cannot modify resources")
+    exterior_animation = storyboard.get("exterior_operations_animation")
+    if exterior_animation is not None:
+        if exterior_animation.get("authority") != "read_only_exterior_capability_and_rehearsal_presentation":
+            raise ValueError("exterior animation must remain read-only capability presentation")
+        if exterior_animation.get("renderer_may_claim_operation_active") is not False:
+            raise ValueError("exterior animation cannot claim an operation is active")
+        if exterior_animation.get("renderer_may_execute_operation") is not False:
+            raise ValueError("exterior animation cannot execute operations")
+        if exterior_animation.get("renderer_may_apply_thrust") is not False:
+            raise ValueError("exterior animation cannot apply thrust")
+        if exterior_animation.get("renderer_may_dock") is not False:
+            raise ValueError("exterior animation cannot dock")
+        if exterior_animation.get("renderer_may_begin_eva") is not False:
+            raise ValueError("exterior animation cannot begin EVA")
+        if exterior_animation.get("renderer_may_deploy_probe") is not False:
+            raise ValueError("exterior animation cannot deploy probes")
+        if exterior_animation.get("renderer_may_modify_resources") is not False:
+            raise ValueError("exterior animation cannot modify resources")
+    cinematic = storyboard.get("causal_cinematic_director")
+    if cinematic is not None:
+        if cinematic.get("authority") != "read_only_causal_camera_direction":
+            raise ValueError("cinematic director must remain read-only camera direction")
+        if cinematic.get("renderer_may_reorder_events") is not False:
+            raise ValueError("cinematic director cannot reorder events")
+        if cinematic.get("renderer_may_change_cue_timing_fractions") is not False:
+            raise ValueError("cinematic director cannot rewrite cue timing fractions")
+        if cinematic.get("renderer_may_retarget_event") is not False:
+            raise ValueError("cinematic director cannot retarget events")
+        if cinematic.get("renderer_may_modify_world_state") is not False:
+            raise ValueError("cinematic director cannot modify world state")
+        if cinematic.get("renderer_may_execute_operation") is not False:
+            raise ValueError("cinematic director cannot execute operations")
 
     template = _asset("shell.html")
     css = (
@@ -108,6 +140,8 @@ def render_living_bridge(storyboard: dict[str, Any], import_receipt: dict[str, A
         + "\n" + _asset("operational_readiness_v0_11.css")
         + "\n" + _asset("scene_25d_v0_12.css")
         + "\n" + _asset("living_interior_v0_13.css")
+        + "\n" + _asset("exterior_operations_v0_14.css")
+        + "\n" + _asset("causal_director_v0_14.css")
     )
     js = (
         _asset("living_operations_bridge_js_part1.txt")
@@ -121,6 +155,8 @@ def render_living_bridge(storyboard: dict[str, Any], import_receipt: dict[str, A
         + "\n" + _asset("operational_readiness_v0_11.js")
         + "\n" + _asset("scene_25d_v0_12.js")
         + "\n" + _asset("living_interior_v0_13.js")
+        + "\n" + _asset("exterior_operations_v0_14.js")
+        + "\n" + _asset("causal_director_v0_14.js")
     )
     payload = json.dumps(storyboard, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     receipt = json.dumps(import_receipt, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")

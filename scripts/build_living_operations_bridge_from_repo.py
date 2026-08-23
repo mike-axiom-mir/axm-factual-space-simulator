@@ -54,6 +54,8 @@ def main() -> int:
     readiness = board["operational_readiness"]
     scene = board["low_graphic_3d_scene"]
     interior_animation = board["living_interior_animation"]
+    exterior_animation = board["exterior_operations_animation"]
+    cinematic = board["causal_cinematic_director"]
     available_access = sum(
         1 for row in topology["topologies"]
         if str(row.get("access", {}).get("status", "")).startswith("ACCESS_PATH_AVAILABLE")
@@ -63,8 +65,8 @@ def main() -> int:
     recovery_engines = sum(1 for row in recovery["contracts"] if row.get("status") == "RECOVERY_ENGINE_AVAILABLE_AFTER_APPLIED_VERIFIED_CLEARANCE")
     readiness_engines = sum(1 for row in readiness["contracts"] if row.get("status") == "OPERATIONAL_RELEASE_ENGINE_AVAILABLE_AFTER_VERIFIED_RECOVERY_CHAIN")
     print(json.dumps({
-        "schema":"axm.living-operations-bridge-repo-build.v10",
-        "version":"0.13.0-candidate",
+        "schema":"axm.living-operations-bridge-repo-build.v11",
+        "version":"0.14.0-candidate",
         "source_turn":board["operations_context"]["source_turn"],
         "open_threads":board["operations_context"]["open_thread_count"],
         "available_actions":board["operations_context"]["available_action_count"],
@@ -82,26 +84,28 @@ def main() -> int:
         "operational_release_engines_available":readiness_engines,
         "low_graphic_3d_rooms":scene["room_count"],
         "low_graphic_3d_station_anchors":scene["station_count"],
-        "low_graphic_3d_unresolved_station_anchors":len(scene["unresolved_station_anchors"]),
-        "low_graphic_3d_rehearsal_routes":len(scene["rehearsal_routes"]),
         "living_interior_room_activity_profiles":len(interior_animation["room_activity_profiles"]),
         "living_interior_portal_actors":len(interior_animation["portal_actors"]),
         "living_interior_crew_reenactment_tracks":len(interior_animation["crew_reenactment_tracks"]),
-        "living_interior_resource_visual_channels":len(interior_animation["resource_visual_channels"]),
-        "living_interior_authority":interior_animation["authority"],
+        "exterior_module_actors":len(exterior_animation["module_actors"]),
+        "exterior_system_actors":len(exterior_animation["system_actors"]),
+        "exterior_procedure_rehearsal_tracks":len(exterior_animation["procedure_rehearsal_tracks"]),
+        "exterior_cue_choreography":len(exterior_animation["cue_choreography"]),
+        "cinematic_cue_plans":cinematic["cue_plan_count"],
+        "cinematic_default_visual_detail":cinematic["default_visual_detail"],
         "component_specificity":topology["component_specificity"],
         "procedure_execution_authority":procedures["may_execute_response"],
         "repair_execution_authority":repair["may_execute_repair"],
-        "renderer_fault_clear_authority":board["living_operations"]["renderer_may_apply_fault_clearance"],
-        "renderer_safe_state_exit_authority":board["living_operations"]["renderer_may_apply_safe_state_exit"],
-        "renderer_operational_release_authority":board["living_operations"]["renderer_may_apply_operational_release"],
-        "renderer_operation_execution_authority":board["living_operations"]["renderer_may_execute_operation"],
-        "renderer_3d_animation_authority":board["living_operations"]["renderer_may_animate"],
-        "renderer_portal_animation_authority":board["living_operations"]["renderer_may_animate_portals"],
-        "renderer_authoritative_door_authority":board["living_operations"]["renderer_may_open_authoritative_doors"],
-        "renderer_crew_move_authority":board["living_operations"]["renderer_may_move_authoritative_crew"],
-        "renderer_physical_hardware_claim_authority":board["living_operations"]["renderer_may_claim_physical_hardware"],
-        "authority":"presentation_plus_authoritative_clearance_recovery_and_operational_release_contracts; living interior remains read_only",
+        "renderer_exterior_animation_authority":board["living_operations"]["renderer_may_animate_exterior_capability_actors"],
+        "renderer_causal_camera_authority":board["living_operations"]["renderer_may_route_camera_from_immutable_cues"],
+        "renderer_visual_detail_authority":board["living_operations"]["renderer_may_adjust_visual_detail"],
+        "renderer_exterior_operation_execution_authority":board["living_operations"]["renderer_may_execute_exterior_operation"],
+        "renderer_thrust_authority":board["living_operations"]["renderer_may_apply_thrust"],
+        "renderer_docking_authority":board["living_operations"]["renderer_may_dock"],
+        "renderer_eva_authority":board["living_operations"]["renderer_may_begin_eva"],
+        "renderer_probe_deployment_authority":board["living_operations"]["renderer_may_deploy_probe"],
+        "renderer_event_reorder_authority":board["living_operations"]["renderer_may_reorder_events"],
+        "authority":"presentation_plus_authoritative_clearance_recovery_and_operational_release contracts; exterior/cinematic layers remain read_only",
         "output":str(OUTPUT.relative_to(ROOT)),
     }, indent=2))
     return 0
