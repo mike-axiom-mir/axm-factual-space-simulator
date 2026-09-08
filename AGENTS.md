@@ -35,3 +35,19 @@ Quality is often the accumulated result of many small correct details, not one l
 - Do not fragment working systems merely for ideology. Add granularity where it creates useful control, reuse, diagnosis, repair, or quality.
 
 **Working rule:** thousands of small good details and capabilities in the right places can improve a result more than one simple big upgrade.
+
+## Canonical state and adaptive realization principle
+
+Keep factual/simulation truth separate from the manifestation chosen for a particular machine.
+
+- Deterministic simulation records, expedition history, evidence ceilings, rules, and committed state are authoritative; visual/audio/UI realizations are replaceable expressions.
+- Preserve expression intent when useful so scientific/semantic detail, hierarchy, readability, atmosphere, and interaction meaning survive lower rendering budgets.
+- Prefer one canonical adventure body with multiple bounded realization contracts over divergent platform-specific truths.
+- Choose realization from canonical state + expression intent + measured machine capabilities + user policy, at launch or dynamically when appropriate.
+- A weak device should receive cheaper expression, **not weaker factual or simulation truth**.
+- Never degrade evidence integrity, historical records, causal meaning, core functionality, privacy, or authoritative state for rendering cost.
+- Never let a lossy render/cache overwrite richer canonical records. Projection is not authority.
+- Richer realizations may expose more existing state/intent; they may not invent factual/canonical state simply to look better.
+- Apply this split only where representation can honestly remain subordinate to canonical records.
+
+**Working rule:** degrade expression, never truth; upgrade expression, never invent truth.
