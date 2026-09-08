@@ -14,8 +14,18 @@ Set-Location -LiteralPath $Root
 
 function Invoke-Checked {
     param([string]$Command, [string[]]$Arguments)
-    $output = & $Command @Arguments 2>&1
-    if ($LASTEXITCODE -ne 0) {
+    $previousPreference = $ErrorActionPreference
+    try {
+        # Windows PowerShell surfaces harmless native stderr progress as
+        # NativeCommandError when the caller uses Stop. Capture it and decide
+        # only from the native process exit code.
+        $ErrorActionPreference = 'Continue'
+        $output = & $Command @Arguments 2>&1
+        $exitCode = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $previousPreference
+    }
+    if ($exitCode -ne 0) {
         throw "$Command $($Arguments -join ' ') failed:`n$($output -join "`n")"
     }
     return ($output -join "`n").Trim()
@@ -51,7 +61,7 @@ function Get-RelativeChanges {
             sha256 = (Get-FileHash -Algorithm SHA256 -LiteralPath $absolute).Hash.ToLowerInvariant()
         }
     }
-    return @($changes | Sort-Object path)
+    return @($changes | Sort-Object { $_['path'] })
 }
 
 function Find-PublicSafetyIssues {

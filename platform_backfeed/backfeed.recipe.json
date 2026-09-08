@@ -1,0 +1,45 @@
+{
+  "schema": "axm.branch-backfeed-recipe/v1",
+  "capsule_id": "axm-factual-space-simulator-foundation-backfeed",
+  "source": {
+    "repository": "mike-axiom-mir/axm-factual-space-simulator",
+    "branch_family": "factual-space-simulator",
+    "version": "0.15.0"
+  },
+  "policy": {
+    "external_dependencies_allowed": false,
+    "automatic_install_allowed": false,
+    "automatic_registry_change_allowed": false,
+    "automatic_promotion_allowed": false,
+    "target_status": "EXPERIMENTAL"
+  },
+  "modules": [
+    {
+      "id": "deterministic-json-core",
+      "root": "source/modules/deterministic-json-core",
+      "origin": [
+        "src/axm_star_sim/handoff.py:canonical_json",
+        "src/axm_star_sim/migration.py:canonical_json"
+      ],
+      "external_dependencies": []
+    },
+    {
+      "id": "immutable-history-guard",
+      "root": "source/modules/immutable-history-guard",
+      "origin": [
+        "src/axm_star_sim/migration.py:create_migration_proposal",
+        "src/axm_star_sim/migration.py:assess_migration_proposal"
+      ],
+      "external_dependencies": []
+    },
+    {
+      "id": "branch-backfeed-lab",
+      "root": "source/modules/branch-backfeed-lab",
+      "origin": [
+        "platform_backfeed capsule contract",
+        "Workshop module contract and Graft boundaries"
+      ],
+      "external_dependencies": []
+    }
+  ]
+}

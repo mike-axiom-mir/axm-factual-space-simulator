@@ -1,0 +1,153 @@
+{
+  "schema": "axm.branch-backfeed-capsule/v1",
+  "capsule_id": "axm-factual-space-simulator-foundation-backfeed",
+  "source": {
+    "repository": "mike-axiom-mir/axm-factual-space-simulator",
+    "branch_family": "factual-space-simulator",
+    "version": "0.15.0"
+  },
+  "policy": {
+    "external_dependencies_allowed": false,
+    "automatic_install_allowed": false,
+    "automatic_registry_change_allowed": false,
+    "automatic_promotion_allowed": false,
+    "target_status": "EXPERIMENTAL"
+  },
+  "modules": [
+    {
+      "id": "deterministic-json-core",
+      "version": "v0.1",
+      "root": "modules/deterministic-json-core",
+      "manifest": "modules/deterministic-json-core/manifest.json",
+      "contract": "modules/deterministic-json-core/module.contract.json",
+      "entry": "modules/deterministic-json-core/index.js",
+      "file_paths": [
+        "modules/deterministic-json-core/index.js",
+        "modules/deterministic-json-core/manifest.json",
+        "modules/deterministic-json-core/module.contract.json",
+        "modules/deterministic-json-core/selftest.js"
+      ],
+      "external_dependencies": [],
+      "runtime_primitives": [
+        "ECMAScript",
+        "browser APIs when declared by the module"
+      ],
+      "origin": [
+        "src/axm_star_sim/handoff.py:canonical_json",
+        "src/axm_star_sim/migration.py:canonical_json"
+      ]
+    },
+    {
+      "id": "immutable-history-guard",
+      "version": "v0.1",
+      "root": "modules/immutable-history-guard",
+      "manifest": "modules/immutable-history-guard/manifest.json",
+      "contract": "modules/immutable-history-guard/module.contract.json",
+      "entry": "modules/immutable-history-guard/index.js",
+      "file_paths": [
+        "modules/immutable-history-guard/index.js",
+        "modules/immutable-history-guard/manifest.json",
+        "modules/immutable-history-guard/module.contract.json",
+        "modules/immutable-history-guard/selftest.js"
+      ],
+      "external_dependencies": [],
+      "runtime_primitives": [
+        "ECMAScript",
+        "browser APIs when declared by the module"
+      ],
+      "origin": [
+        "src/axm_star_sim/migration.py:create_migration_proposal",
+        "src/axm_star_sim/migration.py:assess_migration_proposal"
+      ]
+    },
+    {
+      "id": "branch-backfeed-lab",
+      "version": "v0.1",
+      "root": "modules/branch-backfeed-lab",
+      "manifest": "modules/branch-backfeed-lab/manifest.json",
+      "contract": "modules/branch-backfeed-lab/module.contract.json",
+      "entry": "modules/branch-backfeed-lab/index.html",
+      "file_paths": [
+        "modules/branch-backfeed-lab/app.js",
+        "modules/branch-backfeed-lab/core.js",
+        "modules/branch-backfeed-lab/index.html",
+        "modules/branch-backfeed-lab/manifest.json",
+        "modules/branch-backfeed-lab/module.contract.json",
+        "modules/branch-backfeed-lab/selftest.js",
+        "modules/branch-backfeed-lab/style.css"
+      ],
+      "external_dependencies": [],
+      "runtime_primitives": [
+        "ECMAScript",
+        "browser APIs when declared by the module"
+      ],
+      "origin": [
+        "platform_backfeed capsule contract",
+        "Workshop module contract and Graft boundaries"
+      ]
+    }
+  ],
+  "files": {
+    "modules/branch-backfeed-lab/app.js": {
+      "bytes": 3139,
+      "sha256": "e59d35d7021a660d45d93a0779f43f418d5dc68239cfe6ba62b3a5017bc8bd7b"
+    },
+    "modules/branch-backfeed-lab/core.js": {
+      "bytes": 6515,
+      "sha256": "ba3fc98acf882dc30e8b0935e100ed68d3a3cf172a14b0368091d2f459f1ebef"
+    },
+    "modules/branch-backfeed-lab/index.html": {
+      "bytes": 1140,
+      "sha256": "440f39f892e84c660fc60929ea7fad70ebdd8cedb7fe7e6438b2f03e59fbc8c8"
+    },
+    "modules/branch-backfeed-lab/manifest.json": {
+      "bytes": 1237,
+      "sha256": "3c5bfdd0ed87a80000bb3c4b6e1c75a6eeb541692e51a1073615b8f5783d752b"
+    },
+    "modules/branch-backfeed-lab/module.contract.json": {
+      "bytes": 1250,
+      "sha256": "9e5dcceb7e8cd37996c01eb4946740ec35ef93e26c2d35830c5e8f788a911a1f"
+    },
+    "modules/branch-backfeed-lab/selftest.js": {
+      "bytes": 2089,
+      "sha256": "690d72e4d65d7680e62e0c413acf21bf5474da234063b7f21948614fe3fbb853"
+    },
+    "modules/branch-backfeed-lab/style.css": {
+      "bytes": 1451,
+      "sha256": "033b58c41ab3e271e02ecf899a878d72895f3f84bdc4eb61163b5290e3a3fce0"
+    },
+    "modules/deterministic-json-core/index.js": {
+      "bytes": 1846,
+      "sha256": "7ef38c745ebe2b52ba21a9e0462fad8009c1ec04bd2a63fa4fed59e6ac83514a"
+    },
+    "modules/deterministic-json-core/manifest.json": {
+      "bytes": 1156,
+      "sha256": "f02555f6f80ce426bb9c4edcf31448e5c12d2400444aa7575c413b51d25a7c8e"
+    },
+    "modules/deterministic-json-core/module.contract.json": {
+      "bytes": 881,
+      "sha256": "2f5e1025d70a06186474aea2ab11204fb3a7f3e7937482f9e492a4880c1a1fd9"
+    },
+    "modules/deterministic-json-core/selftest.js": {
+      "bytes": 703,
+      "sha256": "3ad9b235a2fcd87ef6399d5cd31455beb51940b32522f32d5dbb86faf4685ed1"
+    },
+    "modules/immutable-history-guard/index.js": {
+      "bytes": 2179,
+      "sha256": "65847054b7a22c813a35bee9c40f87448d0233351376fadc36f6727c28d6da23"
+    },
+    "modules/immutable-history-guard/manifest.json": {
+      "bytes": 1118,
+      "sha256": "6559da92bc8646cdc877f04dd0a09672b4c1165cd03289391e105f239686a9dd"
+    },
+    "modules/immutable-history-guard/module.contract.json": {
+      "bytes": 941,
+      "sha256": "8ebc6c67f1291cdcf1bcb9f0a50b816c6eaf5f71a63e68f4198ac13e1e5df59f"
+    },
+    "modules/immutable-history-guard/selftest.js": {
+      "bytes": 1183,
+      "sha256": "4ca22076587c2118e83c1d7a48d1044d0732914146c79911a7fa547d29afa4e0"
+    }
+  },
+  "claim_boundary": "Hashes prove selected-byte identity only. Graft, behavior tests, visual checks, authority, registration, and promotion remain separate gates."
+}

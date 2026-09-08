@@ -3,7 +3,7 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 272,
+  "managed_file_count": 313,
   "files": {
     ".gitattributes": {
       "bytes": 45,
@@ -377,6 +377,10 @@
       "bytes": 2152,
       "sha256": "36d8d0cc74787e72c3670c1258d3429ab2444706e57a6db16a02b49c9f44bcb7"
     },
+    "docs/GITHUB_REPOSITORY_SETUP_RECEIPT.md": {
+      "bytes": 1348,
+      "sha256": "7ecba43fcf12a9d93148c4b520f06301e0aa455825801e18d4bd7dde08027f0e"
+    },
     "docs/IMMUTABLE_FOUR_ROOT_CREW_CORE_v1.md": {
       "bytes": 1259,
       "sha256": "e693743ae4f7d4fee55e8c9bef541d582efaffcba80d46d9cc89de4875c7c6b1"
@@ -428,6 +432,10 @@
     "docs/PHYSICS_AND_CAUSAL_THREADS.md": {
       "bytes": 4753,
       "sha256": "ebe493686b37bae57e8366f06f8cd253413a11493a7e1b34bafede9e13598a86"
+    },
+    "docs/PLATFORM_BACKFEED_RECEIPT.md": {
+      "bytes": 2582,
+      "sha256": "ed0eec9520fc1a104b4b6a490d9ed7b62c25337c1ab41a3abd3b1365590e5367"
     },
     "docs/PORTABILITY_AND_PACKAGE_MAINTENANCE.md": {
       "bytes": 2270,
@@ -597,13 +605,145 @@
       "bytes": 12143,
       "sha256": "b307edcc0389d6c3cf6fa3d3866bb31e885313d9bbbf6a16153fc1a7b8f3413f"
     },
+    "platform_backfeed/backfeed.recipe.json": {
+      "bytes": 1361,
+      "sha256": "846c06482d0b06c8b95f89d0d978d31c7042808f8accfd192b75bb9be605b3da"
+    },
+    "platform_backfeed/dist/AXM_BRANCH_CAPSULE.json": {
+      "bytes": 5870,
+      "sha256": "a3410bcdc02f109826ddc70c9c82dee67167bcffea11bb7d7109528d47061c05"
+    },
+    "platform_backfeed/dist/modules/branch-backfeed-lab/app.js": {
+      "bytes": 3139,
+      "sha256": "e59d35d7021a660d45d93a0779f43f418d5dc68239cfe6ba62b3a5017bc8bd7b"
+    },
+    "platform_backfeed/dist/modules/branch-backfeed-lab/core.js": {
+      "bytes": 6515,
+      "sha256": "ba3fc98acf882dc30e8b0935e100ed68d3a3cf172a14b0368091d2f459f1ebef"
+    },
+    "platform_backfeed/dist/modules/branch-backfeed-lab/index.html": {
+      "bytes": 1140,
+      "sha256": "440f39f892e84c660fc60929ea7fad70ebdd8cedb7fe7e6438b2f03e59fbc8c8"
+    },
+    "platform_backfeed/dist/modules/branch-backfeed-lab/manifest.json": {
+      "bytes": 1237,
+      "sha256": "3c5bfdd0ed87a80000bb3c4b6e1c75a6eeb541692e51a1073615b8f5783d752b"
+    },
+    "platform_backfeed/dist/modules/branch-backfeed-lab/module.contract.json": {
+      "bytes": 1250,
+      "sha256": "9e5dcceb7e8cd37996c01eb4946740ec35ef93e26c2d35830c5e8f788a911a1f"
+    },
+    "platform_backfeed/dist/modules/branch-backfeed-lab/selftest.js": {
+      "bytes": 2089,
+      "sha256": "690d72e4d65d7680e62e0c413acf21bf5474da234063b7f21948614fe3fbb853"
+    },
+    "platform_backfeed/dist/modules/branch-backfeed-lab/style.css": {
+      "bytes": 1451,
+      "sha256": "033b58c41ab3e271e02ecf899a878d72895f3f84bdc4eb61163b5290e3a3fce0"
+    },
+    "platform_backfeed/dist/modules/deterministic-json-core/index.js": {
+      "bytes": 1846,
+      "sha256": "7ef38c745ebe2b52ba21a9e0462fad8009c1ec04bd2a63fa4fed59e6ac83514a"
+    },
+    "platform_backfeed/dist/modules/deterministic-json-core/manifest.json": {
+      "bytes": 1156,
+      "sha256": "f02555f6f80ce426bb9c4edcf31448e5c12d2400444aa7575c413b51d25a7c8e"
+    },
+    "platform_backfeed/dist/modules/deterministic-json-core/module.contract.json": {
+      "bytes": 881,
+      "sha256": "2f5e1025d70a06186474aea2ab11204fb3a7f3e7937482f9e492a4880c1a1fd9"
+    },
+    "platform_backfeed/dist/modules/deterministic-json-core/selftest.js": {
+      "bytes": 703,
+      "sha256": "3ad9b235a2fcd87ef6399d5cd31455beb51940b32522f32d5dbb86faf4685ed1"
+    },
+    "platform_backfeed/dist/modules/immutable-history-guard/index.js": {
+      "bytes": 2179,
+      "sha256": "65847054b7a22c813a35bee9c40f87448d0233351376fadc36f6727c28d6da23"
+    },
+    "platform_backfeed/dist/modules/immutable-history-guard/manifest.json": {
+      "bytes": 1118,
+      "sha256": "6559da92bc8646cdc877f04dd0a09672b4c1165cd03289391e105f239686a9dd"
+    },
+    "platform_backfeed/dist/modules/immutable-history-guard/module.contract.json": {
+      "bytes": 941,
+      "sha256": "8ebc6c67f1291cdcf1bcb9f0a50b816c6eaf5f71a63e68f4198ac13e1e5df59f"
+    },
+    "platform_backfeed/dist/modules/immutable-history-guard/selftest.js": {
+      "bytes": 1183,
+      "sha256": "4ca22076587c2118e83c1d7a48d1044d0732914146c79911a7fa547d29afa4e0"
+    },
+    "platform_backfeed/README.md": {
+      "bytes": 1323,
+      "sha256": "94b84b2009f79070f358c60ba5f5f761d586b2b3054fa6760afa6e7916cdaa4b"
+    },
+    "platform_backfeed/source/modules/branch-backfeed-lab/app.js": {
+      "bytes": 3139,
+      "sha256": "e59d35d7021a660d45d93a0779f43f418d5dc68239cfe6ba62b3a5017bc8bd7b"
+    },
+    "platform_backfeed/source/modules/branch-backfeed-lab/core.js": {
+      "bytes": 6515,
+      "sha256": "ba3fc98acf882dc30e8b0935e100ed68d3a3cf172a14b0368091d2f459f1ebef"
+    },
+    "platform_backfeed/source/modules/branch-backfeed-lab/index.html": {
+      "bytes": 1140,
+      "sha256": "440f39f892e84c660fc60929ea7fad70ebdd8cedb7fe7e6438b2f03e59fbc8c8"
+    },
+    "platform_backfeed/source/modules/branch-backfeed-lab/manifest.json": {
+      "bytes": 1237,
+      "sha256": "3c5bfdd0ed87a80000bb3c4b6e1c75a6eeb541692e51a1073615b8f5783d752b"
+    },
+    "platform_backfeed/source/modules/branch-backfeed-lab/module.contract.json": {
+      "bytes": 1250,
+      "sha256": "9e5dcceb7e8cd37996c01eb4946740ec35ef93e26c2d35830c5e8f788a911a1f"
+    },
+    "platform_backfeed/source/modules/branch-backfeed-lab/selftest.js": {
+      "bytes": 2089,
+      "sha256": "690d72e4d65d7680e62e0c413acf21bf5474da234063b7f21948614fe3fbb853"
+    },
+    "platform_backfeed/source/modules/branch-backfeed-lab/style.css": {
+      "bytes": 1451,
+      "sha256": "033b58c41ab3e271e02ecf899a878d72895f3f84bdc4eb61163b5290e3a3fce0"
+    },
+    "platform_backfeed/source/modules/deterministic-json-core/index.js": {
+      "bytes": 1846,
+      "sha256": "7ef38c745ebe2b52ba21a9e0462fad8009c1ec04bd2a63fa4fed59e6ac83514a"
+    },
+    "platform_backfeed/source/modules/deterministic-json-core/manifest.json": {
+      "bytes": 1156,
+      "sha256": "f02555f6f80ce426bb9c4edcf31448e5c12d2400444aa7575c413b51d25a7c8e"
+    },
+    "platform_backfeed/source/modules/deterministic-json-core/module.contract.json": {
+      "bytes": 881,
+      "sha256": "2f5e1025d70a06186474aea2ab11204fb3a7f3e7937482f9e492a4880c1a1fd9"
+    },
+    "platform_backfeed/source/modules/deterministic-json-core/selftest.js": {
+      "bytes": 703,
+      "sha256": "3ad9b235a2fcd87ef6399d5cd31455beb51940b32522f32d5dbb86faf4685ed1"
+    },
+    "platform_backfeed/source/modules/immutable-history-guard/index.js": {
+      "bytes": 2179,
+      "sha256": "65847054b7a22c813a35bee9c40f87448d0233351376fadc36f6727c28d6da23"
+    },
+    "platform_backfeed/source/modules/immutable-history-guard/manifest.json": {
+      "bytes": 1118,
+      "sha256": "6559da92bc8646cdc877f04dd0a09672b4c1165cd03289391e105f239686a9dd"
+    },
+    "platform_backfeed/source/modules/immutable-history-guard/module.contract.json": {
+      "bytes": 941,
+      "sha256": "8ebc6c67f1291cdcf1bcb9f0a50b816c6eaf5f71a63e68f4198ac13e1e5df59f"
+    },
+    "platform_backfeed/source/modules/immutable-history-guard/selftest.js": {
+      "bytes": 1183,
+      "sha256": "4ca22076587c2118e83c1d7a48d1044d0732914146c79911a7fa547d29afa4e0"
+    },
     "pyproject.toml": {
       "bytes": 1160,
       "sha256": "eb159e6844404e6b68e7ed0ea65fc389de9837ec3a2b2864e81eb49ee02a2fa4"
     },
     "README.md": {
-      "bytes": 3958,
-      "sha256": "31a75bdf97304b7c17390f11da7a13fa7c2087ba2a9272048c3631bb053678ae"
+      "bytes": 4778,
+      "sha256": "5dc4107756b0dd347874ef471651cc550db359c7065173512cd264d1152f6579"
     },
     "run_crew_stations.bat": {
       "bytes": 263,
@@ -660,6 +800,18 @@
     "run_package_seal_check.sh": {
       "bytes": 266,
       "sha256": "98fbbb545c613f1fd865568dc087f76dc703686b5563c79be38abed621e8e0c1"
+    },
+    "run_platform_backfeed_build.bat": {
+      "bytes": 182,
+      "sha256": "e9a3a583cc00a30f59e902590bac7d70f044ed2b117e4774382980a2e39dfa58"
+    },
+    "run_platform_backfeed_install_apply.bat": {
+      "bytes": 482,
+      "sha256": "0afead27540b43dbf088508dd28c91d57b118cb238bc9fd28a0b2761ffbc300d"
+    },
+    "run_platform_backfeed_install_plan.bat": {
+      "bytes": 332,
+      "sha256": "71d08e5afc9a673d7e09b4e400c3660182eb9791285058777329b348edc7dfb1"
     },
     "run_rooted_crew.bat": {
       "bytes": 254,
@@ -1041,6 +1193,10 @@
       "bytes": 6841,
       "sha256": "56d01a8f228f27cb7dc4b96351eb81a70ca16b1f2a2b55b37f322671c31b58fa"
     },
+    "tests/test_platform_backfeed.py": {
+      "bytes": 4562,
+      "sha256": "dcc79c9d890ccf0d47570769ad87a6412eea50a24a64031ec56182a0ad93f32e"
+    },
     "tests/test_polished_handoff.py": {
       "bytes": 3475,
       "sha256": "53b1983410ffea5d7e5cfceb3424904eb9f410813de3827973265533b5ba9d2a"
@@ -1056,6 +1212,10 @@
     "tests/test_technology_physics.py": {
       "bytes": 3066,
       "sha256": "7e9e016c26bfb7f01ac84df2877f34836cff3f3d4ecd7fa6704d0aafd847ad33"
+    },
+    "tools/build_platform_backfeed.py": {
+      "bytes": 12070,
+      "sha256": "105e0aa5f01f74bbd574bd4d074242bea5bd2b24736c8edc5affe709061be8fb"
     },
     "tools/drand_verifier/install.bat": {
       "bytes": 180,
@@ -1081,9 +1241,13 @@
       "bytes": 2425,
       "sha256": "4f35f06866c0b4f6d2485007d56b7cb16b7dbb4970dbdb37c0bfce0dc91e42a8"
     },
+    "tools/install_platform_backfeed.py": {
+      "bytes": 6027,
+      "sha256": "af9592f6628548b102efe796d917b6af93c67e926b255f655111de8ca72dfdb4"
+    },
     "tools/New-VerifiedPullRequest.ps1": {
-      "bytes": 8743,
-      "sha256": "41ef93dc0025706118c53690b530a0e87e8cc6d3c6e9b685cf4801862ef017a7"
+      "bytes": 9166,
+      "sha256": "d668a7bd6d2c8d6ad169267eb1c6ff1da4fd9c431d40557b77ec1ee581cdc359"
     },
     "tools/reseal_package.py": {
       "bytes": 307,
