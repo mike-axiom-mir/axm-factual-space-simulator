@@ -1158,8 +1158,8 @@
       "sha256": "cc72691eda554b7b5986dbdf46b410730e1aa9a3fc2fc335cdd9dc7be1dda2a3"
     },
     "tests/test_crew_station_console.py": {
-      "bytes": 1788,
-      "sha256": "035b628d64bff757aa73a1f0e8d184e7436c5ec3e2477cfd5f8e0fab60ca4d6d"
+      "bytes": 1843,
+      "sha256": "b0c9a544d2aa0c8a4500030a3507b6c6ace1ace2b8dd877d4ce07241db0f86ef"
     },
     "tests/test_crew_station_metrics.py": {
       "bytes": 6977,

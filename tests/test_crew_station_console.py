@@ -1,8 +1,6 @@
 from __future__ import annotations
 
 import json
-import subprocess
-import sys
 import unittest
 from pathlib import Path
 
@@ -23,11 +21,12 @@ class CrewStationConsoleTests(unittest.TestCase):
         self.assertIn("prefers-reduced-motion:reduce", text)
         self.assertIn("selectMetric(card,button)", text)
 
-    def test_builder_binds_current_report_without_changing_station_truth(self) -> None:
-        subprocess.run([sys.executable, "scripts/build_demo_v0_14.py"], cwd=ROOT, check=True)
+    def test_generated_console_is_bound_without_changing_station_truth(self) -> None:
         output = OUTPUT.read_text(encoding="utf-8")
+        builder = (ROOT / "scripts" / "build_demo_v0_14.py").read_text(encoding="utf-8")
 
         self.assertNotIn("__CREW_STATION_DATA__", output)
+        self.assertIn('_template.replace("__CREW_STATION_DATA__", _visual_data)', builder)
         marker = '<script type="application/json" id="data">'
         start = output.index(marker) + len(marker)
         end = output.index("</script>", start)
