@@ -3,7 +3,7 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 313,
+  "managed_file_count": 316,
   "files": {
     ".gitattributes": {
       "bytes": 45,
@@ -22,8 +22,8 @@
       "sha256": "6edb60b374c9876b6f75031a52d67333544e7e62db207476bf8aed6b93faaed8"
     },
     "AGENTS.md": {
-      "bytes": 1079,
-      "sha256": "e652ea6e3dc8515699685e3c17d45b6875d2a3b1e687b4ee35c30dd33c6465cd"
+      "bytes": 4262,
+      "sha256": "8144379c4f9661d45a7a1219b17b7037f9432cc08d014073afa365c2912cdf22"
     },
     "assets/concept/FACTUAL_STAR_ADVENTURE_SIMULATOR_IN_PRODUCTION.png": {
       "bytes": 2047381,
@@ -593,6 +593,10 @@
       "bytes": 999,
       "sha256": "2b94efffca471a7a4dee4b316ed9e3f46bc2f18ba84b218bc8b6504314de5d05"
     },
+    "LICENSE": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
     "LOCAL_INTAKE_HANDOFF.txt": {
       "bytes": 2239,
       "sha256": "12c6f910664035318d039a9bd3058cb6cea005e02cb44ea36243d58ef40ef6af"
@@ -1066,8 +1070,8 @@
       "sha256": "e6a1b98737fa397b432e8afe198992b129169784fe6bf9b783828c7acfb54ee1"
     },
     "src/axm_star_sim/registry.py": {
-      "bytes": 862,
-      "sha256": "6363573a31472324215450e586ae918b5153b6b68519d74356f422a1ffe1322c"
+      "bytes": 920,
+      "sha256": "c0f2176e7120475c6bae1499d731b5be6d838a4bd6a78290a414f583cb3da8ba"
     },
     "src/axm_star_sim/rooted_crew.py": {
       "bytes": 19107,
@@ -1201,6 +1205,10 @@
       "bytes": 3475,
       "sha256": "53b1983410ffea5d7e5cfceb3424904eb9f410813de3827973265533b5ba9d2a"
     },
+    "tests/test_registry_paths.py": {
+      "bytes": 1187,
+      "sha256": "ebdb0502ae797bb4264dbf513482b09120c4939bc18ee3e0090cb11ec3864411"
+    },
     "tests/test_ship_interior.py": {
       "bytes": 8510,
       "sha256": "331a706991b193ccb3d6ead4f06e16f7b92ce13a55ac3e9c7d4a16e278aaf091"
@@ -1212,6 +1220,10 @@
     "tests/test_technology_physics.py": {
       "bytes": 3066,
       "sha256": "7e9e016c26bfb7f01ac84df2877f34836cff3f3d4ecd7fa6704d0aafd847ad33"
+    },
+    "THIRD_PARTY.json": {
+      "bytes": 264,
+      "sha256": "222f04ec75fd8ec51a270804ef0ea55c9a4dd73ba8674a93f9dfb9ef7b651b71"
     },
     "tools/build_platform_backfeed.py": {
       "bytes": 12070,
