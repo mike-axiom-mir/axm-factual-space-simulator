@@ -49,10 +49,10 @@ def canonical_paths(root: Path) -> Iterable[tuple[str, Path]]:
 
         for name in sorted(file_names, key=str.casefold):
             path = current_path / name
+            relative = path.relative_to(root).as_posix()
             if path.is_symlink():
                 raise ValueError(f"portable package seals do not support symbolic links: {path}")
-            relative = path.relative_to(root).as_posix()
-            if relative in _EXCLUDED or path.suffix == ".pyc":
+            if relative == ".git" or relative in _EXCLUDED or path.suffix == ".pyc":
                 continue
             rows.append((relative, path))
     yield from sorted(rows, key=lambda row: row[0].casefold())
