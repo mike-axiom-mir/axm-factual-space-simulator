@@ -28,6 +28,20 @@ python tools/install_platform_backfeed.py --workshop D:\AXM_ACTIVE\workshop --pl
 python tools/install_platform_backfeed.py --workshop D:\AXM_ACTIVE\workshop --apply --plan-digest <digest>
 ```
 
+The installer can also consume a capsule copied or extracted outside this
+repository. It verifies the received manifest, every declared byte and hash,
+the complete file inventory, module ownership, and portable path boundaries
+before producing a plan:
+
+```text
+python tools/install_platform_backfeed.py --capsule D:\received\factual-space-backfeed --workshop D:\AXM_ACTIVE\workshop --plan
+python tools/install_platform_backfeed.py --capsule D:\received\factual-space-backfeed --workshop D:\AXM_ACTIVE\workshop --apply --plan-digest <digest>
+```
+
+This consumer path needs only Python's standard library. It does not trust the
+source recipe or require the simulator package to be importable. A valid hash
+inventory proves received-byte identity, not runtime behavior or promotion.
+
 Apply refuses existing targets. It adds leaf folders under `tools/`; it does not
 edit the registry, hub entrypoint, foundation spine, permissions, or CANON state.
 Graft/review remains the promotion gate.
