@@ -3,7 +3,7 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 313,
+  "managed_file_count": 316,
   "files": {
     ".gitattributes": {
       "bytes": 45,
@@ -22,8 +22,8 @@
       "sha256": "6edb60b374c9876b6f75031a52d67333544e7e62db207476bf8aed6b93faaed8"
     },
     "AGENTS.md": {
-      "bytes": 1079,
-      "sha256": "e652ea6e3dc8515699685e3c17d45b6875d2a3b1e687b4ee35c30dd33c6465cd"
+      "bytes": 4262,
+      "sha256": "8144379c4f9661d45a7a1219b17b7037f9432cc08d014073afa365c2912cdf22"
     },
     "assets/concept/FACTUAL_STAR_ADVENTURE_SIMULATOR_IN_PRODUCTION.png": {
       "bytes": 2047381,
@@ -38,8 +38,8 @@
       "sha256": "eab22221db2b1f98a1206e61540ad482e53f9e45e1a86aa62bbc741f0eca6277"
     },
     "assets/demo_templates/crew_station_console.html": {
-      "bytes": 205636,
-      "sha256": "2a59f2c10322233a87871b9b8e35f1a99143c951a69b94fb04a7d9305f477cd1"
+      "bytes": 14571,
+      "sha256": "4a339efe0ef50c8302653dcc7128e8415d90591b830c7390fbb205be705f2744"
     },
     "assets/demo_templates/LOCAL_HANDOFF_REPORT.html": {
       "bytes": 1274,
@@ -593,6 +593,10 @@
       "bytes": 999,
       "sha256": "2b94efffca471a7a4dee4b316ed9e3f46bc2f18ba84b218bc8b6504314de5d05"
     },
+    "LICENSE": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
     "LOCAL_INTAKE_HANDOFF.txt": {
       "bytes": 2239,
       "sha256": "12c6f910664035318d039a9bd3058cb6cea005e02cb44ea36243d58ef40ef6af"
@@ -874,8 +878,8 @@
       "sha256": "3282cd8694d5cf2506a7e316f375a4fdd5a53966433d9d21a60a17d034fe0bad"
     },
     "scripts/build_demo_v0_14.py": {
-      "bytes": 3122,
-      "sha256": "28acabad22421fac72273d4b64d69ed48564922dab5ce7918b52917343030730"
+      "bytes": 3574,
+      "sha256": "18ce47919de77f268aaf1f1a7faff68c1db6edfaefb19bcfe8f14475a3f15e62"
     },
     "scripts/build_demo_v0_4.py": {
       "bytes": 2277,
@@ -1153,6 +1157,10 @@
       "bytes": 2127,
       "sha256": "cc72691eda554b7b5986dbdf46b410730e1aa9a3fc2fc335cdd9dc7be1dda2a3"
     },
+    "tests/test_crew_station_console.py": {
+      "bytes": 1788,
+      "sha256": "035b628d64bff757aa73a1f0e8d184e7436c5ec3e2477cfd5f8e0fab60ca4d6d"
+    },
     "tests/test_crew_station_metrics.py": {
       "bytes": 6977,
       "sha256": "df6139ce7066d7e6b3fc6958a386ba207b8544db08ab1f393807db085ab43838"
@@ -1212,6 +1220,10 @@
     "tests/test_technology_physics.py": {
       "bytes": 3066,
       "sha256": "7e9e016c26bfb7f01ac84df2877f34836cff3f3d4ecd7fa6704d0aafd847ad33"
+    },
+    "THIRD_PARTY.json": {
+      "bytes": 264,
+      "sha256": "222f04ec75fd8ec51a270804ef0ea55c9a4dd73ba8674a93f9dfb9ef7b651b71"
     },
     "tools/build_platform_backfeed.py": {
       "bytes": 12070,

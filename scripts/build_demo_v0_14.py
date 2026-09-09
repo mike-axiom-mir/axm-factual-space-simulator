@@ -16,6 +16,17 @@ for name,value in [('demo_report.json',report),('ship_state.json',state),('compe
 print(json.dumps({'valid':report['ship_state_verification']['valid'],'metrics':len(report['telemetry_snapshot']['cards']),'stations':len(report['station_views']['views'])},indent=2))
 
 
-# Restore the canonical visual entry page after deterministic data rebuild.
-_template = ROOT / "assets" / "demo_templates" / "crew_station_console.html"
-(OUT / "crew_station_console.html").write_text(_template.read_text(encoding="utf-8"), encoding="utf-8")
+# Restore the visual entry page after deterministic data rebuild and bind it to
+# the report produced in this exact run. The interface only derives display
+# priority and filtering; the station records remain unchanged.
+_template = (ROOT / "assets" / "demo_templates" / "crew_station_console.html").read_text(encoding="utf-8")
+_visual_data = json.dumps(
+    {"stations": report["station_views"]["views"], "learning": report["learning_pressure"]},
+    ensure_ascii=False,
+    separators=(",", ":"),
+).replace("</", "<\\/")
+assert _template.count("__CREW_STATION_DATA__") == 1
+(OUT / "crew_station_console.html").write_text(
+    _template.replace("__CREW_STATION_DATA__", _visual_data),
+    encoding="utf-8",
+)

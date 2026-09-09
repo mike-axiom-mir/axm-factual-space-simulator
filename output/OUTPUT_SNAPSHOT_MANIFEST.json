@@ -306,8 +306,8 @@
       "sha256": "c111c9633eaa9bfdc5d8c4b3e1671f5423380f0c124a82e010828b07aadc7e17"
     },
     "output/crew_station_metric_demo/crew_station_console.html": {
-      "bytes": 205636,
-      "sha256": "2a59f2c10322233a87871b9b8e35f1a99143c951a69b94fb04a7d9305f477cd1"
+      "bytes": 202785,
+      "sha256": "1cc551f471de6a3691510f28078df987463a9da0aaec7c02630d5efe4a5c156a"
     },
     "output/crew_station_metric_demo/demo_report.json": {
       "bytes": 448421,
