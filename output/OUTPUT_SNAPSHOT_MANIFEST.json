@@ -322,8 +322,8 @@
       "sha256": "3cf826ddff2192dc41033016e719709c8f1f1f6eb538dbf16c7ae0eb07433d57"
     },
     "output/factual_ship_blueprint_demo/ship_blueprint_console.html": {
-      "bytes": 8428,
-      "sha256": "689c45d8aa2e3b62806d6646f8a46266acff8086d976ffddf714c1a647d46886"
+      "bytes": 16095,
+      "sha256": "97dc6480ae3910d6f4a9bdd41f71de03c6c6724a705e304daf8955f450149db9"
     },
     "output/factual_ship_blueprint_demo/ship_state.json": {
       "bytes": 16648,
