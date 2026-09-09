@@ -5,7 +5,6 @@ from pathlib import Path
 from typing import Any
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[2]
-PROJECT_ROOT = PACKAGE_ROOT.parent
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -13,10 +12,11 @@ def load_json(path: Path) -> dict[str, Any]:
 
 
 def data_path(relative: str) -> Path:
-    candidate = PROJECT_ROOT / "data" / relative
+    # Resolve canonical repository data independently of the caller's cwd.
+    candidate = PACKAGE_ROOT / "data" / relative
     if candidate.exists():
         return candidate
-    # Installed-package fallback for editable and zipped use.
+    # Compatibility fallback for intentionally unpacked/data-adjacent launches.
     fallback = Path.cwd() / "data" / relative
     return fallback
 
