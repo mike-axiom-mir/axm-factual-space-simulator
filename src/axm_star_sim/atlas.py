@@ -11,6 +11,7 @@ from typing import Any
 
 from .registry import data_path, load_json, load_source_registry
 from .seed import SeedBranch
+from .storage import atomic_write_json, atomic_write_text
 
 ATLAS_SCHEMA = "axm.expedition-atlas.v1"
 LOCATION_SCHEMA = "axm.atlas-location.v1"
@@ -588,8 +589,8 @@ def append_catalog_revision(
 
 def write_atlas_files(output: Path, atlas: dict[str, Any]) -> None:
     output.mkdir(parents=True, exist_ok=True)
-    (output / "expedition_atlas.json").write_text(json.dumps(atlas, indent=2, ensure_ascii=False), encoding="utf-8")
-    (output / "atlas.html").write_text(render_atlas_html(atlas), encoding="utf-8")
+    atomic_write_json(output / "expedition_atlas.json", atlas)
+    atomic_write_text(output / "atlas.html", render_atlas_html(atlas))
     active = atlas["locations"][atlas["active_location_id"]]
     packet = {
         "schema": "axm.location-export-packet.v1",
@@ -599,7 +600,7 @@ def write_atlas_files(output: Path, atlas: dict[str, Any]) -> None:
         "atlas_visit_chain_head": atlas.get("visit_chain_head"),
     }
     packet["packet_sha256"] = canonical_hash(packet, "AXM-LOCATION-EXPORT-PACKET-V1")
-    (output / "location_packet.json").write_text(json.dumps(packet, indent=2, ensure_ascii=False), encoding="utf-8")
+    atomic_write_json(output / "location_packet.json", packet)
 
 
 def render_atlas_html(atlas: dict[str, Any]) -> str:

@@ -40,6 +40,7 @@ from .io import (
     load_pending_session,
     save_pending_session,
     refresh_output_manifest,
+    recover_runtime_commit,
     update_command_mode,
     write_system,
 )
@@ -71,6 +72,7 @@ def _read_reveals(paths: list[Path] | None) -> list[dict[str, str]]:
 
 
 def _load_verified(output: Path) -> tuple[dict, dict, list[dict]]:
+    recover_runtime_commit(output)
     system = json.loads((output / "system.json").read_text(encoding="utf-8"))
     state = json.loads((output / "runtime_state.json").read_text(encoding="utf-8"))
     events = load_ledger(output / "event_ledger.jsonl")
@@ -155,6 +157,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     replay = sub.add_parser("verify-ledger", help="replay and verify the command/event ledger")
     replay.add_argument("--output", type=Path, required=True)
+
+    recover = sub.add_parser("recover-runtime", help="finish a sealed runtime commit interrupted before projection")
+    recover.add_argument("--output", type=Path, required=True)
 
     beacon = sub.add_parser("fetch-beacon", help="fetch, preserve, and attempt verification of the latest drand quicknet packet")
     beacon.add_argument("--source", choices=["drand"], default="drand")
@@ -574,6 +579,14 @@ def main(argv: list[str] | None = None) -> int:
             valid, checks, _state = verify_ledger(system, load_ledger(args.output / "event_ledger.jsonl"))
             print(json.dumps({"status": "verified" if valid else "failed", "events": len(checks), "valid": valid, "checks": checks}, indent=2))
             return 0 if valid else 1
+
+        if args.command == "recover-runtime":
+            manifest = recover_runtime_commit(args.output)
+            print(json.dumps({
+                "status": "recovered" if manifest is not None else "clean",
+                "files": manifest["files"] if manifest is not None else {},
+            }, indent=2))
+            return 0
 
         if args.command == "fetch-beacon":
             path = fetch_drand_latest(args.output)

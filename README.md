@@ -30,6 +30,7 @@ Roots shape option eligibility before efficiency. They cannot be reordered, disa
 - Deterministic initial universes with live-entropy options that fail closed.
 - Four explicit command modes.
 - Physics-coupled measurements and causal action threads.
+- Restart-safe event commits with sealed, fail-closed projection recovery.
 - Source-pinned technology lineages with unknown performance kept unknown.
 - Long-horizon contact search without guaranteed aliens.
 - Persistent revision-safe expedition atlas.
@@ -68,6 +69,11 @@ Linux/macOS seal check: ./run_package_seal_check.sh
 ```
 
 For the safe reseal and promotion sequence, read `docs/PORTABILITY_AND_PACKAGE_MAINTENANCE.md`.
+
+Resolved turns treat `event_ledger.jsonl` as canonical history and rebuild runtime,
+command, atlas and rendering projections from a sealed write-ahead commit after an
+interruption. See `docs/RUNTIME_COMMIT_AND_RECOVERY_v1.md`; explicit recovery is
+available through `axm-star-sim recover-runtime --output <adventure>`.
 
 ## GitHub improvements
 
