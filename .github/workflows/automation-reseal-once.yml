@@ -21,6 +21,8 @@ jobs:
           python-version: '3.13'
       - name: Remove one-shot workflow and reseal canonical package
         shell: bash
+        env:
+          PYTHONPATH: src
         run: |
           rm .github/workflows/automation-reseal-once.yml
           python tools/reseal_package.py --write
