@@ -87,6 +87,42 @@ class PlatformBackfeedTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 installer.apply_plan(workshop, plan["plan_digest"])
 
+    def test_received_capsule_verifies_and_installs_outside_source_tree(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            temporary_root = Path(temporary)
+            received = temporary_root / "received-capsule"
+            shutil.copytree(ROOT / "platform_backfeed" / "dist", received)
+            workshop = temporary_root / "workshop"
+            (workshop / "tools").mkdir(parents=True)
+            (workshop / "hub").mkdir()
+
+            verification = installer.verify_capsule(received)
+            self.assertTrue(verification["valid"])
+            self.assertEqual(verification["module_count"], 3)
+            plan = installer.build_plan(workshop, received)
+            receipt = installer.apply_plan(workshop, plan["plan_digest"], received)
+            self.assertEqual(len(receipt["installed"]), 3)
+            self.assertEqual(receipt["capsule_manifest_sha256"], verification["capsule_manifest_sha256"])
+
+    def test_received_capsule_refuses_tampering_and_path_escape(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            received = Path(temporary) / "received-capsule"
+            shutil.copytree(ROOT / "platform_backfeed" / "dist", received)
+            changed = received / "modules" / "deterministic-json-core" / "index.js"
+            changed.write_text(changed.read_text(encoding="utf-8") + "// changed\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "does not match manifest"):
+                installer.verify_capsule(received)
+
+        with tempfile.TemporaryDirectory() as temporary:
+            received = Path(temporary) / "received-capsule"
+            shutil.copytree(ROOT / "platform_backfeed" / "dist", received)
+            manifest_path = received / installer.CAPSULE_NAME
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest["files"]["../escape.js"] = {"bytes": 0, "sha256": "0" * 64}
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "parent segment"):
+                installer.verify_capsule(received)
+
 
 if __name__ == "__main__":
     unittest.main()
