@@ -3,8 +3,12 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 321,
+  "managed_file_count": 328,
   "files": {
+    ".axm/discovery-public.json": {
+      "bytes": 174,
+      "sha256": "a00806e7b9072c7544489ead1db1a86a8090a15880743f077913f9ad4545a20e"
+    },
     ".gitattributes": {
       "bytes": 45,
       "sha256": "8d75fbed0329d55480242ea79c61cbdd3da312c700298bfba9572b81ec325cc6"
@@ -16,6 +20,10 @@
     ".github/workflows/installed-package.yml": {
       "bytes": 1215,
       "sha256": "33ae4f4b5922bdcfecbac332cfed0cd7478c758b34a20c844dcba54e48bdbef1"
+    },
+    ".github/workflows/public-capability-discovery.yml": {
+      "bytes": 6521,
+      "sha256": "98c0feec8cf50155c49d28ff7c2e0e3ba6c39031f399fafe8ebc2b10c7650491"
     },
     ".github/workflows/verify.yml": {
       "bytes": 1115,
@@ -457,6 +465,10 @@
       "bytes": 888,
       "sha256": "d3435af1f7b79191ec91c63757ce0f6964a748b6953d70acd990a19b3c0a875d"
     },
+    "docs/PUBLIC_CAPABILITY_DISCOVERY.md": {
+      "bytes": 3629,
+      "sha256": "19b63913188c1448a94aa5682d9b3c2a8b505ffb73f192e05df5691a0063eb2a"
+    },
     "docs/RESEARCH_FOUNDATION.md": {
       "bytes": 3715,
       "sha256": "6ab1ec891db3156bca246944b0a0cf264d32448c408ed08adbb00b22a4c1a366"
@@ -760,6 +772,14 @@
     "README.md": {
       "bytes": 5072,
       "sha256": "5df34ea384c224e1da25427c1811286d7afa9ce56dc95bba7abbe6f65c9f0d7d"
+    },
+    "registry/capabilities.jsonl": {
+      "bytes": 1434,
+      "sha256": "9072e2263cc2ba487c0a9b4ddc4bbd0d703e7c77b53d994180a4cb03e64008e1"
+    },
+    "registry/capabilities.receipt.json": {
+      "bytes": 1790,
+      "sha256": "d294345cfd52785cf4da4bc0a49d09d12ac279e27fc7306eca3c319fc8cd5710"
     },
     "run_crew_stations.bat": {
       "bytes": 263,
@@ -1221,6 +1241,10 @@
       "bytes": 3475,
       "sha256": "53b1983410ffea5d7e5cfceb3424904eb9f410813de3827973265533b5ba9d2a"
     },
+    "tests/test_public_capability_discovery.py": {
+      "bytes": 6445,
+      "sha256": "5ea43c0b82532732cb97ff425848ab6c7774fc31faf5832a25be30cb6e2fbfb8"
+    },
     "tests/test_registry_paths.py": {
       "bytes": 1187,
       "sha256": "ebdb0502ae797bb4264dbf513482b09120c4939bc18ee3e0090cb11ec3864411"
@@ -1272,6 +1296,10 @@
     "tools/drand_verifier/verify.mjs": {
       "bytes": 2425,
       "sha256": "4f35f06866c0b4f6d2485007d56b7cb16b7dbb4970dbdb37c0bfce0dc91e42a8"
+    },
+    "tools/generate_public_capabilities.py": {
+      "bytes": 12856,
+      "sha256": "4a0ed34dd374a99d98e7309819a3096c9c784d4cf1cc71ed435477b7ceb4c7bd"
     },
     "tools/install_platform_backfeed.py": {
       "bytes": 6027,
