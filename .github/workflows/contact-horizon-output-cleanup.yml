@@ -1,0 +1,132 @@
+name: Contact Horizon output cleanup
+
+on:
+  push:
+    branches:
+      - automation/experience-contact-readiness-20260910
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup-test-publish:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      PYTHONPATH: ${{ github.workspace }}/src
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Restore unrelated generated outputs and rebuild only observer
+        shell: bash
+        run: |
+          git checkout 63993db565251f6771df1fe30c5581082825b574 -- output
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from axm_star_sim.contact_horizon import load_contact_horizon_registry
+          from scripts.build_demo_v0_7 import contact_html
+
+          root = Path('.')
+          demo = root / 'output' / 'contact_horizon_demo'
+          receipt = json.loads((demo / 'contact_horizon_demo.json').read_text(encoding='utf-8'))
+          runtime = json.loads((demo / 'campaign' / 'runtime_state.json').read_text(encoding='utf-8'))
+          rendered = contact_html(
+              load_contact_horizon_registry(),
+              receipt['locked'],
+              receipt['eligible'],
+              receipt['after_first_search'],
+              receipt['event'],
+              runtime['action_menu']['actions'],
+          )
+          (demo / 'contact_horizon_console.html').write_text(rendered, encoding='utf-8')
+          PY
+          python scripts/refresh_output_snapshot_v0_15.py
+          rm .github/workflows/contact-horizon-output-cleanup.yml
+          python tools/reseal_package.py --write
+
+      - name: Verify bounded repaired tree
+        shell: bash
+        run: |
+          python -m unittest tests.test_contact_horizon tests.test_contact_horizon_experience -v
+          python tools/reseal_package.py --check
+          python verify_package.py
+          bash run_local_acceptance.sh
+
+      - name: Commit exact repaired tree locally
+        shell: bash
+        run: |
+          git config user.name "AXM Experience Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "Keep Contact Horizon output delta bounded"
+          git rev-parse HEAD | tee /tmp/final-head.txt
+          echo "Changed paths against main:"
+          git diff --name-only 63993db565251f6771df1fe30c5581082825b574...HEAD
+
+      - name: Exercise repaired exact surface in Chromium
+        shell: bash
+        run: |
+          mkdir -p /tmp/axm-pw /tmp/contact-evidence
+          npm install --prefix /tmp/axm-pw playwright@1.55.0
+          /tmp/axm-pw/node_modules/.bin/playwright install chromium
+          python -m http.server 8765 --directory output/contact_horizon_demo >/tmp/contact-http.log 2>&1 &
+          echo $! >/tmp/contact-http.pid
+          cat >/tmp/contact-browser.cjs <<'JS'
+          const { chromium } = require('/tmp/axm-pw/node_modules/playwright');
+          const fs = require('fs');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const errors=[];
+            async function exercise(width,height,path){
+              const page=await browser.newPage({viewport:{width,height}});
+              page.on('pageerror',e=>errors.push('page:'+e.message));
+              page.on('console',m=>{if(m.type()==='error')errors.push('console:'+m.text())});
+              await page.goto('http://127.0.0.1:8765/contact_horizon_console.html',{waitUntil:'networkidle'});
+              const selected=()=>page.locator('[role="tab"][aria-selected="true"]');
+              if(await page.locator('.check.hold').count()!==6) throw new Error('locked checkpoint must expose 6 holds');
+              await page.getByRole('tab',{name:/Step 100,000/}).click();
+              if(await page.locator('.check.pass').count()!==6) throw new Error('eligible checkpoint must expose 6 passes');
+              await page.getByRole('tab',{name:/First deep search/}).click();
+              if(await page.locator('#candidate span').count()<1) throw new Error('candidate alternatives absent');
+              if(await page.locator('#actions .action').count()<1) throw new Error('next science actions absent');
+              if(!(await page.locator('#ceiling').textContent()).includes('unusual')) throw new Error('recorded claim ceiling absent');
+              await page.getByRole('tab',{name:/First deep search/}).focus();
+              await page.keyboard.press('ArrowLeft');
+              if(!(await selected().textContent()).includes('Step 100,000')) throw new Error('ArrowLeft navigation failed');
+              await page.keyboard.press('End');
+              if(!(await selected().textContent()).includes('First deep search')) throw new Error('End navigation failed');
+              if(await page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth)) throw new Error(`horizontal overflow at ${width}x${height}`);
+              await page.screenshot({path,fullPage:true});
+              await page.close();
+            }
+            await exercise(1440,1000,'/tmp/contact-evidence/contact-horizon-desktop.png');
+            await exercise(390,844,'/tmp/contact-evidence/contact-horizon-mobile.png');
+            await browser.close();
+            if(errors.length) throw new Error(errors.join('\n'));
+            fs.writeFileSync('/tmp/contact-evidence/receipt.json',JSON.stringify({head:fs.readFileSync('/tmp/final-head.txt','utf8').trim(),checks:['real served surface','6 HOLD to 6 PASS readiness transition','candidate alternatives','next recorded science actions','claim ceiling','keyboard checkpoint navigation','390px no horizontal overflow','no page or console errors']},null,2));
+          })().catch(err=>{console.error(err);process.exit(1)});
+          JS
+          node /tmp/contact-browser.cjs
+          kill "$(cat /tmp/contact-http.pid)" || true
+
+      - name: Push exact repaired tree
+        run: git push origin HEAD:automation/experience-contact-readiness-20260910
+
+      - name: Upload exact visual evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: contact-horizon-experience-final
+          path: /tmp/contact-evidence
+          if-no-files-found: error
