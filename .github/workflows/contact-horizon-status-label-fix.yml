@@ -1,0 +1,123 @@
+name: Contact Horizon status label fix
+
+on:
+  push:
+    branches:
+      - automation/experience-contact-readiness-20260910
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      PYTHONPATH: ${{ github.workspace }}/src
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Repair visible checkpoint status label
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          old = "buttons.find(b=>b.dataset.view===view).textContent.trim()"
+          new = "buttons.find(b=>b.dataset.view===view).childNodes[0].textContent.trim()"
+          for rel in ('scripts/build_demo_v0_7.py','output/contact_horizon_demo/contact_horizon_console.html'):
+              p=Path(rel)
+              s=p.read_text(encoding='utf-8')
+              if s.count(old)!=1:
+                  raise SystemExit(f'{rel}: expected one status-label projection, got {s.count(old)}')
+              p.write_text(s.replace(old,new),encoding='utf-8')
+          PY
+          python scripts/refresh_output_snapshot_v0_15.py
+          rm .github/workflows/contact-horizon-status-label-fix.yml
+          python tools/reseal_package.py --write
+
+      - name: Verify exact repaired tree
+        shell: bash
+        run: |
+          python -m unittest tests.test_contact_horizon tests.test_contact_horizon_experience -v
+          python tools/reseal_package.py --check
+          python verify_package.py
+          bash run_local_acceptance.sh
+
+      - name: Commit repaired tree
+        shell: bash
+        run: |
+          git config user.name "AXM Experience Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "Polish Contact Horizon checkpoint status feedback"
+          git rev-parse HEAD | tee /tmp/final-head.txt
+
+      - name: Exercise final surface in Chromium
+        shell: bash
+        run: |
+          mkdir -p /tmp/axm-pw /tmp/contact-final
+          npm install --prefix /tmp/axm-pw playwright@1.55.0
+          /tmp/axm-pw/node_modules/.bin/playwright install chromium
+          python -m http.server 8765 --directory output/contact_horizon_demo >/tmp/contact-http.log 2>&1 &
+          echo $! >/tmp/contact-http.pid
+          cat >/tmp/contact-browser.cjs <<'JS'
+          const { chromium } = require('/tmp/axm-pw/node_modules/playwright');
+          const fs = require('fs');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const errors=[];
+            async function run(width,height,path){
+              const page=await browser.newPage({viewport:{width,height}});
+              page.on('pageerror',e=>errors.push('page:'+e.message));
+              page.on('console',m=>{if(m.type()==='error')errors.push('console:'+m.text())});
+              await page.goto('http://127.0.0.1:8765/contact_horizon_console.html',{waitUntil:'networkidle'});
+              if(await page.locator('.check.hold').count()!==6) throw new Error('locked readiness projection drifted');
+              await page.getByRole('tab',{name:/Step 100,000/}).click();
+              if(await page.locator('.check.pass').count()!==6) throw new Error('eligible readiness projection drifted');
+              await page.getByRole('tab',{name:/First deep search/}).click();
+              const live=(await page.locator('#liveStatus').innerText()).replace(/\s+/g,' ').trim();
+              if(!live.startsWith('First deep search · search ready')) throw new Error('checkpoint status label is not human-separated: '+live);
+              if(live.includes('searchrecorded')) throw new Error('checkpoint subtitle leaked into live status');
+              if(await page.locator('#candidate span').count()<1) throw new Error('candidate alternatives absent');
+              if(await page.locator('#actions .action').count()<1) throw new Error('next science actions absent');
+              if(!(await page.locator('#ceiling').textContent()).includes('unusual')) throw new Error('claim ceiling absent');
+              await page.getByRole('tab',{name:/First deep search/}).focus();
+              await page.keyboard.press('ArrowLeft');
+              const sel=page.locator('[role="tab"][aria-selected="true"]');
+              if(!(await sel.textContent()).includes('Step 100,000')) throw new Error('ArrowLeft failed');
+              await page.keyboard.press('End');
+              if(!(await sel.textContent()).includes('First deep search')) throw new Error('End failed');
+              if(await page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth)) throw new Error(`horizontal overflow at ${width}x${height}`);
+              await page.screenshot({path,fullPage:true});
+              await page.close();
+            }
+            await run(1440,1000,'/tmp/contact-final/contact-horizon-desktop.png');
+            await run(390,844,'/tmp/contact-final/contact-horizon-mobile.png');
+            await browser.close();
+            if(errors.length) throw new Error(errors.join('\n'));
+            fs.writeFileSync('/tmp/contact-final/receipt.json',JSON.stringify({head:fs.readFileSync('/tmp/final-head.txt','utf8').trim(),visual_repair:'checkpoint live status no longer concatenates tab subtitle',checks:['real served surface','6 HOLD to 6 PASS readiness transition','candidate alternatives','next recorded science actions','claim ceiling','keyboard checkpoint navigation','390px no horizontal overflow','no page or console errors']},null,2));
+          })().catch(err=>{console.error(err);process.exit(1)});
+          JS
+          node /tmp/contact-browser.cjs
+          kill "$(cat /tmp/contact-http.pid)" || true
+
+      - name: Push exact final tree
+        run: git push origin HEAD:automation/experience-contact-readiness-20260910
+
+      - name: Upload final visual evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: contact-horizon-experience-polished
+          path: /tmp/contact-final
+          if-no-files-found: error
