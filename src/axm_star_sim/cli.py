@@ -36,6 +36,7 @@ from .entropy import ENTROPY_MODES, create_commitment, create_master_seed_receip
 from .generator import generate_system
 from .io import (
     append_runtime_event,
+    atlas_mutation_transaction,
     load_ledger,
     load_pending_session,
     save_pending_session,
@@ -458,19 +459,18 @@ def main(argv: list[str] | None = None) -> int:
             return 0 if chain["valid"] else 1
 
         if args.command == "atlas-import-system":
-            atlas_path = args.output / "expedition_atlas.json"
-            atlas = json.loads(atlas_path.read_text(encoding="utf-8"))
             imported = json.loads(args.system_json.read_text(encoding="utf-8"))
-            atlas = register_system_location(atlas, imported, make_active=True)
-            atlas = record_visit(
-                atlas,
-                atlas["active_location_id"],
-                event=None,
-                visit_kind="imported_campaign_arrival",
-                note=args.visit_note,
-            )
-            write_atlas_files(args.output, atlas)
-            manifest = refresh_output_manifest(args.output)
+            with atlas_mutation_transaction(args.output) as atlas:
+                atlas = register_system_location(atlas, imported, make_active=True)
+                atlas = record_visit(
+                    atlas,
+                    atlas["active_location_id"],
+                    event=None,
+                    visit_kind="imported_campaign_arrival",
+                    note=args.visit_note,
+                )
+                write_atlas_files(args.output, atlas)
+                manifest = refresh_output_manifest(args.output)
             print(json.dumps({
                 "status": "system_registered",
                 "active_location_id": atlas["active_location_id"],
@@ -482,21 +482,20 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         if args.command == "revisit-location":
-            atlas_path = args.output / "expedition_atlas.json"
-            atlas = json.loads(atlas_path.read_text(encoding="utf-8"))
-            packet, atlas = create_revisit_packet(
-                atlas,
-                location_id=args.location_id,
-                visual_engine_version=args.visual_engine_version,
-                asset_engine_version=args.asset_engine_version,
-                camera_language=args.camera_language,
-            )
-            packets = args.output / "revisit_packets"
-            packets.mkdir(parents=True, exist_ok=True)
-            packet_path = packets / f"{packet['packet_id']}.json"
-            packet_path.write_text(json.dumps(packet, indent=2, ensure_ascii=False), encoding="utf-8")
-            write_atlas_files(args.output, atlas)
-            manifest = refresh_output_manifest(args.output)
+            with atlas_mutation_transaction(args.output) as atlas:
+                packet, atlas = create_revisit_packet(
+                    atlas,
+                    location_id=args.location_id,
+                    visual_engine_version=args.visual_engine_version,
+                    asset_engine_version=args.asset_engine_version,
+                    camera_language=args.camera_language,
+                )
+                packets = args.output / "revisit_packets"
+                packets.mkdir(parents=True, exist_ok=True)
+                packet_path = packets / f"{packet['packet_id']}.json"
+                packet_path.write_text(json.dumps(packet, indent=2, ensure_ascii=False), encoding="utf-8")
+                write_atlas_files(args.output, atlas)
+                manifest = refresh_output_manifest(args.output)
             print(json.dumps({
                 "status": "revisit_packet_created",
                 "packet": str(packet_path),
@@ -508,12 +507,11 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         if args.command == "atlas-import-catalog":
-            atlas_path = args.output / "expedition_atlas.json"
-            atlas = json.loads(atlas_path.read_text(encoding="utf-8"))
             snapshot = json.loads(args.snapshot.read_text(encoding="utf-8"))
-            atlas, report = import_normalized_catalog(atlas, snapshot)
-            write_atlas_files(args.output, atlas)
-            manifest = refresh_output_manifest(args.output)
+            with atlas_mutation_transaction(args.output) as atlas:
+                atlas, report = import_normalized_catalog(atlas, snapshot)
+                write_atlas_files(args.output, atlas)
+                manifest = refresh_output_manifest(args.output)
             print(json.dumps({
                 "status": "catalog_snapshot_imported",
                 **report,

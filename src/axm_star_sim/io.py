@@ -3,8 +3,9 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+from contextlib import contextmanager
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterator
 
 from .atlas import build_expedition_atlas, record_visit, verify_visit_chain, write_atlas_files
 from .command import mode_catalog, validate_mode
@@ -79,6 +80,19 @@ def _manifest_for(output: Path, names: list[str] | None = None) -> dict[str, Any
 def refresh_output_manifest(output: Path) -> dict[str, Any]:
     """Rebuild the output manifest after atlas-only operations."""
     return _write_manifest(output)
+
+
+@contextmanager
+def atlas_mutation_transaction(output: Path) -> Iterator[dict[str, Any]]:
+    """Admit one verified atlas read-modify-write transaction."""
+    with output_mutation_lock(output):
+        if (output / RUNTIME_COMMIT_NAME).exists():
+            _recover_runtime_commit(output)
+        atlas = json.loads((output / "expedition_atlas.json").read_text(encoding="utf-8"))
+        if not verify_visit_chain(atlas)["valid"]:
+            raise RuntimeCommitError("existing expedition atlas visit chain is invalid")
+        yield atlas
+
 
 def load_ledger(path: Path) -> list[dict[str, Any]]:
     if not path.exists():

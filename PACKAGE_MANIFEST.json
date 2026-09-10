@@ -470,8 +470,8 @@
       "sha256": "6ffcd850f1dd8b187d517ff4201792c90bd97cf6b8ed3c169b78734ca00b4b71"
     },
     "docs/RUNTIME_COMMIT_AND_RECOVERY_v1.md": {
-      "bytes": 3566,
-      "sha256": "d186ff9a50b1ca93c4a23747fc29c18adff28db30757265e8658e46112b42f6a"
+      "bytes": 4053,
+      "sha256": "1e9df84bdaa76a24d367d4da749c3edba083a99df48843d4327f8f985d5782d3"
     },
     "docs/RUNTIME_COMMIT_RECOVERY_RECEIPT_2026-09-09.md": {
       "bytes": 1610,
@@ -998,8 +998,8 @@
       "sha256": "a8345dfb7e74cf8b5da12e2d2ea0ca7c5d8d3a07b6c40eb0a8ef25550226eecb"
     },
     "src/axm_star_sim/cli.py": {
-      "bytes": 32376,
-      "sha256": "d83ca8065a82c85b4a1f1a4fd5458ccb8a5e5e8c9ba16580a9133570c866903e"
+      "bytes": 32311,
+      "sha256": "6d8eebef68e4c5af94993f774536d96f7df7c95ef63154002a8840ba95b57893"
     },
     "src/axm_star_sim/command.py": {
       "bytes": 24432,
@@ -1046,8 +1046,8 @@
       "sha256": "3399bcafc4f13dc918169d4924ef1f5c4b5d0e44bfe0096c6858a108cf33bf6a"
     },
     "src/axm_star_sim/io.py": {
-      "bytes": 17577,
-      "sha256": "f7601cc6364381a6c348e3edb82f09d1e0f698407edf7f45f1ea1628a871906d"
+      "bytes": 18170,
+      "sha256": "d180960c3aa9dbb9a82d546bd2eaa0091324f707e342035ae9c27e2806c1ba67"
     },
     "src/axm_star_sim/live_console.py": {
       "bytes": 14908,
@@ -1146,8 +1146,8 @@
       "sha256": "05657a71e22b2358f070cf57efd8d6eb20ca55d7adb31e4ebd0c6dc55d18ed76"
     },
     "tests/test_atlas_mutation_admission.py": {
-      "bytes": 6196,
-      "sha256": "1586cf97b20f1dbb2c8fbe87d01ac0d9fa50be4811193811ab1e6b0013bc889a"
+      "bytes": 7716,
+      "sha256": "3941f67750e67c396a3414c6463a5e144eddd2374d751ca92769b9fac199aa1f"
     },
     "tests/test_beacon_verification.py": {
       "bytes": 5808,

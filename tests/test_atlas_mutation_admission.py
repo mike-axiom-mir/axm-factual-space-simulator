@@ -2,6 +2,10 @@ from __future__ import annotations
 
 import io
 import json
+import os
+import subprocess
+import sys
+import time
 import unittest
 from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
@@ -13,7 +17,23 @@ from axm_star_sim.cli import main
 from axm_star_sim.generator import generate_system
 from axm_star_sim.io import RUNTIME_COMMIT_NAME, append_runtime_event, write_system
 from axm_star_sim.runtime import resolve_turn
+
+
+LOCK_HOLDER = r"""
+import sys
+import time
+from pathlib import Path
+
 from axm_star_sim.storage import output_mutation_lock
+
+output = Path(sys.argv[1])
+ready = Path(sys.argv[2])
+release = Path(sys.argv[3])
+with output_mutation_lock(output):
+    ready.write_text("owned", encoding="utf-8")
+    while not release.exists():
+        time.sleep(0.01)
+"""
 
 
 class AtlasMutationAdmissionTests(unittest.TestCase):
@@ -29,6 +49,26 @@ class AtlasMutationAdmissionTests(unittest.TestCase):
             "records": [],
         }
         path.write_text(json.dumps(snapshot), encoding="utf-8")
+
+    def _lock_holder(self, output: Path, scratch: Path) -> tuple[subprocess.Popen, Path]:
+        ready = scratch / "ready"
+        release = scratch / "release"
+        environment = os.environ.copy()
+        source = str(Path(__file__).resolve().parents[1] / "src")
+        environment["PYTHONPATH"] = source + os.pathsep + environment.get("PYTHONPATH", "")
+        process = subprocess.Popen(
+            [sys.executable, "-c", LOCK_HOLDER, str(output), str(ready), str(release)],
+            env=environment,
+        )
+        deadline = time.monotonic() + 10
+        while not ready.exists():
+            if process.poll() is not None:
+                self.fail(f"lock holder exited early with {process.returncode}")
+            if time.monotonic() >= deadline:
+                process.kill()
+                self.fail("lock holder did not acquire the output mutation lock")
+            time.sleep(0.01)
+        return process, release
 
     def test_atlas_only_commands_refuse_an_output_owned_by_another_mutator(self):
         commands = ("atlas-import-system", "revisit-location", "atlas-import-catalog")
@@ -76,8 +116,13 @@ class AtlasMutationAdmissionTests(unittest.TestCase):
                         str(snapshot),
                     )
 
-                with output_mutation_lock(output):
+                process, release = self._lock_holder(output, root)
+                try:
                     self.assertEqual(self._run(*arguments), 1)
+                finally:
+                    release.write_text("release", encoding="utf-8")
+                    process.wait(timeout=10)
+                self.assertEqual(process.returncode, 0)
 
                 self.assertEqual((output / "expedition_atlas.json").read_bytes(), atlas_before)
                 self.assertEqual((output / "manifest.json").read_bytes(), manifest_before)

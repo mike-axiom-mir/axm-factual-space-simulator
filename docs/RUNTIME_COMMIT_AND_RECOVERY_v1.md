@@ -22,17 +22,26 @@ Single-file replacements write and sync a sibling temporary file before `os.repl
 ## Local single-writer contract
 
 Every runtime initialization, command-mode change, pending council publication,
-event commit and recovery first acquires the output directory's
-`.runtime_mutation.lock`. The file is a stable coordination inode, not state or
-evidence. Its contents have no authority. The operating system owns the actual
-advisory lock and releases it when the process exits, including abrupt exit, so
-there is no stale PID lease or mutable `latest` pointer to reclaim.
+event commit, recovery and atlas-only read-modify-write transaction first
+acquires the output directory's `.runtime_mutation.lock`. The file is a stable
+coordination inode, not state or evidence. Its contents have no authority. The
+operating system owns the actual advisory lock and releases it when the process
+exits, including abrupt exit, so there is no stale PID lease or mutable `latest`
+pointer to reclaim.
 
 Admission is non-blocking. A second local process fails closed before it can
-publish a commit journal or pending council state. Pending-state publication
-also verifies that the caller's observed runtime state is still current while
-holding the lock. The lock file must not be replaced or deleted while simulator
-processes may be active; it is intentionally excluded from the output manifest.
+publish a commit journal, pending council state or atlas mutation. Pending-state
+publication also verifies that the caller's observed runtime state is still
+current while holding the lock. The lock file must not be replaced or deleted
+while simulator processes may be active; it is intentionally excluded from the
+output manifest.
+
+Atlas-only commands acquire the same lock before reading the current atlas. If
+a sealed runtime commit survived an interruption, they recover that exact
+commit first; they then verify the visit chain before applying any catalog,
+system-import or revisit change. The lock remains held through atlas, packet and
+manifest publication, so the observation used by the mutation cannot become
+stale through a cooperating local writer.
 
 ## Restart contract
 
