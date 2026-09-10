@@ -3,7 +3,7 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 319,
+  "managed_file_count": 320,
   "files": {
     ".gitattributes": {
       "bytes": 45,
@@ -1220,6 +1220,10 @@
     "tests/test_runtime_commit_recovery.py": {
       "bytes": 7696,
       "sha256": "9337ad0419d3325e6737c15dc7ef9f34971c95972d53a0ae8e43e8e457834852"
+    },
+    "tests/test_runtime_single_writer.py": {
+      "bytes": 4633,
+      "sha256": "9eec403344d686c99e6c5ec86fc99860de52f65769ce090d5da5c94a7e8bcba0"
     },
     "tests/test_ship_interior.py": {
       "bytes": 8510,
