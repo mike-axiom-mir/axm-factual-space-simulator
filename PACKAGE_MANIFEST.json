@@ -3,7 +3,7 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 320,
+  "managed_file_count": 321,
   "files": {
     ".gitattributes": {
       "bytes": 45,
@@ -394,8 +394,8 @@
       "sha256": "e693743ae4f7d4fee55e8c9bef541d582efaffcba80d46d9cc89de4875c7c6b1"
     },
     "docs/INSTALLED_PACKAGE.md": {
-      "bytes": 1587,
-      "sha256": "9dd8087c920623ebc6a6358b07ad1188150fae46891d8f55a81e246b187fa9ec"
+      "bytes": 2804,
+      "sha256": "4680af0478a79106d6f1a9f2b5b020dae2960db2027f81aa25fbec89e1e2b44f"
     },
     "docs/INTAKE_POLISH_RECEIPT.md": {
       "bytes": 2560,
@@ -1194,8 +1194,8 @@
       "sha256": "9b121af182a9b791a43a7dec276641b64a804f63f3eceab646b6f5375dc98b87"
     },
     "tests/test_installed_package.py": {
-      "bytes": 7605,
-      "sha256": "f286c107ba8e1cfd0dbefecb898e58cab1d3f645d1a1087e96ed7c658513a505"
+      "bytes": 10831,
+      "sha256": "c3c30b39c43dadcf6960d4989b8d736444d1135b55ac54f79b01df284a841cfc"
     },
     "tests/test_local_handoff.py": {
       "bytes": 6271,
@@ -1244,6 +1244,10 @@
     "tools/build_platform_backfeed.py": {
       "bytes": 12070,
       "sha256": "105e0aa5f01f74bbd574bd4d074242bea5bd2b24736c8edc5affe709061be8fb"
+    },
+    "tools/build_reproducible_wheel.py": {
+      "bytes": 6706,
+      "sha256": "4134c0525f0520960a9f30636ad75f971b0afe87ec54bbb5d4336c0b26bce7db"
     },
     "tools/drand_verifier/install.bat": {
       "bytes": 180,
