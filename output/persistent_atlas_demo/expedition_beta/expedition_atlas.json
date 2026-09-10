@@ -2,8 +2,8 @@
   "schema": "axm.expedition-atlas.v1",
   "atlas_version": "0.7.0",
   "map_id": "atlas-77be37dd13e9b545",
-  "created_at": "2026-09-10T01:04:03.774466+00:00",
-  "updated_at": "2026-09-10T01:04:03.821943+00:00",
+  "created_at": "2026-08-02T05:29:58.639648+00:00",
+  "updated_at": "2026-08-02T05:29:58.681111+00:00",
   "active_location_id": "frontier:3d6930fb5e74d6a9",
   "origin_location_id": "catalog:sol",
   "coordinate_contract": {
@@ -381,7 +381,7 @@
         "axm_simulation_priors_v1"
       ],
       "system_id": "3d6930fb5e74d6a9",
-      "system_state_sha256": "f85551275fd91ce8c3299287fd0471bd71bed64e12ed1aed9e20d227406703e9",
+      "system_state_sha256": "af0ddd4f8ae3304953df12470dadb487cf2f6726b4cf94512a32aecee12a8b96",
       "catalog_revision": 0,
       "visit_count": 4,
       "crew_observations": [
@@ -422,7 +422,7 @@
         "status": "simulation_contract",
         "rule": "Travel is resolved by the simulator's ship and mission physics. The coordinate alone grants no capability."
       },
-      "authoritative_snapshot_sha256": "f2860caafad72c2037bb72577f43e7e0e9befbe42d64e2a628b9fdf332f53f1b"
+      "authoritative_snapshot_sha256": "2d9ca57917749afc9fb0d73ad8fc8a5fbcad309bcd5f953f65d2f359538619eb"
     }
   },
   "routes": [
@@ -441,7 +441,7 @@
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000001",
       "visit_number": 1,
-      "visited_at": "2026-09-10T01:04:03.774466+00:00",
+      "visited_at": "2026-08-02T05:29:58.639648+00:00",
       "location_id": "catalog:sol",
       "visit_kind": "expedition_origin",
       "note": "Crew atlas initialized at the Solar System origin.",
@@ -458,7 +458,7 @@
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000002",
       "visit_number": 2,
-      "visited_at": "2026-09-10T01:04:03.774466+00:00",
+      "visited_at": "2026-08-02T05:29:58.639648+00:00",
       "location_id": "frontier:3d6930fb5e74d6a9",
       "visit_kind": "campaign_arrival",
       "note": "Generated expedition location registered without claiming catalog existence.",
@@ -467,15 +467,15 @@
       "state_after_sha256": null,
       "action": null,
       "outcome": null,
-      "authoritative_location_snapshot_sha256": "f2860caafad72c2037bb72577f43e7e0e9befbe42d64e2a628b9fdf332f53f1b",
+      "authoritative_location_snapshot_sha256": "2d9ca57917749afc9fb0d73ad8fc8a5fbcad309bcd5f953f65d2f359538619eb",
       "previous_visit_hash": "d4c9fb420a0fafb009277f8441ba994dc06e5f7ccfb941d2bca307fdb3748fcf",
-      "visit_hash": "10a24a8b4de4579e3358c51750fe184df5d1145ad57aa1483045927644771332"
+      "visit_hash": "18eca345835b9a1e0c53c85527f04e9737ec554011550d0c364f46877eb7714c"
     },
     {
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000003",
       "visit_number": 3,
-      "visited_at": "2026-09-10T01:04:03.781145+00:00",
+      "visited_at": "2026-08-02T05:29:58.645262+00:00",
       "location_id": "frontier:3d6930fb5e74d6a9",
       "visit_kind": "exploration_event",
       "note": null,
@@ -484,15 +484,15 @@
       "state_after_sha256": "7609980d8f506aedf82e3d0cba9c747607ad5cad6e16744591dd1fe755a9a956",
       "action": "Delay arrival to observe a complete phase transition.",
       "outcome": "A repeatable result",
-      "authoritative_location_snapshot_sha256": "f2860caafad72c2037bb72577f43e7e0e9befbe42d64e2a628b9fdf332f53f1b",
-      "previous_visit_hash": "10a24a8b4de4579e3358c51750fe184df5d1145ad57aa1483045927644771332",
-      "visit_hash": "e6087a2399859399000444c4bb54fe3da0392a90a6fc790c5a5cc06b6d598920"
+      "authoritative_location_snapshot_sha256": "2d9ca57917749afc9fb0d73ad8fc8a5fbcad309bcd5f953f65d2f359538619eb",
+      "previous_visit_hash": "18eca345835b9a1e0c53c85527f04e9737ec554011550d0c364f46877eb7714c",
+      "visit_hash": "62ecec2c74b1fa876784ffc7eabc0b0b1227f26771818ac2a5e3d3d7e22d55db"
     },
     {
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000004",
       "visit_number": 4,
-      "visited_at": "2026-09-10T01:04:03.801352+00:00",
+      "visited_at": "2026-08-02T05:29:58.662690+00:00",
       "location_id": "frontier:3d6930fb5e74d6a9",
       "visit_kind": "exploration_event",
       "note": null,
@@ -501,15 +501,15 @@
       "state_after_sha256": "f37f05759ad62530db9e7b239f7618f3f5571b3fe28d2136561dc2a40b0d51e4",
       "action": "Hold course until the delayed telemetry response arrives",
       "outcome": "A repeatable result",
-      "authoritative_location_snapshot_sha256": "f2860caafad72c2037bb72577f43e7e0e9befbe42d64e2a628b9fdf332f53f1b",
-      "previous_visit_hash": "e6087a2399859399000444c4bb54fe3da0392a90a6fc790c5a5cc06b6d598920",
-      "visit_hash": "38cfedc0b60e806bbb3dabb6abc9ae473e8cd19274c97cd352365ccdf3ecb991"
+      "authoritative_location_snapshot_sha256": "2d9ca57917749afc9fb0d73ad8fc8a5fbcad309bcd5f953f65d2f359538619eb",
+      "previous_visit_hash": "62ecec2c74b1fa876784ffc7eabc0b0b1227f26771818ac2a5e3d3d7e22d55db",
+      "visit_hash": "70417cccf7f44016edc548c2766a969002dec981a5f8217621721b4b2d233b02"
     },
     {
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000005",
       "visit_number": 5,
-      "visited_at": "2026-09-10T01:04:03.821943+00:00",
+      "visited_at": "2026-08-02T05:29:58.681111+00:00",
       "location_id": "frontier:3d6930fb5e74d6a9",
       "visit_kind": "exploration_event",
       "note": null,
@@ -518,12 +518,12 @@
       "state_after_sha256": "ba5c858d7a7bf2cc7275d0df06b0c49cdfedba7edb593f4a4841cacd102e3f0e",
       "action": "Cross-calibrate the signal against an independent sensor channel",
       "outcome": "A repeatable result",
-      "authoritative_location_snapshot_sha256": "f2860caafad72c2037bb72577f43e7e0e9befbe42d64e2a628b9fdf332f53f1b",
-      "previous_visit_hash": "38cfedc0b60e806bbb3dabb6abc9ae473e8cd19274c97cd352365ccdf3ecb991",
-      "visit_hash": "321f370ef4cb384352059c06ff12f640d830d53a9f10f5749cba0d77e4986f3a"
+      "authoritative_location_snapshot_sha256": "2d9ca57917749afc9fb0d73ad8fc8a5fbcad309bcd5f953f65d2f359538619eb",
+      "previous_visit_hash": "70417cccf7f44016edc548c2766a969002dec981a5f8217621721b4b2d233b02",
+      "visit_hash": "288a237268ef9111b53f906ad0335778af0e77db711d40d362e73d8d4bc0a16f"
     }
   ],
-  "visit_chain_head": "321f370ef4cb384352059c06ff12f640d830d53a9f10f5749cba0d77e4986f3a",
+  "visit_chain_head": "288a237268ef9111b53f906ad0335778af0e77db711d40d362e73d8d4bc0a16f",
   "catalog_revisions": [],
   "revisit_packets": [],
   "render_contract": {

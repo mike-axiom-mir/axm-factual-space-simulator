@@ -2,8 +2,8 @@
   "schema": "axm.expedition-atlas.v1",
   "atlas_version": "0.7.0",
   "map_id": "atlas-24ee6363667aab95",
-  "created_at": "2026-09-10T01:04:03.514400+00:00",
-  "updated_at": "2026-09-10T01:04:03.520333+00:00",
+  "created_at": "2026-08-02T05:29:58.398008+00:00",
+  "updated_at": "2026-08-02T05:29:58.404309+00:00",
   "active_location_id": "frontier:40dad42079fcce6b",
   "origin_location_id": "catalog:sol",
   "coordinate_contract": {
@@ -382,7 +382,7 @@
         "axm_simulation_priors_v1"
       ],
       "system_id": "40dad42079fcce6b",
-      "system_state_sha256": "471f1cd231e09241f43173994b03c6678daa1a5ac6b3cf7cc750bf3b1eea0a54",
+      "system_state_sha256": "3ab653e0ca9624ad602246fedf01cd63596e42aa88411a61438a01f0edfb4460",
       "catalog_revision": 0,
       "visit_count": 2,
       "crew_observations": [
@@ -403,7 +403,7 @@
         "status": "simulation_contract",
         "rule": "Travel is resolved by the simulator's ship and mission physics. The coordinate alone grants no capability."
       },
-      "authoritative_snapshot_sha256": "8db8b4ed3ec56ecb1b25a308bded926109895532ac5b04859dbdc43b6b331572"
+      "authoritative_snapshot_sha256": "a52d2197cd63c64f0c99e9bfdc43ff7ac2c8f1f6dfa38c0db54c2590285ea922"
     }
   },
   "routes": [
@@ -422,7 +422,7 @@
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000001",
       "visit_number": 1,
-      "visited_at": "2026-09-10T01:04:03.514400+00:00",
+      "visited_at": "2026-08-02T05:29:58.398008+00:00",
       "location_id": "catalog:sol",
       "visit_kind": "expedition_origin",
       "note": "Crew atlas initialized at the Solar System origin.",
@@ -439,7 +439,7 @@
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000002",
       "visit_number": 2,
-      "visited_at": "2026-09-10T01:04:03.514400+00:00",
+      "visited_at": "2026-08-02T05:29:58.398008+00:00",
       "location_id": "frontier:40dad42079fcce6b",
       "visit_kind": "campaign_arrival",
       "note": "Generated expedition location registered without claiming catalog existence.",
@@ -448,15 +448,15 @@
       "state_after_sha256": null,
       "action": null,
       "outcome": null,
-      "authoritative_location_snapshot_sha256": "8db8b4ed3ec56ecb1b25a308bded926109895532ac5b04859dbdc43b6b331572",
+      "authoritative_location_snapshot_sha256": "a52d2197cd63c64f0c99e9bfdc43ff7ac2c8f1f6dfa38c0db54c2590285ea922",
       "previous_visit_hash": "d4c9fb420a0fafb009277f8441ba994dc06e5f7ccfb941d2bca307fdb3748fcf",
-      "visit_hash": "664199d109ff307f8f29c0102d4ac365fe09de2cbaeb5ff158bb6d7c4ce2dff1"
+      "visit_hash": "61f096e68d43c3578ebc1ad76b8f1875e011c2add921c2cdebde77b99f667cdc"
     },
     {
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000003",
       "visit_number": 3,
-      "visited_at": "2026-09-10T01:04:03.520333+00:00",
+      "visited_at": "2026-08-02T05:29:58.404309+00:00",
       "location_id": "frontier:40dad42079fcce6b",
       "visit_kind": "exploration_event",
       "note": null,
@@ -465,12 +465,12 @@
       "state_after_sha256": "086263b59d2d27e813a9d8028fd58ed0c2606ea1cfcad83e52f8635bf570bc2e",
       "action": "Map dust and small bodies before approaching the planets.",
       "outcome": "The uncertainty narrows, but survives",
-      "authoritative_location_snapshot_sha256": "8db8b4ed3ec56ecb1b25a308bded926109895532ac5b04859dbdc43b6b331572",
-      "previous_visit_hash": "664199d109ff307f8f29c0102d4ac365fe09de2cbaeb5ff158bb6d7c4ce2dff1",
-      "visit_hash": "c50ad3c099ba629b4983011ab28a7e63f02e8b8651d2474fb9c8ab973260d209"
+      "authoritative_location_snapshot_sha256": "a52d2197cd63c64f0c99e9bfdc43ff7ac2c8f1f6dfa38c0db54c2590285ea922",
+      "previous_visit_hash": "61f096e68d43c3578ebc1ad76b8f1875e011c2add921c2cdebde77b99f667cdc",
+      "visit_hash": "84f11a5118736404c0a8164d1866d3059ed785a14439eda7f0d7fe48b5622b11"
     }
   ],
-  "visit_chain_head": "c50ad3c099ba629b4983011ab28a7e63f02e8b8651d2474fb9c8ab973260d209",
+  "visit_chain_head": "84f11a5118736404c0a8164d1866d3059ed785a14439eda7f0d7fe48b5622b11",
   "catalog_revisions": [],
   "revisit_packets": [],
   "render_contract": {
