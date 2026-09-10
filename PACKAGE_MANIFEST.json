@@ -470,8 +470,8 @@
       "sha256": "6ffcd850f1dd8b187d517ff4201792c90bd97cf6b8ed3c169b78734ca00b4b71"
     },
     "docs/RUNTIME_COMMIT_AND_RECOVERY_v1.md": {
-      "bytes": 2604,
-      "sha256": "59d9d982645be80f8e34ebfed2cc10d4603f7500fa6dfd12536f9470be0bc238"
+      "bytes": 3566,
+      "sha256": "d186ff9a50b1ca93c4a23747fc29c18adff28db30757265e8658e46112b42f6a"
     },
     "docs/RUNTIME_COMMIT_RECOVERY_RECEIPT_2026-09-09.md": {
       "bytes": 1610,
@@ -1046,8 +1046,8 @@
       "sha256": "3399bcafc4f13dc918169d4924ef1f5c4b5d0e44bfe0096c6858a108cf33bf6a"
     },
     "src/axm_star_sim/io.py": {
-      "bytes": 16351,
-      "sha256": "ba86814a5b2a251ddfee61dcda30329969237e6c3ba39b0f9c5e0c90bfffe015"
+      "bytes": 17577,
+      "sha256": "f7601cc6364381a6c348e3edb82f09d1e0f698407edf7f45f1ea1628a871906d"
     },
     "src/axm_star_sim/live_console.py": {
       "bytes": 14908,
@@ -1118,8 +1118,8 @@
       "sha256": "9b9ceb7579d4e12bc95baaa0a8cd451ddfe4d5123aa84a84d8e427e773b94df2"
     },
     "src/axm_star_sim/storage.py": {
-      "bytes": 1476,
-      "sha256": "41f5ff2eb9c07c181bc615174f9e9f38e8c05fbadc61dd8d8d9e2eeb661e3558"
+      "bytes": 2939,
+      "sha256": "1ee6760b0e7970aff40186842bc6cb7f0927235ec5a4bbfe6de25334a2b3ac1c"
     },
     "src/axm_star_sim/technology_core.py": {
       "bytes": 11277,
@@ -1222,8 +1222,8 @@
       "sha256": "9337ad0419d3325e6737c15dc7ef9f34971c95972d53a0ae8e43e8e457834852"
     },
     "tests/test_runtime_single_writer.py": {
-      "bytes": 4633,
-      "sha256": "9eec403344d686c99e6c5ec86fc99860de52f65769ce090d5da5c94a7e8bcba0"
+      "bytes": 5242,
+      "sha256": "3910902a32e633f5706c29deaf9a3e9267990a992be440c96d7188a1e84d0eb9"
     },
     "tests/test_ship_interior.py": {
       "bytes": 8510,
