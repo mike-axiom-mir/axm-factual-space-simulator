@@ -5,11 +5,9 @@ import hashlib
 import json
 import math
 from collections import deque
-from pathlib import Path
 from typing import Any
 
-PACKAGE_ROOT = Path(__file__).resolve().parents[2]
-DATA_DIR = PACKAGE_ROOT / "data"
+from .registry import data_path
 
 
 class ShipInteriorError(ValueError):
@@ -17,7 +15,7 @@ class ShipInteriorError(ValueError):
 
 
 def _load(name: str) -> dict[str, Any]:
-    return json.loads((DATA_DIR / name).read_text(encoding="utf-8"))
+    return json.loads(data_path(name).read_text(encoding="utf-8"))
 
 
 def canonical_json(value: Any) -> str:

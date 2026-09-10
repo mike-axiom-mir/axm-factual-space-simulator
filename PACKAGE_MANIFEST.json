@@ -3,7 +3,7 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 316,
+  "managed_file_count": 320,
   "files": {
     ".gitattributes": {
       "bytes": 45,
@@ -12,6 +12,10 @@
     ".github/PULL_REQUEST_TEMPLATE.md": {
       "bytes": 594,
       "sha256": "dc63c9e307c739e1c67b4e6f9649d90b50167a70999dfa03301988aad9c3a56d"
+    },
+    ".github/workflows/installed-package.yml": {
+      "bytes": 1037,
+      "sha256": "8a9ac4b170dced5ed07ec16b2015587e56ad23d0353e7ac68e5cc3a14d21af73"
     },
     ".github/workflows/verify.yml": {
       "bytes": 1115,
@@ -60,6 +64,10 @@
     "assets/demo_templates/ship_interior_console.html": {
       "bytes": 3049,
       "sha256": "07ca3611fdb067cb601d96ecb136d49e7d08310be2145170e032245b1146e995"
+    },
+    "data/__init__.py": {
+      "bytes": 78,
+      "sha256": "aee72e8968ff2905cd898349dc4e7701bad465f00d365f7b8e255cfba5c27cff"
     },
     "data/atlas_landmark_catalog.json": {
       "bytes": 5165,
@@ -384,6 +392,10 @@
     "docs/IMMUTABLE_FOUR_ROOT_CREW_CORE_v1.md": {
       "bytes": 1259,
       "sha256": "e693743ae4f7d4fee55e8c9bef541d582efaffcba80d46d9cc89de4875c7c6b1"
+    },
+    "docs/INSTALLED_PACKAGE.md": {
+      "bytes": 1587,
+      "sha256": "9dd8087c920623ebc6a6358b07ad1188150fae46891d8f55a81e246b187fa9ec"
     },
     "docs/INTAKE_POLISH_RECEIPT.md": {
       "bytes": 2560,
@@ -742,12 +754,12 @@
       "sha256": "4ca22076587c2118e83c1d7a48d1044d0732914146c79911a7fa547d29afa4e0"
     },
     "pyproject.toml": {
-      "bytes": 1160,
-      "sha256": "eb159e6844404e6b68e7ed0ea65fc389de9837ec3a2b2864e81eb49ee02a2fa4"
+      "bytes": 1479,
+      "sha256": "2ee03eac8c4183d01337e143b2430f926f40db791177d45bc77548405aa8c9b8"
     },
     "README.md": {
-      "bytes": 4778,
-      "sha256": "5dc4107756b0dd347874ef471651cc550db359c7065173512cd264d1152f6579"
+      "bytes": 5072,
+      "sha256": "5df34ea384c224e1da25427c1811286d7afa9ce56dc95bba7abbe6f65c9f0d7d"
     },
     "run_crew_stations.bat": {
       "bytes": 263,
@@ -982,8 +994,8 @@
       "sha256": "5f10f374343ec7c790b84788d553b6577c02bf2254c7e43cb16c70a1c0e8b8b0"
     },
     "src/axm_star_sim/bridge_visual_core.py": {
-      "bytes": 12860,
-      "sha256": "13ef5498a46365c5d7ee95ff4b3d9e49ace0eb69813e557dbfeadf70fdcb1899"
+      "bytes": 12781,
+      "sha256": "e2ef82f271187b87cc9bda9351e2b68221216066c2dc5ac54a9c96772c54672c"
     },
     "src/axm_star_sim/catalog.py": {
       "bytes": 7877,
@@ -1014,8 +1026,8 @@
       "sha256": "a0127ee4070607c1a222a64c83789c6dd0374a04b68d70e90579f974c0f40a6b"
     },
     "src/axm_star_sim/crew_station_metrics.py": {
-      "bytes": 19843,
-      "sha256": "206ac94da299ab32b2ee300d835caf900d77b9eadf270c63da0f6562065f1d93"
+      "bytes": 19771,
+      "sha256": "e8a3a1fd0220ae3c8d5710666c73684a8445636a0ac5b8e794e99d88dde55d06"
     },
     "src/axm_star_sim/crew_station_metrics_cli.py": {
       "bytes": 2382,
@@ -1046,8 +1058,8 @@
       "sha256": "057bea1a5f48edec926c85f8b4edc9ba79c2cf860c3708b165ab8b6bc83cc315"
     },
     "src/axm_star_sim/migration.py": {
-      "bytes": 4580,
-      "sha256": "46214478814fe56959b475ac9f79d37660e01265b1a25501f50b84bcfdfc5dd8"
+      "bytes": 4501,
+      "sha256": "21c87aace56f305868a3fe78761f4b7209e984dd0025650dfc2665998e11c8de"
     },
     "src/axm_star_sim/migration_cli.py": {
       "bytes": 1563,
@@ -1070,12 +1082,12 @@
       "sha256": "e6a1b98737fa397b432e8afe198992b129169784fe6bf9b783828c7acfb54ee1"
     },
     "src/axm_star_sim/registry.py": {
-      "bytes": 920,
-      "sha256": "c0f2176e7120475c6bae1499d731b5be6d838a4bd6a78290a414f583cb3da8ba"
+      "bytes": 1530,
+      "sha256": "def3441b59e482023e6dbd64f8211162b9bfe7d79c129c4844f1ebee754a8b0b"
     },
     "src/axm_star_sim/rooted_crew.py": {
-      "bytes": 19107,
-      "sha256": "7f7619647760a7453a6e36cfab6f68aacd50b57d2f8904764171057437acb224"
+      "bytes": 19026,
+      "sha256": "9254acbf49b1997452517684384223120d960ddc797ac2746d38cbdccc4728cd"
     },
     "src/axm_star_sim/rooted_crew_cli.py": {
       "bytes": 3382,
@@ -1090,16 +1102,16 @@
       "sha256": "aa4d26293af42dcdac7c8fd1c00a9e6a47354c0297fc2d29e51a8e398e9c9011"
     },
     "src/axm_star_sim/ship_blueprint.py": {
-      "bytes": 51103,
-      "sha256": "5b6bfce723f974da539f059d708ed90b1543dc0fabad9739b466f5579c4a71c5"
+      "bytes": 51024,
+      "sha256": "5c6c3a75f98b928e4f0c031bb2c9d875c8039bf1aa1af54b5fc78009fcc3ee54"
     },
     "src/axm_star_sim/ship_blueprint_cli.py": {
       "bytes": 5305,
       "sha256": "03d2298a11b20cc8191b754ba03acb05b0fdc3247dd904c41ef1002d0e7a77be"
     },
     "src/axm_star_sim/ship_interior.py": {
-      "bytes": 28375,
-      "sha256": "ada409aef7f427eab2fbf98b74e1ad2d4a2feacaed6d270034590b03cadd9930"
+      "bytes": 28296,
+      "sha256": "98a8a3b417133d9a9908700bbd239d32dbf2154665d1f2e6bcfaad2638f61cb8"
     },
     "src/axm_star_sim/ship_interior_cli.py": {
       "bytes": 4797,
@@ -1180,6 +1192,10 @@
     "tests/test_immutable_root_crew.py": {
       "bytes": 8560,
       "sha256": "9b121af182a9b791a43a7dec276641b64a804f63f3eceab646b6f5375dc98b87"
+    },
+    "tests/test_installed_package.py": {
+      "bytes": 6024,
+      "sha256": "9336123398b59128c733da059f1e57613dc09ad3d8f29b7e6e74debdd4f6e2a4"
     },
     "tests/test_local_handoff.py": {
       "bytes": 6271,

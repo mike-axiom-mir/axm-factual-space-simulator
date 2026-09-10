@@ -82,6 +82,11 @@ Publish:   run_github_pr_publish.bat <reviewed-plan-digest>
 
 The wrappers set `PYTHONPATH` and disable transient bytecode generation. Advanced users may alternatively run `python -m pip install -e . --no-deps` and then use the registered `axm-*` commands.
 
+For a checkout-independent installation, build and install the wheel as described
+in `docs/INSTALLED_PACKAGE.md`. The wheel carries byte-identical copies of the
+canonical read-only registries required by the simulator; caller working-directory
+files cannot override those packaged registries.
+
 ## Dependency-free branch backfeed
 
 The simulator now carries a bounded return lane for generic capabilities that
