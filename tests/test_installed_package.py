@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import venv
 from pathlib import Path
 from zipfile import ZipFile
 
@@ -18,17 +19,22 @@ ROOT = Path(__file__).resolve().parents[1]
 class InstalledPackageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        if importlib.util.find_spec("setuptools.build_meta") is None:
-            message = "the declared setuptools wheel-build requirement is unavailable"
-            if os.environ.get("AXM_REQUIRE_INSTALLED_PACKAGE_TESTS") == "1":
-                raise AssertionError(message)
-            raise unittest.SkipTest(message)
+        if os.environ.get("AXM_REQUIRE_INSTALLED_PACKAGE_TESTS") != "1":
+            raise unittest.SkipTest(
+                "wheel consumer checks run in the dedicated installed-package workflow"
+            )
+        try:
+            build_backend = importlib.util.find_spec("setuptools.build_meta")
+        except ModuleNotFoundError:
+            build_backend = None
+        if build_backend is None:
+            raise AssertionError("the declared setuptools wheel-build requirement is unavailable")
 
         cls.temporary = tempfile.TemporaryDirectory()
         cls.temp_root = Path(cls.temporary.name)
         cls.build_root = cls.temp_root / "source"
         cls.wheel_root = cls.temp_root / "wheels"
-        cls.site_root = cls.temp_root / "site"
+        cls.venv_root = cls.temp_root / "venv"
         cls.consumer_root = cls.temp_root / "consumer"
 
         cls.build_root.mkdir()
@@ -42,7 +48,7 @@ class InstalledPackageTests(unittest.TestCase):
             "PIP_DISABLE_PIP_VERSION_CHECK": "1",
             "PYTHONDONTWRITEBYTECODE": "1",
         })
-        subprocess.run(
+        completed = subprocess.run(
             [
                 sys.executable,
                 "-m",
@@ -56,38 +62,46 @@ class InstalledPackageTests(unittest.TestCase):
             ],
             cwd=cls.build_root,
             env=environment,
-            check=True,
             capture_output=True,
             text=True,
         )
+        if completed.returncode != 0:
+            raise AssertionError(
+                f"wheel build failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}"
+            )
         wheels = list(cls.wheel_root.glob("*.whl"))
         if len(wheels) != 1:
             raise AssertionError(f"expected one wheel, found {wheels}")
         cls.wheel = wheels[0]
-        subprocess.run(
+        venv.EnvBuilder(with_pip=True).create(cls.venv_root)
+        cls.venv_python = cls.venv_root / (
+            "Scripts/python.exe" if os.name == "nt" else "bin/python"
+        )
+        completed = subprocess.run(
             [
-                sys.executable,
+                str(cls.venv_python),
                 "-m",
                 "pip",
                 "install",
                 "--no-index",
                 "--no-deps",
-                "--target",
-                str(cls.site_root),
                 str(cls.wheel),
             ],
             env=environment,
-            check=True,
             capture_output=True,
             text=True,
         )
+        if completed.returncode != 0:
+            raise AssertionError(
+                f"offline wheel install failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}"
+            )
         cls.consumer_root.mkdir()
         (cls.consumer_root / "data").mkdir()
         (cls.consumer_root / "data" / "simulation_priors.json").write_text(
             "caller data must not override packaged truth\n", encoding="utf-8"
         )
         cls.environment = environment
-        cls.environment["PYTHONPATH"] = str(cls.site_root)
+        cls.environment.pop("PYTHONPATH", None)
 
     @classmethod
     def tearDownClass(cls) -> None:
@@ -133,38 +147,52 @@ else:
 print('installed library: PASS')
 """
         result = subprocess.run(
-            [sys.executable, "-c", program],
+            [str(self.venv_python), "-c", program],
             cwd=self.consumer_root,
             env=self.environment,
-            check=True,
             capture_output=True,
             text=True,
+        )
+        self.assertEqual(
+            result.returncode,
+            0,
+            f"installed library failed\nstdout:\n{result.stdout}\nstderr:\n{result.stderr}",
         )
         self.assertIn("installed library: PASS", result.stdout)
 
     def test_installed_command_shim_generates_and_verifies(self) -> None:
-        script_root = self.site_root / ("Scripts" if os.name == "nt" else "bin")
+        script_root = self.venv_root / ("Scripts" if os.name == "nt" else "bin")
         candidates = list(script_root.glob("axm-star-sim*"))
         self.assertEqual(len(candidates), 1, candidates)
         command = candidates[0]
         first = self.consumer_root / "first"
         second = self.consumer_root / "second"
         for output in (first, second):
-            subprocess.run(
+            generated = subprocess.run(
                 [str(command), "generate", "--seed", "INSTALLED-CLI", "--output", str(output)],
                 cwd=self.consumer_root,
                 env=self.environment,
-                check=True,
                 capture_output=True,
                 text=True,
+            )
+            self.assertEqual(
+                generated.returncode,
+                0,
+                f"installed CLI generation failed\nstdout:\n{generated.stdout}\n"
+                f"stderr:\n{generated.stderr}",
             )
             verified = subprocess.run(
                 [str(command), "verify-ledger", "--output", str(output)],
                 cwd=self.consumer_root,
                 env=self.environment,
-                check=True,
                 capture_output=True,
                 text=True,
+            )
+            self.assertEqual(
+                verified.returncode,
+                0,
+                f"installed CLI verification failed\nstdout:\n{verified.stdout}\n"
+                f"stderr:\n{verified.stderr}",
             )
             self.assertTrue(json.loads(verified.stdout)["valid"])
         first_system = json.loads((first / "system.json").read_text(encoding="utf-8"))

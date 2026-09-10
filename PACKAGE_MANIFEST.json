@@ -1194,8 +1194,8 @@
       "sha256": "9b121af182a9b791a43a7dec276641b64a804f63f3eceab646b6f5375dc98b87"
     },
     "tests/test_installed_package.py": {
-      "bytes": 6372,
-      "sha256": "27de0b7c57abf4cfd7dec164bba704b6a808ad07e7257a54147cdae07bc3b433"
+      "bytes": 7605,
+      "sha256": "f286c107ba8e1cfd0dbefecb898e58cab1d3f645d1a1087e96ed7c658513a505"
     },
     "tests/test_local_handoff.py": {
       "bytes": 6271,
