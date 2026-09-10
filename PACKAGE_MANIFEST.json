@@ -1082,8 +1082,8 @@
       "sha256": "e6a1b98737fa397b432e8afe198992b129169784fe6bf9b783828c7acfb54ee1"
     },
     "src/axm_star_sim/registry.py": {
-      "bytes": 1530,
-      "sha256": "def3441b59e482023e6dbd64f8211162b9bfe7d79c129c4844f1ebee754a8b0b"
+      "bytes": 1568,
+      "sha256": "9a60788e3a643765fd58ce0e15b41cce29d66ecb3b50b171dbc95b8c8b3e8178"
     },
     "src/axm_star_sim/rooted_crew.py": {
       "bytes": 19026,

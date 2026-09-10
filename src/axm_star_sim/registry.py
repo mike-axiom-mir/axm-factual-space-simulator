@@ -2,9 +2,11 @@ from __future__ import annotations
 
 import json
 from importlib import resources
-from importlib.resources.abc import Traversable
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from importlib.resources.abc import Traversable
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[2]
 SOURCE_DATA_ROOT = PACKAGE_ROOT / "data"
