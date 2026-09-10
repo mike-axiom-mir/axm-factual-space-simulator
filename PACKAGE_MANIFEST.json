@@ -3,7 +3,7 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 320,
+  "managed_file_count": 321,
   "files": {
     ".gitattributes": {
       "bytes": 45,
@@ -1144,6 +1144,10 @@
     "tests/test_adventure_slots.py": {
       "bytes": 7751,
       "sha256": "05657a71e22b2358f070cf57efd8d6eb20ca55d7adb31e4ebd0c6dc55d18ed76"
+    },
+    "tests/test_atlas_mutation_admission.py": {
+      "bytes": 6196,
+      "sha256": "1586cf97b20f1dbb2c8fbe87d01ac0d9fa50be4811193811ab1e6b0013bc889a"
     },
     "tests/test_beacon_verification.py": {
       "bytes": 5808,
