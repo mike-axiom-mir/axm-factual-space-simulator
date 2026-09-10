@@ -132,7 +132,7 @@
     "schema": "axm.adventure-event.v4",
     "event_id": "e5a45eec65753bc1:turn:100001",
     "turn": 100001,
-    "resolved_at": "2026-08-02T05:29:58.515653+00:00",
+    "resolved_at": "2026-09-10T01:04:03.637845+00:00",
     "system_id": "e5a45eec65753bc1",
     "opportunity_id": "stripped-world",
     "action": "Run a blind multi-band technosignature survey",
@@ -418,7 +418,7 @@
     "entropy": {
       "schema": "axm.entropy-packet.v1",
       "mode": "deterministic",
-      "created_at": "2026-08-02T05:29:58.514574+00:00",
+      "created_at": "2026-09-10T01:04:03.636523+00:00",
       "context_sha256": "3f30b7fe3b855899cfca27a1d13adcd55612a2f13724baeea4d556f81a092d6b",
       "combined_sha256": "1213a8c814d3de19fa2b5ceba73d89f8b93b481efbe612edbd169be42e47bf95",
       "replay_material": {
@@ -691,7 +691,7 @@
     },
     "event_hash": "3931000d490776d8adc83c00df130dbe2184765547dcbf76d95506bf1858eaf0",
     "state_after_sha256": "1c33c9d584a13fb937c970979496bb67d9b2836aec5dd17fa0823447acbbda33",
-    "record_hash": "f64690d08563eb74a3879c1472c2759af898e2a37b11cbbd06f5d45641fe5cfa"
+    "record_hash": "11d0096cf9443d773b3a3aa050654e199b216dbffb641923f6cded12705e47e1"
   },
   "ledger_valid": true
 }

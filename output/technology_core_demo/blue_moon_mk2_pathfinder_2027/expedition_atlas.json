@@ -2,8 +2,8 @@
   "schema": "axm.expedition-atlas.v1",
   "atlas_version": "0.7.0",
   "map_id": "atlas-6a455acf6c3cba44",
-  "created_at": "2026-08-02T05:29:58.359448+00:00",
-  "updated_at": "2026-08-02T05:29:58.365144+00:00",
+  "created_at": "2026-09-10T01:04:03.473182+00:00",
+  "updated_at": "2026-09-10T01:04:03.479586+00:00",
   "active_location_id": "frontier:bcf8b49b34fe0990",
   "origin_location_id": "catalog:sol",
   "coordinate_contract": {
@@ -380,7 +380,7 @@
         "axm_simulation_priors_v1"
       ],
       "system_id": "bcf8b49b34fe0990",
-      "system_state_sha256": "21d7d8a5f9dd18b939914f8f555cf05662ac25bf879d69ef8f7d7bc7dca38de3",
+      "system_state_sha256": "c0ef862361eb674991c0b7004641abb3c8c3755d1426e57309c38fc8728eea77",
       "catalog_revision": 0,
       "visit_count": 2,
       "crew_observations": [
@@ -401,7 +401,7 @@
         "status": "simulation_contract",
         "rule": "Travel is resolved by the simulator's ship and mission physics. The coordinate alone grants no capability."
       },
-      "authoritative_snapshot_sha256": "7fc98270c99cda18c987c5c4f59114cfe5e1dedb6b6f08955ccdff943faacc2c"
+      "authoritative_snapshot_sha256": "0c2d44e7afa018fbd48809ccdcf0f034668e37be8517017aaf2ce57889994bfe"
     }
   },
   "routes": [
@@ -420,7 +420,7 @@
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000001",
       "visit_number": 1,
-      "visited_at": "2026-08-02T05:29:58.359448+00:00",
+      "visited_at": "2026-09-10T01:04:03.473182+00:00",
       "location_id": "catalog:sol",
       "visit_kind": "expedition_origin",
       "note": "Crew atlas initialized at the Solar System origin.",
@@ -437,7 +437,7 @@
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000002",
       "visit_number": 2,
-      "visited_at": "2026-08-02T05:29:58.359448+00:00",
+      "visited_at": "2026-09-10T01:04:03.473182+00:00",
       "location_id": "frontier:bcf8b49b34fe0990",
       "visit_kind": "campaign_arrival",
       "note": "Generated expedition location registered without claiming catalog existence.",
@@ -446,15 +446,15 @@
       "state_after_sha256": null,
       "action": null,
       "outcome": null,
-      "authoritative_location_snapshot_sha256": "7fc98270c99cda18c987c5c4f59114cfe5e1dedb6b6f08955ccdff943faacc2c",
+      "authoritative_location_snapshot_sha256": "0c2d44e7afa018fbd48809ccdcf0f034668e37be8517017aaf2ce57889994bfe",
       "previous_visit_hash": "d4c9fb420a0fafb009277f8441ba994dc06e5f7ccfb941d2bca307fdb3748fcf",
-      "visit_hash": "efd7ec0acbcb5c5e45874bcc07c97f6991d10f2e18605c4a4d92cb2304127990"
+      "visit_hash": "67e13213813882bfb0b641b6bfb07e13e5595612fd60e7184e8c9cd30ffd46f9"
     },
     {
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000003",
       "visit_number": 3,
-      "visited_at": "2026-08-02T05:29:58.365144+00:00",
+      "visited_at": "2026-09-10T01:04:03.479586+00:00",
       "location_id": "frontier:bcf8b49b34fe0990",
       "visit_kind": "exploration_event",
       "note": null,
@@ -463,12 +463,12 @@
       "state_after_sha256": "7edc97d93cef4180d07e0fe1686617e1949065a363cb3b20b593b3e42a7fb443",
       "action": "Observe from distance using occultation geometry.",
       "outcome": "A repeatable result",
-      "authoritative_location_snapshot_sha256": "7fc98270c99cda18c987c5c4f59114cfe5e1dedb6b6f08955ccdff943faacc2c",
-      "previous_visit_hash": "efd7ec0acbcb5c5e45874bcc07c97f6991d10f2e18605c4a4d92cb2304127990",
-      "visit_hash": "0e263f9b484a375b9c274645e78e4f68c1391a2eb5f702389e7a30c9cc5ecd72"
+      "authoritative_location_snapshot_sha256": "0c2d44e7afa018fbd48809ccdcf0f034668e37be8517017aaf2ce57889994bfe",
+      "previous_visit_hash": "67e13213813882bfb0b641b6bfb07e13e5595612fd60e7184e8c9cd30ffd46f9",
+      "visit_hash": "750219889726e2d17849b6ed387eb84811a00c2d7f3e6bd62af030c7efb8a808"
     }
   ],
-  "visit_chain_head": "0e263f9b484a375b9c274645e78e4f68c1391a2eb5f702389e7a30c9cc5ecd72",
+  "visit_chain_head": "750219889726e2d17849b6ed387eb84811a00c2d7f3e6bd62af030c7efb8a808",
   "catalog_revisions": [],
   "revisit_packets": [],
   "render_contract": {

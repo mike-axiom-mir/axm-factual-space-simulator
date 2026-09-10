@@ -1,16 +1,16 @@
 {
   "schema": "axm.output-manifest.v3",
   "files": {
-    "system.json": "dac209d90377a81baff87a6a928646aabb43d68506714e01d882ec041ead0089",
+    "system.json": "fba777595528de0635b210a77ef091768aba08a36d73e5981720cfc1c93f47c4",
     "causality_log.jsonl": "e65c269c22d3728c14b8a5a015c6a0bfe164c49eaf057bd290f40311273c6cc8",
-    "system.html": "ee6d5c9c0c8992b58f25ead20673f44f189adee4b8c82d80dca4580151483d70",
+    "system.html": "7511a1e7a5cce820d663278fb176697e496c21d614e22d2848655976895212c9",
     "runtime_state.json": "fc992644f33d2c0d7d929f2d0023ac584ce458f01130301abaa4c68ab100d7c7",
-    "event_ledger.jsonl": "3031294433bf6552bc6e5a19548fd019663399eebf943cb2c189bb5cdf21008f",
-    "command_ledger.jsonl": "99f436fd192068451786c45e0a0125e60f0619af2034014b6d89626dce7883f5",
-    "adventure_console.html": "65fc4c59de0b9f8fa4cb6fded908b1bcf73cacecbc73b9d2a98c40c096cf69fd",
-    "command_console.html": "71d0aba40ed38a12fadfba08bb982b4d5a44a18b3e450acb6ab779e2a6d306ef",
-    "expedition_atlas.json": "0f28d3038dfb4f846fc00a71f73bd23026c04e71e6fe9293d40f842bdc3c1d91",
-    "atlas.html": "96747a80d625614f4db27b4b936674fc3f783893b655a0edb68c29156e70cd98",
-    "location_packet.json": "184e8d3a5b3cb945ebf67015988cce191b00da2654421a246fc18e0b4b5b3f56"
+    "event_ledger.jsonl": "3417be4e84c78aeae2e4b9bad4d73f60765ba3d58c67ea906a55a4af51d55125",
+    "command_ledger.jsonl": "4805e1c46990e80b67fde36060ab32d455eb1588caa64c299295e8bd87230536",
+    "adventure_console.html": "c8c8e35b00e822535e48a5ba9a07828a32847e93f2d38d941e66a25ccae2f063",
+    "command_console.html": "695d242bf213949f74e98d625d8d8423d5f0ab53ccccea2c2abcc5bd87b16c60",
+    "expedition_atlas.json": "13ffd74a7a49ee7e23d612a26e7090aeaf67ce746c462a4c780e03aa08c4c9cf",
+    "atlas.html": "242a9c50345dce9b825b1025be79856cb5399334615010d5a84e3ff4265f85c5",
+    "location_packet.json": "4f706af07350db8714b01798ecb882e0ec22022eacffd4945729e9823306d501"
   }
 }

@@ -2,8 +2,8 @@
   "schema": "axm.expedition-atlas.v1",
   "atlas_version": "0.7.0",
   "map_id": "atlas-511df314eac42f1e",
-  "created_at": "2026-08-02T05:29:58.510733+00:00",
-  "updated_at": "2026-08-02T05:29:58.510733+00:00",
+  "created_at": "2026-09-10T01:04:03.631489+00:00",
+  "updated_at": "2026-09-10T01:04:03.631489+00:00",
   "active_location_id": "frontier:e5a45eec65753bc1",
   "origin_location_id": "catalog:sol",
   "coordinate_contract": {
@@ -381,7 +381,7 @@
         "axm_simulation_priors_v1"
       ],
       "system_id": "e5a45eec65753bc1",
-      "system_state_sha256": "0f0681d6a0a965f624db1e3415a16462f2bd680228d35c66355d0005084d9c98",
+      "system_state_sha256": "5d92ccb3de39a6eee7a355bd5494cb81a114311b0f2b0967d45300698d09aa02",
       "catalog_revision": 0,
       "visit_count": 1,
       "crew_observations": [],
@@ -391,7 +391,7 @@
         "status": "simulation_contract",
         "rule": "Travel is resolved by the simulator's ship and mission physics. The coordinate alone grants no capability."
       },
-      "authoritative_snapshot_sha256": "d99900a1cb55abd23e4084365784937dfb03d3033b74181ba34ebf59f998ad50"
+      "authoritative_snapshot_sha256": "7404a56d408a0d8e919205a46c41c29febf729a0ecb01eb8ba98f6ccead6974c"
     }
   },
   "routes": [
@@ -410,7 +410,7 @@
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000001",
       "visit_number": 1,
-      "visited_at": "2026-08-02T05:29:58.510733+00:00",
+      "visited_at": "2026-09-10T01:04:03.631489+00:00",
       "location_id": "catalog:sol",
       "visit_kind": "expedition_origin",
       "note": "Crew atlas initialized at the Solar System origin.",
@@ -427,7 +427,7 @@
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000002",
       "visit_number": 2,
-      "visited_at": "2026-08-02T05:29:58.510733+00:00",
+      "visited_at": "2026-09-10T01:04:03.631489+00:00",
       "location_id": "frontier:e5a45eec65753bc1",
       "visit_kind": "campaign_arrival",
       "note": "Generated expedition location registered without claiming catalog existence.",
@@ -436,12 +436,12 @@
       "state_after_sha256": null,
       "action": null,
       "outcome": null,
-      "authoritative_location_snapshot_sha256": "d99900a1cb55abd23e4084365784937dfb03d3033b74181ba34ebf59f998ad50",
+      "authoritative_location_snapshot_sha256": "7404a56d408a0d8e919205a46c41c29febf729a0ecb01eb8ba98f6ccead6974c",
       "previous_visit_hash": "d4c9fb420a0fafb009277f8441ba994dc06e5f7ccfb941d2bca307fdb3748fcf",
-      "visit_hash": "07d017d9f8356cd309f7582ebf66dd9bd4b3bc9d1116a1961c7322fcf086fb34"
+      "visit_hash": "e7a6a60561a916db724b9889632a8ac0b69b589906c24327c97bf5364c302b25"
     }
   ],
-  "visit_chain_head": "07d017d9f8356cd309f7582ebf66dd9bd4b3bc9d1116a1961c7322fcf086fb34",
+  "visit_chain_head": "e7a6a60561a916db724b9889632a8ac0b69b589906c24327c97bf5364c302b25",
   "catalog_revisions": [],
   "revisit_packets": [],
   "render_contract": {

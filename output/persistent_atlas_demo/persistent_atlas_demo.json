@@ -15,7 +15,7 @@
       "knowledge_class": "procedural_frontier",
       "visit_count": 5,
       "observation_count": 4,
-      "authoritative_snapshot_sha256": "ff9024dc9934015f5d33caa23a2c160ea577131c7af30bc19d7e1109f2baa31d",
+      "authoritative_snapshot_sha256": "806753c44b8934218cc0bdde0f76ef2cd3a0b94559c3bd405056a0376771933c",
       "latest_render_engine": "future-immersive-visual-engine-v3",
       "travel_option_status": "historical_revisit_available",
       "physical_return_status": "must_be_resolved_by_current_ship_and_route_physics"
@@ -26,7 +26,7 @@
       "knowledge_class": "procedural_frontier",
       "visit_count": 4,
       "observation_count": 3,
-      "authoritative_snapshot_sha256": "2d9ca57917749afc9fb0d73ad8fc8a5fbcad309bcd5f953f65d2f359538619eb",
+      "authoritative_snapshot_sha256": "f2860caafad72c2037bb72577f43e7e0e9befbe42d64e2a628b9fdf332f53f1b",
       "latest_render_engine": null,
       "travel_option_status": "historical_revisit_available",
       "physical_return_status": "must_be_resolved_by_current_ship_and_route_physics"

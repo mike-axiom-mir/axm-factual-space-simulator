@@ -2,8 +2,8 @@
   "schema": "axm.expedition-atlas.v1",
   "atlas_version": "0.7.0",
   "map_id": "atlas-9fc4d22bcc70ed0e",
-  "created_at": "2026-08-02T05:29:58.547338+00:00",
-  "updated_at": "2026-08-02T05:29:58.699187+00:00",
+  "created_at": "2026-09-10T01:04:03.672367+00:00",
+  "updated_at": "2026-09-10T01:04:03.841651+00:00",
   "active_location_id": "frontier:3d6930fb5e74d6a9",
   "origin_location_id": "catalog:sol",
   "coordinate_contract": {
@@ -381,7 +381,7 @@
         "axm_simulation_priors_v1"
       ],
       "system_id": "56467e7b2de9e83a",
-      "system_state_sha256": "3e6f79341d38e4d19f6ddaac7a26768b5962b42a89b394d08816e5c95d388ea0",
+      "system_state_sha256": "5a2a478e616be5a47ae43b18ca4aaa2b75b2cce1e79b26baa9ce097cc772f5fd",
       "catalog_revision": 0,
       "visit_count": 5,
       "crew_observations": [
@@ -429,17 +429,17 @@
       "render_history": [
         {
           "packet_id": "revisit-5916251b371460a265c9",
-          "packet_sha256": "44fa16ac126db03513a752a6d3ee91e202682b779c8bd0ddb784b1f9ee7de61c",
+          "packet_sha256": "33c6b249d1e12ee4b60b65b35d1a09f4185470f06f30e6fc02839058dc90b6bd",
           "visual_engine_version": "axm-vector-atlas-v0.7",
           "asset_engine_version": "axm-asset-fabric-current",
-          "created_at": "2026-08-02T05:29:58.698846+00:00"
+          "created_at": "2026-09-10T01:04:03.841265+00:00"
         },
         {
           "packet_id": "revisit-9e86676d83e62502a1d5",
-          "packet_sha256": "53fa91727f1cf6cfbf0343ef6310c5999e2bd41be2ce62a479e8d43d20e470da",
+          "packet_sha256": "95f105a75c71e7c3b54adaaa3aa8732fb9cbf6d29bc9e018dfdfe3c589d1f316",
           "visual_engine_version": "future-immersive-visual-engine-v3",
           "asset_engine_version": "future-asset-fabric-v5",
-          "created_at": "2026-08-02T05:29:58.699187+00:00"
+          "created_at": "2026-09-10T01:04:03.841651+00:00"
         }
       ],
       "route_status": "active_simulated_expedition",
@@ -447,7 +447,7 @@
         "status": "simulation_contract",
         "rule": "Travel is resolved by the simulator's ship and mission physics. The coordinate alone grants no capability."
       },
-      "authoritative_snapshot_sha256": "ff9024dc9934015f5d33caa23a2c160ea577131c7af30bc19d7e1109f2baa31d"
+      "authoritative_snapshot_sha256": "806753c44b8934218cc0bdde0f76ef2cd3a0b94559c3bd405056a0376771933c"
     },
     "frontier:3d6930fb5e74d6a9": {
       "schema": "axm.atlas-location.v1",
@@ -492,7 +492,7 @@
         "axm_simulation_priors_v1"
       ],
       "system_id": "3d6930fb5e74d6a9",
-      "system_state_sha256": "af0ddd4f8ae3304953df12470dadb487cf2f6726b4cf94512a32aecee12a8b96",
+      "system_state_sha256": "f85551275fd91ce8c3299287fd0471bd71bed64e12ed1aed9e20d227406703e9",
       "catalog_revision": 0,
       "visit_count": 4,
       "crew_observations": [
@@ -533,7 +533,7 @@
         "status": "simulation_contract",
         "rule": "Travel is resolved by the simulator's ship and mission physics. The coordinate alone grants no capability."
       },
-      "authoritative_snapshot_sha256": "2d9ca57917749afc9fb0d73ad8fc8a5fbcad309bcd5f953f65d2f359538619eb"
+      "authoritative_snapshot_sha256": "f2860caafad72c2037bb72577f43e7e0e9befbe42d64e2a628b9fdf332f53f1b"
     }
   },
   "routes": [
@@ -561,7 +561,7 @@
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000001",
       "visit_number": 1,
-      "visited_at": "2026-08-02T05:29:58.547338+00:00",
+      "visited_at": "2026-09-10T01:04:03.672367+00:00",
       "location_id": "catalog:sol",
       "visit_kind": "expedition_origin",
       "note": "Crew atlas initialized at the Solar System origin.",
@@ -578,7 +578,7 @@
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000002",
       "visit_number": 2,
-      "visited_at": "2026-08-02T05:29:58.547338+00:00",
+      "visited_at": "2026-09-10T01:04:03.672367+00:00",
       "location_id": "frontier:56467e7b2de9e83a",
       "visit_kind": "campaign_arrival",
       "note": "Generated expedition location registered without claiming catalog existence.",
@@ -587,15 +587,15 @@
       "state_after_sha256": null,
       "action": null,
       "outcome": null,
-      "authoritative_location_snapshot_sha256": "ff9024dc9934015f5d33caa23a2c160ea577131c7af30bc19d7e1109f2baa31d",
+      "authoritative_location_snapshot_sha256": "806753c44b8934218cc0bdde0f76ef2cd3a0b94559c3bd405056a0376771933c",
       "previous_visit_hash": "d4c9fb420a0fafb009277f8441ba994dc06e5f7ccfb941d2bca307fdb3748fcf",
-      "visit_hash": "172eb93dbf3d51be657d8e1500bda2b284540e51a4b3747764d4880b1f9dbf1b"
+      "visit_hash": "4714a78fc5c29f6068c83971790eaa7259c349ff453b6b61ce07e8bd59f4d27d"
     },
     {
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000003",
       "visit_number": 3,
-      "visited_at": "2026-08-02T05:29:58.553422+00:00",
+      "visited_at": "2026-09-10T01:04:03.678790+00:00",
       "location_id": "frontier:56467e7b2de9e83a",
       "visit_kind": "exploration_event",
       "note": null,
@@ -604,15 +604,15 @@
       "state_after_sha256": "217bf58f9102708d006a5902202faa71cd4ab11a7df6426f1528e150f19ee46f",
       "action": "Map dust and small bodies before approaching the planets.",
       "outcome": "Nothing rises above the current threshold",
-      "authoritative_location_snapshot_sha256": "ff9024dc9934015f5d33caa23a2c160ea577131c7af30bc19d7e1109f2baa31d",
-      "previous_visit_hash": "172eb93dbf3d51be657d8e1500bda2b284540e51a4b3747764d4880b1f9dbf1b",
-      "visit_hash": "489cf04f1c1e1b3c13a33b11c5e43019d12c2bfc7a51fe05dcd85be1effc474a"
+      "authoritative_location_snapshot_sha256": "806753c44b8934218cc0bdde0f76ef2cd3a0b94559c3bd405056a0376771933c",
+      "previous_visit_hash": "4714a78fc5c29f6068c83971790eaa7259c349ff453b6b61ce07e8bd59f4d27d",
+      "visit_hash": "3063685f1c762c8a2d9705bf60b7e2d37761c0cca209a3cdc61e00b7f82c66f3"
     },
     {
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000004",
       "visit_number": 4,
-      "visited_at": "2026-08-02T05:29:58.571840+00:00",
+      "visited_at": "2026-09-10T01:04:03.698876+00:00",
       "location_id": "frontier:56467e7b2de9e83a",
       "visit_kind": "exploration_event",
       "note": null,
@@ -621,15 +621,15 @@
       "state_after_sha256": "e94345e4f0530a6b93ba03f922fc8b504aa1cf445b332e9f98d8de9ffbeeacd6",
       "action": "Measure the radiation field before resuming science",
       "outcome": "A repeatable result",
-      "authoritative_location_snapshot_sha256": "ff9024dc9934015f5d33caa23a2c160ea577131c7af30bc19d7e1109f2baa31d",
-      "previous_visit_hash": "489cf04f1c1e1b3c13a33b11c5e43019d12c2bfc7a51fe05dcd85be1effc474a",
-      "visit_hash": "99d3f191db930ab1ba8d846812d314eac2ba0671ec0329a713af78fca1fa0b88"
+      "authoritative_location_snapshot_sha256": "806753c44b8934218cc0bdde0f76ef2cd3a0b94559c3bd405056a0376771933c",
+      "previous_visit_hash": "3063685f1c762c8a2d9705bf60b7e2d37761c0cca209a3cdc61e00b7f82c66f3",
+      "visit_hash": "36d01d1c26628c94314f30ab308d92c38f0b2925ebda227c8a2df83195d037ca"
     },
     {
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000005",
       "visit_number": 5,
-      "visited_at": "2026-08-02T05:29:58.591098+00:00",
+      "visited_at": "2026-09-10T01:04:03.719576+00:00",
       "location_id": "frontier:56467e7b2de9e83a",
       "visit_kind": "exploration_event",
       "note": null,
@@ -638,15 +638,15 @@
       "state_after_sha256": "b4497d810a4299110bd53dc21bb7296a7e5f6b21e7b1671a1fbc02cc9c07ab15",
       "action": "Cross-calibrate the signal against an independent sensor channel",
       "outcome": "A second physical variable moves with the first",
-      "authoritative_location_snapshot_sha256": "ff9024dc9934015f5d33caa23a2c160ea577131c7af30bc19d7e1109f2baa31d",
-      "previous_visit_hash": "99d3f191db930ab1ba8d846812d314eac2ba0671ec0329a713af78fca1fa0b88",
-      "visit_hash": "10cda51af2cc91337baa043134dc62e48e6cc2738260bdfddfd0a688b72df84e"
+      "authoritative_location_snapshot_sha256": "806753c44b8934218cc0bdde0f76ef2cd3a0b94559c3bd405056a0376771933c",
+      "previous_visit_hash": "36d01d1c26628c94314f30ab308d92c38f0b2925ebda227c8a2df83195d037ca",
+      "visit_hash": "d3ec8d7dd46015866454a92942271d87f15073008a8682d02f04fd2a5e4139e0"
     },
     {
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000006",
       "visit_number": 6,
-      "visited_at": "2026-08-02T05:29:58.611372+00:00",
+      "visited_at": "2026-09-10T01:04:03.741336+00:00",
       "location_id": "frontier:56467e7b2de9e83a",
       "visit_kind": "exploration_event",
       "note": null,
@@ -655,15 +655,15 @@
       "state_after_sha256": "d5b3ade5cb3a48cbf2ddb45bfbd2b0b5048f0fdf590468a13b2e0c03bbdca4b0",
       "action": "Measure the radiation field before resuming science",
       "outcome": "The uncertainty narrows, but survives",
-      "authoritative_location_snapshot_sha256": "ff9024dc9934015f5d33caa23a2c160ea577131c7af30bc19d7e1109f2baa31d",
-      "previous_visit_hash": "10cda51af2cc91337baa043134dc62e48e6cc2738260bdfddfd0a688b72df84e",
-      "visit_hash": "7ff1c77f686dfe7b0a93bac13ccc87f12fcf49c76186c3abb5a0aa4960e8e8c8"
+      "authoritative_location_snapshot_sha256": "806753c44b8934218cc0bdde0f76ef2cd3a0b94559c3bd405056a0376771933c",
+      "previous_visit_hash": "d3ec8d7dd46015866454a92942271d87f15073008a8682d02f04fd2a5e4139e0",
+      "visit_hash": "ade6aba8b708bcdd73627a3fa5f01dde6ae77c7d54ffa114d2e599fca91152fc"
     },
     {
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000007",
       "visit_number": 7,
-      "visited_at": "2026-08-02T05:29:58.697855+00:00",
+      "visited_at": "2026-09-10T01:04:03.840272+00:00",
       "location_id": "frontier:3d6930fb5e74d6a9",
       "visit_kind": "expedition_transition_arrival",
       "note": "Second generated expedition branch attached to the persistent crew atlas.",
@@ -672,15 +672,15 @@
       "state_after_sha256": null,
       "action": null,
       "outcome": null,
-      "authoritative_location_snapshot_sha256": "2d9ca57917749afc9fb0d73ad8fc8a5fbcad309bcd5f953f65d2f359538619eb",
-      "previous_visit_hash": "7ff1c77f686dfe7b0a93bac13ccc87f12fcf49c76186c3abb5a0aa4960e8e8c8",
-      "visit_hash": "6985a27ce4c726549cd10edaaa8c96b2bac31be39b90b07819aaead6d58e72d4"
+      "authoritative_location_snapshot_sha256": "f2860caafad72c2037bb72577f43e7e0e9befbe42d64e2a628b9fdf332f53f1b",
+      "previous_visit_hash": "ade6aba8b708bcdd73627a3fa5f01dde6ae77c7d54ffa114d2e599fca91152fc",
+      "visit_hash": "be7eef992c8cafc3eb3470b51a0893060c9be5c2b292c51dc033213d11c5fafa"
     },
     {
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000008",
       "visit_number": 8,
-      "visited_at": "2026-08-02T05:29:58.698182+00:00",
+      "visited_at": "2026-09-10T01:04:03.840552+00:00",
       "location_id": "frontier:3d6930fb5e74d6a9",
       "visit_kind": "exploration_event",
       "note": null,
@@ -689,15 +689,15 @@
       "state_after_sha256": "7609980d8f506aedf82e3d0cba9c747607ad5cad6e16744591dd1fe755a9a956",
       "action": "Delay arrival to observe a complete phase transition.",
       "outcome": "A repeatable result",
-      "authoritative_location_snapshot_sha256": "2d9ca57917749afc9fb0d73ad8fc8a5fbcad309bcd5f953f65d2f359538619eb",
-      "previous_visit_hash": "6985a27ce4c726549cd10edaaa8c96b2bac31be39b90b07819aaead6d58e72d4",
-      "visit_hash": "f1450232a2048221df6d0ad4778b810c99544326432d14e0813926c134cf54e7"
+      "authoritative_location_snapshot_sha256": "f2860caafad72c2037bb72577f43e7e0e9befbe42d64e2a628b9fdf332f53f1b",
+      "previous_visit_hash": "be7eef992c8cafc3eb3470b51a0893060c9be5c2b292c51dc033213d11c5fafa",
+      "visit_hash": "3fbf942b63966bf1d4fd604a6641152fb7b21c29df4a62f88a6a438ca04631e0"
     },
     {
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000009",
       "visit_number": 9,
-      "visited_at": "2026-08-02T05:29:58.698472+00:00",
+      "visited_at": "2026-09-10T01:04:03.840868+00:00",
       "location_id": "frontier:3d6930fb5e74d6a9",
       "visit_kind": "exploration_event",
       "note": null,
@@ -706,15 +706,15 @@
       "state_after_sha256": "f37f05759ad62530db9e7b239f7618f3f5571b3fe28d2136561dc2a40b0d51e4",
       "action": "Hold course until the delayed telemetry response arrives",
       "outcome": "A repeatable result",
-      "authoritative_location_snapshot_sha256": "2d9ca57917749afc9fb0d73ad8fc8a5fbcad309bcd5f953f65d2f359538619eb",
-      "previous_visit_hash": "f1450232a2048221df6d0ad4778b810c99544326432d14e0813926c134cf54e7",
-      "visit_hash": "f5ed43c8cc68eca8a038796b00f8412993e7ece0dd4bb0fa6aaf0ae213fb9776"
+      "authoritative_location_snapshot_sha256": "f2860caafad72c2037bb72577f43e7e0e9befbe42d64e2a628b9fdf332f53f1b",
+      "previous_visit_hash": "3fbf942b63966bf1d4fd604a6641152fb7b21c29df4a62f88a6a438ca04631e0",
+      "visit_hash": "a4c52aa6964a26bef603686f990351db9b5fd61d22fc32513c27527b6709d25a"
     },
     {
       "schema": "axm.atlas-visit.v1",
       "visit_id": "visit-00000010",
       "visit_number": 10,
-      "visited_at": "2026-08-02T05:29:58.698746+00:00",
+      "visited_at": "2026-09-10T01:04:03.841167+00:00",
       "location_id": "frontier:3d6930fb5e74d6a9",
       "visit_kind": "exploration_event",
       "note": null,
@@ -723,29 +723,29 @@
       "state_after_sha256": "ba5c858d7a7bf2cc7275d0df06b0c49cdfedba7edb593f4a4841cacd102e3f0e",
       "action": "Cross-calibrate the signal against an independent sensor channel",
       "outcome": "A repeatable result",
-      "authoritative_location_snapshot_sha256": "2d9ca57917749afc9fb0d73ad8fc8a5fbcad309bcd5f953f65d2f359538619eb",
-      "previous_visit_hash": "f5ed43c8cc68eca8a038796b00f8412993e7ece0dd4bb0fa6aaf0ae213fb9776",
-      "visit_hash": "5489873b188a9c53d8ea6fbb45e85d61842e8b133d50256470fef3bf91567067"
+      "authoritative_location_snapshot_sha256": "f2860caafad72c2037bb72577f43e7e0e9befbe42d64e2a628b9fdf332f53f1b",
+      "previous_visit_hash": "a4c52aa6964a26bef603686f990351db9b5fd61d22fc32513c27527b6709d25a",
+      "visit_hash": "25e92592584c200635c919bc9500d2d5a8ee1805a5ca9c49830e124202fb5163"
     }
   ],
-  "visit_chain_head": "5489873b188a9c53d8ea6fbb45e85d61842e8b133d50256470fef3bf91567067",
+  "visit_chain_head": "25e92592584c200635c919bc9500d2d5a8ee1805a5ca9c49830e124202fb5163",
   "catalog_revisions": [],
   "revisit_packets": [
     {
       "location_id": "frontier:56467e7b2de9e83a",
       "packet_id": "revisit-5916251b371460a265c9",
-      "packet_sha256": "44fa16ac126db03513a752a6d3ee91e202682b779c8bd0ddb784b1f9ee7de61c",
+      "packet_sha256": "33c6b249d1e12ee4b60b65b35d1a09f4185470f06f30e6fc02839058dc90b6bd",
       "visual_engine_version": "axm-vector-atlas-v0.7",
       "asset_engine_version": "axm-asset-fabric-current",
-      "created_at": "2026-08-02T05:29:58.698846+00:00"
+      "created_at": "2026-09-10T01:04:03.841265+00:00"
     },
     {
       "location_id": "frontier:56467e7b2de9e83a",
       "packet_id": "revisit-9e86676d83e62502a1d5",
-      "packet_sha256": "53fa91727f1cf6cfbf0343ef6310c5999e2bd41be2ce62a479e8d43d20e470da",
+      "packet_sha256": "95f105a75c71e7c3b54adaaa3aa8732fb9cbf6d29bc9e018dfdfe3c589d1f316",
       "visual_engine_version": "future-immersive-visual-engine-v3",
       "asset_engine_version": "future-asset-fabric-v5",
-      "created_at": "2026-08-02T05:29:58.699187+00:00"
+      "created_at": "2026-09-10T01:04:03.841651+00:00"
     }
   ],
   "render_contract": {

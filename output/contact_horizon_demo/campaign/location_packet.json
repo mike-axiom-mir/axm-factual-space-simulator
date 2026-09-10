@@ -45,7 +45,7 @@
       "axm_simulation_priors_v1"
     ],
     "system_id": "e5a45eec65753bc1",
-    "system_state_sha256": "0f0681d6a0a965f624db1e3415a16462f2bd680228d35c66355d0005084d9c98",
+    "system_state_sha256": "5d92ccb3de39a6eee7a355bd5494cb81a114311b0f2b0967d45300698d09aa02",
     "catalog_revision": 0,
     "visit_count": 1,
     "crew_observations": [],
@@ -55,8 +55,8 @@
       "status": "simulation_contract",
       "rule": "Travel is resolved by the simulator's ship and mission physics. The coordinate alone grants no capability."
     },
-    "authoritative_snapshot_sha256": "d99900a1cb55abd23e4084365784937dfb03d3033b74181ba34ebf59f998ad50"
+    "authoritative_snapshot_sha256": "7404a56d408a0d8e919205a46c41c29febf729a0ecb01eb8ba98f6ccead6974c"
   },
-  "atlas_visit_chain_head": "07d017d9f8356cd309f7582ebf66dd9bd4b3bc9d1116a1961c7322fcf086fb34",
-  "packet_sha256": "d364b72938f94a414cd742c999de66a509a3b2e77e126c1b6ef35efe4bcc8412"
+  "atlas_visit_chain_head": "e7a6a60561a916db724b9889632a8ac0b69b589906c24327c97bf5364c302b25",
+  "packet_sha256": "318c0c01145fdf3dda71f51daa2f44692375ccb55cb11c408628cbe3f29d9107"
 }

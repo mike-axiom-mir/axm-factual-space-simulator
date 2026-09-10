@@ -1,19 +1,19 @@
 {
   "schema": "axm.revisit-render-packet.v1",
   "packet_id": "revisit-9e86676d83e62502a1d5",
-  "created_at": "2026-08-02T05:29:58.699187+00:00",
+  "created_at": "2026-09-10T01:04:03.841651+00:00",
   "map_id": "atlas-9fc4d22bcc70ed0e",
   "location_id": "frontier:56467e7b2de9e83a",
   "location_name": "Mir Arc 7203",
   "knowledge_class": "procedural_frontier",
-  "authoritative_location_snapshot_sha256": "ff9024dc9934015f5d33caa23a2c160ea577131c7af30bc19d7e1109f2baa31d",
-  "visit_chain_head": "5489873b188a9c53d8ea6fbb45e85d61842e8b133d50256470fef3bf91567067",
+  "authoritative_location_snapshot_sha256": "806753c44b8934218cc0bdde0f76ef2cd3a0b94559c3bd405056a0376771933c",
+  "visit_chain_head": "25e92592584c200635c919bc9500d2d5a8ee1805a5ca9c49830e124202fb5163",
   "included_visit_hashes": [
-    "172eb93dbf3d51be657d8e1500bda2b284540e51a4b3747764d4880b1f9dbf1b",
-    "489cf04f1c1e1b3c13a33b11c5e43019d12c2bfc7a51fe05dcd85be1effc474a",
-    "99d3f191db930ab1ba8d846812d314eac2ba0671ec0329a713af78fca1fa0b88",
-    "10cda51af2cc91337baa043134dc62e48e6cc2738260bdfddfd0a688b72df84e",
-    "7ff1c77f686dfe7b0a93bac13ccc87f12fcf49c76186c3abb5a0aa4960e8e8c8"
+    "4714a78fc5c29f6068c83971790eaa7259c349ff453b6b61ce07e8bd59f4d27d",
+    "3063685f1c762c8a2d9705bf60b7e2d37761c0cca209a3cdc61e00b7f82c66f3",
+    "36d01d1c26628c94314f30ab308d92c38f0b2925ebda227c8a2df83195d037ca",
+    "d3ec8d7dd46015866454a92942271d87f15073008a8682d02f04fd2a5e4139e0",
+    "ade6aba8b708bcdd73627a3fa5f01dde6ae77c7d54ffa114d2e599fca91152fc"
   ],
   "included_event_hashes": [
     "2f76b02eda82b4e8ff0a6557fb6f46033f1e09bbcf08e506eb2f38d3b2b5215a",
@@ -103,5 +103,5 @@
     "catalog_facts_remain_source_pinned": true,
     "simulation_frontier_remains_labelled": true
   },
-  "packet_sha256": "53fa91727f1cf6cfbf0343ef6310c5999e2bd41be2ce62a479e8d43d20e470da"
+  "packet_sha256": "95f105a75c71e7c3b54adaaa3aa8732fb9cbf6d29bc9e018dfdfe3c589d1f316"
 }

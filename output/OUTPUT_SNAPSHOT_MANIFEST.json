@@ -247,11 +247,11 @@
     },
     "output/contact_horizon_demo/campaign/adventure_console.html": {
       "bytes": 213173,
-      "sha256": "9402da6cea8199c8eade3bd6912e7077b32d8542d81157711fb85219031d9a28"
+      "sha256": "4e4cf44d4c593cf89b30a0a4e4611ca98b67666e5bbfa3bf6869576dacc3a9f7"
     },
     "output/contact_horizon_demo/campaign/atlas.html": {
       "bytes": 18207,
-      "sha256": "a5dec952c0706c7b97e80b86f733c842e68140339362928a536a237a1bb62e58"
+      "sha256": "7cf232383897c1335436524e5865b5657d081083e6291d9e2a87f8f4ef748180"
     },
     "output/contact_horizon_demo/campaign/causality_log.jsonl": {
       "bytes": 1217,
@@ -259,7 +259,7 @@
     },
     "output/contact_horizon_demo/campaign/command_console.html": {
       "bytes": 244596,
-      "sha256": "bcb71d61fad312a43268bc70d65aa394f5f3eaed819f8f07db93d0e1cbeee713"
+      "sha256": "80ecee848def09602a58636e62abbc32a2574d1d0cd52e2401aed3d6e48b2b22"
     },
     "output/contact_horizon_demo/campaign/command_ledger.jsonl": {
       "bytes": 0,
@@ -267,19 +267,19 @@
     },
     "output/contact_horizon_demo/campaign/event_ledger.jsonl": {
       "bytes": 18191,
-      "sha256": "d43abde653a23a67a904d2b613a198d96c1c9c9746fd731bcd37c6f0288fbf81"
+      "sha256": "a00b2cc1b623e595609f9cfe447c462248b3eb8f493c6f6f5b859da4d18b1908"
     },
     "output/contact_horizon_demo/campaign/expedition_atlas.json": {
       "bytes": 16044,
-      "sha256": "c90f643cb8c10ef1bb69030cc09440a585c669802aeb8a6e7ef53b05f83ba90c"
+      "sha256": "442170e1d5aa5834e8a6f5049268b173d45cb733a7ad6f11f78e556e196858c8"
     },
     "output/contact_horizon_demo/campaign/location_packet.json": {
       "bytes": 2020,
-      "sha256": "dd65cb8c7f94bd5640685b37fa51dd7ec132fecfd809b7b3c71b80b02495d792"
+      "sha256": "64183420de3215d2b3106b7e28c45400c3e02265f3eb4c823fe84c6ba527167f"
     },
     "output/contact_horizon_demo/campaign/manifest.json": {
       "bytes": 1083,
-      "sha256": "b0557d9a89fafe12557dcf9d9ba4ad674fd8387873c980b2cb7dcc502e93ba5a"
+      "sha256": "023f451ede3832e482955ee82c68776e40749c485daf271a97d97bfdd5f13d67"
     },
     "output/contact_horizon_demo/campaign/runtime_state.json": {
       "bytes": 12965,
@@ -287,19 +287,19 @@
     },
     "output/contact_horizon_demo/campaign/system.html": {
       "bytes": 100164,
-      "sha256": "ef00d528d938305b91639a91d8e5d407a899d5925ca612cc9b06c67ddfeabe7b"
+      "sha256": "5195b69bcaf5ef21108ac3aadd77e7963da6069517ed10cc3907a785d5743625"
     },
     "output/contact_horizon_demo/campaign/system.json": {
       "bytes": 115273,
-      "sha256": "db210b40b9e4e2eb72c88e13571637fba74183f01e0b3c833431c9d48e9f3cc6"
+      "sha256": "52bd6fe383f91baff1f9824eb297a10dafc26ccbefe00b176e9f2678549968b3"
     },
     "output/contact_horizon_demo/contact_horizon_console.html": {
-      "bytes": 16584,
-      "sha256": "97fa8d68ee31a3feb3d76f59c8ddd45b93b982ed3b7cd53e5283fc1ebac61440"
+      "bytes": 24611,
+      "sha256": "78baa98f236f3ae5b0819ba9560df2ea327195561287169f3f510bf8f0bb02d3"
     },
     "output/contact_horizon_demo/contact_horizon_demo.json": {
       "bytes": 27594,
-      "sha256": "4c1c91e9a0287bc6ea271b51b1f77bb62f2cb3d795a73885732ba14110859324"
+      "sha256": "bb82e1fa18461eb7f81fc87b18e398fd00dd65ecca8ec0f69e1c2c6094c4d5da"
     },
     "output/crew_station_metric_demo/competency_state.json": {
       "bytes": 3232,
@@ -339,15 +339,15 @@
     },
     "output/persistent_atlas_demo/atlas.html": {
       "bytes": 30130,
-      "sha256": "83d16013ebc91040f0629edfb555dc1dcb789573305134cc9a4b6119c5a03a12"
+      "sha256": "7ba55c5806869190bef700b2efcd4809c1ddadeca2f8d7db869908849195d69b"
     },
     "output/persistent_atlas_demo/expedition_alpha/adventure_console.html": {
       "bytes": 270189,
-      "sha256": "8ea0ad931ddca735c3c8f40a99bc2287d4604b0be2a209cd5a073e468e6150e0"
+      "sha256": "f52b6231f242f888533a59fc1be312de3d7857130bac8b0659a2b858b4863de4"
     },
     "output/persistent_atlas_demo/expedition_alpha/atlas.html": {
       "bytes": 22990,
-      "sha256": "a4583072c710839550aed9517cf674bf3fe9485ebe67135a0070d498f11cb3c9"
+      "sha256": "f1fd049d388112a82b86ffa9d4a09ed921a203c107be5fef7b439289eee1dede"
     },
     "output/persistent_atlas_demo/expedition_alpha/causality_log.jsonl": {
       "bytes": 1215,
@@ -355,27 +355,27 @@
     },
     "output/persistent_atlas_demo/expedition_alpha/command_console.html": {
       "bytes": 301595,
-      "sha256": "9635f72b2cb73592365ab9ed733b09076c106d5496ab3b0a48f0c9e706bdf599"
+      "sha256": "b9b3458251a9f38a619d6e714fa6741fb655102f71b8293bc5c08210ab0b23c8"
     },
     "output/persistent_atlas_demo/expedition_alpha/command_ledger.jsonl": {
       "bytes": 2787,
-      "sha256": "ff046598dd5d7f2b5fd8793b62d79ecc64b3ce0e6bdb41a8ada996dff7d48a5a"
+      "sha256": "b522265764c05e38a2d5c4716454f681652c5b107a0fb47e80a2662ccd3418a4"
     },
     "output/persistent_atlas_demo/expedition_alpha/event_ledger.jsonl": {
       "bytes": 71198,
-      "sha256": "ed0ec8c7fd50efaa6d3309358628daa79e47de04cac51840aaabdb2e92a82bdb"
+      "sha256": "fbd0a5b22b0b4c9b08afba887f2da112fcb32ef39d211a7a1a6e9fc529713b05"
     },
     "output/persistent_atlas_demo/expedition_alpha/expedition_atlas.json": {
       "bytes": 21627,
-      "sha256": "db3db04c5ac27a10e08263596ff01bde2d0f79e53820bafc7de31db5cd15e5c2"
+      "sha256": "b25f906fa66c199dcd027bfc9fee580464df8b9ef1001ca298f2faa7154f5e93"
     },
     "output/persistent_atlas_demo/expedition_alpha/location_packet.json": {
       "bytes": 3758,
-      "sha256": "40526bbe54a845e3634b482ba8d1997e1d8ff1b20d228c258b8467411ec02089"
+      "sha256": "17b54de82c326ee9f7b80b989da4ce12d5b84c90297b2fdb2dc0195a0e0afd5e"
     },
     "output/persistent_atlas_demo/expedition_alpha/manifest.json": {
       "bytes": 1083,
-      "sha256": "9ed15b99b066096ec11151715287faa7ed12a2e95231fd01c57e70b7717d4447"
+      "sha256": "07c770c6248b37a6ed8f6cb72a7558372dad18332fdba75acd035552182724af"
     },
     "output/persistent_atlas_demo/expedition_alpha/runtime_state.json": {
       "bytes": 18168,
@@ -383,23 +383,23 @@
     },
     "output/persistent_atlas_demo/expedition_alpha/system.html": {
       "bytes": 100143,
-      "sha256": "a6e552c9478149f8873cfb135dbee0f83eac5dbe15119c96b884eaa7d600af08"
+      "sha256": "7f9228cd225f1af9008c3f1b324693ccb900c5818cd58e89a056d725b5a6781b"
     },
     "output/persistent_atlas_demo/expedition_alpha/system.json": {
       "bytes": 115262,
-      "sha256": "355db8a553e47cbb4520f0f3755da873f67aa31cd7d7ae239fd2c0cab446073a"
+      "sha256": "ef77c35fca2c23580b25a78b6b30cec91355e69ad83f67c8f96dea64f0fe1296"
     },
     "output/persistent_atlas_demo/expedition_atlas.json": {
       "bytes": 30165,
-      "sha256": "25c572e2be6d1b0cf605a747bf6488a8299277f41f6d772b54b107a4959e1785"
+      "sha256": "3795deaf6a99488e1efa3010edde469146b2d5871d16b481fb4fa71457b71f58"
     },
     "output/persistent_atlas_demo/expedition_beta/adventure_console.html": {
       "bytes": 244513,
-      "sha256": "2df59e88e564d66580c19eaee691602739dee2f9a720ace1439c8c21868cc9f2"
+      "sha256": "eb2f2da7da7a73f36a1e29d7376f728e5eab05b6f4f39fe3161167bc772ee7fb"
     },
     "output/persistent_atlas_demo/expedition_beta/atlas.html": {
       "bytes": 21693,
-      "sha256": "e34a6fba5b85fd5a947b3c82693e981b18bda1f05b43f3d1d3e56a0357799a4a"
+      "sha256": "3264af4f135363465809f7c37cc4a4accd1c0f7244749d48d7fa59c9a2935d99"
     },
     "output/persistent_atlas_demo/expedition_beta/causality_log.jsonl": {
       "bytes": 1221,
@@ -407,27 +407,27 @@
     },
     "output/persistent_atlas_demo/expedition_beta/command_console.html": {
       "bytes": 275711,
-      "sha256": "352c8f03dda63137828910033d22f506fa4cba8455c149281c3754ad572e0062"
+      "sha256": "55eb3c9e07e56f878bb2d0475a1558eed23552d9c582bd0cb64d733e816fdf9b"
     },
     "output/persistent_atlas_demo/expedition_beta/command_ledger.jsonl": {
       "bytes": 2109,
-      "sha256": "dfd19aeb31c263c74db7bd8e946dbf97a647a9a7f9dd797d1080d006408daef7"
+      "sha256": "0a32a4f2f852d8088c1a0fdfc13f3235e68bceb0d0c23d3fc7e06a8eee2a0df9"
     },
     "output/persistent_atlas_demo/expedition_beta/event_ledger.jsonl": {
       "bytes": 52262,
-      "sha256": "e8bae0f57437b2d4074e9d3cbf7fd8eb56f8418eb016701ef9e8d1f2280bb648"
+      "sha256": "67c48785ab15c618a1a6fa4b78823e5fab0caf45c6b6df280d479dfd88a6f1b1"
     },
     "output/persistent_atlas_demo/expedition_beta/expedition_atlas.json": {
       "bytes": 20132,
-      "sha256": "09d64b7315cc98ea5a26aae970430d9022656a0150cf28770e9115b9b1d092ab"
+      "sha256": "cc2fe37d286c198d0d27fbcb18cfeba8b3ba91f8e08ef65e7b6570574c2a6ef8"
     },
     "output/persistent_atlas_demo/expedition_beta/location_packet.json": {
       "bytes": 3269,
-      "sha256": "11f22918a5902df7ecd7b060f02fc7c67bee036b75a45c335da88d272b3c79eb"
+      "sha256": "b33387db812d21f19be33f0543cd6a05d0d814029a7c4ca2c9893f837c6c9e2c"
     },
     "output/persistent_atlas_demo/expedition_beta/manifest.json": {
       "bytes": 1083,
-      "sha256": "ff79974c42ec2aaab87d2a039efb8bd9fadbdac67101bf046c4f55beb8df0eca"
+      "sha256": "8d0c80da1f6276a9e75693b47d6b474945029865a2ad67c7c4ecccf759a0cbbe"
     },
     "output/persistent_atlas_demo/expedition_beta/runtime_state.json": {
       "bytes": 14464,
@@ -435,27 +435,27 @@
     },
     "output/persistent_atlas_demo/expedition_beta/system.html": {
       "bytes": 99009,
-      "sha256": "eeed1d1067e54868a8cc371e096718cdca92c5e1fdeb40454a6f1c1f2c1ac473"
+      "sha256": "e5d24909f1d9d466be80ba8d15dbeca3715ea261da0c63dec77147e0ffbd26ad"
     },
     "output/persistent_atlas_demo/expedition_beta/system.json": {
       "bytes": 112986,
-      "sha256": "f3aa983f6c0fe90ddf9eddf2a9ea722756388437b6e5819fc722cc265655f556"
+      "sha256": "c1ddaaafeb16d0995bc3770a04fa2538945ca84fa3c7075010b5fb5cdf206189"
     },
     "output/persistent_atlas_demo/location_packet.json": {
       "bytes": 3269,
-      "sha256": "12075100433f62a0908325a305ec8d40d93aa68e474eb774b301dfde082c554b"
+      "sha256": "745aae2362a54d2c5e91a5df4d0bd749b7c42c3493101c00f5cd62b39d0dd2e1"
     },
     "output/persistent_atlas_demo/persistent_atlas_demo.json": {
       "bytes": 1964,
-      "sha256": "fd4b1b914856dcfe784c4535c0de2ea098a8e652735024d741b68cc9fb7b8291"
+      "sha256": "612211a4f8ec0e967c4674f77ec5c894520eda9725ecb7e0bc3ad4293676d6e4"
     },
     "output/persistent_atlas_demo/revisit_packets/revisit-5916251b371460a265c9.json": {
       "bytes": 4118,
-      "sha256": "bbcddcb863d771c69af0e321b32c2c224d20a7257ffe30df9b6257929df3f0c5"
+      "sha256": "e0620b1d0ce73185ee651e6019ef455c7ab2eb55d9513fc0b015518ff7e409f4"
     },
     "output/persistent_atlas_demo/revisit_packets/revisit-9e86676d83e62502a1d5.json": {
       "bytes": 4137,
-      "sha256": "49fdc5d0b1d7b2a7e2e40fb5954d88228717ef96131cf23f5e54add1c7c58516"
+      "sha256": "1c5d0d47ab35f1d2a4a67142ca2d36798596e38c95a9b775233de53e51091315"
     },
     "output/rooted_crew_demo/rooted_crew_console.html": {
       "bytes": 1723,
@@ -479,11 +479,11 @@
     },
     "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/adventure_console.html": {
       "bytes": 204242,
-      "sha256": "65fc4c59de0b9f8fa4cb6fded908b1bcf73cacecbc73b9d2a98c40c096cf69fd"
+      "sha256": "c8c8e35b00e822535e48a5ba9a07828a32847e93f2d38d941e66a25ccae2f063"
     },
     "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/atlas.html": {
       "bytes": 19345,
-      "sha256": "96747a80d625614f4db27b4b936674fc3f783893b655a0edb68c29156e70cd98"
+      "sha256": "242a9c50345dce9b825b1025be79856cb5399334615010d5a84e3ff4265f85c5"
     },
     "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/causality_log.jsonl": {
       "bytes": 1209,
@@ -491,27 +491,27 @@
     },
     "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/command_console.html": {
       "bytes": 235392,
-      "sha256": "71d0aba40ed38a12fadfba08bb982b4d5a44a18b3e450acb6ab779e2a6d306ef"
+      "sha256": "695d242bf213949f74e98d625d8d8423d5f0ab53ccccea2c2abcc5bd87b16c60"
     },
     "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/command_ledger.jsonl": {
       "bytes": 677,
-      "sha256": "99f436fd192068451786c45e0a0125e60f0619af2034014b6d89626dce7883f5"
+      "sha256": "4805e1c46990e80b67fde36060ab32d455eb1588caa64c299295e8bd87230536"
     },
     "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/event_ledger.jsonl": {
       "bytes": 17249,
-      "sha256": "3031294433bf6552bc6e5a19548fd019663399eebf943cb2c189bb5cdf21008f"
+      "sha256": "3417be4e84c78aeae2e4b9bad4d73f60765ba3d58c67ea906a55a4af51d55125"
     },
     "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/expedition_atlas.json": {
       "bytes": 17380,
-      "sha256": "0f28d3038dfb4f846fc00a71f73bd23026c04e71e6fe9293d40f842bdc3c1d91"
+      "sha256": "13ffd74a7a49ee7e23d612a26e7090aeaf67ce746c462a4c780e03aa08c4c9cf"
     },
     "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/location_packet.json": {
       "bytes": 2419,
-      "sha256": "184e8d3a5b3cb945ebf67015988cce191b00da2654421a246fc18e0b4b5b3f56"
+      "sha256": "4f706af07350db8714b01798ecb882e0ec22022eacffd4945729e9823306d501"
     },
     "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/manifest.json": {
       "bytes": 1083,
-      "sha256": "0da0e6a4be7f472725144df54a0c7211bf20b67482b41ea2dad3d12a52f50fa7"
+      "sha256": "5942f2de0772d5111889a89944b70d0f0c608b1b11773e5f8fbc240372fe0150"
     },
     "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/runtime_state.json": {
       "bytes": 12761,
@@ -519,11 +519,11 @@
     },
     "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/system.html": {
       "bytes": 95161,
-      "sha256": "ee6d5c9c0c8992b58f25ead20673f44f189adee4b8c82d80dca4580151483d70"
+      "sha256": "7511a1e7a5cce820d663278fb176697e496c21d614e22d2848655976895212c9"
     },
     "output/technology_core_demo/blue_moon_mk2_pathfinder_2027/system.json": {
       "bytes": 107370,
-      "sha256": "dac209d90377a81baff87a6a928646aabb43d68506714e01d882ec041ead0089"
+      "sha256": "fba777595528de0635b210a77ef091768aba08a36d73e5981720cfc1c93f47c4"
     },
     "output/technology_core_demo/catalog.json": {
       "bytes": 9237,
@@ -531,11 +531,11 @@
     },
     "output/technology_core_demo/gateway_ppe_halo/adventure_console.html": {
       "bytes": 218690,
-      "sha256": "586467dcc9b1e130e383f5621a080df5702a0fb0203975ffaf4d3fd7e9f8277b"
+      "sha256": "e7b9b452716abe614a85bc4322e86f0f4ba3ffecd2f9cdf5ba4a347dad26feec"
     },
     "output/technology_core_demo/gateway_ppe_halo/atlas.html": {
       "bytes": 19410,
-      "sha256": "a38f2ec8a646b1a9f30f9cc9f95e6b862591eab03acc7c85a7763e1a4a8fca43"
+      "sha256": "7437cc213705cfa22a1d82c673ca6af3a0846369e02fef1b4ae61852bebbf0b3"
     },
     "output/technology_core_demo/gateway_ppe_halo/causality_log.jsonl": {
       "bytes": 1211,
@@ -543,27 +543,27 @@
     },
     "output/technology_core_demo/gateway_ppe_halo/command_console.html": {
       "bytes": 249767,
-      "sha256": "3c9c58fc6c8727fa18fafbc86bb22c8998b2be271ea142824f1b318ffcaa1ea7"
+      "sha256": "c262d8fc128ac76963ee82a65882aaa59ee1772f886948fae6e9af7f5e2bfbb9"
     },
     "output/technology_core_demo/gateway_ppe_halo/command_ledger.jsonl": {
       "bytes": 708,
-      "sha256": "930f7f65fa67d1bbfcc343ab6730cccd88f7eaf5431afcd1614ec2f91e73e20b"
+      "sha256": "30ac341a9d08643ff2e53e4bda1918362f61c7475497a7912a59d5326117bc1f"
     },
     "output/technology_core_demo/gateway_ppe_halo/event_ledger.jsonl": {
       "bytes": 17747,
-      "sha256": "1af222886064dce38399f3d5df95a8df04c5e7381bc1071cfe55a26079e972f9"
+      "sha256": "5ef5062a7db924b52cca855e8c17f1768bf62c4d2d711ee8d4a39acad1bf88f3"
     },
     "output/technology_core_demo/gateway_ppe_halo/expedition_atlas.json": {
       "bytes": 17461,
-      "sha256": "115596809d1cfdfa2c0ee576964de75ae7f996cd31795441ee121f0c93ce3188"
+      "sha256": "2d8dce2877bb5b20a1bae83fd9d2cbdca0abc714c824ebea37900d32b14e2fa3"
     },
     "output/technology_core_demo/gateway_ppe_halo/location_packet.json": {
       "bytes": 2470,
-      "sha256": "81dbc15667c020a7e39f0cf6376ec916fd975948b544b318b72a47ffed29e470"
+      "sha256": "ba1d8e99556cc34c0c456f7182bccb1031b2b7ddf838bbba870cefe741549965"
     },
     "output/technology_core_demo/gateway_ppe_halo/manifest.json": {
       "bytes": 1083,
-      "sha256": "aed9e58e6570bb4c466d476b542f7ad9ab54735f592c282a7e017b08af438d69"
+      "sha256": "ff58da60ab018be50e643e8c21e0a063d8aca67e189c9cd06ada176c9ee0f709"
     },
     "output/technology_core_demo/gateway_ppe_halo/runtime_state.json": {
       "bytes": 13051,
@@ -571,19 +571,19 @@
     },
     "output/technology_core_demo/gateway_ppe_halo/system.html": {
       "bytes": 106056,
-      "sha256": "31094869688f2edda5fce8f9a85ac79787bf3d3cde304ed95e1f9b36c46b8c6c"
+      "sha256": "ef55e1711608e0d2aadb4483bfff7759191435bcdafe721ca9ed372375f5940b"
     },
     "output/technology_core_demo/gateway_ppe_halo/system.json": {
       "bytes": 124227,
-      "sha256": "54ad7ec76f9e01fb4f366860016a9665b4e81b5b91598ea0bead2df1fa40024a"
+      "sha256": "6b08389b1c8063fc6b722834cc045b46e5af892d91103b90af03134b95142a6a"
     },
     "output/technology_core_demo/orion_esm_crew_transport/adventure_console.html": {
       "bytes": 202863,
-      "sha256": "6487d358e9640a9d0636233bae7bbc5777bac18c7265e30582be18f1aadb5b18"
+      "sha256": "d3093e4e97e8127c5836c595e8026bf1496b3b6ceb0a4fb58d4f8df856f89149"
     },
     "output/technology_core_demo/orion_esm_crew_transport/atlas.html": {
       "bytes": 19394,
-      "sha256": "82abc93226d575dcd717bcc7c9fd91680381969a30ca6878dc0f564c5d29c3f4"
+      "sha256": "7231aaed9beccd669dab063b17c95ab8300b34f64d9fbd8e6b3829d28ee90df1"
     },
     "output/technology_core_demo/orion_esm_crew_transport/causality_log.jsonl": {
       "bytes": 1217,
@@ -591,27 +591,27 @@
     },
     "output/technology_core_demo/orion_esm_crew_transport/command_console.html": {
       "bytes": 233941,
-      "sha256": "918521996033de3eb15b0b5f989b0a01f4a1a828d4433ee314b857b318d559c8"
+      "sha256": "5531466c37f6f879469552c8b2a42bdee502eed4085860990c9166375f1962a8"
     },
     "output/technology_core_demo/orion_esm_crew_transport/command_ledger.jsonl": {
       "bytes": 708,
-      "sha256": "67ce8fd7a0d9dd91682f8ebbe4172ea8e741cd47ed75b494eb53ad26ff5279cd"
+      "sha256": "8a08a8310057d2b03405ca2cd2cd2e8325b6f3c1a69697e382c32479b9310a94"
     },
     "output/technology_core_demo/orion_esm_crew_transport/event_ledger.jsonl": {
       "bytes": 17658,
-      "sha256": "2616e22f07ee36786793a6cc4b992d00ac2ca3e3de75add1d2d1577266d4c6b7"
+      "sha256": "25ee20abef905629ed2710181169facac8e81d1d813a19a787d47443da4090a9"
     },
     "output/technology_core_demo/orion_esm_crew_transport/expedition_atlas.json": {
       "bytes": 17413,
-      "sha256": "b8763fc967fbdebe8d9162e3c41c481dd0ffdfffd8c2a355b3c9f846b30e9020"
+      "sha256": "0a1ac5f43e357cc54fae32b550121265ad8a81d0fb13a26e087baf4b2f9a604a"
     },
     "output/technology_core_demo/orion_esm_crew_transport/location_packet.json": {
       "bytes": 2430,
-      "sha256": "c6d2bb4a109f6507a0b123bafedf91b357dfbea23582ad9dd347db132dea8493"
+      "sha256": "3ea99e7c66208f28999edc61683b9a118abe60f90556db3b95906b3164996b61"
     },
     "output/technology_core_demo/orion_esm_crew_transport/manifest.json": {
       "bytes": 1083,
-      "sha256": "4f082f807587263f6ad70de3998353f800f1c7aece96177b6e64dea5761e8780"
+      "sha256": "2e5914e0ea9c0acd757865e1d31474aafc175121418f81f6b4975aa65fef43d0"
     },
     "output/technology_core_demo/orion_esm_crew_transport/runtime_state.json": {
       "bytes": 13051,
@@ -619,19 +619,19 @@
     },
     "output/technology_core_demo/orion_esm_crew_transport/system.html": {
       "bytes": 91150,
-      "sha256": "bd6fa4bf640228d0f4be3fa24c83ac41f6ba7967f4dc97ae9e7dbaff410de70a"
+      "sha256": "1e8a4a7b8d40201c3077b4cdf1121e998681f7074ba8440b8e2771fb0574bb34"
     },
     "output/technology_core_demo/orion_esm_crew_transport/system.json": {
       "bytes": 101937,
-      "sha256": "2d506771c50295c0b9c405c6fc3be810869e3f1f53a18a3dc54005cdfd84ae8a"
+      "sha256": "5e8ffd384e1f002c4c8f082355d5a979c80bb461e84a1bea285d94150b8fb8f2"
     },
     "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/adventure_console.html": {
       "bytes": 209253,
-      "sha256": "b46964044efc067b0aa4c65b3f59d9c85b63f39adbdaa1a641011873b572f6af"
+      "sha256": "1d0e1ac72fc87378628c0874b4de0333b90100cec9159335e310b76db61734c3"
     },
     "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/atlas.html": {
       "bytes": 19399,
-      "sha256": "d2ba1a63b6fab2803c062e4d0c3580cbd564452912e388fcf117d4bed0a66040"
+      "sha256": "afb54fe3d9767321353a2c567cf425ee174f59cd25abe54a6c350e67c4d3a51c"
     },
     "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/causality_log.jsonl": {
       "bytes": 1229,
@@ -639,27 +639,27 @@
     },
     "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/command_console.html": {
       "bytes": 240850,
-      "sha256": "017ed58c10a80594e4b93adecb36d8acc3aec036bcf7012ebffbb975c3597b0f"
+      "sha256": "648e42f89e0b1f4b118700c972be5e5a1d73badce879dc5112a05deaa191397f"
     },
     "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/command_ledger.jsonl": {
       "bytes": 708,
-      "sha256": "be91da3369ae80df14abd5d32e3694ba109a1d4590bded4298157041f821d3c7"
+      "sha256": "e02c494fb2300222848fd395365bfe4891eb31159c49e3e7552759684c6fadc2"
     },
     "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/event_ledger.jsonl": {
       "bytes": 17662,
-      "sha256": "4b76bb91c2e0e97960e7dfa8e44e4ccd88604a654fd5c528ba8bcca534e128cc"
+      "sha256": "783d625f126e4f04aead6568ba0a59223851245de75c38bc7264aeb8895cd801"
     },
     "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/expedition_atlas.json": {
       "bytes": 17442,
-      "sha256": "1056d98466e3342e7325619544ecc53342150ffed8dbf777a36a3af4601a7a27"
+      "sha256": "a42599e82d8d7056c51ac64c8530f4d8818ce1a744c1eb66623ccb8e769aed1f"
     },
     "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/location_packet.json": {
       "bytes": 2461,
-      "sha256": "e2d4d1236c7f45fae5fc81f195175c33b682857ea091cc7f606ab40cc324d6ee"
+      "sha256": "cb978c8b2dd13bd927a4bb20bc8d2e955f9124ebd10b1bd51b306370a618650a"
     },
     "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/manifest.json": {
       "bytes": 1083,
-      "sha256": "98e15ea13047c6fd67c7adeb806c69413827ddaee9f03d75ca8222b2f4d3f147"
+      "sha256": "1abed9add58a8db952cbc8563ba8c58fb0688b4ba53868a747a0badd1caef5e4"
     },
     "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/runtime_state.json": {
       "bytes": 11776,
@@ -667,11 +667,11 @@
     },
     "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/system.html": {
       "bytes": 99517,
-      "sha256": "40ac5531171c0d56c38a7595a9c82592a93b8c06d5ed53fbb9acd51c8378b7fe"
+      "sha256": "d26cbab84a4bbdb9e1afcc28461a8e78ebbd7cefbf9bb419a91a14e6607ed1a1"
     },
     "output/technology_core_demo/spacex_starship_hls_pathfinder_2027/system.json": {
       "bytes": 113748,
-      "sha256": "210101f9a40565f87facc5b2dbe9a4a21bb359718d8f551e11687ef86f8a3c3b"
+      "sha256": "b1260bb3c41a373d28a9b7775d986e44668a4f847ad48f8cd934a5a0e111420a"
     },
     "output/technology_core_demo/technology_core_catalog.html": {
       "bytes": 6327,
