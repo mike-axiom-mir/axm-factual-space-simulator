@@ -19,6 +19,21 @@ Resolving a turn now creates `.runtime_commit.json` before changing canonical hi
 
 Single-file replacements write and sync a sibling temporary file before `os.replace`. Directory syncing is best-effort where the host filesystem does not expose it.
 
+## Local single-writer contract
+
+Every runtime initialization, command-mode change, pending council publication,
+event commit and recovery first acquires the output directory's
+`.runtime_mutation.lock`. The file is a stable coordination inode, not state or
+evidence. Its contents have no authority. The operating system owns the actual
+advisory lock and releases it when the process exits, including abrupt exit, so
+there is no stale PID lease or mutable `latest` pointer to reclaim.
+
+Admission is non-blocking. A second local process fails closed before it can
+publish a commit journal or pending council state. Pending-state publication
+also verifies that the caller's observed runtime state is still current while
+holding the lock. The lock file must not be replaced or deleted while simulator
+processes may be active; it is intentionally excluded from the output manifest.
+
 ## Restart contract
 
 Every state-loading CLI path checks for a sealed commit first. `axm-star-sim recover-runtime --output <adventure>` also exposes recovery directly.
@@ -35,4 +50,9 @@ This is interruption recovery, not conflict merging. A divergent history require
 
 ## Compatibility and boundary
 
-Existing adventures need no migration because the commit record is ephemeral and only appears while a new event is being committed. Event and runtime schemas are unchanged. The mechanism provides local integrity and deterministic restart behavior, not signatures, author authentication, multi-process locking or distributed consensus.
+Existing adventures need no migration because the lock file is noncanonical
+and the sealed commit record appears only while a new event is being committed.
+Event and runtime schemas are unchanged. The mechanism provides local
+integrity, deterministic restart behavior and one admitted local runtime
+mutator on the tested filesystem. It is not a distributed lock, signature,
+author authentication or consensus protocol.
