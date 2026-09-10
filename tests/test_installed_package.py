@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import importlib.util
 import json
 import os
@@ -203,11 +204,16 @@ print('installed library: PASS')
 
     def test_reproducible_builder_survives_source_mtime_drift_and_binds_seal(self) -> None:
         source = self.temp_root / "reproducible-source"
-        shutil.copytree(
-            ROOT,
-            source,
-            ignore=shutil.ignore_patterns(".git", "output", "__pycache__", "*.pyc", "build", "dist", "*.egg-info"),
-        )
+        source.mkdir()
+        manifest_bytes = (ROOT / "PACKAGE_MANIFEST.json").read_bytes()
+        manifest = json.loads(manifest_bytes)
+        for relative in manifest["files"]:
+            origin = ROOT / relative
+            destination = source / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(origin, destination)
+        (source / "PACKAGE_MANIFEST.json").write_bytes(manifest_bytes)
+        (source / "CHECKSUMS.sha256").write_bytes((ROOT / "CHECKSUMS.sha256").read_bytes())
         builder = source / "tools" / "build_reproducible_wheel.py"
 
         def set_mtime(timestamp: int) -> None:
@@ -240,21 +246,54 @@ print('installed library: PASS')
             self.assertEqual(receipt["schema"], "axm.reproducible-wheel-build-receipt.v1")
             self.assertEqual(receipt["status"], "PASS")
             self.assertEqual(receipt["build"]["rebuilds_compared"], 2)
+            self.assertEqual(receipt["build"]["source_isolation"], "verified-manifest-copy")
             artifact = output / receipt["artifact"]["name"]
             payload = artifact.read_bytes()
             self.assertEqual(len(payload), receipt["artifact"]["bytes"])
-            import hashlib
             self.assertEqual(hashlib.sha256(payload).hexdigest(), receipt["artifact"]["sha256"])
             return receipt, payload
 
         set_mtime(946684800)  # 2000-01-01 UTC
         first_receipt, first_payload = build(self.temp_root / "reproducible-one")
+
+        source_still_sealed = subprocess.run(
+            [sys.executable, str(source / "tools" / "reseal_package.py"), "--check"],
+            cwd=source,
+            env=self.environment,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(
+            source_still_sealed.returncode,
+            0,
+            f"builder contaminated its verified source\nstdout:\n{source_still_sealed.stdout}\n"
+            f"stderr:\n{source_still_sealed.stderr}",
+        )
+
         set_mtime(1704067200)  # 2024-01-01 UTC
         second_receipt, second_payload = build(self.temp_root / "reproducible-two")
-
         self.assertEqual(first_payload, second_payload)
         self.assertEqual(first_receipt["artifact"]["sha256"], second_receipt["artifact"]["sha256"])
         self.assertEqual(first_receipt["source"], second_receipt["source"])
+
+        inside = subprocess.run(
+            [
+                sys.executable,
+                str(builder),
+                "--source",
+                str(source),
+                "--output-dir",
+                str(source / "dist"),
+            ],
+            cwd=self.temp_root,
+            env=self.environment,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(inside.returncode, 2)
+        inside_hold = json.loads(inside.stderr)
+        self.assertEqual(inside_hold["error"]["code"], "OUTPUT_INSIDE_SOURCE")
+        self.assertFalse((source / "dist").exists())
 
         (source / "README.md").write_text("source drift after seal\n", encoding="utf-8")
         rejected = subprocess.run(
