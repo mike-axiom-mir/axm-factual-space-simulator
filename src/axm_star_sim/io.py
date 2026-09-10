@@ -14,6 +14,7 @@ from .live_console import render_live_console
 from .runtime import canonical_hash, initial_runtime_state, verify_ledger
 from .storage import atomic_write_json as _atomic_write_json
 from .storage import atomic_write_text as _atomic_write_text
+from .storage import output_mutation_lock
 from .storage import remove_file as _remove_file
 from .validation import validate_system
 from .visualizer import render_html
@@ -114,6 +115,15 @@ def write_system(
     data: dict[str, Any],
     command_mode: str = "autonomous_deterministic",
 ) -> dict[str, Any]:
+    with output_mutation_lock(output):
+        return _write_system(output, data, command_mode)
+
+
+def _write_system(
+    output: Path,
+    data: dict[str, Any],
+    command_mode: str,
+) -> dict[str, Any]:
     output.mkdir(parents=True, exist_ok=True)
     validate_mode(command_mode)
     data["active_command_mode"] = command_mode
@@ -159,6 +169,14 @@ def write_system(
 
 
 def save_pending_session(output: Path, session: dict[str, Any], state: dict[str, Any]) -> dict[str, Any]:
+    with output_mutation_lock(output):
+        return _save_pending_session(output, session, state)
+
+
+def _save_pending_session(output: Path, session: dict[str, Any], state: dict[str, Any]) -> dict[str, Any]:
+    current_state = json.loads((output / "runtime_state.json").read_text(encoding="utf-8"))
+    if canonical_hash(current_state) != canonical_hash(state):
+        raise RuntimeCommitError("runtime state changed before pending command publication")
     path = output / "pending_command_session.json"
     path.write_text(json.dumps(session, indent=2, ensure_ascii=False), encoding="utf-8")
     state = json.loads(json.dumps(state))
@@ -290,7 +308,7 @@ def _apply_runtime_commit(output: Path, commit: dict[str, Any]) -> dict[str, Any
     return manifest
 
 
-def recover_runtime_commit(output: Path) -> dict[str, Any] | None:
+def _recover_runtime_commit(output: Path) -> dict[str, Any] | None:
     """Finish an interrupted event commit, or fail closed on any divergence."""
     path = output / RUNTIME_COMMIT_NAME
     if not path.exists():
@@ -302,9 +320,19 @@ def recover_runtime_commit(output: Path) -> dict[str, Any] | None:
     return _apply_runtime_commit(output, commit)
 
 
+def recover_runtime_commit(output: Path) -> dict[str, Any] | None:
+    with output_mutation_lock(output):
+        return _recover_runtime_commit(output)
+
+
 def append_runtime_event(output: Path, event: dict[str, Any], state: dict[str, Any]) -> dict[str, Any]:
+    with output_mutation_lock(output):
+        return _append_runtime_event(output, event, state)
+
+
+def _append_runtime_event(output: Path, event: dict[str, Any], state: dict[str, Any]) -> dict[str, Any]:
     if (output / RUNTIME_COMMIT_NAME).exists():
-        recover_runtime_commit(output)
+        _recover_runtime_commit(output)
     system = json.loads((output / "system.json").read_text(encoding="utf-8"))
     prior_events = load_ledger(output / "event_ledger.jsonl")
     valid, checks, rebuilt = verify_ledger(system, [*prior_events, event])
@@ -342,6 +370,11 @@ def append_runtime_event(output: Path, event: dict[str, Any], state: dict[str, A
 
 
 def update_command_mode(output: Path, mode: str) -> dict[str, Any]:
+    with output_mutation_lock(output):
+        return _update_command_mode(output, mode)
+
+
+def _update_command_mode(output: Path, mode: str) -> dict[str, Any]:
     validate_mode(mode)
     if load_ledger(output / "event_ledger.jsonl"):
         raise ValueError("command mode can only be changed before the first resolved event; create a new branch for later mode changes")
