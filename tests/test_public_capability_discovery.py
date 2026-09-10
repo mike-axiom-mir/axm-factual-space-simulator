@@ -86,7 +86,7 @@ class PublicCapabilityDiscoveryTests(unittest.TestCase):
         temp, root = self.fixture()
         self.addCleanup(temp.cleanup)
         path = root / "tools" / "build_reproducible_wheel.py"
-        text = path.read_text("utf-8").replace('"release": False', '"release": True', 1)
+        text = path.read_text("utf-8").replace('"release": False', '"release": True')
         path.write_text(text, encoding="utf-8")
         with self.assertRaises(GEN.DiscoveryContractError) as caught:
             GEN.build_capability(root)
