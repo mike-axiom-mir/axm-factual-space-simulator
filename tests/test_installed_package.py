@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import importlib.util
 import json
 import os
 import shutil
@@ -17,6 +18,12 @@ ROOT = Path(__file__).resolve().parents[1]
 class InstalledPackageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
+        if importlib.util.find_spec("setuptools.build_meta") is None:
+            message = "the declared setuptools wheel-build requirement is unavailable"
+            if os.environ.get("AXM_REQUIRE_INSTALLED_PACKAGE_TESTS") == "1":
+                raise AssertionError(message)
+            raise unittest.SkipTest(message)
+
         cls.temporary = tempfile.TemporaryDirectory()
         cls.temp_root = Path(cls.temporary.name)
         cls.build_root = cls.temp_root / "source"

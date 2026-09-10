@@ -14,8 +14,8 @@
       "sha256": "dc63c9e307c739e1c67b4e6f9649d90b50167a70999dfa03301988aad9c3a56d"
     },
     ".github/workflows/installed-package.yml": {
-      "bytes": 1037,
-      "sha256": "8a9ac4b170dced5ed07ec16b2015587e56ad23d0353e7ac68e5cc3a14d21af73"
+      "bytes": 1215,
+      "sha256": "33ae4f4b5922bdcfecbac332cfed0cd7478c758b34a20c844dcba54e48bdbef1"
     },
     ".github/workflows/verify.yml": {
       "bytes": 1115,
@@ -1194,8 +1194,8 @@
       "sha256": "9b121af182a9b791a43a7dec276641b64a804f63f3eceab646b6f5375dc98b87"
     },
     "tests/test_installed_package.py": {
-      "bytes": 6024,
-      "sha256": "9336123398b59128c733da059f1e57613dc09ad3d8f29b7e6e74debdd4f6e2a4"
+      "bytes": 6372,
+      "sha256": "27de0b7c57abf4cfd7dec164bba704b6a808ad07e7257a54147cdae07bc3b433"
     },
     "tests/test_local_handoff.py": {
       "bytes": 6271,

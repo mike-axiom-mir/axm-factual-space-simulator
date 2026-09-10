@@ -32,7 +32,11 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python }}
+      - name: Install declared wheel build requirements
+        run: python -m pip install "setuptools>=68" wheel
       - name: Check deterministic source seal
         run: python tools/reseal_package.py --check
       - name: Build, install, and exercise wheel offline
+        env:
+          AXM_REQUIRE_INSTALLED_PACKAGE_TESTS: '1'
         run: python -m unittest discover -s tests -p "test_installed_package.py" -v
