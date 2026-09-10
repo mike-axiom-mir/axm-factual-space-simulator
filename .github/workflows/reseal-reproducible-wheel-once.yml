@@ -1,0 +1,35 @@
+name: One-shot reproducible-wheel reseal
+
+on:
+  push:
+    branches:
+      - automation/truth-sentinel-reproducible-wheel-20260910
+
+permissions:
+  contents: write
+
+jobs:
+  reseal-final-tree:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Remove one-shot workflow before sealing
+        run: rm .github/workflows/reseal-reproducible-wheel-once.yml
+      - name: Reseal final tree
+        run: python tools/reseal_package.py --write
+      - name: Verify final seal
+        run: python tools/reseal_package.py --check
+      - name: Commit sealed tree and remove bootstrap
+        shell: bash
+        run: |
+          git config user.name "AXM Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "Reseal reproducible wheel lane [axm reseal]"
+          git push origin HEAD:${GITHUB_REF_NAME}
