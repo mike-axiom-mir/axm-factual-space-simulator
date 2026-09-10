@@ -13,6 +13,7 @@ from axm_star_sim.command import plan_command, proposal
 from axm_star_sim.generator import generate_system
 from axm_star_sim.io import (
     RUNTIME_COMMIT_NAME,
+    RuntimeCommitError,
     append_runtime_event,
     load_ledger,
     load_pending_session,
@@ -113,6 +114,17 @@ class RuntimeSingleWriterTests(unittest.TestCase):
             manifest = append_runtime_event(output, event, updated)
             self.assertEqual(len(load_ledger(output / "event_ledger.jsonl")), 1)
             self.assertIn("event_ledger.jsonl", manifest["files"])
+            self.assertNotIn(".runtime_mutation.lock", manifest["files"])
+
+    def test_pending_state_rejects_a_stale_observation_after_lock_acquisition(self):
+        with TemporaryDirectory() as temp:
+            output = Path(temp)
+            event, updated, stale_state, session = self._prepared_turn(output)
+            append_runtime_event(output, event, updated)
+
+            with self.assertRaisesRegex(RuntimeCommitError, "runtime state changed"):
+                save_pending_session(output, session, stale_state)
+            self.assertIsNone(load_pending_session(output))
 
     def test_same_process_can_use_explicit_coordination_boundary(self):
         with TemporaryDirectory() as temp:
