@@ -890,8 +890,8 @@
       "sha256": "90f23a2c23a7aa94f9067de053e60f7a45e3211e220da3bfbd9ca1c2e56d426a"
     },
     "scripts/build_demo_v0_7.py": {
-      "bytes": 26529,
-      "sha256": "50c1711eb3a4ffe128c79287a10e148d6a0db980257c9a68fadbbf59c591a3f4"
+      "bytes": 26543,
+      "sha256": "a1d41dcce1e01b42a38532349080ca3a2a57d174d26ec115db9e19f4e626fb14"
     },
     "scripts/build_demo_v0_8.py": {
       "bytes": 2546,

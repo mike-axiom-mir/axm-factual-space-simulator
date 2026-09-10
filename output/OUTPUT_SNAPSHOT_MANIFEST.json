@@ -294,8 +294,8 @@
       "sha256": "db210b40b9e4e2eb72c88e13571637fba74183f01e0b3c833431c9d48e9f3cc6"
     },
     "output/contact_horizon_demo/contact_horizon_console.html": {
-      "bytes": 24611,
-      "sha256": "78baa98f236f3ae5b0819ba9560df2ea327195561287169f3f510bf8f0bb02d3"
+      "bytes": 24625,
+      "sha256": "ed038a2f9b74161b3f9f050282ec4d2bb18e401dd4c5628a6dd94a38d9974680"
     },
     "output/contact_horizon_demo/contact_horizon_demo.json": {
       "bytes": 27594,
