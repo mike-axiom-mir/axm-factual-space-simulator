@@ -201,6 +201,82 @@ print('installed library: PASS')
         second_system.pop("generated_at")
         self.assertEqual(first_system, second_system)
 
+    def test_reproducible_builder_survives_source_mtime_drift_and_binds_seal(self) -> None:
+        source = self.temp_root / "reproducible-source"
+        shutil.copytree(
+            ROOT,
+            source,
+            ignore=shutil.ignore_patterns(".git", "output", "__pycache__", "*.pyc", "build", "dist", "*.egg-info"),
+        )
+        builder = source / "tools" / "build_reproducible_wheel.py"
+
+        def set_mtime(timestamp: int) -> None:
+            for path in source.rglob("*"):
+                if path.is_file() and not path.is_symlink():
+                    os.utime(path, (timestamp, timestamp))
+
+        def build(output: Path) -> tuple[dict[str, object], bytes]:
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    str(builder),
+                    "--source",
+                    str(source),
+                    "--output-dir",
+                    str(output),
+                ],
+                cwd=self.temp_root,
+                env=self.environment,
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(
+                completed.returncode,
+                0,
+                f"reproducible wheel build failed\nstdout:\n{completed.stdout}\n"
+                f"stderr:\n{completed.stderr}",
+            )
+            receipt = json.loads(completed.stdout)
+            self.assertEqual(receipt["schema"], "axm.reproducible-wheel-build-receipt.v1")
+            self.assertEqual(receipt["status"], "PASS")
+            self.assertEqual(receipt["build"]["rebuilds_compared"], 2)
+            artifact = output / receipt["artifact"]["name"]
+            payload = artifact.read_bytes()
+            self.assertEqual(len(payload), receipt["artifact"]["bytes"])
+            import hashlib
+            self.assertEqual(hashlib.sha256(payload).hexdigest(), receipt["artifact"]["sha256"])
+            return receipt, payload
+
+        set_mtime(946684800)  # 2000-01-01 UTC
+        first_receipt, first_payload = build(self.temp_root / "reproducible-one")
+        set_mtime(1704067200)  # 2024-01-01 UTC
+        second_receipt, second_payload = build(self.temp_root / "reproducible-two")
+
+        self.assertEqual(first_payload, second_payload)
+        self.assertEqual(first_receipt["artifact"]["sha256"], second_receipt["artifact"]["sha256"])
+        self.assertEqual(first_receipt["source"], second_receipt["source"])
+
+        (source / "README.md").write_text("source drift after seal\n", encoding="utf-8")
+        rejected = subprocess.run(
+            [
+                sys.executable,
+                str(builder),
+                "--source",
+                str(source),
+                "--output-dir",
+                str(self.temp_root / "rejected-drift"),
+            ],
+            cwd=self.temp_root,
+            env=self.environment,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(rejected.returncode, 2)
+        hold = json.loads(rejected.stderr)
+        self.assertEqual(hold["status"], "HOLD")
+        self.assertEqual(hold["error"]["code"], "SOURCE_SEAL_INVALID")
+        self.assertFalse((self.temp_root / "rejected-drift").exists())
+
 
 if __name__ == "__main__":
     unittest.main()
