@@ -394,8 +394,8 @@
       "sha256": "e693743ae4f7d4fee55e8c9bef541d582efaffcba80d46d9cc89de4875c7c6b1"
     },
     "docs/INSTALLED_PACKAGE.md": {
-      "bytes": 2804,
-      "sha256": "4680af0478a79106d6f1a9f2b5b020dae2960db2027f81aa25fbec89e1e2b44f"
+      "bytes": 3551,
+      "sha256": "0066bc0674011b669f8400e0445f6f011df1f1fe8f8f36a2f842fea572216bae"
     },
     "docs/INTAKE_POLISH_RECEIPT.md": {
       "bytes": 2560,
@@ -1194,8 +1194,8 @@
       "sha256": "9b121af182a9b791a43a7dec276641b64a804f63f3eceab646b6f5375dc98b87"
     },
     "tests/test_installed_package.py": {
-      "bytes": 10831,
-      "sha256": "c3c30b39c43dadcf6960d4989b8d736444d1135b55ac54f79b01df284a841cfc"
+      "bytes": 12376,
+      "sha256": "018cac0f9543fe23c54a473d749e553f589ac0b0156c532802ac313d55ef06a0"
     },
     "tests/test_local_handoff.py": {
       "bytes": 6271,
@@ -1246,8 +1246,8 @@
       "sha256": "105e0aa5f01f74bbd574bd4d074242bea5bd2b24736c8edc5affe709061be8fb"
     },
     "tools/build_reproducible_wheel.py": {
-      "bytes": 6706,
-      "sha256": "4134c0525f0520960a9f30636ad75f971b0afe87ec54bbb5d4336c0b26bce7db"
+      "bytes": 10659,
+      "sha256": "27b859fb4753fb2ac8340852015a8aa96071845c2a2b7483a8e7695602ce4cf5"
     },
     "tools/drand_verifier/install.bat": {
       "bytes": 180,
