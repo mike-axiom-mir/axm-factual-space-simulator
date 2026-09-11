@@ -3,7 +3,7 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 322,
+  "managed_file_count": 323,
   "files": {
     ".gitattributes": {
       "bytes": 45,
@@ -974,8 +974,8 @@
       "sha256": "e73f8aa920368be550fdc214fcd365089e46e3131c9f9edf3f8fb83738bafd22"
     },
     "src/axm_star_sim/atlas.py": {
-      "bytes": 34040,
-      "sha256": "6115faf0e1545e2aa621b3a6c34f6af1898525c9e91d1e734806068d08c76ad8"
+      "bytes": 35130,
+      "sha256": "483af99985e67b66336623311e2f0f46bfb97399a67e1232cb5ec863f320bc23"
     },
     "src/axm_star_sim/beacons.py": {
       "bytes": 10274,
@@ -1141,6 +1141,10 @@
       "bytes": 1538,
       "sha256": "202c39492bfe552e550851993c903b96df781c9b50aa1fec983a5384a7eb5e69"
     },
+    "tests/atlas_map_experience.mjs": {
+      "bytes": 4256,
+      "sha256": "d5ea6ec4117e4c12c17eeb797d495917c7ff68bca736c6561b6dbf15cdb69b2d"
+    },
     "tests/test_adventure_slots.py": {
       "bytes": 7751,
       "sha256": "05657a71e22b2358f070cf57efd8d6eb20ca55d7adb31e4ebd0c6dc55d18ed76"
@@ -1182,8 +1186,8 @@
       "sha256": "df6139ce7066d7e6b3fc6958a386ba207b8544db08ab1f393807db085ab43838"
     },
     "tests/test_expedition_atlas.py": {
-      "bytes": 9436,
-      "sha256": "cd493a662fb307199ea8252ca16371928b61473a0f8221d04524d856540af21f"
+      "bytes": 9975,
+      "sha256": "e0ae5e539d9afed73cf1445189bb495dd51b82533ded4a4ffac16c9106dd3f11"
     },
     "tests/test_factual_ship_blueprint.py": {
       "bytes": 10757,

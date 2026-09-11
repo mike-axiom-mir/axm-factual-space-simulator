@@ -14,6 +14,7 @@ from axm_star_sim.atlas import (
     propagate_icrs_linear,
     record_visit,
     register_system_location,
+    render_atlas_html,
     revisit_options,
     validate_atlas_sources,
     verify_visit_chain,
@@ -146,6 +147,16 @@ class ExpeditionAtlasTests(unittest.TestCase):
         imported = atlas["locations"]["catalog-import:gaia-demo-release-1:proxima-release-record"]
         self.assertEqual(imported["knowledge_class"], "catalog_incomplete")
         self.assertEqual(len(atlas["catalog_revisions"]), 1)
+
+
+    def test_atlas_map_selection_is_keyboard_legible(self):
+        atlas = build_expedition_atlas(generate_system("ATLAS-MAP-INPUT").to_dict(), created_at="2026-08-02T00:00:00Z")
+        page = render_atlas_html(atlas)
+        self.assertIn('aria-describedby="map-help"', page)
+        self.assertIn('tabindex="0" role="button" aria-pressed=', page)
+        self.assertIn('class="selected-ring"', page)
+        self.assertIn("e.key==='Enter'||e.key===' '", page)
+        self.assertIn('aria-live="polite"', page)
 
     def test_io_writes_and_updates_atlas(self):
         system = generate_system("ATLAS-IO").to_dict()
