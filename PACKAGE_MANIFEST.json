@@ -3,7 +3,7 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 321,
+  "managed_file_count": 322,
   "files": {
     ".gitattributes": {
       "bytes": 45,
@@ -470,8 +470,8 @@
       "sha256": "6ffcd850f1dd8b187d517ff4201792c90bd97cf6b8ed3c169b78734ca00b4b71"
     },
     "docs/RUNTIME_COMMIT_AND_RECOVERY_v1.md": {
-      "bytes": 4053,
-      "sha256": "1e9df84bdaa76a24d367d4da749c3edba083a99df48843d4327f8f985d5782d3"
+      "bytes": 5391,
+      "sha256": "61165900433d760aff4cb26ff1b4034870be460169ceebab23a21f7056a83cab"
     },
     "docs/RUNTIME_COMMIT_RECOVERY_RECEIPT_2026-09-09.md": {
       "bytes": 1610,
@@ -754,8 +754,8 @@
       "sha256": "eb159e6844404e6b68e7ed0ea65fc389de9837ec3a2b2864e81eb49ee02a2fa4"
     },
     "README.md": {
-      "bytes": 5173,
-      "sha256": "a78920c480ce6d1dab273484cdd4fabcc452d3f3e48fae5025a97c7ef4e26eb2"
+      "bytes": 5262,
+      "sha256": "f92423e9c234b0dae5577a3fb1f4aeaf1f89b584a4fdc191d01b83a244b41025"
     },
     "run_crew_stations.bat": {
       "bytes": 263,
@@ -998,8 +998,8 @@
       "sha256": "a8345dfb7e74cf8b5da12e2d2ea0ca7c5d8d3a07b6c40eb0a8ef25550226eecb"
     },
     "src/axm_star_sim/cli.py": {
-      "bytes": 32311,
-      "sha256": "6d8eebef68e4c5af94993f774536d96f7df7c95ef63154002a8840ba95b57893"
+      "bytes": 32908,
+      "sha256": "b694d01d58a30b242b5b1be5ce40027ff9dba9bfeb15ee4d555faeb4e240ceae"
     },
     "src/axm_star_sim/command.py": {
       "bytes": 24432,
@@ -1046,8 +1046,8 @@
       "sha256": "3399bcafc4f13dc918169d4924ef1f5c4b5d0e44bfe0096c6858a108cf33bf6a"
     },
     "src/axm_star_sim/io.py": {
-      "bytes": 18170,
-      "sha256": "d180960c3aa9dbb9a82d546bd2eaa0091324f707e342035ae9c27e2806c1ba67"
+      "bytes": 24046,
+      "sha256": "49411f052385cde586a6504d7c89b5fd015fb67da3c0c80ec77f9dbb98bdb5d5"
     },
     "src/axm_star_sim/live_console.py": {
       "bytes": 14908,
@@ -1148,6 +1148,10 @@
     "tests/test_atlas_mutation_admission.py": {
       "bytes": 7716,
       "sha256": "3941f67750e67c396a3414c6463a5e144eddd2374d751ca92769b9fac199aa1f"
+    },
+    "tests/test_atlas_mutation_recovery.py": {
+      "bytes": 5583,
+      "sha256": "23b73eab4666537d8b06b5ccfc9acabe12a17b37441b61cecc487c2983da0511"
     },
     "tests/test_beacon_verification.py": {
       "bytes": 5808,

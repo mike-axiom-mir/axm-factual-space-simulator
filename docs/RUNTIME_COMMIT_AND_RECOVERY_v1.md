@@ -43,9 +43,32 @@ system-import or revisit change. The lock remains held through atlas, packet and
 manifest publication, so the observation used by the mutation cannot become
 stale through a cooperating local writer.
 
+## Atlas-only commit contract
+
+Atlas-only commands seal `.atlas_mutation_commit.json` before publishing any
+changed projection. Schema `axm.atlas-mutation-commit.v1` binds the exact
+before/after atlas states and, for a historical revisit, its exact packet. The
+atlas remains the persistent source for atlas-only state; `atlas.html`,
+`location_packet.json` and `manifest.json` are reconstructable projections. A
+revisit packet is preserved evidence and must either be absent or exactly match
+the sealed packet before recovery continues.
+
+Publication writes the optional revisit packet, rebuilds all atlas projections,
+rebuilds the manifest, and removes the commit only after those writes complete.
+`axm-star-sim recover-atlas --output <adventure>` finishes this process without
+creating a new catalog revision, visit, or render request. A following admitted
+atlas or runtime mutation also finishes a surviving atlas commit before reading
+or extending its state.
+
 ## Restart contract
 
 Every state-loading CLI path checks for a sealed commit first. `axm-star-sim recover-runtime --output <adventure>` also exposes recovery directly.
+
+Atlas-only recovery accepts exactly the sealed before or after atlas and refuses
+to replace a divergent atlas or revisit packet. It also rejects a changed map
+identity, invalid visit chain, rewritten visit prefix, unsafe packet identity,
+packet/atlas linkage mismatch, altered schema, or altered seal. The journal is
+preserved on every refusal for explicit inspection.
 
 Recovery accepts exactly two ledger states: the sealed prior ledger, or that ledger with the sealed event already committed. It then idempotently finishes every projection. It fails closed and preserves the commit record if:
 
@@ -59,8 +82,9 @@ This is interruption recovery, not conflict merging. A divergent history require
 
 ## Compatibility and boundary
 
-Existing adventures need no migration because the lock file is noncanonical
-and the sealed commit record appears only while a new event is being committed.
+Existing adventures need no migration because lock and commit files are
+noncanonical and a sealed commit record appears only while a mutation is being
+published.
 Event and runtime schemas are unchanged. The mechanism provides local
 integrity, deterministic restart behavior and one admitted local runtime
 mutator on the tested filesystem. It is not a distributed lock, signature,

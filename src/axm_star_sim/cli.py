@@ -14,7 +14,6 @@ from .atlas import (
     register_system_location,
     revisit_options,
     verify_visit_chain,
-    write_atlas_files,
 )
 from .beacons import fetch_drand_latest, verify_drand_packet
 from .blind_forge import (
@@ -35,12 +34,15 @@ from .command import (
 from .entropy import ENTROPY_MODES, create_commitment, create_master_seed_receipt
 from .generator import generate_system
 from .io import (
+    ATLAS_COMMIT_NAME,
+    RUNTIME_COMMIT_NAME,
+    RuntimeCommitError,
     append_runtime_event,
     atlas_mutation_transaction,
     load_ledger,
     load_pending_session,
     save_pending_session,
-    refresh_output_manifest,
+    recover_atlas_commit,
     recover_runtime_commit,
     update_command_mode,
     write_system,
@@ -161,6 +163,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     recover = sub.add_parser("recover-runtime", help="finish a sealed runtime commit interrupted before projection")
     recover.add_argument("--output", type=Path, required=True)
+
+    recover_atlas = sub.add_parser("recover-atlas", help="finish a sealed atlas mutation interrupted before projection")
+    recover_atlas.add_argument("--output", type=Path, required=True)
 
     beacon = sub.add_parser("fetch-beacon", help="fetch, preserve, and attempt verification of the latest drand quicknet packet")
     beacon.add_argument("--source", choices=["drand"], default="drand")
@@ -443,6 +448,15 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         if args.command == "atlas-status":
+            pending = [
+                name
+                for name in (RUNTIME_COMMIT_NAME, ATLAS_COMMIT_NAME)
+                if (args.output / name).exists()
+            ]
+            if pending:
+                raise RuntimeCommitError(
+                    f"atlas state has pending output recovery: {', '.join(pending)}"
+                )
             atlas = json.loads((args.output / "expedition_atlas.json").read_text(encoding="utf-8"))
             chain = verify_visit_chain(atlas)
             print(json.dumps({
@@ -460,8 +474,8 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.command == "atlas-import-system":
             imported = json.loads(args.system_json.read_text(encoding="utf-8"))
-            with atlas_mutation_transaction(args.output) as atlas:
-                atlas = register_system_location(atlas, imported, make_active=True)
+            with atlas_mutation_transaction(args.output) as transaction:
+                atlas = register_system_location(transaction.atlas, imported, make_active=True)
                 atlas = record_visit(
                     atlas,
                     atlas["active_location_id"],
@@ -469,8 +483,7 @@ def main(argv: list[str] | None = None) -> int:
                     visit_kind="imported_campaign_arrival",
                     note=args.visit_note,
                 )
-                write_atlas_files(args.output, atlas)
-                manifest = refresh_output_manifest(args.output)
+                manifest = transaction.commit(atlas)
             print(json.dumps({
                 "status": "system_registered",
                 "active_location_id": atlas["active_location_id"],
@@ -482,20 +495,16 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         if args.command == "revisit-location":
-            with atlas_mutation_transaction(args.output) as atlas:
+            with atlas_mutation_transaction(args.output) as transaction:
                 packet, atlas = create_revisit_packet(
-                    atlas,
+                    transaction.atlas,
                     location_id=args.location_id,
                     visual_engine_version=args.visual_engine_version,
                     asset_engine_version=args.asset_engine_version,
                     camera_language=args.camera_language,
                 )
-                packets = args.output / "revisit_packets"
-                packets.mkdir(parents=True, exist_ok=True)
-                packet_path = packets / f"{packet['packet_id']}.json"
-                packet_path.write_text(json.dumps(packet, indent=2, ensure_ascii=False), encoding="utf-8")
-                write_atlas_files(args.output, atlas)
-                manifest = refresh_output_manifest(args.output)
+                packet_path = args.output / "revisit_packets" / f"{packet['packet_id']}.json"
+                manifest = transaction.commit(atlas, revisit_packet=packet)
             print(json.dumps({
                 "status": "revisit_packet_created",
                 "packet": str(packet_path),
@@ -508,10 +517,9 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.command == "atlas-import-catalog":
             snapshot = json.loads(args.snapshot.read_text(encoding="utf-8"))
-            with atlas_mutation_transaction(args.output) as atlas:
-                atlas, report = import_normalized_catalog(atlas, snapshot)
-                write_atlas_files(args.output, atlas)
-                manifest = refresh_output_manifest(args.output)
+            with atlas_mutation_transaction(args.output) as transaction:
+                atlas, report = import_normalized_catalog(transaction.atlas, snapshot)
+                manifest = transaction.commit(atlas)
             print(json.dumps({
                 "status": "catalog_snapshot_imported",
                 **report,
@@ -580,6 +588,14 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.command == "recover-runtime":
             manifest = recover_runtime_commit(args.output)
+            print(json.dumps({
+                "status": "recovered" if manifest is not None else "clean",
+                "files": manifest["files"] if manifest is not None else {},
+            }, indent=2))
+            return 0
+
+        if args.command == "recover-atlas":
+            manifest = recover_atlas_commit(args.output)
             print(json.dumps({
                 "status": "recovered" if manifest is not None else "clean",
                 "files": manifest["files"] if manifest is not None else {},
