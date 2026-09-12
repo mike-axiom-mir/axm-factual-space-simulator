@@ -1,0 +1,59 @@
+name: Temporary MergeAgent consolidation reseal
+
+on:
+  push:
+    branches:
+      - automation/mergeagent-factual-space-20260912
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mergeagent-factual-space-reseal-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  reseal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+    steps:
+      - name: Check out exact consolidation head
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Remove transient workflow before identity generation
+        run: git rm .github/workflows/temporary-mergeagent-reseal.yml
+      - name: Regenerate public capability discovery evidence
+        run: python tools/generate_public_capabilities.py --write
+      - name: Regenerate generated-output snapshot
+        run: python scripts/refresh_output_snapshot_v0_15.py
+      - name: Regenerate canonical package seal
+        run: python tools/reseal_package.py --write
+      - name: Verify generated public capability evidence
+        run: python tools/generate_public_capabilities.py --check
+      - name: Verify canonical package seal
+        run: python tools/reseal_package.py --check
+      - name: Verify package manifest and checksums
+        run: python verify_package.py
+      - name: Run complete local acceptance
+        run: bash run_local_acceptance.sh
+      - name: Commit verified generated state and remove helper
+        shell: bash
+        run: |
+          git config user.name "AXM MergeAgent"
+          git config user.email "mergeagent@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No generated-state changes to commit."
+            exit 0
+          fi
+          git commit -m "Regenerate factual-space evidence after MergeAgent consolidation"
+          git push origin HEAD:automation/mergeagent-factual-space-20260912
