@@ -1,0 +1,53 @@
+{
+  "schema": "axm.builder-capability-declaration.v1",
+  "builder_id": "chat-working-runtime-temporal-renderer-steward",
+  "runtime_or_model": "isolated Linux work runtime with Python and Node but without Chromium, live visual capture or PowerShell",
+  "available_capabilities": [
+    "read GitHub reference repository",
+    "export isolated repository copy",
+    "edit Python JavaScript HTML and JSON",
+    "run deterministic tests",
+    "run main local acceptance",
+    "refresh output snapshot",
+    "reseal package",
+    "create ZIP"
+  ],
+  "capability_gaps": [
+    {
+      "gap_id": "GAP-LIVE-VISUAL-012",
+      "missing_capability": "Chromium-backed repeated browser capture",
+      "affected_directive": "verify visible animation cadence responsive layout and mobile usability",
+      "safe_fallback": "run bounded DOM/canvas state checks include a browser-first smoke script and keep the visual verdict UNKNOWN",
+      "requested_next_instance_tool": "Chromium plus Playwright or a live browser capture surface",
+      "punishment_or_quality_penalty_allowed": false
+    },
+    {
+      "gap_id": "GAP-PR-PLAN-012",
+      "missing_capability": "PowerShell and a publish-authorized git worktree",
+      "affected_directive": "generate the repository's digest-locked GitHub PR plan",
+      "safe_fallback": "keep GitHub unchanged preserve the accepted isolated candidate and leave PR planning and publishing held for Mike",
+      "requested_next_instance_tool": "Windows PowerShell in a reviewed git worktree after Mike opens the merge gate",
+      "punishment_or_quality_penalty_allowed": false
+    }
+  ],
+  "honest_completion_state": "partial",
+  "completed_artifacts": [
+    "src/axm_star_sim/temporal_renderer_adapter.py",
+    "src/axm_star_sim/temporal_bridge_view.py",
+    "output/temporal_bridge_candidate/temporal_bridge.html"
+  ],
+  "unverified_claims": [
+    "live pixel appearance",
+    "animation cadence on a real browser",
+    "mobile visual usability",
+    "publishable PR plan digest"
+  ],
+  "evidence_paths": [
+    "tests/test_temporal_renderer_adapter.py",
+    "tests/test_temporal_bridge_view.py",
+    "output/temporal_bridge_candidate/browser_smoke_report.json",
+    "PACKAGE_MANIFEST.json",
+    "CHECKSUMS.sha256"
+  ],
+  "notes_for_next_builder": "Do not rebuild the candidate. Run the included browser smoke with Chromium, inspect the result, decide versioning, then generate and review the normal digest-locked PR plan only after Mike authorizes that gate."
+}

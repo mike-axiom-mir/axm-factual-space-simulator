@@ -1,0 +1,45 @@
+{
+  "schema": "axm.render-profile-candidate.v1",
+  "id": "axm.render.living-operations-bridge.v1",
+  "version": "0.3.0-candidate",
+  "status": "DETACHED_CANDIDATE",
+  "base": {
+    "previous_candidate": "AXM_FACTUAL_SPACE_SIM_LIVING_BRIDGE_CANDIDATE_v0_2",
+    "github_parent_pr": 3,
+    "github_base_commit": "96944abe2ddfd96107a9ef167ff52f80e8d3986d"
+  },
+  "internal_framebuffer": [480, 270],
+  "presentation_features": [
+    "receipt-phase causal director",
+    "command/navigation/science/engineering station focus",
+    "role-focused deterministic crew choreography",
+    "automatic bridge/hologram/window camera choreography",
+    "receipt-pattern hologram geometry",
+    "read-only source resource telemetry",
+    "read-only open causal-thread summary",
+    "inspect-only dynamic action menu",
+    "existing living bridge console, ambient, star, planet, signal and hologram animation"
+  ],
+  "may_change": [
+    "pixels",
+    "camera presentation state",
+    "crew reenactment pose",
+    "console emphasis",
+    "ambient presentation light",
+    "hologram presentation geometry",
+    "read-only summary layout"
+  ],
+  "may_not_change": [
+    "source mission time",
+    "event history",
+    "event target",
+    "runtime resources",
+    "causal thread state",
+    "action execution state",
+    "truth labels",
+    "claim ceilings"
+  ],
+  "network_required": false,
+  "external_assets_required": false,
+  "promotion": "HOLD_FOR_LOCAL_REPO_RESEAL_ACCEPTANCE_VISUAL_REVIEW_DIGEST_PLAN_AND_MIKE_MERGE_GATE"
+}

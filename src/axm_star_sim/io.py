@@ -1,18 +1,34 @@
 from __future__ import annotations
 
+import copy
 import hashlib
 import json
+from contextlib import contextmanager
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterator
 
-from .atlas import build_expedition_atlas, record_visit, write_atlas_files
+from .atlas import build_expedition_atlas, record_visit, verify_visit_chain, write_atlas_files
 from .command import mode_catalog, validate_mode
 from .command_console import render_command_console
 from .generator import canonical_json
 from .live_console import render_live_console
-from .runtime import initial_runtime_state
+from .runtime import canonical_hash, initial_runtime_state, verify_ledger
+from .storage import atomic_write_json as _atomic_write_json
+from .storage import atomic_write_text as _atomic_write_text
+from .storage import output_mutation_lock
+from .storage import remove_file as _remove_file
 from .validation import validate_system
 from .visualizer import render_html
+
+
+RUNTIME_COMMIT_SCHEMA = "axm.runtime-commit.v1"
+RUNTIME_COMMIT_NAME = ".runtime_commit.json"
+ATLAS_COMMIT_SCHEMA = "axm.atlas-mutation-commit.v1"
+ATLAS_COMMIT_NAME = ".atlas_mutation_commit.json"
+
+
+class RuntimeCommitError(ValueError):
+    """Raised when a runtime commit cannot be completed without rewriting truth."""
 
 
 def sha256_file(path: Path) -> str:
@@ -21,6 +37,11 @@ def sha256_file(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _atomic_write_ledger(path: Path, records: list[dict[str, Any]]) -> None:
+    text = "".join(json.dumps(record, ensure_ascii=False) + "\n" for record in records)
+    _atomic_write_text(path, text)
 
 
 def _managed_names(output: Path) -> list[str]:
@@ -62,6 +83,139 @@ def refresh_output_manifest(output: Path) -> dict[str, Any]:
     """Rebuild the output manifest after atlas-only operations."""
     return _write_manifest(output)
 
+
+def _atlas_commit_hash(commit: dict[str, Any]) -> str:
+    body = {key: value for key, value in commit.items() if key != "commit_sha256"}
+    return hashlib.sha256(
+        ("AXM-ATLAS-MUTATION-COMMIT-V1\n" + canonical_json(body)).encode("utf-8")
+    ).hexdigest()
+
+
+def _validate_atlas_commit(commit: dict[str, Any]) -> None:
+    if commit.get("schema") != ATLAS_COMMIT_SCHEMA:
+        raise RuntimeCommitError("unsupported atlas mutation commit schema")
+    if commit.get("commit_sha256") != _atlas_commit_hash(commit):
+        raise RuntimeCommitError("atlas mutation commit seal is invalid")
+    before = commit.get("atlas_before")
+    after = commit.get("atlas_after")
+    if not isinstance(before, dict) or not isinstance(after, dict):
+        raise RuntimeCommitError("atlas mutation commit is missing typed atlas state")
+    if before.get("map_id") != after.get("map_id"):
+        raise RuntimeCommitError("atlas mutation commit changes map identity")
+    if not verify_visit_chain(before)["valid"] or not verify_visit_chain(after)["valid"]:
+        raise RuntimeCommitError("atlas mutation commit contains an invalid visit chain")
+    before_visits = before.get("visits", [])
+    after_visits = after.get("visits", [])
+    if len(after_visits) < len(before_visits) or not _same_json(
+        before_visits, after_visits[:len(before_visits)]
+    ):
+        raise RuntimeCommitError("atlas mutation commit rewrites prior visits")
+    packet = commit.get("revisit_packet")
+    if packet is not None:
+        if not isinstance(packet, dict) or not isinstance(packet.get("packet_id"), str):
+            raise RuntimeCommitError("atlas mutation commit has an invalid revisit packet")
+        packet_id = packet["packet_id"]
+        if not packet_id or Path(packet_id).name != packet_id:
+            raise RuntimeCommitError("atlas mutation commit has an unsafe revisit packet identity")
+        references = after.get("revisit_packets", [])
+        if not any(
+            isinstance(item, dict)
+            and item.get("packet_id") == packet_id
+            and item.get("packet_sha256") == packet.get("packet_sha256")
+            for item in references
+        ):
+            raise RuntimeCommitError("revisit packet is not bound to the resulting atlas")
+
+
+def _apply_atlas_commit(output: Path, commit: dict[str, Any]) -> dict[str, Any]:
+    _validate_atlas_commit(commit)
+    atlas_path = output / "expedition_atlas.json"
+    current = json.loads(atlas_path.read_text(encoding="utf-8"))
+    if not (_same_json(current, commit["atlas_before"]) or _same_json(current, commit["atlas_after"])):
+        raise RuntimeCommitError("expedition atlas diverged from the sealed atlas mutation")
+
+    packet = commit.get("revisit_packet")
+    if packet is not None:
+        packet_path = output / "revisit_packets" / f"{packet['packet_id']}.json"
+        if packet_path.exists():
+            existing = json.loads(packet_path.read_text(encoding="utf-8"))
+            if not _same_json(existing, packet):
+                raise RuntimeCommitError("revisit packet diverged from the sealed atlas mutation")
+        else:
+            _atomic_write_json(packet_path, packet)
+
+    write_atlas_files(output, commit["atlas_after"])
+    manifest = _write_manifest(output)
+    _remove_file(output / ATLAS_COMMIT_NAME)
+    return manifest
+
+
+def _recover_atlas_commit(output: Path) -> dict[str, Any] | None:
+    path = output / ATLAS_COMMIT_NAME
+    if not path.exists():
+        return None
+    try:
+        commit = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeCommitError("atlas mutation commit is unreadable; preserved for inspection") from exc
+    return _apply_atlas_commit(output, commit)
+
+
+def _recover_pending_commit(output: Path) -> dict[str, Any] | None:
+    runtime_pending = (output / RUNTIME_COMMIT_NAME).exists()
+    atlas_pending = (output / ATLAS_COMMIT_NAME).exists()
+    if runtime_pending and atlas_pending:
+        raise RuntimeCommitError(
+            "multiple output commit records have no authoritative causal order; preserved for inspection"
+        )
+    if runtime_pending:
+        return _recover_runtime_commit(output)
+    if atlas_pending:
+        return _recover_atlas_commit(output)
+    return None
+
+
+class AtlasMutationTransaction:
+    """One admitted atlas snapshot and its recoverable publication boundary."""
+
+    def __init__(self, output: Path, atlas: dict[str, Any]):
+        self.output = output
+        self.atlas = atlas
+        self._committed = False
+
+    def commit(
+        self,
+        atlas_after: dict[str, Any],
+        *,
+        revisit_packet: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
+        if self._committed:
+            raise RuntimeCommitError("atlas mutation transaction was already committed")
+        commit = {
+            "schema": ATLAS_COMMIT_SCHEMA,
+            "atlas_before": copy.deepcopy(self.atlas),
+            "atlas_after": copy.deepcopy(atlas_after),
+            "revisit_packet": copy.deepcopy(revisit_packet),
+        }
+        commit["commit_sha256"] = _atlas_commit_hash(commit)
+        _validate_atlas_commit(commit)
+        _atomic_write_json(self.output / ATLAS_COMMIT_NAME, commit)
+        manifest = _apply_atlas_commit(self.output, commit)
+        self._committed = True
+        return manifest
+
+
+@contextmanager
+def atlas_mutation_transaction(output: Path) -> Iterator[AtlasMutationTransaction]:
+    """Admit one verified atlas read-modify-write transaction."""
+    with output_mutation_lock(output):
+        _recover_pending_commit(output)
+        atlas = json.loads((output / "expedition_atlas.json").read_text(encoding="utf-8"))
+        if not verify_visit_chain(atlas)["valid"]:
+            raise RuntimeCommitError("existing expedition atlas visit chain is invalid")
+        yield AtlasMutationTransaction(output, atlas)
+
+
 def load_ledger(path: Path) -> list[dict[str, Any]]:
     if not path.exists():
         return []
@@ -82,15 +236,13 @@ def load_pending_session(output: Path) -> dict[str, Any] | None:
 def _refresh_consoles(output: Path, system: dict[str, Any], state: dict[str, Any]) -> None:
     ledger = load_ledger(output / "event_ledger.jsonl")
     pending = load_pending_session(output)
-    (output / "adventure_console.html").write_text(render_live_console(system, state, ledger), encoding="utf-8")
-    (output / "command_console.html").write_text(
-        render_command_console(system, state, ledger, pending), encoding="utf-8"
-    )
+    _atomic_write_text(output / "adventure_console.html", render_live_console(system, state, ledger))
+    _atomic_write_text(output / "command_console.html", render_command_console(system, state, ledger, pending))
 
 
 def _write_manifest(output: Path) -> dict[str, Any]:
     manifest = _manifest_for(output)
-    (output / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    _atomic_write_json(output / "manifest.json", manifest)
     return manifest
 
 
@@ -98,6 +250,15 @@ def write_system(
     output: Path,
     data: dict[str, Any],
     command_mode: str = "autonomous_deterministic",
+) -> dict[str, Any]:
+    with output_mutation_lock(output):
+        return _write_system(output, data, command_mode)
+
+
+def _write_system(
+    output: Path,
+    data: dict[str, Any],
+    command_mode: str,
 ) -> dict[str, Any]:
     output.mkdir(parents=True, exist_ok=True)
     validate_mode(command_mode)
@@ -144,6 +305,15 @@ def write_system(
 
 
 def save_pending_session(output: Path, session: dict[str, Any], state: dict[str, Any]) -> dict[str, Any]:
+    with output_mutation_lock(output):
+        return _save_pending_session(output, session, state)
+
+
+def _save_pending_session(output: Path, session: dict[str, Any], state: dict[str, Any]) -> dict[str, Any]:
+    _recover_pending_commit(output)
+    current_state = json.loads((output / "runtime_state.json").read_text(encoding="utf-8"))
+    if canonical_hash(current_state) != canonical_hash(state):
+        raise RuntimeCommitError("runtime state changed before pending command publication")
     path = output / "pending_command_session.json"
     path.write_text(json.dumps(session, indent=2, ensure_ascii=False), encoding="utf-8")
     state = json.loads(json.dumps(state))
@@ -156,42 +326,202 @@ def save_pending_session(output: Path, session: dict[str, Any], state: dict[str,
 
 def clear_pending_session(output: Path) -> None:
     path = output / "pending_command_session.json"
-    if path.exists():
-        path.unlink()
+    _remove_file(path)
+
+
+def _command_record(event: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "event_id": event["event_id"],
+        "turn": event["turn"],
+        "event_hash": event["event_hash"],
+        "record_hash": event.get("record_hash"),
+        "command": event.get("command"),
+    }
+
+
+def _commit_hash(commit: dict[str, Any]) -> str:
+    body = {key: value for key, value in commit.items() if key != "commit_sha256"}
+    return hashlib.sha256(
+        ("AXM-RUNTIME-COMMIT-V1\n" + canonical_json(body)).encode("utf-8")
+    ).hexdigest()
+
+
+def _same_json(left: Any, right: Any) -> bool:
+    return canonical_json(left) == canonical_json(right)
+
+
+def _validate_runtime_commit(system: dict[str, Any], commit: dict[str, Any]) -> list[dict[str, Any]]:
+    if commit.get("schema") != RUNTIME_COMMIT_SCHEMA:
+        raise RuntimeCommitError("unsupported runtime commit schema")
+    if commit.get("commit_sha256") != _commit_hash(commit):
+        raise RuntimeCommitError("runtime commit seal is invalid")
+    prior_events = commit.get("prior_events")
+    event = commit.get("event")
+    state_after = commit.get("state_after")
+    if not isinstance(prior_events, list) or not isinstance(event, dict) or not isinstance(state_after, dict):
+        raise RuntimeCommitError("runtime commit is missing typed event or state data")
+    if commit.get("prior_event_count") != len(prior_events):
+        raise RuntimeCommitError("runtime commit prior event count is invalid")
+    expected_head = prior_events[-1].get("event_hash") if prior_events else None
+    if commit.get("prior_event_head") != expected_head:
+        raise RuntimeCommitError("runtime commit prior event head is invalid")
+    valid, checks, rebuilt = verify_ledger(system, [*prior_events, event])
+    if not valid:
+        raise RuntimeCommitError(f"runtime commit event failed deterministic replay: {checks[-1]}")
+    if canonical_hash(rebuilt) != canonical_hash(state_after):
+        raise RuntimeCommitError("runtime commit state does not match deterministic replay")
+    if commit.get("command_record") != _command_record(event):
+        raise RuntimeCommitError("runtime commit command projection does not match its event")
+    atlas_before = commit.get("atlas_before")
+    atlas_after = commit.get("atlas_after")
+    if (atlas_before is None) != (atlas_after is None):
+        raise RuntimeCommitError("runtime commit atlas pair is incomplete")
+    if atlas_after is not None:
+        if not verify_visit_chain(atlas_before)["valid"] or not verify_visit_chain(atlas_after)["valid"]:
+            raise RuntimeCommitError("runtime commit contains an invalid atlas visit chain")
+        before_visits = atlas_before.get("visits", [])
+        after_visits = atlas_after.get("visits", [])
+        if len(after_visits) != len(before_visits) + 1:
+            raise RuntimeCommitError("runtime commit must append exactly one atlas visit")
+        visit = after_visits[-1]
+        if visit.get("event_id") != event.get("event_id") or visit.get("event_hash") != event.get("event_hash"):
+            raise RuntimeCommitError("runtime commit atlas visit is not bound to its event")
+        if not _same_json(before_visits, after_visits[:-1]):
+            raise RuntimeCommitError("runtime commit rewrites prior atlas visits")
+    return [*prior_events, event]
+
+
+def _apply_runtime_commit(output: Path, commit: dict[str, Any]) -> dict[str, Any]:
+    system = json.loads((output / "system.json").read_text(encoding="utf-8"))
+    target_events = _validate_runtime_commit(system, commit)
+    ledger_path = output / "event_ledger.jsonl"
+    current_events = load_ledger(ledger_path)
+    prior_events = commit["prior_events"]
+    if not (_same_json(current_events, prior_events) or _same_json(current_events, target_events)):
+        raise RuntimeCommitError("event ledger diverged from the sealed runtime commit")
+
+    # The event ledger is canonical. All writes after it are projections that this
+    # sealed commit can reproduce exactly after interruption.
+    _atomic_write_ledger(ledger_path, target_events)
+    _atomic_write_ledger(output / "command_ledger.jsonl", [_command_record(item) for item in target_events])
+
+    pending = load_pending_session(output)
+    sealed_pending = commit.get("pending_session")
+    if pending is not None and not _same_json(pending, sealed_pending):
+        raise RuntimeCommitError("pending command session diverged from the sealed runtime commit")
+    event = commit["event"]
+    if sealed_pending and (event.get("command") or {}).get("discussion_session_id") == sealed_pending.get("session_id"):
+        archive = output / "command_sessions"
+        archive.mkdir(parents=True, exist_ok=True)
+        archived = {
+            **sealed_pending,
+            "status": "resolved",
+            "resolved_event_id": event["event_id"],
+            "resolved_event_hash": event["event_hash"],
+        }
+        archive_path = archive / f"{sealed_pending['session_id']}.json"
+        if archive_path.exists():
+            existing_archive = json.loads(archive_path.read_text(encoding="utf-8"))
+            if not _same_json(existing_archive, archived):
+                raise RuntimeCommitError("archived command session diverged from the sealed runtime commit")
+        _atomic_write_json(archive_path, archived)
+    clear_pending_session(output)
+
+    state = copy.deepcopy(commit["state_after"])
+    state.setdefault("command", {})["pending_session_id"] = None
+    _atomic_write_json(output / "runtime_state.json", state)
+    atlas_path = output / "expedition_atlas.json"
+    if commit.get("atlas_after") is not None:
+        current_atlas = json.loads(atlas_path.read_text(encoding="utf-8"))
+        if not (
+            _same_json(current_atlas, commit["atlas_before"])
+            or _same_json(current_atlas, commit["atlas_after"])
+        ):
+            raise RuntimeCommitError("expedition atlas diverged from the sealed runtime commit")
+        write_atlas_files(output, commit["atlas_after"])
+    _refresh_consoles(output, system, state)
+    manifest = _write_manifest(output)
+    _remove_file(output / RUNTIME_COMMIT_NAME)
+    return manifest
+
+
+def _recover_runtime_commit(output: Path) -> dict[str, Any] | None:
+    """Finish an interrupted event commit, or fail closed on any divergence."""
+    path = output / RUNTIME_COMMIT_NAME
+    if not path.exists():
+        return None
+    try:
+        commit = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeCommitError("runtime commit record is unreadable; preserved for inspection") from exc
+    return _apply_runtime_commit(output, commit)
+
+
+def recover_runtime_commit(output: Path) -> dict[str, Any] | None:
+    with output_mutation_lock(output):
+        return _recover_runtime_commit(output)
+
+
+def recover_atlas_commit(output: Path) -> dict[str, Any] | None:
+    """Finish one sealed atlas-only mutation without creating a new mutation."""
+    with output_mutation_lock(output):
+        if (output / RUNTIME_COMMIT_NAME).exists():
+            raise RuntimeCommitError(
+                "a runtime commit must be recovered before the atlas commit"
+            )
+        return _recover_atlas_commit(output)
 
 
 def append_runtime_event(output: Path, event: dict[str, Any], state: dict[str, Any]) -> dict[str, Any]:
+    with output_mutation_lock(output):
+        return _append_runtime_event(output, event, state)
+
+
+def _append_runtime_event(output: Path, event: dict[str, Any], state: dict[str, Any]) -> dict[str, Any]:
+    _recover_pending_commit(output)
     system = json.loads((output / "system.json").read_text(encoding="utf-8"))
-    ledger_path = output / "event_ledger.jsonl"
-    with ledger_path.open("a", encoding="utf-8") as handle:
-        handle.write(json.dumps(event, ensure_ascii=False) + "\n")
-    with (output / "command_ledger.jsonl").open("a", encoding="utf-8") as handle:
-        handle.write(json.dumps({
-            "event_id": event["event_id"],
-            "turn": event["turn"],
-            "event_hash": event["event_hash"],
-            "record_hash": event.get("record_hash"),
-            "command": event.get("command"),
-        }, ensure_ascii=False) + "\n")
-    pending = load_pending_session(output)
-    if pending and event.get("command", {}).get("discussion_session_id") == pending.get("session_id"):
-        archive = output / "command_sessions"
-        archive.mkdir(parents=True, exist_ok=True)
-        archived = {**pending, "status": "resolved", "resolved_event_id": event["event_id"], "resolved_event_hash": event["event_hash"]}
-        (archive / f"{pending['session_id']}.json").write_text(json.dumps(archived, indent=2, ensure_ascii=False), encoding="utf-8")
-    clear_pending_session(output)
+    prior_events = load_ledger(output / "event_ledger.jsonl")
+    valid, checks, rebuilt = verify_ledger(system, [*prior_events, event])
+    if not valid:
+        raise RuntimeCommitError(f"new event failed deterministic replay: {checks[-1]}")
+    state = copy.deepcopy(state)
     state.setdefault("command", {})["pending_session_id"] = None
-    (output / "runtime_state.json").write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
+    if canonical_hash(rebuilt) != canonical_hash(state):
+        raise RuntimeCommitError("supplied runtime state does not match deterministic replay")
+
     atlas_path = output / "expedition_atlas.json"
+    atlas_before = None
+    atlas_after = None
     if atlas_path.exists():
-        atlas = json.loads(atlas_path.read_text(encoding="utf-8"))
-        atlas = record_visit(atlas, atlas["active_location_id"], event)
-        write_atlas_files(output, atlas)
-    _refresh_consoles(output, system, state)
-    return _write_manifest(output)
+        atlas_before = json.loads(atlas_path.read_text(encoding="utf-8"))
+        if not verify_visit_chain(atlas_before)["valid"]:
+            raise RuntimeCommitError("existing expedition atlas visit chain is invalid")
+        atlas_after = record_visit(atlas_before, atlas_before["active_location_id"], event)
+
+    commit = {
+        "schema": RUNTIME_COMMIT_SCHEMA,
+        "prior_event_count": len(prior_events),
+        "prior_event_head": prior_events[-1].get("event_hash") if prior_events else None,
+        "prior_events": prior_events,
+        "event": copy.deepcopy(event),
+        "state_after": state,
+        "command_record": _command_record(event),
+        "pending_session": load_pending_session(output),
+        "atlas_before": atlas_before,
+        "atlas_after": atlas_after,
+    }
+    commit["commit_sha256"] = _commit_hash(commit)
+    _atomic_write_json(output / RUNTIME_COMMIT_NAME, commit)
+    return _apply_runtime_commit(output, commit)
 
 
 def update_command_mode(output: Path, mode: str) -> dict[str, Any]:
+    with output_mutation_lock(output):
+        return _update_command_mode(output, mode)
+
+
+def _update_command_mode(output: Path, mode: str) -> dict[str, Any]:
+    _recover_pending_commit(output)
     validate_mode(mode)
     if load_ledger(output / "event_ledger.jsonl"):
         raise ValueError("command mode can only be changed before the first resolved event; create a new branch for later mode changes")

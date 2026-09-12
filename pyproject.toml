@@ -6,9 +6,14 @@ build-backend = "setuptools.build_meta"
 name = "axm-factual-star-adventure-simulator"
 version = "0.15.0"
 description = "Local-first factual star adventure simulator with deterministic worlds, blind possibility forging, persistent expeditions, immutable rooted crew, lived-in ship interiors, a source-pinned spacecraft blueprint, role telemetry, evidence-gated skills, strict migration and local handoff verification."
+readme = "README.md"
 requires-python = ">=3.10"
 authors = [{name = "Mike - Axiom/Mir"}]
+license = {file = "LICENSE"}
 dependencies = []
+
+[project.urls]
+Repository = "https://github.com/mike-axiom-mir/axm-factual-space-simulator"
 
 [project.scripts]
 axm-star-sim = "axm_star_sim.cli:main"
@@ -23,7 +28,9 @@ axm-package-seal = "axm_star_sim.package_seal:main"
 
 
 [tool.setuptools]
-package-dir = {"" = "src"}
+package-dir = {"" = "src", "axm_star_sim.data" = "data"}
+packages = ["axm_star_sim", "axm_star_sim.data"]
+include-package-data = true
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.setuptools.package-data]
+"axm_star_sim.data" = ["*.json", "beacon_fixtures/*.json", "catalog_snapshots/*.txt"]

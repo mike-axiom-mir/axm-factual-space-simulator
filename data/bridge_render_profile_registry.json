@@ -23,6 +23,17 @@
       "changes_semantics": false
     },
     {
+      "id": "axm.render.temporal-evidence-bridge.v1",
+      "version": 1,
+      "display_name": "Temporal Evidence Bridge",
+      "fidelity_rank": 3,
+      "allowed_archetypes": [
+        "*"
+      ],
+      "changes_semantics": false,
+      "historical_rule": "Consumes hash-verified renderer inputs and immutable reconstruction packets; source mission time, derived receipt ranges and replay display time remain distinct; inspect-only cameras, labels and animation may not advance mission time, append events or alter truth labels."
+    },
+    {
       "id": "axm.render.holodeck-reconstruction.v1",
       "version": 1,
       "display_name": "Holodeck Reconstruction",

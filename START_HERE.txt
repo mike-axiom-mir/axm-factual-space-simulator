@@ -10,6 +10,7 @@ FIRST FIVE MINUTES
 4. Read: docs/LOCAL_HANDOFF_MASTER_v0_15_0.md
 5. Maintainers: read docs/PORTABILITY_AND_PACKAGE_MAINTENANCE.md before resealing or promoting a copy.
 6. GitHub improvements: read docs/GITHUB_PR_LANE.md and never push changes directly to main.
+7. Optional isolated renderer candidate: open output/temporal_bridge_candidate/temporal_bridge.html and read TEMPORAL_RENDERER_CANDIDATE_HANDOFF.txt. This candidate is not merged or promoted.
 
 TESTS ONLY
 ----------

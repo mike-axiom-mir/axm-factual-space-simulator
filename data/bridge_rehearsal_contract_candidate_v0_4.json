@@ -1,0 +1,30 @@
+{
+  "schema": "axm.bridge-rehearsal-contract.v1",
+  "version": "0.4.0-candidate",
+  "purpose": "Bind inspect-only source actions to deterministic bridge planning rehearsals without granting execution authority.",
+  "source": "operations_context.actions only",
+  "allowed_presentation_changes": [
+    "selected rehearsal",
+    "selected rehearsal step",
+    "station route overlay",
+    "role emphasis",
+    "evidence requirement display",
+    "hold-point display"
+  ],
+  "forbidden": [
+    "execute source action",
+    "advance mission time",
+    "append event",
+    "retarget event",
+    "modify runtime resources",
+    "close causal thread",
+    "change truth labels",
+    "treat rehearsal completion as outcome"
+  ],
+  "completion_boundary": "rehearsal_never_executes_source_action",
+  "may_execute_action": false,
+  "may_modify_runtime": false,
+  "may_close_thread": false,
+  "may_change_truth_labels": false,
+  "promotion": "HOLD_FOR_REPO_RESEAL_ACCEPTANCE_VISUAL_REVIEW_AND_MIKE_MERGE_GATE"
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "axm.exterior-cinematic-presentation-policy-candidate.v1",
+  "version": "0.14.0-candidate",
+  "policy_id": "axm.exterior-cinematic-presentation-policy.candidate.v1",
+  "truth_status": "simulation_policy_candidate_not_canon",
+  "purpose": "Animate declared exterior spacecraft capabilities and direct replay shots from immutable event segments without creating physical vehicle geometry, live operation state, or execution authority.",
+  "exterior_actor_sources": [
+    "ship_system_blueprint_registry.modules",
+    "ship_system_blueprint_registry.systems",
+    "low_graphic_3d_scene.source_runtime_resource_snapshot",
+    "failure_procedure_catalog",
+    "immutable_temporal_storyboard_cues"
+  ],
+  "exterior_visual_roles": [
+    "power_arrays",
+    "thermal_rejection",
+    "main_propulsion",
+    "reaction_control",
+    "communications",
+    "external_sensors",
+    "docking_eva",
+    "robotics_probe"
+  ],
+  "visual_detail_profiles": ["eco", "standard", "rich"],
+  "visual_detail_rule": "Rendering density may change; source facts, event order, cue timing fractions and operation state may not.",
+  "cinematic_rule": "Shots preserve the existing command_outbound -> observation_window -> telemetry_return order and copy the source segment display fractions.",
+  "authority_boundaries": {
+    "renderer_may_animate_exterior_capability_actors": true,
+    "renderer_may_route_camera_from_immutable_cues": true,
+    "renderer_may_adjust_visual_detail": true,
+    "renderer_may_claim_physical_vehicle_geometry": false,
+    "renderer_may_claim_operation_active": false,
+    "renderer_may_execute_exterior_operation": false,
+    "renderer_may_apply_thrust": false,
+    "renderer_may_dock": false,
+    "renderer_may_begin_eva": false,
+    "renderer_may_deploy_probe": false,
+    "renderer_may_move_authoritative_robotics": false,
+    "renderer_may_reorder_events": false,
+    "renderer_may_change_cue_timing_fractions": false,
+    "renderer_may_retarget_event": false,
+    "renderer_may_modify_world_state": false,
+    "renderer_may_modify_resources": false,
+    "renderer_may_change_truth_labels": false
+  },
+  "governance_note": "Presentation candidate only. Exterior motion is capability/rehearsal visualization; cinematic direction is a read-only rendering choice over immutable receipts."
+}

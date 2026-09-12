@@ -1,0 +1,38 @@
+{
+  "schema": "axm.repair-verification-contract-candidate.v1",
+  "version": "0.7.0-candidate",
+  "status": "DRAFT_CANDIDATE",
+  "purpose": "Join existing failure procedures and derived damage topology to a deterministic repair-attempt receipt chain without granting repair or fault-clear authority.",
+  "reuses": [
+    "failure_procedure_catalog",
+    "damage_topology_catalog",
+    "ship maintenance/spares/fabrication capability",
+    "existing room access graph"
+  ],
+  "repair_attempt_requires": [
+    "completed_procedure_session",
+    "sourced_repair_plan_receipt",
+    "matching_target_system",
+    "actor participation in completed procedure"
+  ],
+  "spare_rule": "Any planned spare consumption requires an explicit spare verification receipt; no SKU or compatibility is invented.",
+  "fabricated_part_rule": "Any fabricated repair part requires an explicit part validation receipt; fabrication capability alone grants no repair capability.",
+  "post_repair_outcomes": [
+    "effective",
+    "not_effective",
+    "inconclusive"
+  ],
+  "effective_gate_requires": [
+    "post-repair evidence",
+    "at least one independent check",
+    "observed_fault_absent=true",
+    "system_function_restored=true"
+  ],
+  "effective_result": "VERIFIED_EFFECTIVE_CLEARANCE_ELIGIBLE",
+  "clearance_boundary": "Eligibility produces a fault-clearance candidate only. It does not modify authoritative runtime or clear a fault.",
+  "may_execute_repair": false,
+  "may_modify_runtime": false,
+  "may_consume_spares": false,
+  "may_fabricate_repair_part": false,
+  "may_clear_fault": false
+}

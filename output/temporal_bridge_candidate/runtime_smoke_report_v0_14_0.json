@@ -1,0 +1,256 @@
+{
+  "schema": "axm.temporal-evidence-bridge-runtime-smoke.v1",
+  "version": "0.14.0",
+  "status": "passed",
+  "checks_passed": 49,
+  "checks_total": 49,
+  "checks": [
+    {
+      "name": "runtime control exported",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "initial state exported",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "initially paused",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "initial authority presentation only",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "cannot advance mission time",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "cannot append event",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "cannot change truth labels",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "cannot retarget recorded event",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "cannot modify runtime resources",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "four cues embedded",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "source mission clock preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "replay display clock starts at zero",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "first receipt range reconstructed",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "age remains unknown without timestamp",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no-future status is not a prediction",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "state-change receipt is valid",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "recorded event deltas are exposed",
+      "pass": true,
+      "detail": 4
+    },
+    {
+      "name": "target camera selectable",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "camera state exported",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "signal camera selectable",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "unknown camera falls back safely",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "all-label mode selectable",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "unknown label mode falls back safely",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "inspect-only planet selectable",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "inspector state exported",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "inspector does not retarget event",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "unknown inspector falls back to event target",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "scrubber reaches third receipt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "scrubber cannot advance source mission time",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "play starts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frames advance",
+      "pass": true,
+      "detail": 38
+    },
+    {
+      "name": "display clock advances independently",
+      "pass": true,
+      "detail": 3.7
+    },
+    {
+      "name": "source mission clock remains fixed",
+      "pass": true,
+      "detail": 3
+    },
+    {
+      "name": "observation segment reached",
+      "pass": true,
+      "detail": "observation_window"
+    },
+    {
+      "name": "cue phase bounded",
+      "pass": true,
+      "detail": 0.4625
+    },
+    {
+      "name": "telemetry return reached",
+      "pass": true,
+      "detail": "telemetry_return"
+    },
+    {
+      "name": "auto advance reaches next cue",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "source event hash remains attached",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "pause stops",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "paused frame count stable",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "manual cue selection reaches ledger head",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "ledger head ends at source mission clock",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "ledger head delta is zero",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "reduced motion blocks play",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "reduced motion remains paused",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "reset returns first cue",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "reset clears frames",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "reset clears replay display time",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "reset does not clear source mission time",
+      "pass": true,
+      "detail": 3
+    }
+  ],
+  "failures": [],
+  "visual_scope": "bounded_dom_canvas_runtime_contract_not_pixel_or_cadence_verification"
+}

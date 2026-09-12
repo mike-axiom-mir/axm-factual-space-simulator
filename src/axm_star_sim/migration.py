@@ -3,11 +3,9 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
-from pathlib import Path
 from typing import Any
 
-PACKAGE_ROOT = Path(__file__).resolve().parents[2]
-DATA_DIR = PACKAGE_ROOT / "data"
+from .registry import data_path
 
 
 class MigrationError(ValueError):
@@ -23,7 +21,7 @@ def domain_hash(value: Any, domain: str) -> str:
 
 
 def load_migration_policy() -> dict[str, Any]:
-    return json.loads((DATA_DIR / "save_migration_policy_registry.json").read_text(encoding="utf-8"))
+    return json.loads(data_path("save_migration_policy_registry.json").read_text(encoding="utf-8"))
 
 
 def default_policy() -> dict[str, Any]:
