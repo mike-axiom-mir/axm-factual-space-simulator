@@ -294,8 +294,8 @@
       "sha256": "db210b40b9e4e2eb72c88e13571637fba74183f01e0b3c833431c9d48e9f3cc6"
     },
     "output/contact_horizon_demo/contact_horizon_console.html": {
-      "bytes": 16584,
-      "sha256": "97fa8d68ee31a3feb3d76f59c8ddd45b93b982ed3b7cd53e5283fc1ebac61440"
+      "bytes": 24625,
+      "sha256": "ed038a2f9b74161b3f9f050282ec4d2bb18e401dd4c5628a6dd94a38d9974680"
     },
     "output/contact_horizon_demo/contact_horizon_demo.json": {
       "bytes": 27594,
@@ -306,8 +306,8 @@
       "sha256": "c111c9633eaa9bfdc5d8c4b3e1671f5423380f0c124a82e010828b07aadc7e17"
     },
     "output/crew_station_metric_demo/crew_station_console.html": {
-      "bytes": 205636,
-      "sha256": "2a59f2c10322233a87871b9b8e35f1a99143c951a69b94fb04a7d9305f477cd1"
+      "bytes": 202785,
+      "sha256": "1cc551f471de6a3691510f28078df987463a9da0aaec7c02630d5efe4a5c156a"
     },
     "output/crew_station_metric_demo/demo_report.json": {
       "bytes": 448421,
@@ -322,8 +322,8 @@
       "sha256": "3cf826ddff2192dc41033016e719709c8f1f1f6eb538dbf16c7ae0eb07433d57"
     },
     "output/factual_ship_blueprint_demo/ship_blueprint_console.html": {
-      "bytes": 8428,
-      "sha256": "689c45d8aa2e3b62806d6646f8a46266acff8086d976ffddf714c1a647d46886"
+      "bytes": 16095,
+      "sha256": "97dc6480ae3910d6f4a9bdd41f71de03c6c6724a705e304daf8955f450149db9"
     },
     "output/factual_ship_blueprint_demo/ship_state.json": {
       "bytes": 16648,
@@ -338,8 +338,8 @@
       "sha256": "c443df94eac3e1d962375f1c5a82998c42c100fa3fc8dd8112f7ef40e688b8d5"
     },
     "output/persistent_atlas_demo/atlas.html": {
-      "bytes": 30130,
-      "sha256": "83d16013ebc91040f0629edfb555dc1dcb789573305134cc9a4b6119c5a03a12"
+      "bytes": 31198,
+      "sha256": "46fb4c0aa1b0766fa9435e7d0b5eb269e367693a4bad72b8a6feb210c744a8e5"
     },
     "output/persistent_atlas_demo/expedition_alpha/adventure_console.html": {
       "bytes": 270189,
