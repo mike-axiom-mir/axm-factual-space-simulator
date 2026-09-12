@@ -3,7 +3,7 @@
   "package": "AXM_FACTUAL_STAR_ADVENTURE_SIMULATOR",
   "version": "0.15.0",
   "policy": "Canonical source, rules, data, tests, templates and documentation. Generated outputs have a separate snapshot manifest.",
-  "managed_file_count": 313,
+  "managed_file_count": 316,
   "files": {
     ".gitattributes": {
       "bytes": 45,
@@ -12,6 +12,10 @@
     ".github/PULL_REQUEST_TEMPLATE.md": {
       "bytes": 594,
       "sha256": "dc63c9e307c739e1c67b4e6f9649d90b50167a70999dfa03301988aad9c3a56d"
+    },
+    ".github/workflows/package-worktree-seal.yml": {
+      "bytes": 1558,
+      "sha256": "db00302df7b1bd9641ceb224178d062c9759d0a46093d359c538ad1631856f5e"
     },
     ".github/workflows/verify.yml": {
       "bytes": 1115,
@@ -22,8 +26,8 @@
       "sha256": "6edb60b374c9876b6f75031a52d67333544e7e62db207476bf8aed6b93faaed8"
     },
     "AGENTS.md": {
-      "bytes": 1079,
-      "sha256": "e652ea6e3dc8515699685e3c17d45b6875d2a3b1e687b4ee35c30dd33c6465cd"
+      "bytes": 4262,
+      "sha256": "8144379c4f9661d45a7a1219b17b7037f9432cc08d014073afa365c2912cdf22"
     },
     "assets/concept/FACTUAL_STAR_ADVENTURE_SIMULATOR_IN_PRODUCTION.png": {
       "bytes": 2047381,
@@ -593,6 +597,10 @@
       "bytes": 999,
       "sha256": "2b94efffca471a7a4dee4b316ed9e3f46bc2f18ba84b218bc8b6504314de5d05"
     },
+    "LICENSE": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
     "LOCAL_INTAKE_HANDOFF.txt": {
       "bytes": 2239,
       "sha256": "12c6f910664035318d039a9bd3058cb6cea005e02cb44ea36243d58ef40ef6af"
@@ -1054,8 +1062,8 @@
       "sha256": "886e39ea4a629a7836b0ea25c1e397c8bcd32e3054c36558c93bd00dacdca7fa"
     },
     "src/axm_star_sim/package_seal.py": {
-      "bytes": 6449,
-      "sha256": "59bd84918e3e18cdf02ee25c95b4e91afc10b6fa6c4880416c32cab306aaa33c"
+      "bytes": 6471,
+      "sha256": "6fda99ea115b3e6e0732cf7557bf47db196e49c74d7fa098cb17b873027162e5"
     },
     "src/axm_star_sim/physics.py": {
       "bytes": 2849,
@@ -1186,8 +1194,8 @@
       "sha256": "2143e83176ed6a44c599e97b1ed633ca0589ed5941c65b6db8dbaa0c240d1df8"
     },
     "tests/test_package_seal.py": {
-      "bytes": 1976,
-      "sha256": "4e020aa3723e909cbb57df5417d80e108375beaaaf9ed06fc9fa4713ed9a1777"
+      "bytes": 3759,
+      "sha256": "e75dfd450823eb31637f623358b5a199e0598cd2ccebc82dfb88bdee79ec3031"
     },
     "tests/test_physics_threads.py": {
       "bytes": 6841,
@@ -1212,6 +1220,10 @@
     "tests/test_technology_physics.py": {
       "bytes": 3066,
       "sha256": "7e9e016c26bfb7f01ac84df2877f34836cff3f3d4ecd7fa6704d0aafd847ad33"
+    },
+    "THIRD_PARTY.json": {
+      "bytes": 264,
+      "sha256": "222f04ec75fd8ec51a270804ef0ea55c9a4dd73ba8674a93f9dfb9ef7b651b71"
     },
     "tools/build_platform_backfeed.py": {
       "bytes": 12070,
