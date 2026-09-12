@@ -1,0 +1,18 @@
+{
+  "schema": "axm.failure-procedure-candidate-contract.v1",
+  "version": "0.5.0-candidate",
+  "sources": [
+    "data/ship_failure_mode_registry.json",
+    "data/crew_station_display_registry.json"
+  ],
+  "purpose": "Bind source failure modes to versioned evidence-gated review/training procedures with explicit hold points.",
+  "boundaries": {
+    "may_execute_response": false,
+    "may_modify_runtime": false,
+    "may_clear_fault": false,
+    "may_claim_repair_success": false,
+    "medical_generic_procedure_synthesis": false
+  },
+  "completion_boundary": "PROCEDURE_COMPLETE_AWAIT_EXTERNAL_OUTCOME_VERIFICATION",
+  "status": "DRAFT_CANDIDATE_NOT_CANON"
+}

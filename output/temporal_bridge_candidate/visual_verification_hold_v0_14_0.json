@@ -1,0 +1,28 @@
+{
+  "schema": "axm.live-visual-verification-receipt.v1",
+  "version": "0.14.0",
+  "observed_at_utc": "2026-08-22T02:32:57Z",
+  "claim": "The temporal evidence bridge visibly animates, scrubs receipts, changes inspect-only framing, exposes recorded state changes, and remains usable at desktop and mobile viewports.",
+  "surface_route": "output/temporal_bridge_candidate/temporal_bridge.html",
+  "visual_backend": "UNAVAILABLE_FOR_LOCAL_SURFACE",
+  "fallback_reason": "AXM_CHROMIUM_EXECUTABLE is not configured in this runtime.",
+  "viewport_device_seat": "not observed",
+  "capture_capability": "MISSING_VISUAL_CAPTURE",
+  "baseline": "not captured",
+  "authorized_action": "read-only local visual verification",
+  "observed_sequence": [
+    "bounded DOM/canvas runtime harness completed 49 of 49 checks",
+    "local browser smoke was invoked for the v0.14.0 surface",
+    "browser launch stopped before render because AXM_CHROMIUM_EXECUTABLE is unset",
+    "no screenshot or video frame was captured"
+  ],
+  "typed_observation": "Runtime state progression, pause, reset, receipt navigation, replay scrubbing, camera selection, object inspection, label selection, recorded delta exposure, temporal separation and authority fields are verified without pixels. Visible motion cadence, responsive layout and visual quality were not observed.",
+  "verdict": "UNKNOWN",
+  "named_seam": "MISSING_LOCAL_CHROMIUM_EXECUTABLE",
+  "buffer_digest": null,
+  "temporary_paths_deleted": true,
+  "cleanup_complete": true,
+  "raw_frames_captured": false,
+  "raw_frames_retained": false,
+  "next_cheapest_test": "Run scripts/browser_smoke_temporal_bridge_candidate.py with AXM_CHROMIUM_EXECUTABLE set to a reviewed Chromium binary, then visually inspect the ephemeral baseline, active, inspect-focus and mobile frames before they are deleted."
+}

@@ -1,0 +1,113 @@
+AXM FACTUAL STAR ADVENTURE SIMULATOR — TEMPORAL RENDERER CANDIDATE
+
+OPEN
+----
+output/temporal_bridge_candidate/temporal_bridge.html
+
+REBUILD
+-------
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python scripts/build_temporal_bridge_candidate.py
+
+VERIFY
+------
+Windows:      run_local_acceptance.bat
+Linux/macOS:  bash run_local_acceptance.sh
+Runtime contract:
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python scripts/temporal_bridge_runtime_smoke_v0_14.py
+With Chromium + Playwright:
+AXM_CHROMIUM_EXECUTABLE=<browser path> PYTHONPATH=src python scripts/browser_smoke_temporal_bridge_candidate.py
+
+PRESERVE
+--------
+- Renderer is presentation only.
+- Compressed orbit motion is not a precision ephemeris.
+- A command pulse is not proof of delivery.
+- Telemetry return animation is not automatic knowledge acceptance.
+- Mission time and the event ledger never advance from animation.
+- Source mission time, reconstructed receipt ranges and replay display time stay separate.
+- Missing wall-clock age remains UNKNOWN; no imported future receipt is not a prediction.
+- Overview, target-focus and signal-lane cameras are inspect-only presentation state.
+- The replay scrubber and previous/next controls cannot advance source mission time.
+- Object inspection cannot retarget the event or alter its source hash.
+- Recorded delta bars cannot modify runtime resources and do not assign good/bad meaning.
+- Main GitHub integration, version promotion and publishing remain held for Mike.
+
+READ
+----
+docs/TEMPORAL_RENDERER_INTEGRATION_CANDIDATE_v0_15_0.md
+
+
+APPENDED STEWARD RECEIPT — TEMPORAL CLARITY v0.13.0
+---------------------------------------------------
+Work line / turn / seat:
+AXM factual simulator / 2026-08-22 follow-on steward run / working chat
+
+Verified facts with age and source:
+- GitHub main remained f7939f24faf970e32d65b561ec5b2f8eb1e41d70 when reread during this run.
+- Source mission time is copied read-only as T+03:00; four receipt ranges reconcile as
+  T+00:00→01:00, T+01:00→01:30, T+01:30→02:30 and T+02:30→03:00.
+- 19 focused adapter/view tests passed.
+- 39/39 bounded DOM/canvas runtime checks passed.
+- Full local acceptance passed 245/245 tests, 283 canonical files and 173 output files.
+- Final seal hashes and audit receipt are emitted by the post-handoff acceptance run.
+
+Assumptions:
+- The existing v0.15 Expedition Alpha output remains the selected integration fixture.
+- Renderer adapter v0.13.0 remains a candidate inside the v0.15.0 package baseline.
+
+Open holds:
+- Live pixel, motion-cadence and responsive visual verdict is UNKNOWN_MISSING_VISUAL_CAPTURE.
+- The cloud browser rejected the local data URL before render; no frame was captured.
+- PowerShell/cmd is unavailable, so the digest-locked GitHub PR plan was not generated.
+- GitHub merge, release, version promotion and CANON decisions remain held for Mike.
+
+Decisions as state:
+- Added source/replay clock separation, bounded time reconstruction, temporal status markers,
+  inspect-only camera presets and label-density modes without changing simulation authority.
+- No GitHub commit, branch, PR, push, merge or release was performed.
+
+Access reread: yes
+Next cheapest step:
+Run scripts/browser_smoke_temporal_bridge_candidate.py with a reviewed Chromium executable,
+inspect the ephemeral desktop/motion/target/mobile frames, then run the Windows PR plan gate.
+Continuity seam: none; this receipt appends the prior temporal-renderer candidate handoff.
+Raw sense material carried: false
+
+
+APPENDED STEWARD RECEIPT — CAUSAL REPLAY v0.14.0
+-------------------------------------------------
+Work line / turn / seat:
+AXM factual simulator / 2026-08-22 final local-intake steward run / working chat
+
+Verified facts with age and source:
+- GitHub main was reread during this run at f7939f24faf970e32d65b561ec5b2f8eb1e41d70.
+- The isolated candidate imports that fixture through selected-file hashes and immutable event-chain links.
+- Source mission time remains copied read-only as T+03:00 across four reconciled receipts.
+- 22 focused adapter/view tests passed.
+- 49/49 bounded DOM/canvas runtime checks passed.
+- Full local acceptance passed 248/248 tests, 283 canonical files and 175 output files.
+- Final seal hashes and the final audit receipt are emitted by the post-handoff acceptance run.
+
+Assumptions:
+- The existing v0.15 Expedition Alpha output remains the selected integration fixture.
+- Renderer adapter v0.14.0 remains a candidate inside the v0.15.0 package baseline.
+
+Open holds:
+- Live pixel, motion-cadence and responsive visual verdict is UNKNOWN_MISSING_VISUAL_CAPTURE.
+- AXM_CHROMIUM_EXECUTABLE is unset; the v0.14 browser smoke stopped before render and captured no frame.
+- PowerShell/cmd is unavailable, so the digest-locked GitHub PR plan was not generated.
+- GitHub merge, release, version promotion and CANON decisions remain held for Mike.
+
+Decisions as state:
+- Added a causal replay scrubber and previous/next receipt navigation.
+- Added inspect-any-known-object facts and target-focus framing without event retargeting.
+- Added deterministic event state-change receipts and direction-only delta bars without resource mutation or value judgment.
+- Kept simulation/event/mission-time authority unchanged and read only.
+- No GitHub commit, branch, PR, push, merge or release was performed.
+
+Access reread: yes
+Next cheapest step:
+Run scripts/browser_smoke_temporal_bridge_candidate.py with a reviewed Chromium executable,
+inspect the ephemeral desktop/motion/inspect-focus/mobile frames, then run the Windows PR plan gate.
+Continuity seam: appends the v0.13.0 temporal-clarity receipt; its sealed rollback is bundled in the complete local intake.
+Raw sense material carried: false

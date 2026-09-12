@@ -1,0 +1,44 @@
+{
+  "schema": "axm.damage-topology-contract.v1",
+  "version": "0.6.0-candidate",
+  "roadmap_target": "FUTURE-004",
+  "composition_rule": "derive_from_existing_blueprint_interface_room_failure_procedure_and_maintenance_registries",
+  "source_registries": [
+    "data/ship_system_blueprint_registry.json",
+    "data/ship_interface_graph.json",
+    "data/ship_interior_archetype_registry.json",
+    "data/room_interaction_registry.json",
+    "data/ship_failure_mode_registry.json",
+    "data/crew_station_display_registry.json"
+  ],
+  "reuse": {
+    "system_dependencies": "EXISTING",
+    "room_adjacency_and_travel": "EXISTING",
+    "system_room_bindings": "EXISTING",
+    "failure_modes": "EXISTING",
+    "failure_procedures": "EXTEND",
+    "maintenance_and_spares_capability": "EXISTING_ABSTRACT",
+    "component_level_topology": "HOLD_UNTIL_SOURCE_PINNED",
+    "repair_access_resolution": "NEW_DERIVED_VIEW",
+    "direct_interface_damage_view": "NEW_DERIVED_VIEW"
+  },
+  "truth_boundaries": [
+    "direct interface neighbors are not automatically failed",
+    "a mapped room path is not authorization to enter or work",
+    "unmapped external/service bindings remain unresolved",
+    "component-specific spares remain unknown unless later source-pinned",
+    "repair-duration estimation capability does not prove repair duration for a specific fault",
+    "fabrication capability does not authorize or validate a repair part",
+    "no repair attempt clears a fault without an external verified outcome receipt"
+  ],
+  "authority": {
+    "may_modify_runtime": false,
+    "may_execute_repair": false,
+    "may_execute_automatic_response": false,
+    "may_consume_spares": false,
+    "may_fabricate_repair_part": false,
+    "may_clear_fault": false,
+    "may_claim_neighbor_failed": false,
+    "repair_verified": false
+  }
+}

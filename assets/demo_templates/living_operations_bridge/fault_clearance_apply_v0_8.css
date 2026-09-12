@@ -1,0 +1,6 @@
+.faultClearanceApplyPanel{display:grid;gap:8px;padding:9px;border:1px solid #284453;background:#061017}
+.clearanceTitle{font-size:12px;font-weight:800;letter-spacing:.04em}
+.clearanceMeta{display:flex;gap:6px;flex-wrap:wrap}.clearanceInputs{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.clearanceInputs span{padding:5px;border:1px solid #254252;background:#07141c;font-size:10px}
+.clearancePolicy{display:grid;gap:3px;padding:6px;border-left:2px solid #78f3b4;background:#07140f}.clearancePolicy span,.clearancePolicy small{font-size:10px}
+.clearanceBoundary{font-size:10px;line-height:1.45;color:#c7dbe4}.clearanceLock{padding:6px;border:1px solid #ffd078;color:#ffd078;font-size:10px;font-weight:700;text-align:center}

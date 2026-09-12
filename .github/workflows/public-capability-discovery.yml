@@ -1,0 +1,134 @@
+name: Factual simulator public capability discovery
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: factual-space-public-discovery-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generated-contract:
+    name: generated contract · Python ${{ matrix.python }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.10', '3.13']
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Verify generated public registry
+        run: python tools/generate_public_capabilities.py --check
+      - name: Run focused fail-closed discovery regressions
+        run: python -m unittest -v tests.test_public_capability_discovery
+      - name: Verify canonical package seal remains exact
+        run: python tools/reseal_package.py --check
+
+  installed-wheel-and-discovery-bridge:
+    name: clean wheel + portable Discovery Buddy bridge
+    runs-on: ubuntu-latest
+    needs: generated-contract
+    env:
+      PIP_DISABLE_PIP_VERSION_CHECK: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+    steps:
+      - name: Checkout factual simulator
+        uses: actions/checkout@v6
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Install declared wheel build requirements
+        run: python -m pip install "setuptools>=68" wheel
+      - name: Build the verified reproducible wheel
+        run: |
+          mkdir -p "$RUNNER_TEMP/factual-wheel"
+          python tools/build_reproducible_wheel.py --output-dir "$RUNNER_TEMP/factual-wheel" > "$RUNNER_TEMP/wheel-receipt.json"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          receipt = json.loads(Path(os.environ['RUNNER_TEMP'], 'wheel-receipt.json').read_text('utf-8'))
+          assert receipt['schema'] == 'axm.reproducible-wheel-build-receipt.v1'
+          assert receipt['status'] == 'PASS'
+          assert receipt['authority'] == {'release': False, 'merge': False, 'canon': False}
+          assert receipt['build']['rebuilds_compared'] == 2
+          print('reproducible wheel receipt:', receipt['artifact']['sha256'])
+          PY
+      - name: Install and exercise the discovered provider offline from an unrelated directory
+        run: |
+          WHEEL=$(find "$RUNNER_TEMP/factual-wheel" -maxdepth 1 -name '*.whl' -print -quit)
+          test -n "$WHEEL"
+          python -m venv "$RUNNER_TEMP/factual-consumer-venv"
+          "$RUNNER_TEMP/factual-consumer-venv/bin/python" -m pip install --no-index --no-deps "$WHEEL"
+          mkdir -p "$RUNNER_TEMP/factual-consumer"
+          cd "$RUNNER_TEMP/factual-consumer"
+          env -u PYTHONPATH "$RUNNER_TEMP/factual-consumer-venv/bin/axm-star-sim" generate --seed DISCOVERY-BRIDGE-001 --output adventure > generate.json
+          env -u PYTHONPATH "$RUNNER_TEMP/factual-consumer-venv/bin/axm-star-sim" verify-ledger --output adventure > verify.json
+          "$RUNNER_TEMP/factual-consumer-venv/bin/python" - <<'PY'
+          import json
+          from pathlib import Path
+          generated = json.loads(Path('generate.json').read_text('utf-8'))
+          verified = json.loads(Path('verify.json').read_text('utf-8'))
+          assert generated
+          assert verified
+          print('clean installed provider generate/verify: PASS')
+          PY
+      - name: Checkout pinned portable Discovery Buddy source
+        uses: actions/checkout@v6
+        with:
+          repository: mike-axiom-mir/axm-discovery-buddy
+          ref: 565c38ecf93a9d563b02211258d8d36fcb1162b5
+          path: .ci/discovery-buddy
+          persist-credentials: false
+      - name: Build and independently verify portable Discovery Buddy
+        run: |
+          python .ci/discovery-buddy/tools/build_portable_discovery.py build --output "$RUNNER_TEMP/discovery-buddy.pyz" --receipt "$RUNNER_TEMP/discovery-buddy.pyz.receipt.json"
+          python .ci/discovery-buddy/tools/build_portable_discovery.py verify --output "$RUNNER_TEMP/discovery-buddy.pyz" --receipt "$RUNNER_TEMP/discovery-buddy.pyz.receipt.json"
+          rm -rf .ci/discovery-buddy
+          test ! -e .ci/discovery-buddy
+      - name: Scan, exact-verify, and query through only the portable consumer
+        run: |
+          python "$RUNNER_TEMP/discovery-buddy.pyz" scan . --public --output-dir "$RUNNER_TEMP/factual-discovery"
+          python "$RUNNER_TEMP/discovery-buddy.pyz" verify . --public --output-dir "$RUNNER_TEMP/factual-discovery"
+          python "$RUNNER_TEMP/discovery-buddy.pyz" query "$RUNNER_TEMP/factual-discovery/public-discovery.json" --capability-id axm.factual-space-simulator.seeded-local-adventure --repo mike-axiom-mir/axm-factual-space-simulator > "$RUNNER_TEMP/query.json"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          result = json.loads(Path(os.environ['RUNNER_TEMP'], 'query.json').read_text('utf-8'))
+          assert result['summary']['matches'] == 1
+          assert result['authority'] == {
+              'classification': 'DISCOVERY_EVIDENCE_ONLY',
+              'execute': False,
+              'install': False,
+              'select': False,
+              'merge': False,
+              'canon': False,
+          }
+          candidate = result['candidates'][0]
+          assert candidate['repository'] == 'mike-axiom-mir/axm-factual-space-simulator'
+          assert candidate['capability']['id'] == 'axm.factual-space-simulator.seeded-local-adventure'
+          assert candidate['capability']['providers'] == ['mike-axiom-mir/axm-factual-space-simulator']
+          assert candidate['capability']['consumers'] == []
+          assert candidate['capability']['status'] is None
+          assert candidate['capability']['source'] == 'registry/capabilities.jsonl'
+          record = json.loads(Path('registry/capabilities.jsonl').read_text('utf-8'))
+          assert record['operations'] == ['generate', 'verify-ledger']
+          assert record['runtime']['networkRequired'] is False
+          assert record['runtime']['accountRequired'] is False
+          assert record['authority']['execution'] is False
+          print('portable Discovery Buddy -> factual simulator capability: PASS')
+          PY

@@ -30,6 +30,7 @@ Roots shape option eligibility before efficiency. They cannot be reordered, disa
 - Deterministic initial universes with live-entropy options that fail closed.
 - Four explicit command modes.
 - Physics-coupled measurements and causal action threads.
+- Restart-safe event commits with sealed, fail-closed projection recovery.
 - Source-pinned technology lineages with unknown performance kept unknown.
 - Long-horizon contact search without guaranteed aliens.
 - Persistent revision-safe expedition atlas.
@@ -69,6 +70,12 @@ Linux/macOS seal check: ./run_package_seal_check.sh
 
 For the safe reseal and promotion sequence, read `docs/PORTABILITY_AND_PACKAGE_MAINTENANCE.md`.
 
+Resolved turns treat `event_ledger.jsonl` as canonical history and rebuild runtime,
+command, atlas and rendering projections from a sealed write-ahead commit after an
+interruption. See `docs/RUNTIME_COMMIT_AND_RECOVERY_v1.md`; explicit recovery is
+available through `axm-star-sim recover-runtime --output <adventure>` for turns
+and `axm-star-sim recover-atlas --output <adventure>` for atlas-only mutations.
+
 ## GitHub improvements
 
 Routine future changes use the digest-locked draft-PR lane in `docs/GITHUB_PR_LANE.md`. It verifies and hashes locally, refuses direct-main pushes and opens a draft pull request only after the exact plan digest is reviewed.
@@ -81,6 +88,11 @@ Publish:   run_github_pr_publish.bat <reviewed-plan-digest>
 ```
 
 The wrappers set `PYTHONPATH` and disable transient bytecode generation. Advanced users may alternatively run `python -m pip install -e . --no-deps` and then use the registered `axm-*` commands.
+
+For a checkout-independent installation, build and install the wheel as described
+in `docs/INSTALLED_PACKAGE.md`. The wheel carries byte-identical copies of the
+canonical read-only registries required by the simulator; caller working-directory
+files cannot override those packaged registries.
 
 ## Dependency-free branch backfeed
 

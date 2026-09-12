@@ -3,11 +3,9 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
-from pathlib import Path
 from typing import Any
 
-PACKAGE_ROOT = Path(__file__).resolve().parents[2]
-DATA_DIR = PACKAGE_ROOT / "data"
+from .registry import data_path
 
 ELIGIBLE = "eligible"
 HOLD = "hold_for_clarification_or_authority"
@@ -27,13 +25,13 @@ def domain_hash(value: Any, domain: str) -> str:
 
 
 def load_root_kernel() -> dict[str, Any]:
-    kernel = json.loads((DATA_DIR / "immutable_root_kernel.json").read_text(encoding="utf-8"))
+    kernel = json.loads(data_path("immutable_root_kernel.json").read_text(encoding="utf-8"))
     verify_root_kernel(kernel)
     return kernel
 
 
 def load_default_crew() -> dict[str, Any]:
-    registry = json.loads((DATA_DIR / "crew_start_registry.json").read_text(encoding="utf-8"))
+    registry = json.loads(data_path("crew_start_registry.json").read_text(encoding="utf-8"))
     crew_id = registry["default_crew_start_id"]
     crew = next(row for row in registry["crew_starts"] if row["id"] == crew_id)
     verify_default_crew_binding(crew, load_root_kernel())

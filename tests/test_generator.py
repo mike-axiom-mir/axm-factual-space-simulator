@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import json
 import unittest
 from pathlib import Path
@@ -76,7 +77,6 @@ class GeneratorTests(unittest.TestCase):
                 },
             ]
             raw = json.dumps(rows).encode("utf-8")
-            import hashlib
             (snap / "raw.json").write_bytes(raw)
             (snap / "normalized.json").write_bytes(raw)
             (snap / "manifest.json").write_text(json.dumps({
@@ -90,6 +90,35 @@ class GeneratorTests(unittest.TestCase):
             self.assertEqual(summary["records"], 2)
             self.assertFalse(summary["automatic_generator_authority"])
             self.assertEqual(summary["fields"]["orbital_period"]["median"], 21.75)
+
+    def test_catalog_normalization_rejects_snapshot_provenance_drift(self):
+        with TemporaryDirectory() as temp:
+            root = Path(temp)
+            snap = root / "snapshot"
+            snap.mkdir()
+            original = [{"pl_name": "Observed b", "pl_orbper": 12.5}]
+            altered = [{"pl_name": "Forged b", "pl_orbper": 999999}]
+            original_bytes = json.dumps(original).encode("utf-8")
+            (snap / "raw.json").write_bytes(original_bytes)
+            (snap / "normalized.json").write_text(json.dumps(altered), encoding="utf-8")
+            (snap / "manifest.json").write_text(json.dumps({
+                "source_id": "nasa_exoplanet_archive",
+                "sha256": hashlib.sha256(original_bytes).hexdigest(),
+                "bytes": len(original_bytes),
+                "retrieved_at": "2026-09-09T00:00:00+00:00",
+            }))
+
+            output = root / "catalog.jsonl"
+            with self.assertRaisesRegex(ValueError, "normalized.json diverges"):
+                normalize_nasa_snapshot(snap, output)
+            self.assertFalse(output.exists())
+
+            altered_bytes = json.dumps(altered).encode("utf-8")
+            (snap / "raw.json").write_bytes(altered_bytes)
+            (snap / "normalized.json").write_bytes(altered_bytes)
+            with self.assertRaisesRegex(ValueError, "manifest SHA-256"):
+                normalize_nasa_snapshot(snap, output)
+            self.assertFalse(output.exists())
 
     def test_source_urls_are_bounded_and_encoded(self):
         nasa = build_nasa_exoplanet_archive_url(25)

@@ -1,0 +1,7 @@
+{
+  "schema": "axm.temporal-bridge-browser-smoke.v1",
+  "version": "0.14.0",
+  "status": "MISSING_VISUAL_CAPTURE",
+  "reason": "AXM_CHROMIUM_EXECUTABLE is not set",
+  "verdict": "UNKNOWN"
+}

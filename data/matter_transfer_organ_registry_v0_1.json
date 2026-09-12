@@ -1,0 +1,1033 @@
+{
+  "schema": "axm.matter-transfer-organ-registry.v1",
+  "registry_version": "0.1.0",
+  "date": "2026-08-16",
+  "status": "research_draft",
+  "canonical_claim_ceiling": "Architecture and simulation framework only; physical bulk-matter teleportation is not established.",
+  "truth_boundary": {
+    "simulation_first": true,
+    "no_live_or_biological_subjects": true,
+    "no_destructive_scanning": true,
+    "no_weapon_or_harmful_hardware_path": true,
+    "unknown_is_not_pass": true,
+    "visual_similarity_is_not_state_identity": true,
+    "model_success_is_not_physical_validation": true,
+    "no_silent_claim_promotion": true
+  },
+  "epistemic_classes": {
+    "grounded": "Established mathematics, measurement practice, or experimentally supported physics within the declared scope.",
+    "modeling": "Deterministic software architecture or mathematical representation that may be useful without claiming nature implements it.",
+    "speculative": "Hypothesis requiring equations, predictions, falsifiers, and independent evidence.",
+    "unknown": "Required information is absent or unresolved. Unknown never converts to pass."
+  },
+  "transfer_modes": [
+    {
+      "id": "MT-0",
+      "name": "symbolic_state_transfer",
+      "class": "grounded",
+      "claim_ceiling": "Structured state moved between software components."
+    },
+    {
+      "id": "MT-1",
+      "name": "classical_information_reconstruction",
+      "class": "grounded",
+      "claim_ceiling": "Classical information transmitted and used to reconstruct a declared representation."
+    },
+    {
+      "id": "MT-2",
+      "name": "conventional_matter_relocation",
+      "class": "grounded",
+      "claim_ceiling": "Matter physically transported by ordinary means; not teleportation."
+    },
+    {
+      "id": "MT-3",
+      "name": "quantum_state_teleportation",
+      "class": "grounded_with_scope_limit",
+      "claim_ceiling": "A quantum state is transferred using an entanglement-assisted protocol plus classical communication; bulk matter is not transported."
+    },
+    {
+      "id": "MT-4",
+      "name": "scan_and_reconstruct_matter_model",
+      "class": "modeling_speculative",
+      "claim_ceiling": "A software model of capture, encoding, destination resources, and reconstruction."
+    },
+    {
+      "id": "MT-5",
+      "name": "non_destructive_bulk_matter_transfer",
+      "class": "speculative",
+      "claim_ceiling": "Unvalidated hypothesis only."
+    },
+    {
+      "id": "MT-6",
+      "name": "spacetime_shortcut_or_portal",
+      "class": "speculative",
+      "claim_ceiling": "Unvalidated spacetime-geometry hypothesis only."
+    }
+  ],
+  "shared_packets": {
+    "source_packet": [
+      "source_id",
+      "capture_date",
+      "origin_type",
+      "authority_class",
+      "reported_claim",
+      "bounded_paraphrase",
+      "content_hash",
+      "privacy_boundary",
+      "license_boundary"
+    ],
+    "claim_packet": [
+      "claim_id",
+      "reported_observed_inferred_or_speculative",
+      "epistemic_class",
+      "maximum_public_wording",
+      "required_sources",
+      "unresolved_dependencies"
+    ],
+    "state_packet": [
+      "state_id",
+      "transfer_mode",
+      "geometry",
+      "composition",
+      "field_state",
+      "thermodynamic_state",
+      "relational_structure",
+      "uncertainty",
+      "identity_contract",
+      "unknown_fields"
+    ],
+    "transition_packet": [
+      "transition_id",
+      "space_id",
+      "metric_id",
+      "path",
+      "channel",
+      "timing",
+      "cost",
+      "constraint_results",
+      "sensitivity"
+    ],
+    "verification_packet": [
+      "attempt_id",
+      "declared_mode",
+      "predeclared_prediction",
+      "expected_observables",
+      "observed_values",
+      "residuals",
+      "invariant_results",
+      "causal_result",
+      "identity_result",
+      "alternative_explanations",
+      "falsification_result",
+      "replication_status",
+      "claim_ceiling"
+    ]
+  },
+  "organs": [
+    {
+      "id": "MT-O00",
+      "name": "source_intake_and_provenance",
+      "layer": "truth_intake",
+      "epistemic_class": "grounded",
+      "purpose": "Capture an external lead without silently strengthening or anonymizing its claims.",
+      "inputs": [
+        "post",
+        "paper",
+        "diagram",
+        "equation",
+        "measurement",
+        "human_idea"
+      ],
+      "outputs": [
+        "source_packet"
+      ],
+      "depends_on": [],
+      "hard_gates": [
+        "origin recorded",
+        "reported claim separated from AXM inference",
+        "privacy and license boundary declared"
+      ],
+      "failure_state": "QUARANTINED_SOURCE",
+      "tests": [
+        "missing-origin fails closed",
+        "paraphrase does not exceed source claim",
+        "private metadata is not published"
+      ]
+    },
+    {
+      "id": "MT-O01",
+      "name": "claim_ceiling_classifier",
+      "layer": "truth_intake",
+      "epistemic_class": "grounded",
+      "purpose": "Assign observed, reported, inferred, modeled, speculative, disputed, or unknown status and cap public wording.",
+      "inputs": [
+        "source_packet",
+        "candidate_claim"
+      ],
+      "outputs": [
+        "claim_packet"
+      ],
+      "depends_on": [
+        "MT-O00"
+      ],
+      "hard_gates": [
+        "no automatic canon",
+        "unknown is not pass",
+        "secondary source cannot create a primary fact"
+      ],
+      "failure_state": "CLAIM_HELD",
+      "tests": [
+        "speculation cannot output established",
+        "missing evidence lowers ceiling",
+        "contradiction is preserved"
+      ]
+    },
+    {
+      "id": "MT-O02",
+      "name": "unit_and_dimension_auditor",
+      "layer": "truth_intake",
+      "epistemic_class": "grounded",
+      "purpose": "Detect dimensional errors, unit-selected coincidences, hidden normalization, and unsupported significant figures.",
+      "inputs": [
+        "equations",
+        "constants",
+        "units",
+        "uncertainties"
+      ],
+      "outputs": [
+        "unit_audit_receipt"
+      ],
+      "depends_on": [
+        "MT-O01"
+      ],
+      "hard_gates": [
+        "dimensionally consistent equations",
+        "reversible conversion",
+        "dimensionless and dimensional values distinguished"
+      ],
+      "failure_state": "UNIT_INVALID",
+      "tests": [
+        "c converts to 2.99792458 Mm/cs",
+        "pi Mm/cs is not accepted as c",
+        "unit change cannot be treated as a new law"
+      ]
+    },
+    {
+      "id": "MT-O03",
+      "name": "known_physics_baseline",
+      "layer": "truth_intake",
+      "epistemic_class": "grounded",
+      "purpose": "Expose the established behavior a model must reproduce or explicitly depart from.",
+      "inputs": [
+        "declared_domain",
+        "source_registry"
+      ],
+      "outputs": [
+        "baseline_contract"
+      ],
+      "depends_on": [
+        "MT-O00",
+        "MT-O01",
+        "MT-O02"
+      ],
+      "hard_gates": [
+        "primary sources preferred",
+        "scope and approximation declared",
+        "known limits preserved"
+      ],
+      "failure_state": "BASELINE_INCOMPLETE",
+      "tests": [
+        "null interval does not create photon rest frame",
+        "quantum teleportation remains distinct from matter transport",
+        "field drawing is not particle trajectory"
+      ]
+    },
+    {
+      "id": "MT-O04",
+      "name": "transfer_mode_classifier",
+      "layer": "truth_intake",
+      "epistemic_class": "grounded",
+      "purpose": "Prevent success in a lower transfer mode from being reported as a higher mode.",
+      "inputs": [
+        "proposed_attempt",
+        "baseline_contract"
+      ],
+      "outputs": [
+        "declared_transfer_mode"
+      ],
+      "depends_on": [
+        "MT-O01",
+        "MT-O03"
+      ],
+      "hard_gates": [
+        "exactly one primary mode declared",
+        "cross-mode claim promotion forbidden"
+      ],
+      "failure_state": "MODE_AMBIGUOUS",
+      "tests": [
+        "software copy cannot claim MT-5",
+        "quantum-state teleportation cannot claim matter relocation",
+        "ordinary transport remains MT-2"
+      ]
+    },
+    {
+      "id": "MT-O10",
+      "name": "target_state_schema",
+      "layer": "state_definition",
+      "epistemic_class": "modeling",
+      "purpose": "Define what is represented as the transferable target and what remains unknown.",
+      "inputs": [
+        "declared_transfer_mode",
+        "measurements",
+        "model_scope"
+      ],
+      "outputs": [
+        "state_packet"
+      ],
+      "depends_on": [
+        "MT-O04"
+      ],
+      "hard_gates": [
+        "unknown fields explicit",
+        "representation scope declared",
+        "visual description not treated as complete state"
+      ],
+      "failure_state": "STATE_UNDERSPECIFIED",
+      "tests": [
+        "missing composition remains unknown",
+        "state packet identifies measurement set",
+        "rendering-only state is labeled rendering-only"
+      ]
+    },
+    {
+      "id": "MT-O11",
+      "name": "measurement_uncertainty_envelope",
+      "layer": "state_definition",
+      "epistemic_class": "grounded_modeling",
+      "purpose": "Track measurement error, missing observables, correlations, and uncertainty growth.",
+      "inputs": [
+        "state_packet",
+        "instrument_contract"
+      ],
+      "outputs": [
+        "uncertainty_envelope"
+      ],
+      "depends_on": [
+        "MT-O10"
+      ],
+      "hard_gates": [
+        "no zero-uncertainty default",
+        "missing measurement is not estimated silently",
+        "correlated errors declared where known"
+      ],
+      "failure_state": "UNCERTAINTY_UNBOUNDED",
+      "tests": [
+        "uncertainty propagates through transforms",
+        "missing calibration blocks precision claim",
+        "unknown range remains visible"
+      ]
+    },
+    {
+      "id": "MT-O12",
+      "name": "identity_and_continuity_contract",
+      "layer": "state_definition",
+      "epistemic_class": "modeling_philosophical_boundary",
+      "purpose": "Declare whether an output is continuing entity, reconstructed copy, approximation, visual match, or equivalence under a limited measurement set.",
+      "inputs": [
+        "state_packet",
+        "user_declared_identity_policy"
+      ],
+      "outputs": [
+        "identity_contract"
+      ],
+      "depends_on": [
+        "MT-O10",
+        "MT-O11"
+      ],
+      "hard_gates": [
+        "continuity not inferred from similarity",
+        "philosophical uncertainty preserved",
+        "user-facing wording matches contract"
+      ],
+      "failure_state": "IDENTITY_UNRESOLVED",
+      "tests": [
+        "duplicate is not silently called original",
+        "partial measurement match stays bounded",
+        "continuity claim requires declared mechanism"
+      ]
+    },
+    {
+      "id": "MT-O13",
+      "name": "invariant_register",
+      "layer": "state_definition",
+      "epistemic_class": "grounded_modeling",
+      "purpose": "Register quantities and relations that must be preserved, transformed lawfully, or remain unresolved.",
+      "inputs": [
+        "state_packet",
+        "baseline_contract",
+        "declared_transfer_mode"
+      ],
+      "outputs": [
+        "invariant_contract"
+      ],
+      "depends_on": [
+        "MT-O03",
+        "MT-O04",
+        "MT-O10",
+        "MT-O11",
+        "MT-O12"
+      ],
+      "hard_gates": [
+        "conservation accounting",
+        "causal ordering",
+        "information and resource budget",
+        "unresolved invariant cannot pass"
+      ],
+      "failure_state": "INVARIANT_UNRESOLVED",
+      "tests": [
+        "missing energy ledger blocks validation",
+        "charge mismatch fails",
+        "identity invariant follows identity contract"
+      ]
+    },
+    {
+      "id": "MT-O20",
+      "name": "transfer_space_registry",
+      "layer": "transition_model",
+      "epistemic_class": "modeling",
+      "purpose": "Declare whether the modeled transition occurs in spacetime, a network, a state graph, phase space, Hilbert space, or a speculative manifold.",
+      "inputs": [
+        "declared_transfer_mode",
+        "candidate_space_definition"
+      ],
+      "outputs": [
+        "transfer_space_contract"
+      ],
+      "depends_on": [
+        "MT-O04",
+        "MT-O13"
+      ],
+      "hard_gates": [
+        "coordinates or identifiers defined",
+        "legal transitions defined",
+        "observables mapping defined",
+        "undefined regions declared"
+      ],
+      "failure_state": "SPACE_UNDEFINED",
+      "tests": [
+        "mathematical space not called physical automatically",
+        "network path not called spacetime geodesic",
+        "speculative manifold carries speculative label"
+      ]
+    },
+    {
+      "id": "MT-O21",
+      "name": "metric_cost_evaluator",
+      "layer": "transition_model",
+      "epistemic_class": "modeling",
+      "purpose": "Evaluate distance, action, cost, risk, or validity under the declared transfer-space contract.",
+      "inputs": [
+        "transfer_space_contract",
+        "candidate_metric"
+      ],
+      "outputs": [
+        "metric_contract",
+        "evaluation_receipt"
+      ],
+      "depends_on": [
+        "MT-O02",
+        "MT-O20"
+      ],
+      "hard_gates": [
+        "units or dimensionless status declared",
+        "domain and singularities declared",
+        "metric meaning not overstated"
+      ],
+      "failure_state": "METRIC_INVALID",
+      "tests": [
+        "negative or undefined domains handled",
+        "unit mismatch fails",
+        "visual curvature alone is insufficient"
+      ]
+    },
+    {
+      "id": "MT-O22",
+      "name": "path_or_transition_solver",
+      "layer": "transition_model",
+      "epistemic_class": "modeling",
+      "purpose": "Find a valid path or transition sequence and report absence, multiplicity, sensitivity, and violated constraints.",
+      "inputs": [
+        "state_packet",
+        "transfer_space_contract",
+        "metric_contract",
+        "invariant_contract"
+      ],
+      "outputs": [
+        "transition_packet"
+      ],
+      "depends_on": [
+        "MT-O13",
+        "MT-O20",
+        "MT-O21"
+      ],
+      "hard_gates": [
+        "no-solution is valid output",
+        "constraint violations retained",
+        "geodesic label requires correct definition"
+      ],
+      "failure_state": "NO_VALID_TRANSITION",
+      "tests": [
+        "solver can return none",
+        "multiple paths remain distinct",
+        "perturbation sensitivity reported"
+      ]
+    },
+    {
+      "id": "MT-O23",
+      "name": "channel_and_carrier_model",
+      "layer": "transition_model",
+      "epistemic_class": "grounded_modeling_speculative_by_instance",
+      "purpose": "Declare what carries the transferable state and which coupling, resource, and measurement rules apply.",
+      "inputs": [
+        "declared_transfer_mode",
+        "transition_packet",
+        "carrier_proposal"
+      ],
+      "outputs": [
+        "channel_contract"
+      ],
+      "depends_on": [
+        "MT-O03",
+        "MT-O04",
+        "MT-O22"
+      ],
+      "hard_gates": [
+        "carrier named",
+        "coupling and resource accounting declared",
+        "speculative carrier requires governing equation and falsifier"
+      ],
+      "failure_state": "CARRIER_UNDEFINED",
+      "tests": [
+        "classical signal remains causally bounded",
+        "entanglement alone cannot signal classically usable information",
+        "unknown carrier cannot validate MT-5 or MT-6"
+      ]
+    },
+    {
+      "id": "MT-O24",
+      "name": "causal_clock_and_ordering",
+      "layer": "transition_model",
+      "epistemic_class": "grounded_modeling",
+      "purpose": "Track emission, transmission, interaction, reconstruction, comparison, and receipt ordering across declared clocks.",
+      "inputs": [
+        "transition_packet",
+        "channel_contract",
+        "clock_contracts"
+      ],
+      "outputs": [
+        "causal_timeline"
+      ],
+      "depends_on": [
+        "MT-O03",
+        "MT-O22",
+        "MT-O23"
+      ],
+      "hard_gates": [
+        "clock frame declared",
+        "synchronization uncertainty retained",
+        "causal inversion flagged"
+      ],
+      "failure_state": "CAUSAL_ORDER_UNRESOLVED",
+      "tests": [
+        "departure and arrival remain distinct events",
+        "classical dependency cannot arrive before send",
+        "clock uncertainty affects result"
+      ]
+    },
+    {
+      "id": "MT-O25",
+      "name": "destination_boundary_preparer",
+      "layer": "transition_model",
+      "epistemic_class": "modeling",
+      "purpose": "Declare destination materials, energy, boundary conditions, clocks, contamination controls, and abort capacity.",
+      "inputs": [
+        "state_packet",
+        "transition_packet",
+        "channel_contract"
+      ],
+      "outputs": [
+        "destination_contract"
+      ],
+      "depends_on": [
+        "MT-O10",
+        "MT-O22",
+        "MT-O23",
+        "MT-O24"
+      ],
+      "hard_gates": [
+        "resource inventory",
+        "boundary conditions",
+        "abort state",
+        "no magic empty destination"
+      ],
+      "failure_state": "DESTINATION_NOT_READY",
+      "tests": [
+        "missing material inventory blocks reconstruction",
+        "unsafe boundary fails closed",
+        "clock mismatch retained"
+      ]
+    },
+    {
+      "id": "MT-O30",
+      "name": "state_encoder_mapper",
+      "layer": "reconstruction",
+      "epistemic_class": "modeling",
+      "purpose": "Map the declared source-state representation into a channel-compatible representation with reversible or bounded-loss receipts.",
+      "inputs": [
+        "state_packet",
+        "uncertainty_envelope",
+        "channel_contract"
+      ],
+      "outputs": [
+        "encoded_state",
+        "mapping_receipt"
+      ],
+      "depends_on": [
+        "MT-O10",
+        "MT-O11",
+        "MT-O23"
+      ],
+      "hard_gates": [
+        "loss declared",
+        "mapping versioned",
+        "unknown fields not invented"
+      ],
+      "failure_state": "ENCODING_INVALID",
+      "tests": [
+        "round-trip fixture within tolerance",
+        "lossy map cannot claim exact state",
+        "unknown input remains unknown"
+      ]
+    },
+    {
+      "id": "MT-O31",
+      "name": "reconstruction_planner",
+      "layer": "reconstruction",
+      "epistemic_class": "modeling",
+      "purpose": "Plan a destination state preparation or reconstruction using declared resources and dependencies.",
+      "inputs": [
+        "encoded_state",
+        "destination_contract",
+        "identity_contract",
+        "invariant_contract"
+      ],
+      "outputs": [
+        "reconstruction_plan"
+      ],
+      "depends_on": [
+        "MT-O12",
+        "MT-O13",
+        "MT-O25",
+        "MT-O30"
+      ],
+      "hard_gates": [
+        "resource sufficiency",
+        "ordered dependencies",
+        "identity wording fixed before execution",
+        "abort route"
+      ],
+      "failure_state": "RECONSTRUCTION_NOT_FEASIBLE",
+      "tests": [
+        "insufficient inventory fails",
+        "dependency cycle detected",
+        "copy remains labeled copy"
+      ]
+    },
+    {
+      "id": "MT-O32",
+      "name": "fidelity_comparator",
+      "layer": "reconstruction",
+      "epistemic_class": "grounded_modeling",
+      "purpose": "Compare source and destination under a declared observable set and uncertainty model.",
+      "inputs": [
+        "source_state_packet",
+        "destination_state_packet",
+        "uncertainty_envelopes",
+        "identity_contract"
+      ],
+      "outputs": [
+        "fidelity_receipt"
+      ],
+      "depends_on": [
+        "MT-O11",
+        "MT-O12",
+        "MT-O31"
+      ],
+      "hard_gates": [
+        "comparison basis declared",
+        "unmeasured fields excluded from equivalence claim",
+        "visual match not sufficient"
+      ],
+      "failure_state": "FIDELITY_UNRESOLVED",
+      "tests": [
+        "different metric gives separate receipt",
+        "uncertainty overlap handled",
+        "partial match stays partial"
+      ]
+    },
+    {
+      "id": "MT-O33",
+      "name": "conservation_and_causality_gate",
+      "layer": "reconstruction",
+      "epistemic_class": "grounded_modeling",
+      "purpose": "Apply invariant, resource, conservation, and causal checks before any success status is emitted.",
+      "inputs": [
+        "invariant_contract",
+        "causal_timeline",
+        "destination_contract",
+        "fidelity_receipt"
+      ],
+      "outputs": [
+        "gate_receipt"
+      ],
+      "depends_on": [
+        "MT-O13",
+        "MT-O24",
+        "MT-O25",
+        "MT-O32"
+      ],
+      "hard_gates": [
+        "all required invariants resolved",
+        "causal validity",
+        "resource ledger balanced within declared tolerance"
+      ],
+      "failure_state": "TRANSFER_NOT_VALIDATED",
+      "tests": [
+        "missing invariant yields unresolved",
+        "causal violation fails",
+        "model-only success remains model-only"
+      ]
+    },
+    {
+      "id": "MT-O34",
+      "name": "failure_containment_and_rollback",
+      "layer": "reconstruction",
+      "epistemic_class": "grounded_engineering",
+      "purpose": "Stop unsafe or invalid sequences, preserve receipts, and return the simulation or bench to a known state.",
+      "inputs": [
+        "all_runtime_packets",
+        "gate_receipt",
+        "abort_signal"
+      ],
+      "outputs": [
+        "rollback_receipt",
+        "preserved_failure_packet"
+      ],
+      "depends_on": [
+        "MT-O25",
+        "MT-O31",
+        "MT-O33"
+      ],
+      "hard_gates": [
+        "fail closed",
+        "no history deletion",
+        "source state not destroyed",
+        "rollback result verified"
+      ],
+      "failure_state": "CONTAINMENT_REQUIRED",
+      "tests": [
+        "abort at every stage",
+        "failure receipt append-only",
+        "rollback cannot overwrite source evidence"
+      ]
+    },
+    {
+      "id": "MT-O40",
+      "name": "prediction_and_falsification_engine",
+      "layer": "science_gate",
+      "epistemic_class": "grounded_scientific_method",
+      "purpose": "Require a predeclared quantitative prediction and an observation capable of contradicting it.",
+      "inputs": [
+        "candidate_model",
+        "baseline_contract",
+        "planned_observables"
+      ],
+      "outputs": [
+        "precommitment_packet",
+        "falsification_receipt"
+      ],
+      "depends_on": [
+        "MT-O01",
+        "MT-O03",
+        "MT-O33"
+      ],
+      "hard_gates": [
+        "prediction fixed before result",
+        "falsifier operationalized",
+        "known-physics recovery test",
+        "post-hoc fit labeled post-hoc"
+      ],
+      "failure_state": "NOT_TESTABLE_YET",
+      "tests": [
+        "no falsifier blocks promotion",
+        "failed prediction retained",
+        "baseline-equivalent model cannot claim new prediction"
+      ]
+    },
+    {
+      "id": "MT-O41",
+      "name": "append_only_evidence_ledger",
+      "layer": "science_gate",
+      "epistemic_class": "grounded_engineering",
+      "purpose": "Preserve inputs, versions, predictions, outputs, contradictions, failures, and reviewer dissent without silent rewrite.",
+      "inputs": [
+        "all_receipts",
+        "source_packets",
+        "review_records"
+      ],
+      "outputs": [
+        "evidence_ledger_entry"
+      ],
+      "depends_on": [
+        "MT-O00",
+        "MT-O34",
+        "MT-O40"
+      ],
+      "hard_gates": [
+        "append-only",
+        "version and hash recorded",
+        "dissent preserved",
+        "correction links rather than erases"
+      ],
+      "failure_state": "LEDGER_WRITE_FAILED",
+      "tests": [
+        "previous entry immutable",
+        "correction references original",
+        "missing hash visible"
+      ]
+    },
+    {
+      "id": "MT-O42",
+      "name": "public_claim_labeler",
+      "layer": "science_gate",
+      "epistemic_class": "grounded",
+      "purpose": "Generate user-facing wording that cannot exceed the claim ceiling and verification state.",
+      "inputs": [
+        "claim_packet",
+        "gate_receipt",
+        "falsification_receipt",
+        "identity_contract"
+      ],
+      "outputs": [
+        "public_claim_label"
+      ],
+      "depends_on": [
+        "MT-O01",
+        "MT-O12",
+        "MT-O33",
+        "MT-O40",
+        "MT-O41"
+      ],
+      "hard_gates": [
+        "model success labeled model success",
+        "unknown visible",
+        "speculation visible",
+        "identity type visible"
+      ],
+      "failure_state": "NO_PUBLIC_CLAIM",
+      "tests": [
+        "MT-1 cannot say matter teleported",
+        "speculative portal cannot say discovered",
+        "failed test wording remains truthful"
+      ]
+    },
+    {
+      "id": "MT-O43",
+      "name": "observer_visualization",
+      "layer": "experience_optional",
+      "epistemic_class": "representation",
+      "purpose": "Render state, path, uncertainty, stability, reconstruction, and failure in an understandable visual or game layer without altering simulation truth.",
+      "inputs": [
+        "truth_labeled_runtime_packets"
+      ],
+      "outputs": [
+        "observer_view"
+      ],
+      "depends_on": [
+        "MT-O04",
+        "MT-O10",
+        "MT-O13",
+        "MT-O20",
+        "MT-O21",
+        "MT-O22",
+        "MT-O32",
+        "MT-O42"
+      ],
+      "hard_gates": [
+        "visuals replaceable",
+        "simulation state authoritative",
+        "grounded/model/speculative labels always available"
+      ],
+      "failure_state": "VISUALIZATION_UNAVAILABLE",
+      "tests": [
+        "visual failure does not alter state",
+        "portal effect carries speculative label",
+        "uncertainty can be inspected"
+      ]
+    },
+    {
+      "id": "MT-O44",
+      "name": "matter_transfer_merge_gate",
+      "layer": "governance",
+      "epistemic_class": "grounded_engineering",
+      "purpose": "Control promotion from hypothesis to model, model to validated simulation, and validated simulation toward experimental review.",
+      "inputs": [
+        "evidence_ledger",
+        "verification_packet",
+        "review_records",
+        "safety_review"
+      ],
+      "outputs": [
+        "merge_decision",
+        "dissent_record",
+        "next_evidence_requirements"
+      ],
+      "depends_on": [
+        "MT-O01",
+        "MT-O02",
+        "MT-O03",
+        "MT-O04",
+        "MT-O33",
+        "MT-O34",
+        "MT-O40",
+        "MT-O41",
+        "MT-O42"
+      ],
+      "hard_gates": [
+        "no automatic canon",
+        "local verification receipt",
+        "source integrity",
+        "safety boundary",
+        "dissent retained",
+        "rollback available"
+      ],
+      "failure_state": "HOLD_AS_DRAFT",
+      "tests": [
+        "missing local acceptance blocks merge",
+        "new evidence cannot silently rewrite prior result",
+        "unsafe scope remains disabled"
+      ]
+    }
+  ],
+  "assembly_profiles": {
+    "research_notebook": {
+      "purpose": "Truth-preserving intake and hypothesis work.",
+      "required_organs": [
+        "MT-O00",
+        "MT-O01",
+        "MT-O02",
+        "MT-O03",
+        "MT-O04",
+        "MT-O40",
+        "MT-O41",
+        "MT-O42",
+        "MT-O44"
+      ]
+    },
+    "deterministic_simulator": {
+      "purpose": "Model transfer states, paths, reconstruction, and failure without claiming physical realization.",
+      "required_organs": [
+        "MT-O00",
+        "MT-O01",
+        "MT-O02",
+        "MT-O03",
+        "MT-O04",
+        "MT-O10",
+        "MT-O11",
+        "MT-O12",
+        "MT-O13",
+        "MT-O20",
+        "MT-O21",
+        "MT-O22",
+        "MT-O23",
+        "MT-O24",
+        "MT-O25",
+        "MT-O30",
+        "MT-O31",
+        "MT-O32",
+        "MT-O33",
+        "MT-O34",
+        "MT-O40",
+        "MT-O41",
+        "MT-O42",
+        "MT-O44"
+      ]
+    },
+    "observer_game_layer": {
+      "purpose": "Human-readable visual or game representation of a truth-labelled simulation.",
+      "required_organs": [
+        "MT-O00",
+        "MT-O01",
+        "MT-O04",
+        "MT-O10",
+        "MT-O13",
+        "MT-O20",
+        "MT-O21",
+        "MT-O22",
+        "MT-O32",
+        "MT-O42",
+        "MT-O43"
+      ]
+    },
+    "non_destructive_experimental_bench": {
+      "purpose": "Future low-energy non-biological tests only.",
+      "enabled": false,
+      "activation_requirements": [
+        "independent safety review",
+        "no biological subjects",
+        "no destructive scan",
+        "predeclared low-energy falsifiable test",
+        "containment and abort validation",
+        "external scientific review"
+      ],
+      "required_organs": [
+        "MT-O00",
+        "MT-O01",
+        "MT-O02",
+        "MT-O03",
+        "MT-O04",
+        "MT-O10",
+        "MT-O11",
+        "MT-O12",
+        "MT-O13",
+        "MT-O20",
+        "MT-O21",
+        "MT-O22",
+        "MT-O23",
+        "MT-O24",
+        "MT-O25",
+        "MT-O30",
+        "MT-O31",
+        "MT-O32",
+        "MT-O33",
+        "MT-O34",
+        "MT-O40",
+        "MT-O41",
+        "MT-O42",
+        "MT-O44"
+      ]
+    }
+  },
+  "promotion_requirements": [
+    "variables and units",
+    "governing equations",
+    "initial and boundary conditions",
+    "known-physics recovery limit",
+    "conservation and energy accounting",
+    "novel quantitative prediction",
+    "predeclared falsifier",
+    "reproducible code or calculation",
+    "independent replication path",
+    "claim wording no stronger than evidence"
+  ]
+}

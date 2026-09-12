@@ -1,0 +1,34 @@
+{
+  "schema": "axm.living-interior-animation-contract-candidate.v1",
+  "version": "0.13.0-candidate",
+  "truth_status": "presentation_contract_candidate_not_canon",
+  "purpose": "Make the registered simulator interior feel alive with deterministic low-graphic room ambience, portal animation, abstract system activity and procedure-route crew reenactment without creating new world authority.",
+  "source_dependencies": [
+    "axm.low-graphic-3d-scene.v1",
+    "axm.failure-procedure-catalog.v1",
+    "registered interior room graph",
+    "registered system room bindings",
+    "copied read-only runtime resource snapshot"
+  ],
+  "allowed_animation": [
+    "room_type_specific_ambient_motion",
+    "presentation_portal_open_close_animation",
+    "abstract_system_binding_activity",
+    "procedure_rehearsal_crew_marker_traversal",
+    "camera_only_registered_graph_walkthrough",
+    "copied_resource_indicator_animation"
+  ],
+  "forbidden_claims_or_actions": [
+    "authoritative_door_open_or_closed_state",
+    "authoritative_crew_position_or_movement",
+    "physical_hardware_replica_claim",
+    "active_fault_truth_from_rehearsal",
+    "repair_execution",
+    "runtime_or_resource_mutation",
+    "mission_time_advance",
+    "truth_label_change"
+  ],
+  "geometry_rule": "Presentation actors may use the v0.12 graph-derived 2.5D coordinates but may not treat them as physical ship dimensions.",
+  "reduced_motion_required": true,
+  "external_dependencies": []
+}

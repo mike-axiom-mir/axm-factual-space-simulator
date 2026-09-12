@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import statistics
 from datetime import datetime, timezone
 from pathlib import Path
@@ -68,10 +69,26 @@ def normalize_nasa_snapshot(snapshot_dir: Path, output_path: Path) -> dict[str, 
         raise FileNotFoundError("snapshot requires manifest.json and raw.json")
 
     source_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    rows_path = normalized_source_path if normalized_source_path.exists() else raw_path
-    rows = json.loads(rows_path.read_text(encoding="utf-8"))
+    raw_bytes = raw_path.read_bytes()
+    actual_sha256 = _sha256_bytes(raw_bytes)
+    declared_sha256 = source_manifest.get("sha256")
+    if not isinstance(declared_sha256, str) or not re.fullmatch(r"[0-9a-fA-F]{64}", declared_sha256):
+        raise ValueError("snapshot manifest requires a valid SHA-256 for raw.json")
+    if actual_sha256 != declared_sha256.lower():
+        raise ValueError("raw.json does not match the snapshot manifest SHA-256")
+    declared_bytes = source_manifest.get("bytes")
+    if declared_bytes is not None and (type(declared_bytes) is not int or declared_bytes != len(raw_bytes)):
+        raise ValueError("raw.json does not match the snapshot manifest byte count")
+    if source_manifest.get("source_id") not in {None, "nasa_exoplanet_archive"}:
+        raise ValueError("snapshot manifest source_id is not nasa_exoplanet_archive")
+
+    rows = json.loads(raw_bytes.decode("utf-8"))
     if not isinstance(rows, list):
         raise ValueError("NASA Exoplanet Archive snapshot must contain a JSON list")
+    if normalized_source_path.exists():
+        normalized_rows = json.loads(normalized_source_path.read_text(encoding="utf-8"))
+        if normalized_rows != rows:
+            raise ValueError("normalized.json diverges from the pinned raw.json snapshot")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     count = 0
@@ -106,7 +123,7 @@ def normalize_nasa_snapshot(snapshot_dir: Path, output_path: Path) -> dict[str, 
                 "discovery_year": row.get("disc_year"),
                 "discovery_method": row.get("discoverymethod"),
                 "source_id": "nasa_exoplanet_archive_pscomppars",
-                "source_snapshot_sha256": source_manifest.get("sha256") or _sha256_file(raw_path),
+                "source_snapshot_sha256": actual_sha256,
                 "source_retrieved_at": source_manifest.get("retrieved_at"),
                 "facts": facts,
             }
@@ -118,7 +135,7 @@ def normalize_nasa_snapshot(snapshot_dir: Path, output_path: Path) -> dict[str, 
         "created_at": datetime.now(timezone.utc).isoformat(),
         "source_id": "nasa_exoplanet_archive_pscomppars",
         "source_snapshot": str(snapshot_dir),
-        "source_snapshot_sha256": source_manifest.get("sha256") or _sha256_file(raw_path),
+        "source_snapshot_sha256": actual_sha256,
         "output": str(output_path),
         "output_sha256": _sha256_file(output_path),
         "records": count,

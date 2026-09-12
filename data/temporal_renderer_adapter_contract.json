@@ -1,0 +1,22 @@
+{
+  "schema": "axm.temporal-renderer-adapter-contract.v1",
+  "version": "0.13.0-candidate",
+  "authority": "renderer_only",
+  "inputs": ["system.json", "runtime_state.json", "event_ledger.jsonl", "manifest.json"],
+  "may_change": ["pixels", "inspect-only camera preset", "label density", "layout", "animation cadence", "compressed replay display timing"],
+  "may_not_change": ["source bytes", "world state", "event ledger", "command authority", "truth labels", "claim ceilings", "route feasibility"],
+  "time_model": {
+    "source_mission_clock": "copied read-only from runtime_state.json",
+    "event_ranges": "derived only when every recorded mission-time delta reconciles with the source clock",
+    "replay_clock": "disposable presentation state with no mission authority",
+    "wall_clock_age": "unknown without verified observation timestamps",
+    "future_receipts": "none imported; this is not a prediction"
+  },
+  "presentation_profiles": {
+    "camera_presets": ["overview", "target_focus", "signal_lane"],
+    "label_modes": ["focus", "all", "minimal"],
+    "changes_semantics": false
+  },
+  "verification_boundary": "Selected file hashes and ledger links are checked here. Temporal ranges are a bounded reconstruction, not a new clock. Existing main semantic verification remains mandatory.",
+  "promotion": "HOLD_FOR_VERSIONING_ACCEPTANCE_LIVE_VISUAL_AND_MIKE_MERGE_GATE"
+}

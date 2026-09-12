@@ -1,14 +1,13 @@
 from __future__ import annotations
 import copy, hashlib, json, math
-from pathlib import Path
 from typing import Any
+from .registry import data_path
 from .ship_blueprint import evaluate_ship, load_blueprint, state_hash
-PACKAGE_ROOT=Path(__file__).resolve().parents[2]; DATA_DIR=PACKAGE_ROOT/'data'
 class CrewStationError(ValueError): pass
 
 def canonical_json(v): return json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=False)
 def domain_hash(v,d): return hashlib.sha256(f"{d}|{canonical_json(v)}".encode()).hexdigest()
-def _load(n): return json.loads((DATA_DIR/n).read_text(encoding="utf-8"))
+def _load(n): return json.loads(data_path(n).read_text(encoding="utf-8"))
 def load_metric_registry(): return _load('ship_telemetry_metric_registry.json')
 def load_display_registry(): return _load('crew_station_display_registry.json')
 def load_competency_registry(): return _load('crew_competency_evolution_registry.json')

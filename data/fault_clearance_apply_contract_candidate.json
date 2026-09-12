@@ -1,0 +1,48 @@
+{
+  "schema": "axm.fault-clearance-apply-contract-candidate.v1",
+  "version": "0.8.0-candidate",
+  "purpose": "Connect a verified effective repair candidate to the existing authoritative axm.ship-state.v1 fault lifecycle without inferring restored state.",
+  "reuses_existing": [
+    "axm.ship-state.v1 system_health.active_fault_ids",
+    "ship_blueprint.apply_failure_mode",
+    "ship_blueprint fault_ledger hash chain",
+    "ship_blueprint state_history hash chain",
+    "ship_blueprint state_hash and verify_ship_state",
+    "v0.5 failure procedures",
+    "v0.6 damage topology",
+    "v0.7 repair verification and fault-clearance candidate"
+  ],
+  "authority_policy": {
+    "id": "axm.fault-clearance-authority-policy.candidate.v1",
+    "truth_status": "simulation_policy_candidate_not_canon",
+    "advisory": "primary procedure role authorization required",
+    "command_required": "mission commander plus primary procedure role authorization required",
+    "note": "The current crew-role registry does not yet contain an explicit fault-clearance authority verb, so this candidate policy is intentionally not presented as existing canon."
+  },
+  "required_apply_inputs": [
+    "verified_effective_repair_attempt",
+    "fault_clearance_candidate",
+    "verified_current_axm_ship_state_v1",
+    "fault_clearance_authorization_receipt",
+    "exact_state_reconciliation_receipt"
+  ],
+  "reconciliation_rule": "Every state path mutated by the source failure effect, plus the source-system mode, must be supplied with an exact current-value precondition, an evidence-backed verified value, and non-empty evidence IDs. No inverse-damage or baseline-restoration arithmetic is allowed.",
+  "atomic_effects": [
+    "reconcile only approved evidence-covered state paths",
+    "remove only the target failure id from the target system active_fault_ids",
+    "preserve or retarget other command-required recalls",
+    "append verified_clearance to the existing hash-chained fault ledger",
+    "append state history",
+    "recompute state hash",
+    "verify the post-clearance ship state"
+  ],
+  "forbidden": [
+    "infer restored values",
+    "clear unrelated faults",
+    "mark a system nominal while another active fault remains",
+    "accept a stale state hash",
+    "accept a tampered repair attempt, candidate, or procedure definition",
+    "silently exit safe state",
+    "grant the renderer fault-clear authority"
+  ]
+}
